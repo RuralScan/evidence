@@ -21,6 +21,13 @@ TABLES = (
     "pipeline/metrics/review_log.csv",
     "pipeline/metrics/row_review_log.csv",
 )
+REVIEW_SUPPORT = (
+    "pipeline/metrics/clarification_log.json",
+    "pipeline/metrics/gaps.csv",
+    "pipeline/cited_originals.csv",
+    "pipeline/review_priorities.csv",
+)
+PROFILES = {"core": TABLES, "review-support": TABLES + REVIEW_SUPPORT}
 
 
 def git(*args, cwd):
@@ -29,8 +36,9 @@ def git(*args, cwd):
     return run_git("--no-lazy-fetch", "--no-replace-objects", *args, cwd=cwd)
 
 
-def inventory(repo, commit):
-    entries = git("ls-tree", "--full-tree", "-z", commit, "--", *TABLES, cwd=repo)
+def inventory(repo, commit, profile="core"):
+    paths = PROFILES[profile]
+    entries = git("ls-tree", "--full-tree", "-z", commit, "--", *paths, cwd=repo)
     files = {}
     for entry in entries.split(b"\0"):
         if entry:
@@ -38,14 +46,16 @@ def inventory(repo, commit):
             mode, kind, oid = meta.split()
             require(
                 mode == "100644" and kind == "blob",
-                f"Expected a regular table at {path}",
+                f"Expected a regular file at {path}",
             )
             files[path] = oid
-    require(files.keys() == set(TABLES), f"Required tables missing at {commit}")
-    return files
+    require(set(TABLES) <= files.keys(), f"Required tables missing at {commit}")
+    # Support records can be introduced or retired between revisions. A null
+    # entry denotes absence; an existing empty file has its own blob ID.
+    return {path: files.get(path) for path in paths}
 
 
-def history(repo, base, target):
+def history(repo, base, target, profile="core"):
     # Follow what landed on the branch, including the result of each merge.
     base, target = revision(base), revision(target)
     for commit in {base, target}:
@@ -53,7 +63,7 @@ def history(repo, base, target):
             git("cat-file", "-t", commit, cwd=repo).strip() == b"commit",
             "Expected a Git commit",
         )
-    initial = inventory(repo, base)
+    initial = inventory(repo, base, profile)
     current = initial.copy()
     previous = base
     changes = []
@@ -71,26 +81,30 @@ def history(repo, base, target):
             parents and parents[0] == previous,
             "Base is outside target's first-parent history",
         )
-        files = inventory(repo, commit)
+        files = inventory(repo, commit, profile)
         delta = {path: oid for path, oid in files.items() if current[path] != oid}
         current.update(delta)
         require(current == files, f"Delta inventory differs at {commit}")
         changes.append({"revision": commit, "updates": delta})
         previous = commit
     require(previous == target, "Base is outside target's first-parent history")
-    return {
+    manifest = {
         "format_version": 1,
         "base": base,
         "target": target,
         "initial": initial,
         "changes": changes,
     }
+    if profile != "core":
+        manifest.update(format_version=2, profile=profile)
+    return manifest
 
 
 def object_ids(records):
     ids = set(records["initial"].values())
     for step in records["changes"]:
         ids.update(step["updates"].values())
+    ids.discard(None)
     return sorted(ids)
 
 
@@ -174,6 +188,8 @@ def export_tables(bundle, records, commit, out, repo):
         stage = Path(tmp) / "tables"
         stage.mkdir(mode=0o700)
         for name, oid in files.items():
+            if oid is None:
+                continue
             path = stage / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(bundle.read("objects/" + oid))
@@ -194,6 +210,12 @@ def main():
     )
     check = commands.add_parser("verify", help="Compare an existing snapshot with Git")
     for command in (build, check):
+        command.add_argument(
+            "--profile",
+            choices=PROFILES,
+            default="core",
+            help="Select the same record set when creating and verifying",
+        )
         command.add_argument(
             "--ciat-repo",
             required=True,
@@ -216,7 +238,7 @@ def main():
     args = cli.parse_args()
     if getattr(args, "at", None) and not args.export_to:
         cli.error("--at requires --export-to")
-    records = history(args.ciat_repo, args.base, args.target)
+    records = history(args.ciat_repo, args.base, args.target, args.profile)
     if args.action == "create":
         create(args.ciat_repo, records, args.bundle)
     else:
@@ -231,9 +253,10 @@ def main():
                     args.ciat_repo,
                 )
     changed = {path for step in records["changes"] for path in step["updates"]}
+    noun = "tables" if args.profile == "core" else "paths"
     print(
-        f"Verified {len(TABLES)} tables, {len(records['changes'])} first-parent steps, "
-        f"{len(changed)} changed tables, {len(object_ids(records))} distinct file versions."
+        f"Verified {len(PROFILES[args.profile])} {noun}, {len(records['changes'])} first-parent steps, "
+        f"{len(changed)} changed {noun}, {len(object_ids(records))} distinct file versions."
     )
 
 

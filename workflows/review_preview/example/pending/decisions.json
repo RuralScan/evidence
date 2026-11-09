@@ -1,0 +1,14 @@
+{
+  "example_keep": {
+    "reader_a": {"decision": "ok"},
+    "reader_b": {"decision": "ok"}
+  },
+  "example_drop": {
+    "reader_a": {"decision": "drop", "reason": "off_scope"},
+    "reader_b": {"decision": "drop", "reason": "off_scope"}
+  },
+  "example_conflict": {
+    "reader_a": {"decision": "ok"},
+    "reader_b": {"decision": "drop", "reason": "off_scope"}
+  }
+}
