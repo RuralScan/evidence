@@ -106,4 +106,6 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$run_dir/ciat/src" uv run --no-project --p
 
 Expect `DRY RUN: complete registration batch validated; nothing published`, zero new queue entries, one explicit reuse task and a stock protocol with one inclusion. For an operational handoff, use the current CIAT checkout and substitute the plan's practice, family, date, process, run ID, searched-by value and unique log names. The dry run checks source identity, family tags and inclusion counts against those registers. Resolve identity conflicts there before handing over the bundle with its input files. The ordinary CIAT intake and review process owns publication and progress updates. Staging a bundle here records no extraction or recipe change.
 
+After screening, use the candidate bundle to [verify and acquire one source](../acquisition/README.md).
+
 The workflow follows the [versioned discovery instructions](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/.agents/skills/source-command-discover-sources/SKILL.md) and [screening rubric, §3](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/methodology/T4_generation_method.md). See the [software license](LICENSE).

@@ -63,6 +63,9 @@ class ScreeningTests(unittest.TestCase):
         self.check_counts((3, 3, 1))
         (candidate,) = json.loads((self.bundle / "candidates.json").read_bytes())
         self.assertEqual(candidate["reuse_source_id"], "wocat_wh_guidelines_2013")
+        self.assertEqual(
+            candidate["title"], "Water harvesting: guidelines to good practice"
+        )
         self.assertEqual(candidate["families"], ["water_harvesting__terracing"])
         original = {p.name: p.read_bytes() for p in self.bundle.iterdir()}
         self.stage(success=False)

@@ -8,6 +8,8 @@ The workflows below run locally. Live registration and evidence review continue 
 
 Find sources, screen a bounded result set and prepare a candidate bundle. The guide includes an offline replay and a dry run against the CIAT registrar. [Run discovery and screening](workflows/discovery/README.md)
 
+Check a screened citation, acquire the source and verify its identity. The WOCAT manual example can be replayed from the publisher or a private copy. [Run source verification and acquisition](workflows/acquisition/README.md)
+
 ## Worked example
 
 Reproduce the reviewed annual rainfall row for bench terraces from pinned method definitions and source records. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)
