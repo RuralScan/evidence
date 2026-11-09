@@ -37,6 +37,8 @@ uv run --offline --python 3.12 --locked --script "$tool" check \
 
 A local replay records a checksum match and an opening-title check. Its receipt has no HTTP status or fetch time. The example's `needs_ocr` flag reflects sparse text on its first three pages. Inspect the pages of interest before choosing an OCR route.
 
+Use the verified manual to [extract a page-anchored evidence unit](../extraction/README.md).
+
 ## Acquire another candidate
 
 1. **Select the screened record.** Use the candidate ID in `candidates.json`. Keep `screening.json` beside it, especially for older bundles which store full titles only in the screening audit. Run `verify` as above with the selected ID.

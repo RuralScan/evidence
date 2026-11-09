@@ -1,0 +1,31 @@
+{
+  "source_id": "wocat_wh_guidelines_2013",
+  "artifact_sha256": "32d277e3cfa5756a598ba1d8eb98798cea42dfa06c94915c37c8d5251e934aea",
+  "scope": {
+    "nbs_id": "water_harvesting_conservation",
+    "suitability_family_id": "water_harvesting__terracing",
+    "variable": "annual_precipitation",
+    "use_role": "structural_suitability"
+  },
+  "coverage": "Worked extraction of the forward-sloping bench terrace passage on PDF page 129 (printed page 116), limited to annual rainfall. This is a single-passage exercise.",
+  "inspected_pdf_pages": [129],
+  "source_purpose": {
+    "disposition": "pass",
+    "reason": "The manual describes the design, its use in a rainfall setting, and the crops for which it is used. This is spatially relevant practice guidance with limited transferability.",
+    "anchor": {"page": 129, "start": "This type of terraces", "end": "less for field crops."}
+  },
+  "inventory": [
+    {
+      "page": 129, "disposition": "extract", "reason": "One contextual observation for this terrace design. No scored response, optimum, absolute boundary or weighting is established.",
+      "anchor": {"page": 129, "start": "Contour forward sloping bench terraces are constructed", "end": "less for field crops."},
+      "draft": {
+        "evidence_id": "ev_wh_precip_wocatgl13_benchterraces",
+        "evidence_type": "literature_relationship", "claim_basis": "expert_assertion",
+        "claim_scope": "practice_technology", "extraction_confidence": "high",
+        "raw_name": "annual rainfall", "relationship": {"direction": "unclear"},
+        "context": {"practice_as_described": "Contour forward sloping bench terraces", "reported_values": {"low": 200, "high": 600, "unit": "mm/year"}, "calibration_hold": "Observed use in a rainfall band. No suitable bounds or scores established."}
+      }
+    },
+    {"page": 129, "disposition": "exclude", "reason": "The slope and catchment-to-application ratio describe other dimensions of the design. Neither supplies annual rainfall bounds."}
+  ]
+}
