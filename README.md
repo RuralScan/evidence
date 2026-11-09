@@ -4,6 +4,10 @@ This repository will document and run the evidence workflow behind Rural Scan: d
 
 **Status: proposed scaffold. No active evidence records or review authority have moved here.** Continue review and validated registration through [CIAT/nbs_ruralscan](https://github.com/CIAT/nbs_ruralscan) until a tested, explicit cutover.
 
+## Worked example
+
+Reproduce the reviewed annual rainfall row for bench terraces from pinned method definitions and source records. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)
+
 ## Planned structure
 
 | Directory | Purpose |
