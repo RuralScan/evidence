@@ -14,6 +14,8 @@ Check a screened citation, acquire the source and verify its identity. The WOCAT
 
 Locate a source passage and stage an evidence claim for review. [Extract the WOCAT terrace rainfall observation](workflows/extraction/README.md)
 
+Make a private snapshot of seven committed evidence tables and replay their updates at a pinned revision. [Reproduce committed evidence updates](workflows/evidence_snapshot/README.md)
+
 ## Worked example
 
 Replay screening, source verification and extraction in one command, then reproduce the reviewed bench-terrace rainfall row from its historical inputs. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)
