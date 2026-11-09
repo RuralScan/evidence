@@ -257,6 +257,7 @@ def screen(plan, captures, records, origins, sheet):
             )
             candidate = {
                 "candidate_id": rid,
+                "nbs_id": plan["nbs_id"],
                 "title": rec["title"],
                 "citation": citation,
                 "url": url,

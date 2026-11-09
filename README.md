@@ -10,6 +10,8 @@ Find sources, screen a bounded result set and prepare a candidate bundle. The gu
 
 Check a screened citation, acquire the source and verify its identity. The WOCAT manual example can be replayed from the publisher or a private copy. [Run source verification and acquisition](workflows/acquisition/README.md)
 
+Locate a source passage and stage an evidence claim for review. [Extract the WOCAT terrace rainfall observation](workflows/extraction/README.md)
+
 ## Worked example
 
 Reproduce the reviewed annual rainfall row for bench terraces from pinned method definitions and source records. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)
