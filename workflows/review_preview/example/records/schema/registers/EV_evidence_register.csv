@@ -1,0 +1,4 @@
+evidence_id,source_id,attribution,review_state,reviewer_ok,claim_scope,taxon
+example_keep,example_manual,Example passage,,false,practice_technology,
+example_drop,example_manual,Example site description,,false,practice_technology,
+example_conflict,example_manual,Example unresolved passage,,false,practice_technology,

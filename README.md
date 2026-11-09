@@ -14,7 +14,9 @@ Check a screened citation, acquire the source and verify its identity. The WOCAT
 
 Locate a source passage and stage an evidence claim for review. [Extract the WOCAT terrace rainfall observation](workflows/extraction/README.md)
 
-Make a private snapshot of seven committed evidence tables and replay their updates at a pinned revision. [Reproduce committed evidence updates](workflows/evidence_snapshot/README.md)
+Restore the seven committed evidence tables, with optional clarification history, evidence gaps, citation traces and review priorities. [Reproduce committed evidence updates](workflows/evidence_snapshot/README.md)
+
+Preview saved decisions against a verified export to count approvals, soft drops, conflicts and clarifications. Try the three-record example first. [Preview a review batch](workflows/review_preview/README.md)
 
 ## Worked example
 

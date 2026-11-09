@@ -133,6 +133,67 @@ class SnapshotTests(unittest.TestCase):
         ):
             check_bundle(archive, self.records, self.repo)
 
+    def test_review_support_replays_absent_empty_and_deleted_files(self):
+        gap = "pipeline/metrics/gaps.csv"
+        path = self.repo / gap
+        path.write_bytes(b"")
+        empty = self.commit()
+        path.write_bytes(b"id,status\r\n1,reported\r\n")
+        reported = self.commit()
+        path.unlink()
+        retired = self.commit()
+        state = history(self.repo, self.target, retired, "review-support")
+        self.assertIsNone(state["initial"][gap])
+        self.assertEqual(state["changes"][-1]["updates"], {gap: None})
+        create(self.repo, state, self.bundle)
+        with ZipFile(self.bundle) as archive:
+            check_bundle(archive, state, self.repo)
+            for revision, content in [
+                (self.target, None),
+                (empty, b""),
+                (reported, b"id,status\r\n1,reported\r\n"),
+                (retired, None),
+            ]:
+                out = self.root / revision
+                export_tables(archive, state, revision, out, self.repo)
+                copy = out / revision / gap
+                if content is None:
+                    self.assertFalse(copy.exists())
+                else:
+                    self.assertEqual(copy.read_bytes(), content)
+            with self.assertRaisesRegex(ValueError, "differs"):
+                check_bundle(
+                    archive, history(self.repo, self.target, retired), self.repo
+                )
+
+    def test_profiles_are_distinct_even_without_support_records(self):
+        core = history(self.repo, self.base, self.base)
+        support = history(self.repo, self.base, self.base, "review-support")
+        self.assertEqual(
+            set(core), {"format_version", "initial", "base", "target", "changes"}
+        )
+        self.assertEqual(core["format_version"], 1)
+        self.assertEqual(support["format_version"], 2)
+        self.assertEqual(support["profile"], "review-support")
+        create(self.repo, core, self.bundle)
+        with (
+            ZipFile(self.bundle) as archive,
+            self.assertRaisesRegex(ValueError, "differs"),
+        ):
+            check_bundle(archive, support, self.repo)
+
+    def test_core_required_and_linked_support_paths_rejected(self):
+        link = self.repo / "pipeline/review_priorities.csv"
+        link.symlink_to(self.repo / "unrelated.txt")
+        commit = self.commit()
+        with self.assertRaisesRegex(ValueError, "regular file"):
+            history(self.repo, commit, commit, "review-support")
+        link.unlink()
+        self.log.unlink()
+        missing = self.commit()
+        with self.assertRaisesRegex(ValueError, "Required tables missing"):
+            history(self.repo, missing, missing, "review-support")
+
     def test_only_literal_first_parent_commits(self):
         self.assertEqual(history(self.repo, self.base, self.base)["changes"], [])
         with self.assertRaisesRegex(ValueError, "first-parent"):
