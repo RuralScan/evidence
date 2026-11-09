@@ -1,0 +1,18 @@
+{
+  "nbs_id": "water_harvesting_conservation",
+  "family": "water_harvesting__terracing",
+  "table": "T4",
+  "process": "stock",
+  "run_id": "terrace_stock_training",
+  "date": "2026-11-09",
+  "searched_by": "offline training example",
+  "screened_by": "illustrative decisions from the worked example",
+  "purpose": "Practice screening the three known sources behind the bench-terrace rainfall example. This teaching selection does not represent a new project search.",
+  "inclusion_criteria": "Retain sources with identifiable annual rainfall guidance for bench terraces. Refer seasonal siting methods or other structures to their own scope.",
+  "limits": "Stock reconciliation exercise limited to the three reference records. No external search.",
+  "stop_reason": "Reached the end of the teaching selection.",
+  "omissions": "No fresh literature, grey or tool searches. Language expansion and citation chasing were outside the exercise.",
+  "captures": [
+    "stock.json"
+  ]
+}
