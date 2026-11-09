@@ -18,6 +18,10 @@ Restore the seven committed evidence tables, with optional clarification history
 
 Preview saved decisions against a verified export to count approvals, soft drops, conflicts and clarifications. Try the three-record example first. [Preview a review batch](workflows/review_preview/README.md)
 
+Preserve staged extraction files and check which evidence IDs have landed at a chosen CIAT revision. [Checkpoint a staged batch](workflows/extraction/checkpoint.md)
+
+Preview a downloaded review CSV and see what a repeated import would do to evidence or compiled-row history. [Preview browser review exports](workflows/review_exports/README.md)
+
 ## Worked example
 
 Replay screening, source verification and extraction in one command, then reproduce the reviewed bench-terrace rainfall row from its historical inputs. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)

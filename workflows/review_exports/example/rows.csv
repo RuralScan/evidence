@@ -1,0 +1,4 @@
+batch,record_id,nbs_id,table,decision,reason,note,reviewer,date
+example,agroforestry__drought__agro_pastoral,agroforestry,T3,hold,,Check risk role,reader_a,2026-01-01
+example,agroforestry__drought__agro_pastoral,agroforestry,T3,hold,,Updated note on same key,reader_a,2026-01-01
+example,wetland_management__biodiversity_priority,wetland_management,T6,approve,,,reader_b,2026-01-01

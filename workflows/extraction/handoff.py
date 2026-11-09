@@ -5,6 +5,7 @@ import csv
 from collections import defaultdict
 from difflib import SequenceMatcher
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -37,6 +38,13 @@ def unique_object(pairs):
 
 def invalid_number(value):
     raise ValueError(f"Non-finite number: {value}")
+
+
+def finite_float(text):
+    value = float(text)
+    if not math.isfinite(value):
+        invalid_number(text)
+    return value
 
 
 def anchor(unit):
@@ -82,6 +90,34 @@ def scientific_fields(row):
     return values
 
 
+def same_value(left, right):
+    """Compare JSON fields, distinguishing booleans from numbers at every depth."""
+    if isinstance(left, bool) or isinstance(right, bool):
+        return left is right
+    if isinstance(left, dict) and isinstance(right, dict):
+        return left.keys() == right.keys() and all(
+            same_value(v, right[k]) for k, v in left.items()
+        )
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(
+            same_value(a, b) for a, b in zip(left, right)
+        )
+    return left == right
+
+
+def changed_fields(historical, unit):
+    proposed = {
+        k: v
+        for k, v in unit.items()
+        if v is not None and v != "" and k not in {"reviewer_ok", "review_state"}
+    }
+    return sorted(
+        k
+        for k in historical.keys() | proposed.keys()
+        if not same_value(historical.get(k), proposed.get(k))
+    )
+
+
 def check_replays(register, units, *, check_existing=False):
     """A renamed duplicate or a changed/omitted scientific field needs reconciliation."""
     with register.open(newline="", encoding="utf-8") as stream:
@@ -107,16 +143,7 @@ def check_replays(register, units, *, check_existing=False):
             neighbours.append((eid, unit["quote"]))
             continue
         historical = scientific_fields(old)
-        proposed = {
-            k: v
-            for k, v in unit.items()
-            if v is not None and v != "" and k not in {"reviewer_ok", "review_state"}
-        }
-        differences = sorted(
-            k
-            for k in historical.keys() | proposed.keys()
-            if historical.get(k) != proposed.get(k)
-        )
+        differences = changed_fields(historical, unit)
         if differences:
             msg = f"{eid}: existing {', '.join(differences)} differs; proposed change held for the CIAT correction process"
             if not check_existing:
@@ -156,7 +183,10 @@ def check(
         )
     payload = staging.read_bytes()
     units = json.loads(
-        payload, object_pairs_hook=unique_object, parse_constant=invalid_number
+        payload,
+        object_pairs_hook=unique_object,
+        parse_constant=invalid_number,
+        parse_float=finite_float,
     )
     if (
         not isinstance(units, list)
