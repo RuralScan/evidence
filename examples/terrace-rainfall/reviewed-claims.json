@@ -1,0 +1,42 @@
+{
+  "producer_revision": "2023cb82c94a93120600a7feb17d8cd1e12ce54f",
+  "review_record": "methodology/audits/t4_water_block_20261109/terrace_rainfall_run.json",
+  "practice": "water_harvesting_conservation",
+  "subpractice": "bench_terraces",
+  "family": "water_harvesting__terracing",
+  "variable": "annual_precipitation",
+  "mapping_id": "water_harvesting__terracing__annual_precipitation",
+  "expected_row_sha256": "b9fac61513d3a3f642484dab77985d4b939dab5c622b92acfdf29bfb2e0a427a",
+  "claims": [
+    {
+      "source_id": "gismcda_swc_siting_2014",
+      "evidence_id": "ev_wh_annual_precipitation_krois14_1",
+      "evidence_sha256": "4f38df6665143c45b5816c840703d1f55e3c58e24a59dbcbc9ac4a662aae440c",
+      "source_artifact_sha256": "570e6473de72811082b9642a9fb0188fa3dac0b2c378e71b78984bed45f086cd",
+      "locator": "PDF p. 5 Rainfall methods, PDF p. 6 Fig. 3, PDF p. 9 Table 4 and PDF p. 10 Table 5.",
+      "extraction_ruleset": "v1.5.1",
+      "included_in_annual_terrace_support": false,
+      "interpretation": "Rainfall classes describe an October–April watershed model. Keep the seasonal classes and their weight in that regional context."
+    },
+    {
+      "source_id": "fao_critchley_wh_manual_1991",
+      "evidence_id": "ev_wh_precip_critchley91_stonebunds",
+      "evidence_sha256": "8c799450f3966f8960f52669082a6663c632013cba2250e86a12f54a47c43441",
+      "source_artifact_sha256": "b7607ac54c3ac96908fc4d453041cda21f5ee027a47f30b0caf57044a2dce860",
+      "locator": "FAO manual §§5.7.1–2, Background and Suitability.",
+      "extraction_ruleset": "v1.6.0",
+      "included_in_annual_terrace_support": false,
+      "interpretation": "Rainfall guidance concerns contour stone lines for crops, a different water-harvesting structure."
+    },
+    {
+      "source_id": "wocat_wh_guidelines_2013",
+      "evidence_id": "ev_wh_precip_wocatgl13_benchterraces",
+      "evidence_sha256": "62f3d5c2b75b7c59fceb813482cc56b0d8fe25a9cbe54da09de3c2f2ca48d8c4",
+      "source_artifact_sha256": "32d277e3cfa5756a598ba1d8eb98798cea42dfa06c94915c37c8d5251e934aea",
+      "locator": "WOCAT PDF p. 129, printed p. 116, paragraph on contour forward-sloping bench terraces.",
+      "extraction_ruleset": "v1.6.0",
+      "included_in_annual_terrace_support": true,
+      "interpretation": "Forward-sloping bench terraces are documented in places receiving 200–600 mm/year. This observation establishes use of the design within that range."
+    }
+  ]
+}
