@@ -1,0 +1,5 @@
+batch,evidence_id,decision,reason,note,reviewer,date,picos_flags
+example,example_keep,approve,,,reader_a,2026-01-01,
+example,example_drop,reject,off_scope,,reader_a,2026-01-01,I
+example,example_conflict,hold,,Context needed,reader_a,2026-01-01,
+example,example_conflict,approve,,,reader_b,2026-01-01,
