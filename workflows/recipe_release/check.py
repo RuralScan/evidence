@@ -17,6 +17,7 @@ from tempfile import TemporaryDirectory
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 from git_snapshot import require, revision, snapshot  # noqa: E402
+from recipe_index import render_index, write_index  # noqa: E402
 
 REPOSITORY = "https://github.com/CIAT/nbs_ruralscan.git"
 COLUMNS = (
@@ -51,10 +52,10 @@ def practice_counts(release, practice):
     return counts
 
 
-def verify(source, store, pin, build):
+def verify(source, store, pin, build, index_dir=None):
     # Use the producer and reader from the same immutable source revision.
     sys.path.insert(0, str(source / "src"))
-    from nbs_ruralscan.runtime.schema_loader import load_recipe_release
+    from nbs_ruralscan.runtime.schema_loader import TABLE_STEMS, load_recipe_release
 
     if build:
         from nbs_ruralscan.recipe.publish_release import publish_recipes
@@ -76,12 +77,15 @@ def verify(source, store, pin, build):
         "Release practice inventory differs",
     )
     rows = {p: practice_counts(release, p) for p in release.practices}
-    return {
+    summary = {
         "source_revision": pin["source_revision"],
         "release_id": release.release_id,
         "practices": rows,
         "totals": {k: sum(row[k] for row in rows.values()) for k in COLUMNS},
     }
+    if index_dir is not None:
+        write_index(index_dir, render_index(release, summary, TABLE_STEMS))
+    return summary
 
 
 def markdown(summary):
@@ -135,6 +139,11 @@ def main():
         help="Trusted producer revision, release ID and practice list",
     )
     p.add_argument("--json", action="store_true", help="Emit machine-readable counts")
+    p.add_argument(
+        "--index-dir",
+        type=Path,
+        help="Write a browsable recipe index to a new directory",
+    )
     args = p.parse_args()
     pin = json.loads(args.pin.read_bytes())
     revision(pin["source_revision"])
@@ -154,7 +163,13 @@ def main():
             ]
         )
         snapshot(source, REPOSITORY, pin["source_revision"], paths, args.ciat_repo)
-        result = verify(source, args.store or root / "store", pin, args.store is None)
+        result = verify(
+            source,
+            args.store or root / "store",
+            pin,
+            args.store is None,
+            args.index_dir,
+        )
     print(json.dumps(result, indent=2) if args.json else markdown(result))
 
 
