@@ -23,6 +23,18 @@ python3 examples/terrace-rainfall/run-workflow.py --out "$work/offline" --offlin
 
 Both local Git repositories need complete objects for the requested files. CIAT supplies the [intake revision](https://github.com/CIAT/nbs_ruralscan/tree/157a26c2729c05cccf2b1d9374a63e28c97acac6) and the [historical compiler revision](https://github.com/CIAT/nbs_ruralscan/tree/2023cb82c94a93120600a7feb17d8cd1e12ce54f). The method checkout supplies the revisions referenced by the [method lock](../../method.lock.json).
 
+## Verify the run record
+
+A completed run also writes `run-record.json`. It records the four stages as replay, the method and CIAT revisions, tool versions, and the SHA-256 of each listed input, instruction and output. The historical compiler reads its own reviewed claims. Its inputs are listed separately from the newly staged extraction. The digest in `summary.json` identifies this particular run record.
+
+From the same evidence revision, recheck the saved files, substituting the digest you retained at completion:
+
+```sh
+python3 -IB workflows/run_record/record.py verify --run-dir "$work/terrace" --sha256 "$digest"
+```
+
+The historical row digest and the run record digest answer different questions. The row should reproduce across runs. The run record includes execution details and acquired file receipts that can vary. To verify the CIAT instruction archives independently, follow the [ruleset verification guide](../../rulesets/README.md). To record a new manual or assisted run, see [record a private evidence run](../../workflows/run_record/README.md).
+
 ## Replay the compiled recipe only
 
 From the evidence repository root, run the command below with Git and uv available. It uses Python 3.12, a locked environment and temporary checkouts of both input repositories. The first run needs internet access. [Method lock](../../method.lock.json) · [Compiler and source revision](https://github.com/CIAT/nbs_ruralscan/tree/2023cb82c94a93120600a7feb17d8cd1e12ce54f)

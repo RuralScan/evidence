@@ -108,4 +108,4 @@ Expect `DRY RUN: complete registration batch validated; nothing published`, zero
 
 After screening, use the candidate bundle to [verify and acquire one source](../acquisition/README.md).
 
-The workflow follows the [versioned discovery instructions](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/.agents/skills/source-command-discover-sources/SKILL.md) and [screening rubric, §3](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/methodology/T4_generation_method.md). See the [software license](LICENSE).
+The workflow follows the [versioned discovery instructions](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/.agents/skills/_versions/v1.8.1/SKILL.md) and [screening rubric, §3](https://github.com/CIAT/nbs_ruralscan/blob/1773e86e76d45ec7a61f8fbd3673047f9601072d/.agents/skills/_versions/v1.8.1/T4_generation_method.md). See the [software license](LICENSE).
