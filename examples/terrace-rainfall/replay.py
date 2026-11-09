@@ -9,9 +9,7 @@ import argparse
 import csv
 import hashlib
 import json
-import os
 from pathlib import Path
-import re
 import shutil
 import subprocess
 import sys
@@ -19,6 +17,9 @@ from tempfile import TemporaryDirectory
 from urllib.request import urlopen
 
 EXAMPLE = Path(__file__).resolve().parent
+sys.path.insert(0, str(EXAMPLE.parents[1] / "workflows"))
+from git_snapshot import git, revision, snapshot  # noqa: E402
+
 LOCK = EXAMPLE.parents[1] / "method.lock.json"
 METHOD = "https://github.com/RuralScan/method.git"
 PRODUCER = "https://github.com/CIAT/nbs_ruralscan.git"
@@ -31,78 +32,6 @@ def require(ok, message):
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
-
-
-def revision(value):
-    require(
-        isinstance(value, str) and re.fullmatch(r"[0-9a-f]{40}", value),
-        "Expected a full Git commit",
-    )
-    return value
-
-
-def git(*args, cwd=None, stdin=None):
-    env = os.environ.copy()
-    # CI jobs and Git hooks can export a working tree or index. Each Git call
-    # must operate on the explicit checkout, including when launched from CIAT.
-    for key in (
-        "GIT_DIR",
-        "GIT_COMMON_DIR",
-        "GIT_WORK_TREE",
-        "GIT_INDEX_FILE",
-        "GIT_OBJECT_DIRECTORY",
-        "GIT_ALTERNATE_OBJECT_DIRECTORIES",
-    ):
-        env.pop(key, None)
-    return subprocess.run(
-        ["git", *args],
-        cwd=cwd,
-        env=env,
-        input=stdin,
-        stdout=subprocess.PIPE,
-        check=True,
-    ).stdout
-
-
-def snapshot(destination, repository, commit, patterns, local):
-    """Check out only the required paths in a private temporary directory."""
-    revision(commit)
-    if local:
-        git(
-            "clone",
-            "--quiet",
-            "--shared",
-            "--no-checkout",
-            str(local.resolve()),
-            str(destination),
-        )
-    else:
-        git("init", "--quiet", str(destination))
-        git("remote", "add", "origin", repository, cwd=destination)
-        git("config", "remote.origin.promisor", "true", cwd=destination)
-        git("config", "remote.origin.partialclonefilter", "blob:none", cwd=destination)
-        git(
-            "fetch",
-            "--quiet",
-            "--depth=1",
-            "--filter=blob:none",
-            "origin",
-            commit,
-            cwd=destination,
-        )
-    git(
-        "sparse-checkout",
-        "set",
-        "--no-cone",
-        "--stdin",
-        cwd=destination,
-        stdin=("\n".join(patterns) + "\n").encode(),
-    )
-    git("checkout", "--quiet", "--detach", commit, cwd=destination)
-    require(
-        git("rev-parse", "HEAD", cwd=destination).decode().strip() == commit,
-        "Wrong checkout revision",
-    )
 
 
 def csv_rows(path):

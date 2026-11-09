@@ -2,7 +2,28 @@
 
 Can a site with 350 mm of rainfall per year be scored for bench terraces? One source documents forward-sloping benches in places receiving 200–600 mm/year. That observation supports a siting note. The reviewed mapping leaves its numerical suitability score unassigned. [Method walkthrough](https://github.com/RuralScan/method/blob/1fb414aa2af57d5ae3ba06265fee5141ea85eaa3/handbook/read-a-suitability-recipe.md)
 
-## Run the example
+## Replay the full evidence workflow
+
+From the evidence repository root with Git, uv and Python available:
+
+```sh
+work=$(mktemp -d)
+python3 examples/terrace-rainfall/run-workflow.py --out "$work/terrace"
+```
+
+The command replays three screening decisions, acquires the WOCAT manual, verifies its title and hash, and stages a single claim from PDF page 129. It runs the CIAT content checks on the proposal and checks the archived evidence ID against a temporary register copy. Finally, it independently rebuilds the historical recipe from its pinned inputs. The staged interpretation leaves calibration on hold. It remains a proposal for CIAT review. The historical compiler reads its original records.
+
+A successful run writes `summary.json`, the verified manual and provenance, screening and extraction bundles, and `published-row.json` in the new private directory. If a stage fails, inspect its output and use a fresh directory to retry. The first run needs network access for dependencies, Git objects and the publisher PDF. To use private copies and cached dependencies, run:
+
+```sh
+python3 examples/terrace-rainfall/run-workflow.py --out "$work/offline" --offline \
+  --local-pdf "$work/terrace/manual/library/wocat_wh_guidelines_2013.pdf" \
+  --ciat-repo /path/to/nbs_ruralscan --method-repo /path/to/method
+```
+
+Both local Git repositories need complete objects for the requested files. CIAT supplies the [intake revision](https://github.com/CIAT/nbs_ruralscan/tree/157a26c2729c05cccf2b1d9374a63e28c97acac6) and the [historical compiler revision](https://github.com/CIAT/nbs_ruralscan/tree/2023cb82c94a93120600a7feb17d8cd1e12ce54f). The method checkout supplies the revisions referenced by the [method lock](../../method.lock.json).
+
+## Replay the compiled recipe only
 
 From the evidence repository root, run the command below with Git and uv available. It uses Python 3.12, a locked environment and temporary checkouts of both input repositories. The first run needs internet access. [Method lock](../../method.lock.json) · [Compiler and source revision](https://github.com/CIAT/nbs_ruralscan/tree/2023cb82c94a93120600a7feb17d8cd1e12ce54f)
 
