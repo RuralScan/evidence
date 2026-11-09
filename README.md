@@ -4,6 +4,8 @@ This repository will document and run the evidence workflow behind Rural Scan: d
 
 The workflows below run locally. Live registration and evidence review continue in [CIAT/nbs_ruralscan](https://github.com/CIAT/nbs_ruralscan).
 
+Browse the six practices to see which hazards, suitability variables, scorecard effects and economic indicators have compiled rows. Each row links to its pinned source record. [Open the recipe index](publication/recipes/README.md)
+
 ## Runnable workflows
 
 Find sources, screen a bounded result set and prepare a candidate bundle. The guide includes an offline replay and a dry run against the CIAT registrar. [Run discovery and screening](workflows/discovery/README.md)
