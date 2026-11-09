@@ -10,7 +10,7 @@ import sys
 from tempfile import TemporaryDirectory
 
 sys.dont_write_bytecode = True
-from replay import EXAMPLE, PRODUCER, snapshot  # noqa: E402
+from replay import EXAMPLE, PRODUCER, git, snapshot  # noqa: E402
 
 ROOT = EXAMPLE.parents[1]
 WORKFLOWS = ROOT / "workflows"
@@ -70,12 +70,20 @@ def main():
         if repo and not repo.is_dir():
             parser.error(f"Git checkout does not exist: {repo}")
 
+    if args.offline:
+        os.environ["GIT_ALLOW_PROTOCOL"] = "file"
+    if args.ciat_repo:
+        historical = read(EXAMPLE / "reviewed-claims.json")["producer_revision"]
+        for commit in (INTAKE_REVISION, historical):
+            try:
+                git("cat-file", "-e", f"{commit}^{{commit}}", cwd=args.ciat_repo)
+            except subprocess.CalledProcessError:
+                parser.error(f"--ciat-repo must contain pinned CIAT revision {commit}")
+
     out = args.out.absolute()
     out.mkdir(mode=0o700)
     # Bytecode and local example outputs should never dirty an input checkout.
     os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
-    if args.offline:
-        os.environ["GIT_ALLOW_PROTOCOL"] = "file"
     uv = ["uv", "run"]
     if args.offline:
         uv.append("--offline")

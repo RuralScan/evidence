@@ -18,16 +18,11 @@ from urllib.request import urlopen
 
 EXAMPLE = Path(__file__).resolve().parent
 sys.path.insert(0, str(EXAMPLE.parents[1] / "workflows"))
-from git_snapshot import git, revision, snapshot  # noqa: E402
+from git_snapshot import git, require, revision, snapshot  # noqa: E402
 
 LOCK = EXAMPLE.parents[1] / "method.lock.json"
 METHOD = "https://github.com/RuralScan/method.git"
 PRODUCER = "https://github.com/CIAT/nbs_ruralscan.git"
-
-
-def require(ok, message):
-    if not ok:
-        raise ValueError(message)
 
 
 def digest(data):
