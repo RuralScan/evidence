@@ -1,0 +1,30 @@
+{
+  "process": "stock",
+  "channel": "Stock register (training selection)",
+  "query": "source_id IN (gismcda_swc_siting_2014, fao_critchley_wh_manual_1991, wocat_wh_guidelines_2013)",
+  "date": "2026-11-09",
+  "limits": "Exact ID lookup of three public bibliographic records in SRC at 1773e86e76d45ec7a61f8fbd3673047f9601072d.",
+  "records": [
+    {
+      "record_id": "gismcda_swc_siting_2014",
+      "title": "GIS-based multi-criteria evaluation to identify potential sites for soil and water conservation techniques in the Ronquillo watershed, northern Peru",
+      "citation": "Krois et al. (2014). GIS-based multi-criteria evaluation to identify potential sites for soil and water conservation techniques in the Ronquillo watershed, northern Peru. Applied Geography.",
+      "url": "https://doi.org/10.1016/j.apgeog.2014.04.006",
+      "doi": "10.1016/j.apgeog.2014.04.006"
+    },
+    {
+      "record_id": "fao_critchley_wh_manual_1991",
+      "title": "Water harvesting techniques (Chapter 5)",
+      "citation": "Critchley, W.; Siegert, K. (1991). Water harvesting techniques (Chapter 5). In: Water harvesting: a manual for the design and construction of water harvesting schemes for plant production. FAO, Rome (AGL/MISC/17/91).",
+      "url": "https://www.fao.org/4/u3160e/u3160e07.htm",
+      "doi": ""
+    },
+    {
+      "record_id": "wocat_wh_guidelines_2013",
+      "title": "Water harvesting: guidelines to good practice",
+      "citation": "Mekdaschi Studer, R.; Liniger, H. (2013). Water harvesting: guidelines to good practice. Centre for Development and Environment (CDE), Bern; RAIN, Amsterdam; MetaMeta, Wageningen; IFAD, Rome.",
+      "url": "https://wocat.net/documents/85/WaterHarvesting_lowresolution.pdf",
+      "doi": ""
+    }
+  ]
+}

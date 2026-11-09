@@ -1,0 +1,27 @@
+{
+  "input_sha256": "d95800ee9d55e6b5a4b309ec148a07812635fe421372fe1e73a0906a3e6261b1",
+  "records": [
+    {
+      "record_id": "gismcda_swc_siting_2014",
+      "title": "GIS-based multi-criteria evaluation to identify potential sites for soil and water conservation techniques in the Ronquillo watershed, northern Peru",
+      "disposition": "hold",
+      "reason": "The mapped rainfall classes cover October–April. An annual value applicable to bench terraces has not been identified.",
+      "referral": "Seasonal watershed suitability methodology."
+    },
+    {
+      "record_id": "fao_critchley_wh_manual_1991",
+      "title": "Water harvesting techniques (Chapter 5)",
+      "disposition": "exclude",
+      "reason": "The cited guidance in sections 5.7.1–2 covers contour stone lines for crops.",
+      "referral": "Rainfall guidance for stone lines."
+    },
+    {
+      "record_id": "wocat_wh_guidelines_2013",
+      "title": "Water harvesting: guidelines to good practice",
+      "disposition": "reuse",
+      "reason": "The existing manual describes forward-sloping bench terraces and annual rainfall (printed p. 116). Retain the canonical source for this scope.",
+      "reuse_source_id": "wocat_wh_guidelines_2013",
+      "credibility": "Practice guidance with a traceable locator. One documented setting supports a contextual example; calibration needs independent support."
+    }
+  ]
+}
