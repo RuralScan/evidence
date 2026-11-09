@@ -16,11 +16,15 @@ Locate a source passage and stage an evidence claim for review. [Extract the WOC
 
 Restore the seven committed evidence tables, with optional clarification history, evidence gaps, citation traces and review priorities. [Reproduce committed evidence updates](workflows/evidence_snapshot/README.md)
 
+Choose a workflow by the file you have. Browser backups, downloaded CSVs and server decisions each preserve different parts of a review session. [Find the right review record](handbook/review-records.md)
+
 Preview saved decisions against a verified export to count approvals, soft drops, conflicts and clarifications. Try the three-record example first. [Preview a review batch](workflows/review_preview/README.md)
 
 Preserve staged extraction files and check which evidence IDs have landed at a chosen CIAT revision. [Checkpoint a staged batch](workflows/extraction/checkpoint.md)
 
 Preview a downloaded review CSV and see what a repeated import would do to evidence or compiled-row history. [Preview browser review exports](workflows/review_exports/README.md)
+
+Rehearse restoring browser drafts and feedback into a fresh or already-used profile. [Check a browser backup](workflows/browser_backup/README.md)
 
 ## Worked example
 
