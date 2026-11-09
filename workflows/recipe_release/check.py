@@ -17,6 +17,7 @@ from tempfile import TemporaryDirectory
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 from git_snapshot import require, revision, snapshot  # noqa: E402
+from method_definitions import load_definitions  # noqa: E402
 from recipe_index import render_index, write_index  # noqa: E402
 
 REPOSITORY = "https://github.com/CIAT/nbs_ruralscan.git"
@@ -52,7 +53,28 @@ def practice_counts(release, practice):
     return counts
 
 
-def verify(source, store, pin, build, index_dir=None):
+def match_identities(release, model):
+    filename = "T0_nbs_registry.csv"
+    identities = {
+        path.parent.name: path
+        for path in (model / "configuration/recipes").glob("*/" + filename)
+    }
+    require(
+        set(identities) == set(release.practices),
+        "Method and release practice inventories differ",
+    )
+    # The pinned release loader requires exactly one row with the practice's
+    # nbs_id. Comparing its original bytes covers that ID and every other field.
+    for practice, identity in identities.items():
+        require(
+            identity.read_bytes() == release.setting(practice, filename),
+            f"Method and release T0 bytes differ for {practice}",
+        )
+
+
+def verify(
+    source, store, pin, build, index_dir=None, *, check_method=False, method_repo=None
+):
     # Use the producer and reader from the same immutable source revision.
     sys.path.insert(0, str(source / "src"))
     from nbs_ruralscan.runtime.schema_loader import TABLE_STEMS, load_recipe_release
@@ -83,6 +105,26 @@ def verify(source, store, pin, build, index_dir=None):
         "practices": rows,
         "totals": {k: sum(row[k] for row in rows.values()) for k in COLUMNS},
     }
+    if check_method:
+        lock = pin.get("method")
+        require(
+            isinstance(lock, dict),
+            "No method definition lock in the selected release pin",
+        )
+        with TemporaryDirectory(prefix="recipe-definitions-") as tmp:
+            model, manifest = load_definitions(Path(tmp) / "method", lock, method_repo)
+            require(
+                manifest["structure_version"] == provenance["schema_version"],
+                "Method and release structure versions differ",
+            )
+            match_identities(release, model)
+        summary["method"] = {
+            "manifest_revision": lock["revision"],
+            "manifest_sha256": lock["sha256"],
+            "definition_revision": manifest["source_revision"],
+            "definition_files_verified": len(manifest["sha256"]),
+            "identical_practice_definitions": list(release.practices),
+        }
     if index_dir is not None:
         write_index(index_dir, render_index(release, summary, TABLE_STEMS))
     return summary
@@ -117,6 +159,14 @@ def markdown(summary):
             "Reference-only entries outside the T4 tables are excluded.",
         ]
     )
+    if method := summary.get("method"):
+        lines.extend(
+            [
+                "",
+                f"Verified {method['definition_files_verified']} method definition files at `{method['definition_revision']}`. "
+                f"All {len(method['identical_practice_definitions'])} released T0 practice definitions match byte-for-byte.",
+            ]
+        )
     return "\n".join(lines)
 
 
@@ -144,6 +194,16 @@ def main():
         type=Path,
         help="Write a browsable recipe index to a new directory",
     )
+    p.add_argument(
+        "--check-method",
+        action="store_true",
+        help="Verify the pinned method definitions and compare all released T0 records",
+    )
+    p.add_argument(
+        "--method-repo",
+        type=Path,
+        help="Use local method Git objects and enable --check-method",
+    )
     args = p.parse_args()
     pin = json.loads(args.pin.read_bytes())
     revision(pin["source_revision"])
@@ -169,6 +229,8 @@ def main():
             pin,
             args.store is None,
             args.index_dir,
+            check_method=args.check_method or args.method_repo is not None,
+            method_repo=args.method_repo,
         )
     print(json.dumps(result, indent=2) if args.json else markdown(result))
 

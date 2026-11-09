@@ -1,5 +1,11 @@
 {
   "source_revision": "157a26c2729c05cccf2b1d9374a63e28c97acac6",
   "release_id": "26501e7f7037bfb6f26be9b5dad23f0eb1249967a968cc1b3b037d7fda714f8f",
+  "method": {
+    "repository": "https://github.com/RuralScan/method.git",
+    "revision": "247d5cf98d3dd6daf010aa5bfe51fad21ea35849",
+    "manifest": "data-model/definition-snapshot.json",
+    "sha256": "408719be0dac3c47ea5a87659c0da149785b6582954252c630b86283c3f306a0"
+  },
   "practices": ["agroforestry", "forest_restoration", "mangrove_restoration", "riparian_buffer", "water_harvesting_conservation", "wetland_management"]
 }

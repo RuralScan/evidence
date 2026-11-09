@@ -14,14 +14,13 @@ import shutil
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
-from urllib.request import urlopen
 
 EXAMPLE = Path(__file__).resolve().parent
 sys.path.insert(0, str(EXAMPLE.parents[1] / "workflows"))
-from git_snapshot import git, require, revision, snapshot  # noqa: E402
+from git_snapshot import git as git, require, revision as revision, snapshot  # noqa: E402
+from method_definitions import load_definitions  # noqa: E402
 
 LOCK = EXAMPLE.parents[1] / "method.lock.json"
-METHOD = "https://github.com/RuralScan/method.git"
 PRODUCER = "https://github.com/CIAT/nbs_ruralscan.git"
 
 
@@ -43,44 +42,7 @@ def one(rows, **criteria):
 
 
 def definitions(destination, local):
-    lock = json.loads(LOCK.read_bytes())
-    require(
-        lock["repository"] == METHOD
-        and lock["manifest"] == "data-model/definition-snapshot.json",
-        "Unknown method publisher or manifest",
-    )
-    commit = revision(lock["revision"])
-    if local:
-        data = git("show", f"{commit}:{lock['manifest']}", cwd=local)
-    else:
-        url = f"https://raw.githubusercontent.com/RuralScan/method/{commit}/{lock['manifest']}"
-        with urlopen(url, timeout=30) as response:
-            data = response.read()
-    require(digest(data) == lock["sha256"], "Method manifest checksum mismatch")
-    manifest = json.loads(data)
-    require(
-        (manifest["format_version"], manifest["kind"], manifest["structure_version"])
-        == (1, "method_definitions", "0.4.0-structure-frozen"),
-        "Unsupported method definition format",
-    )
-    snapshot(destination, METHOD, manifest["source_revision"], ["/data-model/"], local)
-    model = destination / "data-model"
-    members = {
-        model / "spec.md",
-        model / "structure/columns.json",
-        *(model / "configuration").rglob("*.csv"),
-    }
-    actual = {
-        p.relative_to(destination).as_posix(): digest(p.read_bytes()) for p in members
-    }
-    require(
-        actual == manifest["sha256"], "Method definition inventory or checksum mismatch"
-    )
-    require(
-        json.loads((model / "structure/columns.json").read_bytes())["manifest_version"]
-        == manifest["structure_version"],
-        "Definition structure version mismatch",
-    )
+    model, _ = load_definitions(destination, json.loads(LOCK.read_bytes()), local)
     return model
 
 

@@ -33,3 +33,15 @@ diff -ru publication/recipes "$work/recipes"
 ```
 
 The destination must be new. The same options for a local clone and an existing store apply. A matching comparison produces no output. GitHub renders the pages directly. Registration, corrections and review continue in CIAT.
+
+## Check the method definitions used for comparison
+
+The release pin pairs this candidate with a method definition manifest. Verify its checksum, the complete definition inventory at its declared source revision, and the structure version. The checker then compares every T0 practice definition byte-for-byte with the validated candidate release.
+
+```sh
+uv run --python 3.12 --locked --script workflows/recipe_release/check.py --check-method --json
+```
+
+For the current pair, the JSON receipt records **15 verified definition files** and the names of **six matching T0 practices**. The other nine files are verified against the method manifest. Use the receipt to cite both immutable revisions. The historical terrace example keeps the method revision recorded with its original compilation. [Paired release pin](pin.json) · [Method manifest](https://github.com/RuralScan/method/blob/247d5cf98d3dd6daf010aa5bfe51fad21ea35849/data-model/definition-snapshot.json)
+
+With local Git objects and cached dependencies, add `--offline` immediately after `uv run` and pass `--ciat-repo /path/to/nbs_ruralscan --method-repo /path/to/method`. The method clone must contain both the manifest commit and its declared content revision. Add `--store /path/to/recipe-store` to verify an existing candidate. A custom release pin can still verify analytical tables alone. To run the paired check, include a `method` lock with the repository, manifest path, full manifest commit and SHA-256.
