@@ -43,12 +43,12 @@ For livelihood rows, the rating describes mitigation potential. For investment-r
 
 A selected function still needs checks against the intended spatial inputs and location.
 
-| Variable | Family | Function role | Function options | Function selected | Spatially validated |
-|---|---|---|---|---|---|
-| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L3 "wetland_management__creation__distance_to_waterbody") | Creation | Suitability score | 1 | No | No |
-| [Water table depth](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L121 "wetland_management__peatland__water_table_depth") | Peatland | Suitability score | 1 | No | No |
-| [Groundwater seepage](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L306 "wetland_management__peatland__groundwater_seepage") | Peatland | Suitability score | 1 | No | No |
-| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L475 "wetland_management__restoration_rewetting__distance_to_waterbody") | Restoration rewetting | Suitability score | 1 | No | No |
+| Variable | Family | Function role | Reviewed numerical calibration | Function options | Function selected | Spatially validated |
+|---|---|---|---|---|---|---|
+| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L3 "wetland_management__creation__distance_to_waterbody") | Creation | Suitability score | Not recorded | 1 | No | No |
+| [Water table depth](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L121 "wetland_management__peatland__water_table_depth") | Peatland | Suitability score | Not recorded | 1 | No | No |
+| [Groundwater seepage](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L306 "wetland_management__peatland__groundwater_seepage") | Peatland | Suitability score | Not recorded | 1 | No | No |
+| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/wetland_management/T4_suitability_mappings.json#L475 "wetland_management__restoration_rewetting__distance_to_waterbody") | Restoration rewetting | Suitability score | Not recorded | 1 | No | No |
 
 ## T6 Scorecard effects
 

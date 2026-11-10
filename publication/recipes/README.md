@@ -16,4 +16,4 @@ Candidate release `2ff6f85ed5493b25a8b2279c572d792cc23ed5251fa99463f1421a4380730
 
 Counts are analytical rows. A source may contribute to several rows, and one topic can have separate rows for different families and contexts. Zero means no compiled row in this candidate.
 
-[Check the release and reproduce the index](../../workflows/recipe_release/README.md) · [Read the recipe cookbook](https://github.com/RuralScan/method/blob/0af0f5599c8c71f38b2be40dbda71278cbadfbbe/handbook/start-here.md)
+[Check the release and reproduce the index](../../workflows/recipe_release/README.md) · [Read the recipe cookbook](https://github.com/RuralScan/method/blob/098041f9a683c60626fcb25b6cf375e17044e40b/cookbook/README.md)

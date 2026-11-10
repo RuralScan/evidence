@@ -24,10 +24,10 @@ For livelihood rows, the rating describes mitigation potential. For investment-r
 
 A selected function still needs checks against the intended spatial inputs and location.
 
-| Variable | Family | Function role | Function options | Function selected | Spatially validated |
-|---|---|---|---|---|---|
-| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/riparian_buffer/T4_suitability_mappings.json#L3 "riparian_buffer__natural_restored__distance_to_waterbody") | Natural restored | Suitability score | 0 | No | No |
-| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/riparian_buffer/T4_suitability_mappings.json#L111 "riparian_buffer__planted__distance_to_waterbody") | Planted | Suitability score | 0 | No | No |
+| Variable | Family | Function role | Reviewed numerical calibration | Function options | Function selected | Spatially validated |
+|---|---|---|---|---|---|---|
+| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/riparian_buffer/T4_suitability_mappings.json#L3 "riparian_buffer__natural_restored__distance_to_waterbody") | Natural restored | Suitability score | Held | 0 | No | No |
+| [Distance to waterbody](https://github.com/CIAT/nbs_ruralscan/blob/e5c8da02e72810956cfd179cb32cd137fc4ba398/schema/recipes/riparian_buffer/T4_suitability_mappings.json#L111 "riparian_buffer__planted__distance_to_waterbody") | Planted | Suitability score | Held | 0 | No | No |
 
 ## T6 Scorecard effects
 
