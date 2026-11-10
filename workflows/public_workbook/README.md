@@ -9,6 +9,12 @@ Download the single HTML file and open it in a browser. The overview, bibliograp
 3. To inspect the original entry, follow its pinned record link. For large registers, GitHub can offer a raw file in place of a line preview. The workbook provides local claim and source destinations for offline use.
 4. Copy the URL fragment to share a record with someone using the same edition. For example, append `#source=wocat_wh_guidelines_2013` when opening a copy of the workbook. Use the ID displayed on the source record.
 
+## Trace the Haiti example
+
+Open **Overview → Trace the Haiti example**. Under **Slope**, follow a direct claim to its source page. For example, the Ahmad et al. (2018) claim points to page 8 of a study in Bihar, India. Return to the example and follow **Follow the Haiti worked guide** for the notebook instructions. A saved workbook can open the same example at `#haiti`.
+
+The example compares the planted-silvoarable T4 mappings with the three criteria in the notebook’s version 0.1.5 scoring package. The build checks each rule ID, function ID, function fingerprint and criterion weight. The slope, soil organic carbon and soil pH rows carry weights of 50%, 25% and 25%. The notebook reads its own scoring package. Run it with synthetic inputs to reproduce the calculation offline. Interpreting a result for Haiti requires geographic inputs and decisions on local applicability. [Haiti worked guide](https://github.com/RuralScan/method/blob/25cb657a523c53911c4c1179d69f39f0ec907083/handbook/implement-a-scan.md) · [Runtime scoring package pin](https://github.com/RuralScan/runtime/blob/e690d4e413d925c28c273945a5268ddbfb2d67cc/upstream/PIN.json)
+
 ## Read the counts
 
 The six-practice candidate contains 806 analytical rows. Rows are counted once within each table. Of these, 797 directly cite evidence and nine have no direct claim ID. The 9,131 direct links refer to 3,259 distinct claims. Several analytical rows can cite the same claim.

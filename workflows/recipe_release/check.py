@@ -147,6 +147,7 @@ def verify(
             workbook_dir,
             check_workbook,
             recovered_evidence=recovered_evidence,
+            haiti_lock=pin.get("haiti_example"),
         )
     return summary
 
