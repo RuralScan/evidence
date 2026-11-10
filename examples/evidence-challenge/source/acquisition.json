@@ -1,0 +1,8 @@
+{
+  "candidate_id": "training_riparian_field_sheet",
+  "kind": "markdown",
+  "publisher_hosts": [
+    "example.invalid"
+  ],
+  "expected_sha256": "2b16f7d4fc70a737b244f97abf12efbe5a554ee0f3d569866804b55dfa4ea6bf"
+}

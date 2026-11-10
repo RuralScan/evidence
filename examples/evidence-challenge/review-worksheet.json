@@ -1,0 +1,19 @@
+{
+  "votes": [
+    {
+      "evidence_id": "training_contour_tree_siting",
+      "decision": "",
+      "note": ""
+    },
+    {
+      "evidence_id": "training_plot_description",
+      "decision": "",
+      "note": ""
+    },
+    {
+      "evidence_id": "training_species_envelope",
+      "decision": "",
+      "note": ""
+    }
+  ]
+}

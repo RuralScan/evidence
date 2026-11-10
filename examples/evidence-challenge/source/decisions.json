@@ -1,0 +1,12 @@
+{
+  "input_sha256": "f0b4f0929c573ed61d6f28a3572603b7bd74ec3c054b7c09a67d08049ece8241",
+  "records": [
+    {
+      "record_id": "training_riparian_field_sheet",
+      "title": "Riparian field sheet for a fictional stream reach",
+      "disposition": "include",
+      "reason": "The sketch legend identifies the dashed streambank line. Retain this sheet for the identity exercise.",
+      "credibility": "Self-authored training material with no field observations. No scientific benchmark tier assigned."
+    }
+  ]
+}

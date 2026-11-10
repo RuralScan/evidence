@@ -1,0 +1,18 @@
+{
+  "nbs_id": "riparian_buffer",
+  "family": "",
+  "table": "T4",
+  "process": "grey",
+  "run_id": "training_riparian_source_entry",
+  "date": "2026-11-10",
+  "searched_by": "training fixture",
+  "screened_by": "worked screening decision",
+  "purpose": "Practise entering a previously unlisted training document and checking its identity.",
+  "inclusion_criteria": "Include the fictional field sheet if its sketch legend identifies a streambank feature for a reader to inspect.",
+  "limits": "One self-authored document in the exercise folder. The origin uses a reserved domain.",
+  "stop_reason": "The exercise collection contains one document.",
+  "omissions": "No external search or project coverage.",
+  "captures": [
+    "capture.json"
+  ]
+}
