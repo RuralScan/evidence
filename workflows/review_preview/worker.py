@@ -1,25 +1,23 @@
 """Measure the effects of the pinned replay on disposable record copies."""
 
 from collections import Counter
-import csv
 import json
 from pathlib import Path
 import sys
 from tempfile import TemporaryDirectory
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from preview import EV, HISTORY, LOG, PENDING, load_inputs, read_copy, require  # noqa: E402
-
-
-def evidence_rows(root):
-    with (root / EV).open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-    by_id = {row["evidence_id"]: row for row in rows}
-    require(
-        len(rows) == len(by_id) and "" not in by_id,
-        "Evidence IDs must be present and unique",
-    )
-    return by_id
+from compare import batch_changes, evidence_rows  # noqa: E402
+from preview import (
+    EV,
+    HISTORY,
+    LOG,
+    PENDING,
+    load_inputs,
+    load_records,
+    read_copy,
+    require,
+)  # noqa: E402
 
 
 def split_reclassification_targets(store):
@@ -107,19 +105,52 @@ def measure(root):
     }
 
 
+def stage(root, inputs):
+    for name, data in inputs.items():
+        if data is not None:
+            path = root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+
+
 def main():
     engine, records, pending, *source = sys.argv[1:]
     sys.path.insert(0, engine)
-    repo, pin = source if source else (None, None)
+    repo, pin = source[:2] if source else (None, None)
     inputs = load_inputs(Path(records), Path(pending), repo, pin)
     with TemporaryDirectory(prefix="review-records-") as temp:
-        root = Path(temp)
-        for name, data in inputs.items():
-            if data is not None:
-                path = root / name
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes(data)
+        root = Path(temp) / "target"
+        stage(root, inputs)
+        comparison = None
+        if source[2:]:
+            previous, old_pin = source[2:]
+            old_root = Path(temp) / "previous"
+            old = load_records(Path(previous), repo, old_pin)
+            saved = {
+                f"pipeline/review/{name}": inputs[f"pipeline/review/{name}"]
+                for name in PENDING
+            }
+            stage(old_root, {**old, **saved})
+            from nbs_ruralscan.schema_tools.clarifications import read_events
+            from nbs_ruralscan.schema_tools.review_local import read_decisions
+            from nbs_ruralscan.schema_tools.submit_review import consensus_decisions
+
+            store, _ = read_decisions(root / "pipeline/review/decisions.json")
+            agreed, conflicts = consensus_decisions(store)
+            comparison = batch_changes(
+                old_root,
+                root,
+                set(agreed) | set(conflicts),
+                read_events(root / "pipeline/review/clarifications.json"),
+                read_events(old_root / HISTORY),
+                read_events(root / HISTORY),
+            )
+            comparison.update(
+                previous_revision=old_pin, previous_preview=measure(old_root)
+            )
         result = measure(root)
+        if comparison is not None:
+            result["comparison"] = comparison
     result["pending_files"] = [
         name for name in PENDING if inputs["pipeline/review/" + name] is not None
     ]

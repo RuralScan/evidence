@@ -37,7 +37,7 @@ def read_copy(root, name):
     return path.read_bytes()
 
 
-def load_inputs(records, pending, repo, record_pin):
+def load_records(records, repo, record_pin):
     tables = {name: read_copy(records, name) for name in (EV, LOG, HISTORY)}
     require(
         tables[EV] is not None and tables[LOG] is not None,
@@ -71,6 +71,11 @@ def load_inputs(records, pending, repo, record_pin):
                 else None
             )
             require(data == expected, f"Export differs from pinned CIAT record: {name}")
+    return tables
+
+
+def load_inputs(records, pending, repo, record_pin):
+    tables = load_records(records, repo, record_pin)
     entries = {name: read_copy(pending, name) for name in PENDING}
     require(
         any(data is not None for data in entries.values()),
@@ -99,6 +104,11 @@ def main():
         help="Private exported revision directory, named by its full CIAT commit",
     )
     cli.add_argument(
+        "--previous-records",
+        type=Path,
+        help="Compare the same saved batch against this earlier private export.",
+    )
+    cli.add_argument(
         "--pending-dir", type=Path, help="Stable private copy of pending review files"
     )
     cli.add_argument(
@@ -109,7 +119,7 @@ def main():
     args = cli.parse_args()
     if (
         args.example
-        and args.pending_dir
+        and (args.pending_dir or args.previous_records)
         or args.records
         and not (args.pending_dir and args.ciat_repo)
     ):
@@ -120,7 +130,27 @@ def main():
     pending = args.pending_dir or HERE / "example/pending"
     pin = revision(records.name) if args.records else None
     if pin:
-        for folder in (records, pending):
+        folders = [records, pending]
+        if args.previous_records:
+            folders.append(args.previous_records)
+            previous = revision(args.previous_records.name)
+            history = (
+                git(
+                    "--no-lazy-fetch",
+                    "--no-replace-objects",
+                    "rev-list",
+                    "--first-parent",
+                    pin,
+                    cwd=args.ciat_repo,
+                )
+                .decode()
+                .splitlines()
+            )
+            require(
+                previous in history,
+                "Previous revision is outside the target's first-parent history",
+            )
+        for folder in folders:
             root = folder.resolve(strict=True)
             require(
                 root.is_dir()
@@ -149,6 +179,8 @@ def main():
         ]
         if pin:
             command.extend([str(args.ciat_repo.resolve()), pin])
+        if args.previous_records:
+            command.extend([str(args.previous_records.resolve()), previous])
         result = subprocess.run(
             command,
             cwd=work,

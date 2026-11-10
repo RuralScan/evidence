@@ -25,3 +25,24 @@ uv run --offline --python 3.12 --locked --script workflows/review_preview/previe
 Offline use requires cached Python dependencies and a local clone with the pinned engine and record revisions. The directory name identifies the exported commit. The command compares the evidence register, review log and clarification history with Git before replay. Missing clarification history is valid only if it is absent at that commit. The optional pending files are listed in the receipt; missing saved decisions cannot be counted.
 
 `agreed_verdict_ids` counts matching verdicts, including a single vote; `applied` counts newly applied decisions. An agreed verdict may already be recorded. Conflicts and IDs missing from the evidence register are reported separately and can overlap. For reclassification, the engine takes the first supplied scope and taxon. A positive `divergent_reclassification_targets` count flags conflicting explicit targets for human resolution. Clarification counts distinguish new distinct events from duplicate historical entries coalesced by the engine. Review notes, reviewer identities and source quotations are omitted from the summary.
+
+## Check a saved batch across two revisions
+
+A saved vote can refer to a claim whose evidence or review history has changed. Use the same private batch with the two verified exports from the [snapshot advance rehearsal](../evidence_snapshot/README.md#advance-a-private-copy-by-one-interval). Set `seed` to the earlier exported revision directory and `pending` to a stable private copy of the saved files.
+
+```sh
+uv run --offline --python 3.12 --locked --script workflows/review_preview/preview.py \
+  --ciat-repo "$repo" --pending-dir "$pending" \
+  --previous-records "$seed" --records "$work/advanced/$target"
+```
+
+The earlier commit must lie on the target’s first-parent history. The preview verifies both exports against Git, captures the pending inputs once, and runs the same review engine twice at each revision. Each replay uses disposable copies. The top-level counts describe the target. Under `comparison`, `previous_preview` gives the earlier counts and `previous_revision` identifies that export.
+
+| Result | What to check |
+|---|---|
+| `evidence_row_changes` | Lists added, modified, removed and missing-at-both IDs addressed by a vote or explicitly linked to a pending clarification thread in either export or the saved batch. A modified row has at least one changed CSV field. Inspect the claim and its locator before submitting an old vote. For an absent ID, check deferred or historical records in the producing system. |
+| `review_history_changed_ids` | The ordered review entries differ for these IDs. Check for a later decision or reopening even when the claim itself looks unchanged. |
+| `clarification_history_changed_ids` | A recorded thread linked to the claim changed. The comparison includes replies that name only the issue. |
+| `pending_issues_with_changed_history` | Number of issues in the pending clarification file whose recorded history differs. The separate count `pending_issues_without_linked_claims` identifies pending issues that could only be checked at thread level. |
+
+Changes are measured between the selected exports. A receipt with identical replay counts can still list changes to individual records. Keep the comparison receipt private as it includes claim IDs. Consult CIAT for subsequent edits, and submit any confirmed decisions through its live review workflow.
