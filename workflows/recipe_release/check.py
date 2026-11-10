@@ -83,6 +83,7 @@ def verify(
     method_repo=None,
     check_workbook=False,
     workbook_dir=None,
+    recovered_evidence=None,
 ):
     # Use the producer and reader from the same immutable source revision.
     sys.path.insert(0, str(source / "src"))
@@ -140,7 +141,12 @@ def verify(
         from public_workbook.publish import publish
 
         summary["public_workbook"] = publish(
-            source, release, summary, workbook_dir, check_workbook
+            source,
+            release,
+            summary,
+            workbook_dir,
+            check_workbook,
+            recovered_evidence=recovered_evidence,
         )
     return summary
 
@@ -180,6 +186,13 @@ def markdown(summary):
                 "",
                 f"Verified {method['definition_files_verified']} method definition files at `{method['definition_revision']}`. "
                 f"All {len(method['identical_practice_definitions'])} released T0 practice definitions match byte-for-byte.",
+            ]
+        )
+    if recovery := summary.get("workbook_recovery"):
+        lines.extend(
+            [
+                "",
+                f"Workbook reproduced after interruption and retry across {recovery['appended_review_events']} recorded review events.",
             ]
         )
     return "\n".join(lines)
@@ -230,7 +243,16 @@ def main():
         action="store_true",
         help="Rebuild and compare the checked-in public workbook byte-for-byte.",
     )
+    workbook.add_argument(
+        "--check-recovered-workbook",
+        metavar="EARLIER_COMMIT",
+        help="Rehearse review rollback and retry, rebuild the pinned release and check the workbook.",
+    )
     args = p.parse_args()
+    if args.check_recovered_workbook and (not args.ciat_repo or args.store):
+        p.error(
+            "--check-recovered-workbook requires --ciat-repo and a fresh release build"
+        )
     pin = json.loads(args.pin.read_bytes())
     revision(pin["source_revision"])
     require(
@@ -248,7 +270,13 @@ def main():
                 "/pipeline/t4_audit/agroforestry/importance_2026-10-21/source_weight_trees.csv",
             ]
         )
-        if args.check_workbook or args.workbook_dir is not None:
+        if args.check_recovered_workbook:
+            paths.extend(["/pipeline/", "/docs/", "/methodology/discovery_logs/"])
+        if (
+            args.check_workbook
+            or args.check_recovered_workbook
+            or args.workbook_dir is not None
+        ):
             paths.extend(
                 [
                     "/schema/registers/",
@@ -257,6 +285,17 @@ def main():
                 ]
             )
         snapshot(source, REPOSITORY, pin["source_revision"], paths, args.ciat_repo)
+        recovery = recovered_evidence = None
+        if args.check_recovered_workbook:
+            from workbook_recovery import recover
+
+            recovery, recovered_evidence = recover(
+                root,
+                source,
+                args.ciat_repo.resolve(),
+                args.check_recovered_workbook,
+                pin["source_revision"],
+            )
         result = verify(
             source,
             args.store or root / "store",
@@ -265,9 +304,12 @@ def main():
             args.index_dir,
             check_method=args.check_method or args.method_repo is not None,
             method_repo=args.method_repo,
-            check_workbook=args.check_workbook,
+            check_workbook=args.check_workbook or bool(args.check_recovered_workbook),
+            recovered_evidence=recovered_evidence,
             workbook_dir=args.workbook_dir,
         )
+        if recovery is not None:
+            result["workbook_recovery"] = recovery
     print(json.dumps(result, indent=2) if args.json else markdown(result))
 
 

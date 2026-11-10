@@ -11,6 +11,19 @@ from public_workbook import data  # noqa: E402
 
 
 class ProjectionTest(unittest.TestCase):
+    def test_recovered_evidence_must_match_the_linked_revision(self):
+        raw = b'[\n  {\n    "evidence_id": "ev_a"\n  }\n]\n'
+        with patch.object(data, "git", return_value=raw):
+            with self.assertRaisesRegex(ValueError, "differs from linked Git blob"):
+                data.register(
+                    None, "rev", "EV_evidence_register", "evidence_id", raw + b" "
+                )
+            rows, locations = data.register(
+                None, "rev", "EV_evidence_register", "evidence_id", raw
+            )
+        self.assertEqual(rows[0]["evidence_id"], "ev_a")
+        self.assertTrue(locations["ev_a"].endswith("#L3"))
+
     def test_context_profile_references_and_claims_are_kept_distinct(self):
         row = {
             "evidence_ids": ["ev_a"],

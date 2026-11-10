@@ -10,10 +10,13 @@ from git_snapshot import git, require, revision
 from recipe_index import SOURCE, TABLES, record_locations, table_cells
 
 
-def register(source, commit, stem, key):
+def register(source, commit, stem, key, recovered=None):
     """Return records and line links from one immutable Git blob."""
     path = f"schema/registers/{stem}.json"
-    raw = git("show", f"{commit}:{path}", cwd=source).decode("utf-8")
+    pinned = git("show", f"{commit}:{path}", cwd=source)
+    if recovered is not None:
+        require(recovered == pinned, "Recovered register differs from linked Git blob")
+    raw = (pinned if recovered is None else recovered).decode("utf-8")
     rows = json.loads(raw)
     ids = [r[key] for r in rows]
     pattern = re.compile(rf'^    "{key}": "([A-Za-z0-9_.-]+)",?$')
@@ -92,8 +95,10 @@ def bibliography(source, commit):
     return result
 
 
-def claims(source, commit, source_ids):
-    rows, urls = register(source, commit, "EV_evidence_register", "evidence_id")
+def claims(source, commit, source_ids, recovered=None):
+    rows, urls = register(
+        source, commit, "EV_evidence_register", "evidence_id", recovered
+    )
     result = []
     for row in rows:
         if row.get("review_state") == "dropped":
@@ -220,7 +225,7 @@ def analytical_rows(release, summary, claim_ids, source_ids):
     return rows, counts
 
 
-def build_data(source, release, summary):
+def build_data(source, release, summary, *, recovered_evidence=None):
     """Build a read-only public projection after the recipe release checker passes."""
     commit = revision(summary["source_revision"])
     require(release.release_id == summary["release_id"], "Workbook release differs")
@@ -230,7 +235,7 @@ def build_data(source, release, summary):
     )
     sources = bibliography(source, commit)
     source_ids = {r["id"] for r in sources}
-    active = claims(source, commit, source_ids)
+    active = claims(source, commit, source_ids, recovered_evidence)
     rows, counts = analytical_rows(
         release, summary, {r["id"] for r in active}, source_ids
     )

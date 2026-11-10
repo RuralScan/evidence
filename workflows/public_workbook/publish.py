@@ -27,8 +27,8 @@ def render(template, data):
     return template.replace(marker, encoded)
 
 
-def publish(source, release, summary, output, check):
-    data = build_data(source, release, summary)
+def publish(source, release, summary, output, check, *, recovered_evidence=None):
+    data = build_data(source, release, summary, recovered_evidence=recovered_evidence)
     html = render((HERE / "workbook.html").read_text(encoding="utf-8"), data)
     encoded = html.encode("utf-8")
     if check:
