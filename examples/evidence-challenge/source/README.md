@@ -2,14 +2,22 @@
 
 Enter one fictional field sheet into a private screening run. The sheet was written for this exercise. Its sketch legend identifies the streambank symbol. It supplies no site measurements or evidence for calibrating suitability. The reserved address in the bibliographic record identifies the teaching fixture. The commands read the bundled edition locally.
 
-From the evidence repository root, make a private copy of the inputs. Read the [field sheet](field-sheet.md) and compare its opening heading with the single bibliographic record in [capture.json](capture.json). The `records` list is where an operator enters the source ID, full title, citation, URL and DOI when available. The field sheet has no DOI.
+From the evidence repository root, start a private run with the [empty capture](capture-template.json) and the bundled [field sheet](field-sheet.md).
 
 ```sh
 work=$(mktemp -d)
 source_dir="$work/source-entry"
 mkdir "$source_dir"
 fixture=examples/evidence-challenge/source
-cp "$fixture/plan.json" "$fixture/capture.json" "$fixture/acquisition.json" "$fixture/field-sheet.md" "$source_dir/"
+cp "$fixture/plan.json" "$fixture/acquisition.json" "$fixture/field-sheet.md" "$source_dir/"
+cp "$fixture/capture-template.json" "$source_dir/capture.json"
+```
+
+Open your copy of `capture.json`. Add one object to the empty `records` list. Give it the `record_id` used by the acquisition plan, `training_riparian_field_sheet`. Transcribe the opening heading into `title`. In `citation`, record the title, Rural Scan training collection, year 2026 and training edition 1. Use `https://example.invalid/training/riparian-field-sheet.md` for `url` and an empty string for `doi`. Compare with the [completed capture](capture.json) after entering the source.
+
+Generate a worksheet from the record you entered:
+
+```sh
 python3 -B workflows/discovery/screen.py worksheet "$source_dir/plan.json" \
   --out "$source_dir/decisions.json"
 ```
