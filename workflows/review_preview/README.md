@@ -46,3 +46,18 @@ The earlier commit must lie on the target’s first-parent history. The preview 
 | `pending_issues_with_changed_history` | Number of issues in the pending clarification file whose recorded history differs. The separate count `pending_issues_without_linked_claims` identifies pending issues that could only be checked at thread level. |
 
 Changes are measured between the selected exports. A receipt with identical replay counts can still list changes to individual records. Keep the comparison receipt private as it includes claim IDs. Consult CIAT for subsequent edits, and submit any confirmed decisions through its live review workflow.
+
+## Rehearse an interrupted submission and retry
+
+Run the training case from the repository root:
+
+```sh
+uv run --python 3.12 --locked --script workflows/review_preview/preview.py \
+  --example --rehearse-recovery
+```
+
+The example interrupts the first changed record immediately after its replacement on disk. It checks that the pinned replay restores the evidence register, review log and clarification history, including any initially absent file. It checks both saved input files for changes. An independent example decision and clarification then advance the local main branch. The retry must preserve that newer history and produce exactly the record bytes from a clean replay on the later revision.
+
+For a private rehearsal, add `--rehearse-recovery` to the two-revision command above. Use different revisions to exercise a real change in history. The receipt reports whether an installation was interrupted. If the earlier replay changes no bytes, only the pre-push failure and retry are exercised. A retry with no changes should create no branch on the local remote.
+
+Git fetch, worktree creation, commit and push run against a disposable file-only remote. The first attempt must release its submission lock, retain its failed checkout for inspection by the rehearsal and leave all remote refs intact. The rehearsal uses the pinned record replay in place of the full generation command and simulates GitHub authentication and PR creation. Temporary repositories are removed on exit. Save the JSON receipt outside Git. Live decisions and submission stay in CIAT.

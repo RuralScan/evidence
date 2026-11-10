@@ -113,23 +113,53 @@ def stage(root, inputs):
             path.write_bytes(data)
 
 
+def example_advance(root, earlier):
+    """Commit one independent decision and clarification to the later example."""
+    from nbs_ruralscan.schema_tools.submit_review import replay
+    from recovery_fault import RECORDS, SAVED
+
+    later_vote = {"example_conflict": {"example_reader": {"decision": "ok"}}}
+    later_event = [
+        {
+            "issue_id": "example_question",
+            "date": "2026-01-03",
+            "note": "Later example clarification.",
+        }
+    ]
+    stage(
+        root,
+        {
+            **earlier,
+            SAVED[0]: json.dumps(later_vote).encode(),
+            SAVED[1]: json.dumps(later_event).encode(),
+        },
+    )
+    replay(root)
+    return {name: read_copy(root, name) for name in RECORDS}
+
+
 def main():
-    engine, records, pending, *source = sys.argv[1:]
+    arguments = sys.argv[1:]
+    recovery = arguments[:1] == ["--rehearse-recovery"]
+    engine, records, pending, *source = arguments[1:] if recovery else arguments
     sys.path.insert(0, engine)
     repo, pin = source[:2] if source else (None, None)
     inputs = load_inputs(Path(records), Path(pending), repo, pin)
     with TemporaryDirectory(prefix="review-records-") as temp:
         root = Path(temp) / "target"
-        stage(root, inputs)
+        from recovery_fault import RECORDS, SAVED
+
+        target = {name: inputs[name] for name in RECORDS}
+        saved = {name: inputs[name] for name in SAVED}
+        if recovery and not source:
+            old = target
+            target = example_advance(Path(temp) / "advance", old)
+        stage(root, {**target, **saved})
         comparison = None
         if source[2:]:
             previous, old_pin = source[2:]
             old_root = Path(temp) / "previous"
             old = load_records(Path(previous), repo, old_pin)
-            saved = {
-                f"pipeline/review/{name}": inputs[f"pipeline/review/{name}"]
-                for name in PENDING
-            }
             stage(old_root, {**old, **saved})
             from nbs_ruralscan.schema_tools.clarifications import read_events
             from nbs_ruralscan.schema_tools.review_local import read_decisions
@@ -149,6 +179,13 @@ def main():
                 previous_revision=old_pin, previous_preview=measure(old_root)
             )
         result = measure(root)
+        if recovery:
+            from shipping_rehearsal import rehearse_shipping
+
+            expected = {name: read_copy(root, name) for name in RECORDS}
+            result["recovery_rehearsal"] = rehearse_shipping(
+                Path(temp) / "shipping", old, target, saved, expected
+            )
         if comparison is not None:
             result["comparison"] = comparison
     result["pending_files"] = [
