@@ -4,6 +4,8 @@ This repository will document and run the evidence workflow behind Rural Scan: d
 
 The workflows below run locally. Live registration and evidence review continue in [CIAT/nbs_ruralscan](https://github.com/CIAT/nbs_ruralscan).
 
+Open the read-only workbook to follow a recipe row to its evidence, find a registered source or inspect a recorded search. [Download and use the public workbook](workflows/public_workbook/README.md)
+
 Browse the six practices to see which hazards, suitability variables, scorecard effects and economic indicators have compiled rows. Each row links to its pinned source record. [Open the recipe index](publication/recipes/README.md)
 
 Use the operator handbook for an AI-assisted or manual run. It provides task briefs for searching, screening and extracting evidence, and shows how to record which instructions were used. [Run an assisted evidence search and extraction](handbook/assisted-evidence-run.md)

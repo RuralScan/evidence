@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Rural Scan evidence workbook</title>
+<style>
+:root{color-scheme:light;--ink:#16332c;--muted:#476159;--green:#00674f;--line:#b9cbc1;--wash:#eff5f1;font:16px/1.5 system-ui,sans-serif;color:var(--ink);background:#fff}
+*{box-sizing:border-box}body{margin:0}header,nav,.content{padding-inline:max(1.15rem,calc((100vw - 76rem)/2))}
+header{background:#123f33;color:white;padding-block:1.2rem}header strong{font-family:Georgia,serif;font-size:clamp(1.5rem,3.5vw,2.35rem);font-weight:500;line-height:1.2}
+nav{display:flex;gap:1.1rem;align-items:stretch;background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:1;overflow-x:auto}
+nav a{padding:.8rem 0 .65rem;border-bottom:3px solid transparent;font-weight:650;white-space:nowrap;text-decoration:none;color:var(--muted)}
+nav a[aria-current]{color:var(--ink);border-bottom-color:var(--green)}
+.content{padding-block:1.7rem 4rem}.content:focus{outline:none}
+h1,h2{font-family:Georgia,serif;line-height:1.15;letter-spacing:-.02em;color:#123e31}h1{font-size:clamp(1.85rem,4vw,2.9rem);margin:.2em 0 .35em}h2{font-size:1.55rem;margin:1.6em 0 .45em}
+p{max-width:80ch;margin:.5em 0 1em}.muted,small{color:var(--muted)}
+a{color:#005c46;text-underline-offset:.16em}a:hover{color:#003e30}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,.scroll:focus-visible{outline:3px solid #b85400;outline-offset:2px}.skip{position:absolute;left:1rem;top:-6rem;z-index:3;background:white;padding:.4rem}.skip:focus{top:1rem}
+.scroll{overflow-x:auto;max-width:100%;margin:.8rem 0 1.1rem}table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:.65rem .7rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere}thead th{font-size:.86rem;line-height:1.28;background:#edf3ef;color:#23473c}tbody th{font-weight:550}.num{text-align:right;font-variant-numeric:tabular-nums}tfoot th,tfoot td{font-weight:700;border-top:2px solid #75968a;background:var(--wash)}
+code{font-size:.85em;overflow-wrap:anywhere}dl{display:grid;grid-template-columns:minmax(8rem,15rem) 1fr;gap:.35rem 1rem;margin:1rem 0}dt{font-weight:650}dd{margin:0;overflow-wrap:anywhere}
+.controls{display:flex;align-items:end;flex-wrap:wrap;gap:.75rem;background:var(--wash);border-block:1px solid var(--line);padding:1rem;margin:1.25rem 0}
+label{display:flex;flex-direction:column;gap:.25em;font-size:.88rem;font-weight:650}input,select,button{font:inherit;color:var(--ink);padding:.42rem .6rem;border:1px solid #789388;border-radius:3px;background:white;max-width:100%}input{width:clamp(11rem,32vw,23rem)}button{background:#165441;color:white;font-weight:650;cursor:pointer}.pager{display:flex;gap:1.3rem;align-items:center;margin:1rem 0}.pager a{font-weight:650}.reference{margin-top:1.5rem;font-size:.9rem}.record-id{color:var(--muted)}.crumb{font-size:.9rem;margin:0 0 .6rem}
+ul.references{padding-left:1.35rem}.references li{padding:.2rem 0;overflow-wrap:anywhere}.empty{border-left:3px solid #8da99a;padding:.45rem .8rem}
+@media(max-width:42rem){nav{gap:.9rem}nav a{font-size:.9rem}.content{padding-top:1rem}.scroll table{min-width:38rem}.controls{padding:.7rem}dl{grid-template-columns:1fr;gap:0}dd{margin-bottom:.65rem}}
+@media print{header,nav,.content{padding-inline:0}header{background:white;color:#123e31;border-bottom:1pt solid #333}nav,.skip,.controls,.pager,.crumb{display:none}.content{padding-block:.5rem}.scroll{overflow:visible}table{font-size:9pt}tr{break-inside:avoid}a{color:inherit}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to workbook content</a>
+<header><strong>Rural Scan evidence workbook</strong></header>
+<nav aria-label="Workbook sections">
+<a href="#overview">Overview</a><a href="#rows">Recipe rows</a><a href="#bibliography">Bibliography</a><a href="#claims">Claims</a><a href="#progress">Search progress</a>
+</nav>
+<main id="content" class="content" tabindex="-1"><noscript>Enable JavaScript in your browser to read this offline workbook.</noscript></main>
+<script type="application/json" id="publication">@@DATA@@</script>
+<script>
+'use strict';
+const publication = JSON.parse(document.getElementById('publication').textContent);
+const {rows, claims, sources, searches, counts, totals} = publication;
+const tables = {T3:'Hazard responses', T4:'Suitability mappings', T6:'Scorecard effects', T6E:'Economic profiles'};
+const byId = records => new Map(records.map(item => [item.id, item]));
+const claimById = byId(claims), sourceById = byId(sources), rowById = byId(rows), searchById = byId(searches);
+const sourceClaims = new Map(), citedBy = new Map(), contextFor = new Map(), sourceContext = new Map();
+function append(index, key, record) {
+  if (!index.has(key)) index.set(key, []);
+  index.get(key).push(record);
+}
+for (const claim of claims) append(sourceClaims, claim.source_id, claim);
+for (const row of rows) {
+  for (const id of new Set(row.evidence_ids)) append(citedBy, id, row);
+  for (const id of new Set(row.context_ids)) append(contextFor, id, row);
+  for (const id of new Set(row.context_source_ids)) append(sourceContext, id, row);
+}
+const main = document.querySelector('main'), perPage = 30;
+function el(tag, text, cls) {
+  const node = document.createElement(tag);
+  if (text !== undefined && text !== null) node.textContent = text;
+  if (cls) node.className = cls;
+  return node;
+}
+function anchor(text, href) { const a = el('a', text); a.href = href; return a; }
+function upstream(text, url) {
+  try { if (new URL(url).protocol === 'https:') return anchor(text, url); }
+  catch { /* An optional source URL can be absent. */ }
+  return document.createTextNode('—');
+}
+const enc = encodeURIComponent;
+const recordLink = (name, id, text) => anchor(text || id, '#' + name + '=' + enc(id));
+const words = value => String(value || '').replaceAll('__', ' · ').replaceAll('_', ' ');
+const label = value => { const s = words(value); return s.charAt(0).toUpperCase() + s.slice(1); };
+const familyName = value => value ? label(value.split('__').pop()) : 'Practice-wide';
+function num(value) {
+  if (value === undefined || value === null || value === '') return '—';
+  return /^\d+$/.test(String(value)) ? Number(value).toLocaleString('en-US') : String(value);
+}
+function rowRoute(practice, table) { return practice || table ? '#rows=' + enc(practice || '') + '/' + enc(table || '') : '#rows'; }
+function content(tag, ...children) { const n = el(tag); n.append(...children); return n; }
+function heading(title, desc) {
+  main.append(el('h1', title)); document.title = title + ' · Rural Scan evidence workbook';
+  if (desc) main.append(el('p', desc));
+}
+function detailHeading(section, route, title, id) {
+  const p = el('p', null, 'crumb'); p.append(anchor(section,route)); main.append(p);
+  heading(title); const key = el('p', null, 'record-id'); key.append(el('code', id)); main.append(key);
+}
+function definition(entries) {
+  const dl = el('dl');
+  for (const [key, value] of entries) {
+    if (value == null || value === '') continue;
+    dl.append(el('dt',key),content('dd',value));
+  }
+  return dl;
+}
+function tableView(headers, records, total) {
+  const scroll = el('div', null, 'scroll'); scroll.tabIndex=0; scroll.setAttribute('role','region'); scroll.setAttribute('aria-label',headers.map(h=>h[0]).join(', '));
+  const table = el('table'), head = el('thead'), line=el('tr');
+  for (const [title,numeric] of headers) { const h=el('th',title,numeric?'num':''); h.scope='col'; line.append(h); }
+  head.append(line); table.append(head);
+  function addRows(section, input) {
+    for (const cells of input) {
+      const tr = el('tr');
+      cells.forEach((value,i) => {
+        const cell = el(i ? 'td':'th',null,headers[i][1]?'num':'');
+        if (!i) cell.scope='row';
+        cell.append(value ?? '—'); tr.append(cell);
+      });
+      section.append(tr);
+    }
+    table.append(section);
+  }
+  addRows(el('tbody'),records);
+  if (total) addRows(el('tfoot'),[total]);
+  scroll.append(table); return scroll;
+}
+function headingPractice(practice) { return practice ? label(practice) : 'Cross-practice'; }
+function overview() {
+  heading('Six-practice recipe release','Choose a count to inspect the compiled rows for a practice, then follow a row to its evidence and sources.');
+  const codes=Object.keys(tables);
+  const metric=(n,href)=>n ? anchor(num(n),href) : num(n);
+  const lines=Object.entries(counts).map(([practice,byTable])=>[
+    anchor(headingPractice(practice),rowRoute(practice,'')),
+    ...codes.map(t=>metric(byTable[t],rowRoute(practice,t))),
+    metric(codes.reduce((n,t)=>n+byTable[t],0),rowRoute(practice,''))]);
+  main.append(tableView([['Practice'],...codes.map(t=>[t+' · '+tables[t],true]),['All rows',true]],lines,
+    [anchor('All practices','#rows'),...codes.map(t=>metric(totals[t],rowRoute('',t))),metric(rows.length,'#rows')]));
+  const distinct=new Set(rows.flatMap(row=>row.evidence_ids));
+  const distinctSources=new Set([...distinct].map(id=>claimById.get(id).source_id));
+  const linked=rows.filter(row=>row.evidence_ids.length).length;
+  main.append(el('h2','Evidence behind the rows'),el('p',num(linked)+' of '+num(rows.length)+' rows cite evidence directly. Those rows reference '+num(distinct.size)+' distinct claims from '+num(distinctSources.size)+' sources. A claim can support several rows. Contextual references are identified separately on each row.'));
+  main.append(content('p',anchor('Read the six-practice cookbook','https://github.com/RuralScan/method/blob/baea86eee50ba9e6fc7cdb67c1115723aa1c4429/cookbook/README.md')));
+  main.append(el('h2','Release'),definition([['Status','Candidate analytical release'],['Release ID',el('code',publication.release_id)],['Source revision',upstream(publication.source_revision,'https://github.com/CIAT/nbs_ruralscan/tree/'+enc(publication.source_revision))]]));
+}
+function route() {
+  const raw=location.hash.slice(1), split=raw.indexOf('?');
+  const path=(split<0?raw:raw.slice(0,split)) || 'overview', q=new URLSearchParams(split<0?'':raw.slice(split+1));
+  const equals=path.indexOf('='), name=equals<0?path:path.slice(0,equals), arg=equals<0?'':path.slice(equals+1);
+  if (name==='rows') { const parts=arg.split('/'); return {name,practice:decodeURIComponent(parts[0]),table:decodeURIComponent(parts[1]||''),q}; }
+  return {name,id:decodeURIComponent(arg),q};
+}
+function listRoute(state, q) {
+  const path=state.name==='rows' ? rowRoute(state.practice,state.table) : '#'+state.name;
+  return path + (q.size ? '?'+q.toString() : '');
+}
+function controls(state, placeholder, withFilters) {
+  const form=el('form',null,'controls');
+  const input=el('input'); input.type='search'; input.name='q'; input.placeholder=placeholder; input.value=state.q.get('q')||'';
+  form.append(content('label','Find records',input));
+  function select(name, all, options, selected) {
+    const node=el('select'); node.name=name; node.append(new Option(all,''));
+    for (const [key,title] of options) node.append(new Option(title,key));
+    node.value=selected||''; form.append(content('label',name==='practice'?'Practice':'Table',node));
+  }
+  if (withFilters) {
+    const practices=state.name==='progress' ? [...new Set(searches.map(r=>r.practice).filter(Boolean))].sort() : Object.keys(counts);
+    const codes=state.name==='progress' ? [...new Set(searches.map(r=>r.table).filter(Boolean))].sort() : Object.keys(tables);
+    select('practice','All practices',practices.map(p=>[p,headingPractice(p)]),state.practice);
+    select('table','All tables',codes.map(t=>[t,tables[t]?t+' · '+tables[t]:t]),state.table);
+  }
+  const apply=el('button','Apply'); apply.type='submit'; form.append(apply,anchor('Clear','#'+state.name));
+  form.addEventListener('submit',event=>{
+    event.preventDefault(); const data=new FormData(form), q=new URLSearchParams();
+    const term=data.get('q').trim(); if(term) q.set('q',term);
+    const practice=data.get('practice')||'', table=data.get('table')||'';
+    if(state.name==='progress') {if(practice) q.set('practice',practice); if(table) q.set('table',table);}
+    location.hash=listRoute({...state,practice,table},q);
+  });
+  main.append(form);
+}
+function listing(state, records, title, desc, placeholder, headers, cells, searchable, withFilters=false) {
+  if(state.name==='progress') {state.practice=state.q.get('practice');state.table=state.q.get('table');}
+  heading(title,desc); controls(state,placeholder,withFilters);
+  const query=(state.q.get('q')||'').trim().toLowerCase();
+  const matches=records.filter(r=>(!state.practice||r.practice===state.practice)&&(!state.table||r.table===state.table)&&(!query||searchable(r).join(' ').toLowerCase().includes(query)));
+  if (!matches.length) {main.append(el('p','No matching records. Change the filters or clear the search.','empty')); return;}
+  const pages=Math.ceil(matches.length/perPage), page=Math.max(1,Math.min(pages,parseInt(state.q.get('p'),10)||1)), start=(page-1)*perPage;
+  main.append(el('p',num(start+1)+'–'+num(Math.min(start+perPage,matches.length))+' of '+num(matches.length)+' records','muted'), tableView(headers,matches.slice(start,start+perPage).map(cells)));
+  if(pages<2) return;
+  const pager=el('div',null,'pager');
+  function pageLink(n,title){const q=new URLSearchParams(state.q); q.set('p',n); return anchor(title,listRoute(state,q));}
+  if(page>1) pager.append(pageLink(page-1,'Previous'));
+  pager.append(el('span','Page '+page+' of '+pages)); if(page<pages) pager.append(pageLink(page+1,'Next')); main.append(pager);
+}
+const claimName = c => label(c.variable || c.role) || c.id;
+function recipeRows(s) {
+  listing(s,rows,'Recipe rows','Inspect a rule or effect to see its release fields, cited claims and original analytical record.','Subject, family or row ID',[['Subject'],['Practice'],['Table'],['Family'],['Direct claims',true]],r=>[
+    recordLink('row',r.id,r.subject),headingPractice(r.practice),r.table,familyName(r.family),num(r.evidence_ids.length)],
+    r=>[r.id,r.subject,r.table,headingPractice(r.practice),familyName(r.family)],true);
+}
+function bibliography(s) {
+  listing(s,sources,'Bibliography','Open a citation to see its linked claims and trace them to recipe rows.','Author, title or source ID',[['Citation'],['Source ID'],['Linked claims',true]],r=>[
+    recordLink('source',r.id,r.citation),el('code',r.id),num((sourceClaims.get(r.id)||[]).length)],r=>[r.id,r.citation]);
+}
+function allClaims(s) {
+  listing(s,claims,'Claims','Locate a claim by its ID, source or variable. Each entry links to its citation and the analytical rows that use it.','Variable, source or claim ID',[['Claim'],['Practice'],['Source'],['Direct rows',true]],c=>[
+    recordLink('evidence',c.id,claimName(c)),headingPractice(c.practice),recordLink('source',c.source_id),num((citedBy.get(c.id)||[]).length)],
+    c=>[c.id,c.variable,c.role,c.practice,headingPractice(c.practice),c.family,c.source_id,sourceById.get(c.source_id)?.citation||'']);
+}
+function progress(s) {
+  listing(s,searches,'Search progress','Each record describes one logged search. Retrieved, screened and included counts apply to that search. Searches can overlap. A dash marks an unreported count.','Practice, category or search ID',[['Search'],['Practice'],['Table'],['Retrieved',true],['Screened',true],['Included',true]],r=>[
+    recordLink('search',r.id,label(r.category)),headingPractice(r.practice),r.table,num(r.retrieved),num(r.screened),num(r.included)],
+    r=>[r.id,r.category,r.practice,headingPractice(r.practice),r.family,r.table],true);
+}
+function references(title,records,link,blank) {
+  main.append(el('h2',title+' ('+num(records.length)+')'));
+  if(!records.length){main.append(el('p',blank,'muted'));return;}
+  const ul=el('ul',null,'references');
+  for(const r of records) ul.append(content('li',link(r))); main.append(ul);
+}
+function rowReference(row) { return recordLink('row',row.id,row.table+' · '+row.subject+' · '+familyName(row.family)+' · '+row.id); }
+function claimReference(c) {
+  return recordLink('evidence',c.id,claimName(c)+' · '+c.id);
+}
+function rowDetail(r) {
+  detailHeading('Recipe rows',rowRoute(r.practice,r.table),r.subject,r.id);
+  main.append(definition([['Practice',headingPractice(r.practice)],['Table',r.table+' · '+tables[r.table]],...Object.entries(r.fields)]));
+  main.append(upstream('Open original analytical record',r.url));
+  references('Direct evidence',r.evidence_ids.map(id=>claimById.get(id)),claimReference,'This row lists no direct evidence IDs.');
+  if(r.context_ids.length) references('Additional contextual evidence',r.context_ids.map(id=>claimById.get(id)),claimReference,'');
+  if(r.context_source_ids.length) references('Sources named in the analytical record',r.context_source_ids.map(id=>sourceById.get(id)),s=>recordLink('source',s.id,s.citation),'');
+}
+function claimDetail(c) {
+  detailHeading('Claims','#claims',claimName(c),c.id);
+  main.append(definition([['Source',recordLink('source',c.source_id,sourceById.get(c.source_id).citation)],['Source page',c.page],['Source location',c.locator && c.locator_type!=='page' ? (label(c.locator_type)+' · '+c.locator) : null],['Practice',headingPractice(c.practice)],['Family',familyName(c.family)],['Role',label(c.role)],['Claim scope',label(c.scope)],['Evidence type',label(c.type)],['Basis for the claim',label(c.basis)],['Extraction confidence',label(c.confidence)]]));
+  main.append(upstream('Open original claim record',c.url));
+  references('Recipe rows citing this claim',citedBy.get(c.id)||[],rowReference,'No direct recipe citation in this release.');
+  if(contextFor.has(c.id)) references('Rows citing this claim as context',contextFor.get(c.id),rowReference,'');
+}
+function sourceDetail(source) {
+  detailHeading('Bibliography','#bibliography',source.citation||source.id,source.id);
+  main.append(definition([['Source type',label(source.kind)],['Discovery category',label(source.category)],['Publication',source.publication_url ? upstream('Open verified DOI',source.publication_url) : source.publisher_url ? upstream('Open publisher document',source.publisher_url) : null]]));
+  if(source.url) main.append(upstream('Open original source record',source.url));
+  references('Linked claims',sourceClaims.get(source.id)||[],claimReference,'No claims from this source in this workbook.');
+  if(sourceContext.has(source.id)) references('Rows naming this source',sourceContext.get(source.id),rowReference,'');
+}
+function searchDetail(r) {
+  detailHeading('Search progress','#progress',label(r.category)+' search',r.id);
+  main.append(definition([['Practice',headingPractice(r.practice)],['Family',familyName(r.family)],['Table',r.table],['Retrieved',num(r.retrieved)],['Screened',num(r.screened)],['Included',num(r.included)]]));
+  main.append(upstream('Open original search record',r.url));
+}
+function render() {
+  let state; try{state=route();}catch{state={name:''};}
+  const views={overview,rows:recipeRows,bibliography,claims:allClaims,progress};
+  const details={row:[rowById,rowDetail,'rows'],ev:[claimById,claimDetail,'claims'],evidence:[claimById,claimDetail,'claims'],source:[sourceById,sourceDetail,'bibliography'],search:[searchById,searchDetail,'progress']};
+  const detail=Object.hasOwn(details,state.name)?details[state.name]:null;
+  main.replaceChildren();
+  for(const a of document.querySelectorAll('nav a')){
+    if(a.hash==='#'+(detail?detail[2]:state.name)) a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+  }
+  if(Object.hasOwn(views,state.name)) views[state.name](state);
+  else if(detail&&detail[0].has(state.id)) detail[1](detail[0].get(state.id));
+  else{ heading('Record unavailable','This link does not match a record in the pinned workbook.'); main.append(anchor('Open overview','#overview')); }
+}
+document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();main.focus();});
+window.addEventListener('hashchange',()=>{render();main.focus({preventScroll:true});scrollTo(0,0);});
+render();
+</script>
+</body>
+</html>

@@ -80,6 +80,72 @@ def scope(row):
     return " / ".join(parts)
 
 
+def record_locations(release, practice, table, filename, revision):
+    """Locate every released record in the matching immutable producer bytes."""
+    key = "mapping_id" if table == "T4" else "record_id"
+    # Pin the same audited JSON bytes as the release and link to the exact ID
+    # line. Fail closed if a later producer changes its serialisation.
+    source = release.read_bytes(f"tables/{practice}/{filename}").decode("utf-8")
+    field = re.compile(rf'^    "{key}": "([a-z0-9_-]+)",?$')
+    locations = {
+        match[1]: number
+        for number, line in enumerate(source.splitlines(), 1)
+        if (match := field.fullmatch(line))
+    }
+    ids = [row[key] for row in release.table(practice, table)]
+    require(
+        len(ids) == len(set(ids)) and set(ids) == locations.keys(),
+        f"Cannot locate all original {table} records",
+    )
+    url = f"{SOURCE}/blob/{revision}/schema/recipes/{practice}/{filename}"
+    return {identifier: f"{url}#L{line}" for identifier, line in locations.items()}
+
+
+def table_cells(row, table, readiness):
+    """Use the same classifications and scientific labels in both published formats."""
+    if table == "T4":
+        entry = readiness[row["mapping_id"]]
+        family = scope(row)
+        crop = row.get("relationship_params", {}).get("host_crop")
+        if crop:
+            family += f" / Host crop · {label(crop)}"
+        cells = [
+            label(row["variable"]),
+            family,
+            label(entry["role"]),
+            str(len(entry["functions"])),
+            "Yes" if entry["readiness"]["effective_function_id"] else "No",
+            "Yes" if entry["readiness"]["execution_ready"] else "No",
+        ]
+    elif table == "T3":
+        role = row["risk_role"]
+        rating = {
+            "livelihood_mitigation": "mitigation_potential",
+            "asset_threat": "asset_sensitivity",
+        }[role]
+        cells = [
+            label(row["hazard_type"]),
+            label(role),
+            label(row["farming_system"]),
+            scope(row),
+            label(row.get(rating)),
+            label(row.get("confidence")),
+        ]
+    else:
+        result = (
+            label(row.get("effect_direction"))
+            if table == "T6"
+            else ("Yes" if row.get("economic_value_range") else "No")
+        )
+        cells = [
+            label(row["variable_id"]),
+            scope(row),
+            result,
+            label(row.get("effect_confidence")),
+        ]
+    return cells
+
+
 def table_lines(release, practice, table, filename, revision, readiness):
     title, headings = TABLES[table]
     rows = release.table(practice, table)
@@ -93,64 +159,11 @@ def table_lines(release, practice, table, filename, revision, readiness):
         "|" + "---|" * len(headings),
     ]
     key = "mapping_id" if table == "T4" else "record_id"
-    # Pin the same audited JSON bytes as the release and link to the exact ID
-    # line. Fail closed if a later producer changes its serialisation.
-    source = release.read_bytes(f"tables/{practice}/{filename}").decode("utf-8")
-    field = re.compile(rf'^    "{key}": "([a-z0-9_-]+)",?$')
-    locations = {
-        match[1]: number
-        for number, line in enumerate(source.splitlines(), 1)
-        if (match := field.fullmatch(line))
-    }
-    ids = [row[key] for row in rows]
-    require(
-        len(ids) == len(set(ids)) and set(ids) == locations.keys(),
-        f"Cannot locate all original {table} records",
-    )
-    url = f"{SOURCE}/blob/{revision}/schema/recipes/{practice}/{filename}"
+    urls = record_locations(release, practice, table, filename, revision)
     for row in rows:
         identifier = row[key]
-        if table == "T4":
-            entry = readiness[identifier]
-            family = scope(row)
-            crop = row.get("relationship_params", {}).get("host_crop")
-            if crop:
-                family += f" / Host crop · {label(crop)}"
-            cells = [
-                label(row["variable"]),
-                family,
-                label(entry["role"]),
-                str(len(entry["functions"])),
-                "Yes" if entry["readiness"]["effective_function_id"] else "No",
-                "Yes" if entry["readiness"]["execution_ready"] else "No",
-            ]
-        elif table == "T3":
-            role = row["risk_role"]
-            rating = {
-                "livelihood_mitigation": "mitigation_potential",
-                "asset_threat": "asset_sensitivity",
-            }[role]
-            cells = [
-                label(row["hazard_type"]),
-                label(role),
-                label(row["farming_system"]),
-                scope(row),
-                label(row.get(rating)),
-                label(row.get("confidence")),
-            ]
-        else:
-            result = (
-                label(row.get("effect_direction"))
-                if table == "T6"
-                else ("Yes" if row.get("economic_value_range") else "No")
-            )
-            cells = [
-                label(row["variable_id"]),
-                scope(row),
-                result,
-                label(row.get("effect_confidence")),
-            ]
-        cells[0] = f'[{cells[0]}]({url}#L{locations[identifier]} "{identifier}")'
+        cells = table_cells(row, table, readiness)
+        cells[0] = f'[{cells[0]}]({urls[identifier]} "{identifier}")'
         lines.append("| " + " | ".join(cells) + " |")
     return lines + [""]
 

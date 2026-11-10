@@ -73,7 +73,16 @@ def match_identities(release, model):
 
 
 def verify(
-    source, store, pin, build, index_dir=None, *, check_method=False, method_repo=None
+    source,
+    store,
+    pin,
+    build,
+    index_dir=None,
+    *,
+    check_method=False,
+    method_repo=None,
+    check_workbook=False,
+    workbook_dir=None,
 ):
     # Use the producer and reader from the same immutable source revision.
     sys.path.insert(0, str(source / "src"))
@@ -127,6 +136,12 @@ def verify(
         }
     if index_dir is not None:
         write_index(index_dir, render_index(release, summary, TABLE_STEMS))
+    if check_workbook or workbook_dir is not None:
+        from public_workbook.publish import publish
+
+        summary["public_workbook"] = publish(
+            source, release, summary, workbook_dir, check_workbook
+        )
     return summary
 
 
@@ -204,6 +219,17 @@ def main():
         type=Path,
         help="Use local method Git objects and enable --check-method",
     )
+    workbook = p.add_mutually_exclusive_group()
+    workbook.add_argument(
+        "--workbook-dir",
+        type=Path,
+        help="Build the standalone public workbook in a new directory.",
+    )
+    workbook.add_argument(
+        "--check-workbook",
+        action="store_true",
+        help="Rebuild and compare the checked-in public workbook byte-for-byte.",
+    )
     args = p.parse_args()
     pin = json.loads(args.pin.read_bytes())
     revision(pin["source_revision"])
@@ -222,6 +248,14 @@ def main():
                 "/pipeline/t4_audit/agroforestry/importance_2026-10-21/source_weight_trees.csv",
             ]
         )
+        if args.check_workbook or args.workbook_dir is not None:
+            paths.extend(
+                [
+                    "/schema/registers/",
+                    "/schema/recipes/",
+                    "/pipeline/acquisition_queue.csv",
+                ]
+            )
         snapshot(source, REPOSITORY, pin["source_revision"], paths, args.ciat_repo)
         result = verify(
             source,
@@ -231,6 +265,8 @@ def main():
             args.index_dir,
             check_method=args.check_method or args.method_repo is not None,
             method_repo=args.method_repo,
+            check_workbook=args.check_workbook,
+            workbook_dir=args.workbook_dir,
         )
     print(json.dumps(result, indent=2) if args.json else markdown(result))
 
