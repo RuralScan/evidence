@@ -1,0 +1,83 @@
+{
+  "format_version": 1,
+  "repository": "https://github.com/CIAT/nbs_ruralscan.git",
+  "entries": {
+    "terrace_discovery": {
+      "stage": "discovery",
+      "version": "v1.8.1",
+      "revision": "1773e86e76d45ec7a61f8fbd3673047f9601072d",
+      "entrypoint": ".agents/skills/_versions/v1.8.1/SKILL.md",
+      "declared_version": "v1.8.1",
+      "files": {
+        ".agents/skills/_versions/v1.8.1/README.md": "6022e9e25c83be1103a5349e7722df8e45bcd88e6ab7951ad25aced721e34e58",
+        ".agents/skills/_versions/v1.8.1/SKILL.md": "5756d3eccc492d7d31eeec9eb3129f5cf8eb8be9130e4604fc2749c5e7ca3fd9",
+        ".agents/skills/_versions/v1.8.1/T4_generation_method.md": "a34e9846eab96297b47b51bff7876ef8a280afe6348cb1e528c00808df631f75",
+        ".agents/skills/_versions/v1.8.1/search_protocol.md": "2c1821696285e18816632f236bd7348d1e78537ca05f334ecaba814c92284346"
+      }
+    },
+    "terrace_staging": {
+      "stage": "extraction",
+      "version": "v1.9.9",
+      "revision": "157a26c2729c05cccf2b1d9374a63e28c97acac6",
+      "entrypoint": ".agents/skills/_versions/v1.9.9/SKILL.md",
+      "declared_version": "v1.9.9",
+      "files": {
+        ".agents/skills/_versions/v1.9.9/README.md": "19c5b8ad31ecfbde8456fd0301a40ad82d939a01a16be8ac2d6d76e6839d7555",
+        ".agents/skills/_versions/v1.9.9/SKILL.md": "ac6df76ba05e332435a5343278886d351486c85904795283c4344a53ba47b386",
+        ".agents/skills/_versions/v1.9.9/contracts/DIRECTION_ADDENDUM.md": "70eb85148ce2a3522adf18e4fa6acc4df2e592a1f33cbe0f89b00cf3e018310a",
+        ".agents/skills/_versions/v1.9.9/contracts/T3_T6_extraction_contract.md": "a417b661a1726e64af1c59b36050daa512b70897a62191cc36e83cfade2a7a0f",
+        ".agents/skills/_versions/v1.9.9/contracts/T4_review_contract.md": "86ca001a35d80214f53362fa2f99293524615afb299f509782491688da024542",
+        ".agents/skills/_versions/v1.9.9/contracts/T5_contract.md": "89e837428d22af7294fb91ac0647187ab6ecc51147de1f19fb629ce68e60de67",
+        ".agents/skills/_versions/v1.9.9/extract-evidence_command.md": "456b4fa0039ba724fb57d00befe3c00d59e9a684a1e0dedb504fe1d01ddf357a",
+        ".agents/skills/_versions/v1.9.9/references/defects.md": "0198c23ae79e8b24c4b347644338a225c0b9d40c3b68a2a9b1e03051b4b86dd7",
+        ".agents/skills/_versions/v1.9.9/search_protocol.md": "2c1821696285e18816632f236bd7348d1e78537ca05f334ecaba814c92284346",
+        ".agents/skills/_versions/v1.9.9/t4-synthesise_SKILL.md": "e0b8c8d4dcc93facf8a6de3ae0f720f73f80bb2cdabc5b495837e1c2bbd3d8ed",
+        ".agents/skills/_versions/v1.9.9/t4-synthesise_command.md": "ef71d04f062747a95dea3d519b1b513be51c3f513009cfede32bba6e486a7734"
+      }
+    },
+    "historical_extraction_v1.5.1": {
+      "stage": "extraction",
+      "version": "v1.5.1",
+      "revision": "2023cb82c94a93120600a7feb17d8cd1e12ce54f",
+      "entrypoint": ".agents/skills/_versions/v1.5.1/extract-evidence_SKILL.md",
+      "declared_version": "v1.4.1",
+      "files": {
+        ".agents/skills/_versions/v1.5.1/extract-evidence_SKILL.md": "033d83400adc69987d2056bb0944bf4fb6bfad0a33cd1e4c8a7d739a272d2b67",
+        ".agents/skills/_versions/v1.5.1/extract-evidence_command.md": "81448f67aeb687718af8939b31d1f5ab59ec9c9102bb23bea6ee8983f707576c"
+      }
+    },
+    "historical_extraction_v1.6.0": {
+      "stage": "extraction",
+      "version": "v1.6.0",
+      "revision": "2023cb82c94a93120600a7feb17d8cd1e12ce54f",
+      "entrypoint": ".agents/skills/_versions/v1.6.0/extract-evidence_SKILL.md",
+      "declared_version": "v1.4.1",
+      "files": {
+        ".agents/skills/_versions/v1.6.0/contracts/T3_T6_extraction_contract.md": "5c825ae1e9d12e0a1211a6c3ff49dc93d78469071a5428e30cc237b758232459",
+        ".agents/skills/_versions/v1.6.0/contracts/T3_T6_synthesis_contract.md": "0ae0624f988db44e00d8cdf7bb2f9c1bad4f9c778379463586d8fc77f8d03fed",
+        ".agents/skills/_versions/v1.6.0/extract-evidence_SKILL.md": "033d83400adc69987d2056bb0944bf4fb6bfad0a33cd1e4c8a7d739a272d2b67",
+        ".agents/skills/_versions/v1.6.0/extract-evidence_command.md": "81448f67aeb687718af8939b31d1f5ab59ec9c9102bb23bea6ee8983f707576c"
+      }
+    },
+    "ciat_extraction_comparison": {
+      "stage": "extraction",
+      "version": "v1.10.0",
+      "revision": "4a2d7e7f69cc17695fbf8a98904bc87fa99684a2",
+      "entrypoint": ".agents/skills/_versions/v1.10.0/SKILL.md",
+      "declared_version": "v1.10.0",
+      "files": {
+        ".agents/skills/_versions/v1.10.0/README.md": "b3f5bc7ca668feb7761a8fbeaa57d385f9d7b031358ff5b10b3f89e2fe27a35c",
+        ".agents/skills/_versions/v1.10.0/SKILL.md": "ece5797f32332820c4e77e79d2d45cbb371c98d6d58aeef74ac331169f83bee2",
+        ".agents/skills/_versions/v1.10.0/contracts/DIRECTION_ADDENDUM.md": "70eb85148ce2a3522adf18e4fa6acc4df2e592a1f33cbe0f89b00cf3e018310a",
+        ".agents/skills/_versions/v1.10.0/contracts/T3_T6_extraction_contract.md": "a417b661a1726e64af1c59b36050daa512b70897a62191cc36e83cfade2a7a0f",
+        ".agents/skills/_versions/v1.10.0/contracts/T4_review_contract.md": "da830a151ad4caa163c13f399948b9bd84224f86788e8746ac1b44f9a0df74ff",
+        ".agents/skills/_versions/v1.10.0/contracts/T5_contract.md": "89e837428d22af7294fb91ac0647187ab6ecc51147de1f19fb629ce68e60de67",
+        ".agents/skills/_versions/v1.10.0/extract-evidence_command.md": "8df2e0c481324239ee224ac7b09606479bb87cb9837097de374b9af0656933db",
+        ".agents/skills/_versions/v1.10.0/references/defects.md": "fa527e13295240465d70834060128904a66f5692a0189a396e5dd8fc53f7ea98",
+        ".agents/skills/_versions/v1.10.0/search_protocol.md": "1b2dbef4bb4457cb1e061d50e1897518d4b8b02d938e3b3fbb97034625ac92d4",
+        ".agents/skills/_versions/v1.10.0/t4-synthesise_SKILL.md": "a87b41ea4a9ef9c25c21b8260f3d15f62d016c514ff6b170453676dc9fd694ff",
+        ".agents/skills/_versions/v1.10.0/t4-synthesise_command.md": "ef71d04f062747a95dea3d519b1b513be51c3f513009cfede32bba6e486a7734"
+      }
+    }
+  }
+}

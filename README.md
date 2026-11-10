@@ -6,6 +6,8 @@ The workflows below run locally. Live registration and evidence review continue 
 
 Browse the six practices to see which hazards, suitability variables, scorecard effects and economic indicators have compiled rows. Each row links to its pinned source record. [Open the recipe index](publication/recipes/README.md)
 
+Use the operator handbook for an AI-assisted or manual run. It provides task briefs for searching, screening and extracting evidence, and shows how to record which instructions were used. [Run an assisted evidence search and extraction](handbook/assisted-evidence-run.md)
+
 ## Runnable workflows
 
 Find sources, screen a bounded result set and prepare a candidate bundle. The guide includes an offline replay and a dry run against the CIAT registrar. [Run discovery and screening](workflows/discovery/README.md)

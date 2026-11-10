@@ -1,0 +1,101 @@
+{
+  "run_id": "terrace_stock_training",
+  "scope": "Water harvesting and conservation; bench terraces; T4 annual precipitation.",
+  "limits": "Three preselected stock records and one passage. The rainfall observation remains on calibration hold. Historical compilation consumes its original registers. No model invocation or live review.",
+  "stages": [
+    {
+      "name": "screen stock selection",
+      "mode": "replay",
+      "rulesets": [
+        "terrace_discovery"
+      ],
+      "instructions": [
+        "workbench/workflows/discovery/README.md",
+        "workbench/workflows/discovery/screen.py"
+      ],
+      "inputs": [
+        "workbench/workflows/discovery/example/plan.json",
+        "workbench/workflows/discovery/example/stock.json",
+        "workbench/workflows/discovery/example/decisions.json"
+      ],
+      "outputs": [
+        "run/screening/protocols.json",
+        "run/screening/candidates.json",
+        "run/screening/screening.json",
+        "run/screening/report.md"
+      ]
+    },
+    {
+      "name": "verify and acquire the selected edition",
+      "mode": "replay",
+      "rulesets": [],
+      "instructions": [
+        "workbench/workflows/acquisition/README.md",
+        "workbench/workflows/acquisition/run.py",
+        "workbench/workflows/acquisition/identity.py",
+        "workbench/workflows/acquisition/retrieval.py",
+        "workbench/workflows/acquisition/run.py.lock"
+      ],
+      "inputs": [
+        "run/screening/candidates.json",
+        "workbench/workflows/acquisition/example/terrace-manual.json"
+      ],
+      "outputs": [
+        "run/manual/receipt.json",
+        "run/manual/library/wocat_wh_guidelines_2013.pdf",
+        "run/manual/cache/wocat_wh_guidelines_2013.pdf",
+        "run/manual/cache/wocat_wh_guidelines_2013.meta.json"
+      ]
+    },
+    {
+      "name": "stage and check the rainfall proposal",
+      "mode": "replay",
+      "rulesets": [
+        "terrace_staging"
+      ],
+      "instructions": [
+        "workbench/workflows/extraction/README.md",
+        "workbench/workflows/extraction/extract.py",
+        "workbench/workflows/extraction/claims.py",
+        "workbench/workflows/extraction/handoff.py",
+        "workbench/workflows/extraction/extract.py.lock"
+      ],
+      "inputs": [
+        "workbench/workflows/extraction/example/terrace-rainfall.json",
+        "run/screening/candidates.json",
+        "run/manual/receipt.json",
+        "run/manual/cache/wocat_wh_guidelines_2013.pdf"
+      ],
+      "outputs": [
+        "run/extraction/inventory.json",
+        "run/extraction/staging.json"
+      ]
+    },
+    {
+      "name": "rebuild the historical mapping",
+      "mode": "replay",
+      "rulesets": [
+        "historical_extraction_v1.5.1",
+        "historical_extraction_v1.6.0"
+      ],
+      "instructions": [
+        "workbench/examples/terrace-rainfall/README.md",
+        "workbench/examples/terrace-rainfall/run-workflow.py",
+        "workbench/examples/terrace-rainfall/replay.py",
+        "workbench/examples/terrace-rainfall/replay.py.lock",
+        "workbench/workflows/git_snapshot.py",
+        "workbench/workflows/method_definitions.py",
+        "workbench/workflows/run_record/record.py"
+      ],
+      "inputs": [
+        "workbench/method.lock.json",
+        "workbench/examples/terrace-rainfall/reviewed-claims.json",
+        "workbench/examples/terrace-rainfall/run-description.json"
+      ],
+      "outputs": [
+        "run/published-row.json"
+      ],
+      "ruleset_use": "Versions stamped on historical claims used by the compiler."
+    }
+  ]
+}

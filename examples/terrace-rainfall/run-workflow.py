@@ -11,6 +11,7 @@ from tempfile import TemporaryDirectory
 
 sys.dont_write_bytecode = True
 from replay import EXAMPLE, PRODUCER, git, snapshot  # noqa: E402
+from run_record.record import CATALOG, digest, file_path, make_record, save_record  # noqa: E402
 
 ROOT = EXAMPLE.parents[1]
 WORKFLOWS = ROOT / "workflows"
@@ -89,6 +90,36 @@ def main():
         uv.append("--offline")
     uv += ["--python", "3.12"]
     locked = [*uv, "--locked", "--script"]
+
+    description = read(EXAMPLE / "run-description.json")
+    source_refs = {CATALOG}
+    for stage in description["stages"]:
+        source_refs.update(
+            ref
+            for field in ("instructions", "inputs")
+            for ref in stage[field]
+            if ref.startswith("workbench/")
+        )
+    initial = {ref: digest(file_path(ref, ROOT, out)) for ref in source_refs}
+    description["tools"] = {
+        name: subprocess.check_output(command, text=True).strip()
+        for name, command in {
+            "git": ["git", "--version"],
+            "uv": ["uv", "--version"],
+            "stage_python": [*uv, "--no-project", "python", "--version"],
+        }.items()
+    }
+    description["execution"] = {
+        "offline": args.offline,
+        "used_local_pdf": bool(args.local_pdf),
+    }
+    description["pins"] = {
+        "intake_revision": INTAKE_REVISION,
+        "method_revision": read(ROOT / "method.lock.json")["revision"],
+        "historical_compiler_revision": read(EXAMPLE / "reviewed-claims.json")[
+            "producer_revision"
+        ],
+    }
 
     discovery = WORKFLOWS / "discovery"
     screen = out / "screening"
@@ -206,6 +237,28 @@ def main():
             ],
         },
     }
+    rules = read(ROOT / "rulesets/catalog.json")["entries"]
+    historical_stamps = {
+        claim["extraction_ruleset"]
+        for claim in read(EXAMPLE / "reviewed-claims.json")["claims"]
+    }
+    expected_stamps = {
+        rules[key]["version"] for key in description["stages"][-1]["rulesets"]
+    }
+    if (
+        unit["ruleset_version"] != rules["terrace_staging"]["version"]
+        or f" · discovery {rules['terrace_discovery']['version']}. "
+        not in (screen / "report.md").read_text(encoding="utf-8")
+        or historical_stamps != expected_stamps
+    ):
+        raise ValueError(
+            "Run record rulesets differ from screening, extraction or historical claims"
+        )
+    record = make_record(description, ROOT, out)
+    if any(record["sha256"][ref] != value for ref, value in initial.items()):
+        raise ValueError("Workbench inputs changed during the replay")
+    saved = save_record(record, out)
+    report["run_record_sha256"] = digest(saved)
     # A failed run retains its private diagnostic files; only a complete run has this receipt.
     pending = out / ".summary.tmp"
     pending.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
