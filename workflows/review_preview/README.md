@@ -61,3 +61,5 @@ The example interrupts the first changed record immediately after its replacemen
 For a private rehearsal, add `--rehearse-recovery` to the two-revision command above. Use different revisions to exercise a real change in history. The receipt reports whether an installation was interrupted. If the earlier replay changes no bytes, only the pre-push failure and retry are exercised. A retry with no changes should create no branch on the local remote.
 
 Git fetch, worktree creation, commit and push run against a disposable file-only remote. The first attempt must release its submission lock, retain its failed checkout for inspection by the rehearsal and leave all remote refs intact. The rehearsal uses the pinned record replay in place of the full generation command and simulates GitHub authentication and PR creation. Temporary repositories are removed on exit. Save the JSON receipt outside Git. Live decisions and submission stay in CIAT.
+
+To verify the deliverable after recovery, [rebuild the pinned public workbook](../public_workbook/README.md#rebuild-after-an-interrupted-review-submission).

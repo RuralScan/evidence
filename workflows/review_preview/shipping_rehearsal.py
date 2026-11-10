@@ -1,5 +1,7 @@
 """Exercise the pinned submission workflow with isolated, local Git repositories."""
 
+from __future__ import annotations
+
 from contextlib import redirect_stdout
 import io
 import os
@@ -24,7 +26,13 @@ def _install(root, records):
 
 
 def rehearse_shipping(
-    work: Path, earlier: dict, target: dict, pending: dict, expected: dict
+    work: Path,
+    earlier: dict,
+    target: dict,
+    pending: dict,
+    expected: dict,
+    *,
+    recovered_dir: Path | None = None,
 ):
     """Fail, advance local main, retry, and compare remote Git blobs to clean replay."""
     from nbs_ruralscan.schema_tools import submit_review as submit
@@ -198,10 +206,15 @@ def rehearse_shipping(
             require(set(paths) == changed, "Unexpected paths in retry commit")
         else:
             require(remember_refs() == before_retry, "No-op retry published a ref")
+        recovered = {}
         for name, data in expected.items():
             listed = git(origin, "ls-tree", "--name-only", revision, "--", name)
             body = git(origin, "show", f"{revision}:{name}") if listed else None
             require(body == data, "Committed records differ from clean replay")
+            recovered[name] = body
+        if recovered_dir is not None:
+            recovered_dir.mkdir(mode=0o700)
+            _install(recovered_dir, recovered)
 
     return {
         "record_install_interrupted": interrupted,
