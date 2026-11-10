@@ -1,6 +1,6 @@
 {
-  "source_revision": "157a26c2729c05cccf2b1d9374a63e28c97acac6",
-  "release_id": "26501e7f7037bfb6f26be9b5dad23f0eb1249967a968cc1b3b037d7fda714f8f",
+  "source_revision": "e5c8da02e72810956cfd179cb32cd137fc4ba398",
+  "release_id": "2ff6f85ed5493b25a8b2279c572d792cc23ed5251fa99463f1421a4380730f2b",
   "method": {
     "repository": "https://github.com/RuralScan/method.git",
     "revision": "247d5cf98d3dd6daf010aa5bfe51fad21ea35849",
