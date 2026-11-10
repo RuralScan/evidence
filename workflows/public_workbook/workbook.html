@@ -127,7 +127,7 @@ function overview() {
   const distinctSources=new Set([...distinct].map(id=>claimById.get(id).source_id));
   const linked=rows.filter(row=>row.evidence_ids.length).length;
   main.append(el('h2','Evidence behind the rows'),el('p',num(linked)+' of '+num(rows.length)+' rows cite evidence directly. Those rows reference '+num(distinct.size)+' distinct claims from '+num(distinctSources.size)+' sources. A claim can support several rows. Contextual references are identified separately on each row.'));
-  main.append(content('p',anchor('Read the six-practice cookbook','https://github.com/RuralScan/method/blob/baea86eee50ba9e6fc7cdb67c1115723aa1c4429/cookbook/README.md')));
+  main.append(content('p',anchor('Read the six-practice cookbook','https://github.com/RuralScan/method/blob/098041f9a683c60626fcb25b6cf375e17044e40b/cookbook/README.md')));
   main.append(el('h2','Release'),definition([['Status','Candidate analytical release'],['Release ID',el('code',publication.release_id)],['Source revision',upstream(publication.source_revision,'https://github.com/CIAT/nbs_ruralscan/tree/'+enc(publication.source_revision))]]));
 }
 function route() {

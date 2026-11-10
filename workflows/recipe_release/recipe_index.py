@@ -28,6 +28,7 @@ TABLES = {
             "Variable",
             "Family",
             "Function role",
+            "Reviewed numerical calibration",
             "Function options",
             "Function selected",
             "Spatially validated",
@@ -106,13 +107,20 @@ def table_cells(row, table, readiness):
     if table == "T4":
         entry = readiness[row["mapping_id"]]
         family = scope(row)
-        crop = row.get("relationship_params", {}).get("host_crop")
+        params = row.get("relationship_params", {})
+        calibration = params.get("reviewed_adaptation", {}).get(
+            "numerical_calibration", {}
+        )
+        crop = params.get("host_crop")
         if crop:
             family += f" / Host crop · {label(crop)}"
         cells = [
             label(row["variable"]),
             family,
             label(entry["role"]),
+            label(calibration["status"])
+            if calibration.get("status")
+            else "Not recorded",
             str(len(entry["functions"])),
             "Yes" if entry["readiness"]["effective_function_id"] else "No",
             "Yes" if entry["readiness"]["execution_ready"] else "No",
@@ -221,7 +229,7 @@ def render_index(release, summary, stems):
         "",
         "Counts are analytical rows. A source may contribute to several rows, and one topic can have separate rows for different families and contexts. Zero means no compiled row in this candidate.",
         "",
-        "[Check the release and reproduce the index](../../workflows/recipe_release/README.md) · [Read the recipe cookbook](https://github.com/RuralScan/method/blob/0af0f5599c8c71f38b2be40dbda71278cbadfbbe/handbook/start-here.md)",
+        "[Check the release and reproduce the index](../../workflows/recipe_release/README.md) · [Read the recipe cookbook](https://github.com/RuralScan/method/blob/098041f9a683c60626fcb25b6cf375e17044e40b/cookbook/README.md)",
         "",
     ]
     files["README.md"] = "\n".join(overview)

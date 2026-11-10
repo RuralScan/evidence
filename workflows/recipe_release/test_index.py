@@ -45,6 +45,10 @@ class IndexTests(unittest.TestCase):
             for crop in crops
         ]
 
+        records[0]["relationship_params"]["reviewed_adaptation"] = {
+            "numerical_calibration": {"status": "held", "reviewer": "private reviewer"}
+        }
+
         class Release:
             def table(self, practice, table):
                 return records
@@ -65,6 +69,9 @@ class IndexTests(unittest.TestCase):
         )
         for crop in crops:
             self.assertIn(f"Host crop · {crop.capitalize()} |", text)
+        self.assertIn("| Held | 0 | No | No |", text)
+        self.assertIn("| Not recorded | 0 | No | No |", text)
+        self.assertNotIn("private reviewer", text)
         self.assertNotIn("internal note", text)
 
     def test_existing_index_survives_retry(self):

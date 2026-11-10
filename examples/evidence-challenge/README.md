@@ -57,6 +57,6 @@ The extractor should report `Observed-use excerpt cannot establish a source-defi
 | WOCAT correction | The original numerical proposal fails. The corrected staging and inventory files match the verified terrace run byte-for-byte. Calibration stays on hold. |
 | Reviewer query | The reply keeps the question open. The checked answer becomes available for a decision. Approval follows the explicit Keep. |
 | Other review decisions | The off-scope row stays recoverable as a soft drop. The species-specific claim stays in the register under its taxon. Replaying the decisions adds zero events. |
-| Candidate rebuild | The pinned compiler reproduces 804 analytical rows across six practices, including 47 T4 mappings. Ten have selected functions and zero are spatially validated. All six T0 definitions agree with the pinned method. |
+| Candidate rebuild | The pinned compiler reproduces 806 analytical rows across six practices, including 49 T4 mappings. Ten have selected functions and zero are spatially validated. All six T0 definitions agree with the pinned method. |
 
 A complete run writes `result.json` plus the training acquisition and worksheet files to the new directory. An interrupted run retains its private files for inspection. Retry in a fresh directory. The review engine uses temporary records throughout. The candidate compiler reads the release’s own evidence and settings. Runtime adoption is a separate decision.
