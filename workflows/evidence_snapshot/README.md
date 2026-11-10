@@ -52,3 +52,39 @@ python3 "$tool" verify --profile review-support --ciat-repo "$repo" --base "$bas
 The verifier reports **11 scoped paths, 28 first-parent steps, 6 changed paths and 31 distinct file versions**. The base contains ten files. The priority register first appears with six entries at `04300b18c25059773bdabec7f4ac73b01654e3f0`. To reproduce that state, add `--at` with this full commit and choose a new export directory. Throughout this example, the gap register contains its header and zero reports. This count describes recorded reports only.
 
 The snapshot pins describe evidence history. For compiled recipes use the separate [recipe release check](../recipe_release/README.md), which has its own version and source revision.
+
+## Advance a private copy by one interval
+
+Start with a verified export at the base commit. A delta archive records each first-parent change and carries each new file version once. If a file reverts to its starting contents, the export reuses the verified seed bytes. The unit of transfer is a whole changed file, which preserves event order, corrections, drops and repeated rows.
+
+For a worked interval, set the following variables in the evidence repository. Use a local producer clone containing both commits and their Git objects.
+
+```sh
+repo=/path/to/nbs_ruralscan
+work=$(mktemp -d)
+tool=workflows/evidence_snapshot/rehearse.py
+base=23ce026d885f3a29a272ec693d4d10bf9bf8bf55
+target=e5c8da02e72810956cfd179cb32cd137fc4ba398
+```
+
+If starting from scratch, create the base export. If you already have the verified revision directory, set `seed` to its path and skip these three commands.
+
+```sh
+python3 "$tool" create --profile review-support --ciat-repo "$repo" \
+  --base "$base" --target "$base" --bundle "$work/seed.zip"
+python3 "$tool" verify --profile review-support --ciat-repo "$repo" \
+  --base "$base" --target "$base" --bundle "$work/seed.zip" --export-to "$work/seed"
+seed="$work/seed/$base"
+```
+
+```sh
+python3 "$tool" create-delta --profile review-support --ciat-repo "$repo" \
+  --base "$base" --target "$target" --bundle "$work/changes.zip"
+python3 "$tool" apply-delta --profile review-support --ciat-repo "$repo" \
+  --base "$base" --target "$target" --bundle "$work/changes.zip" \
+  --seed "$seed" --export-to "$work/advanced"
+```
+
+The result is a new revision directory at `$work/advanced/$target`. Each exported file is read-only. Keep the base export for rollback or to repeat the comparison. To retry, select a fresh output directory. The verifier compares the entire seed inventory and all archive members against the two Git pins before publishing. A seed for a different revision, a modified file or an unexpected extra file stops the operation.
+
+This interval spans seven commits. Four of the eleven scoped paths changed, and the archive contains eight new file versions. The target adds three source records and ten evidence records. Sixty-five existing evidence records changed, including two drops. The acquisition queue has three updated records, and nine events were appended to the evidence review log. All 229 search records match the seed. Browser drafts, staged files and compiled recipe releases have separate checkpoints.

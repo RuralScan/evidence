@@ -100,12 +100,25 @@ def history(repo, base, target, profile="core"):
     return manifest
 
 
+def delta_history(repo, base, target, profile="core"):
+    records = history(repo, base, target, profile)
+    return dict(records, format_version=3, kind="delta", profile=profile)
+
+
 def object_ids(records):
     ids = set(records["initial"].values())
     for step in records["changes"]:
         ids.update(step["updates"].values())
     ids.discard(None)
     return sorted(ids)
+
+
+def archive_ids(records):
+    ids = object_ids(records)
+    if records.get("kind") == "delta":
+        # A change can reuse any starting blob, including one from another path.
+        return sorted(set(ids).difference(records["initial"].values()))
+    return ids
 
 
 def destination(path, repo):
@@ -132,7 +145,7 @@ def destination(path, repo):
 def check_bundle(bundle, records, repo):
     # Derive the trusted manifest independently from both caller-supplied Git pins.
     # Comparing bytes preserves duplicate events, CSV quoting, row order and blanks.
-    ids = object_ids(records)
+    ids = archive_ids(records)
     members = ["manifest.json", *("objects/" + oid for oid in ids)]
     require(
         sorted(bundle.namelist()) == sorted(members), "Snapshot file inventory differs"
@@ -160,7 +173,7 @@ def create(repo, records, out):
         stage = Path(temp) / "snapshot.zip"
         with ZipFile(stage, "x", compression=ZIP_DEFLATED, compresslevel=4) as bundle:
             bundle.writestr("manifest.json", manifest_bytes(records))
-            for oid in object_ids(records):
+            for oid in archive_ids(records):
                 bundle.writestr(
                     "objects/" + oid, git("cat-file", "blob", oid, cwd=repo)
                 )
@@ -172,7 +185,7 @@ def create(repo, records, out):
         os.link(stage, out)
 
 
-def export_tables(bundle, records, commit, out, repo):
+def inventory_at(records, commit):
     files = records["initial"].copy()
     current = records["base"]
     for step in records["changes"]:
@@ -181,6 +194,10 @@ def export_tables(bundle, records, commit, out, repo):
         files.update(step["updates"])
         current = step["revision"]
     require(current == commit, "Requested revision is outside this snapshot")
+    return files
+
+
+def write_export(files, commit, out, repo, read_blob):
     out = destination(out, repo)
     # Publish the entire revision directory in one rename. Reserving its
     # parent with mkdir also protects unrelated empty directories on retries.
@@ -192,7 +209,7 @@ def export_tables(bundle, records, commit, out, repo):
                 continue
             path = stage / name
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_bytes(bundle.read("objects/" + oid))
+            path.write_bytes(read_blob(oid))
             path.chmod(0o400)
         out.mkdir(mode=0o700)
         try:
@@ -202,6 +219,72 @@ def export_tables(bundle, records, commit, out, repo):
             raise
 
 
+def export_tables(bundle, records, commit, out, repo):
+    require(records.get("kind") != "delta", "A delta requires its verified seed")
+    write_export(
+        inventory_at(records, commit),
+        commit,
+        out,
+        repo,
+        lambda oid: bundle.read("objects/" + oid),
+    )
+
+
+def seed_objects(repo, records, seed):
+    """Read each expected seed file once and retain the bytes verified against Git."""
+    require(
+        seed.name == records["base"] and not seed.is_symlink() and seed.is_dir(),
+        "Expected the exported base revision directory",
+    )
+    expected = {path: oid for path, oid in records["initial"].items() if oid}
+    directories = {parent for name in expected for parent in Path(name).parents}
+    found = set()
+    objects = {}
+
+    def raise_walk_error(error):
+        raise error
+
+    for root, dirs, files in os.walk(seed, onerror=raise_walk_error):
+        for name in dirs:
+            path = Path(root) / name
+            require(
+                not path.is_symlink() and path.relative_to(seed) in directories,
+                f"Unexpected directory in seed: {path.relative_to(seed)}",
+            )
+        for name in files:
+            path = Path(root) / name
+            key = path.relative_to(seed).as_posix()
+            require(
+                key in expected and not path.is_symlink() and path.is_file(),
+                f"Unexpected file in seed: {key}",
+            )
+            oid = expected[key]
+            data = path.read_bytes()
+            if oid not in objects:
+                objects[oid] = git("cat-file", "blob", oid, cwd=repo)
+            require(data == objects[oid], f"Seed differs from Git: {key}")
+            objects[oid] = data
+            found.add(key)
+    require(found == expected.keys(), "Seed file inventory differs")
+    return objects
+
+
+def apply_delta(bundle, records, seed, out, repo):
+    require(records.get("kind") == "delta", "Expected a delta manifest")
+    require(
+        not out.resolve().is_relative_to(seed.resolve()),
+        "Choose a destination outside the seed",
+    )
+    check_bundle(bundle, records, repo)
+    initial = seed_objects(repo, records, seed)
+    target = records["target"]
+
+    def read_blob(oid):
+        return initial[oid] if oid in initial else bundle.read("objects/" + oid)
+
+    write_export(inventory_at(records, target), target, out, repo, read_blob)
+
+
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     commands = cli.add_subparsers(dest="action", required=True)
@@ -209,7 +292,19 @@ def main():
         "create", help="Create and verify a new private snapshot"
     )
     check = commands.add_parser("verify", help="Compare an existing snapshot with Git")
-    for command in (build, check):
+    delta = commands.add_parser(
+        "create-delta", help="Pack changes since a private seed"
+    )
+    advance = commands.add_parser(
+        "apply-delta", help="Verify a seed and replay its delta"
+    )
+    advance.add_argument(
+        "--seed", required=True, type=Path, help="Exported base revision directory"
+    )
+    advance.add_argument(
+        "--export-to", required=True, type=Path, help="New private destination"
+    )
+    for command in (build, check, delta, advance):
         command.add_argument(
             "--profile",
             choices=PROFILES,
@@ -238,9 +333,14 @@ def main():
     args = cli.parse_args()
     if getattr(args, "at", None) and not args.export_to:
         cli.error("--at requires --export-to")
-    records = history(args.ciat_repo, args.base, args.target, args.profile)
-    if args.action == "create":
+    is_delta = args.action in {"create-delta", "apply-delta"}
+    read_history = delta_history if is_delta else history
+    records = read_history(args.ciat_repo, args.base, args.target, args.profile)
+    if args.action in {"create", "create-delta"}:
         create(args.ciat_repo, records, args.bundle)
+    elif args.action == "apply-delta":
+        with ZipFile(args.bundle) as bundle:
+            apply_delta(bundle, records, args.seed, args.export_to, args.ciat_repo)
     else:
         with ZipFile(args.bundle) as bundle:
             check_bundle(bundle, records, args.ciat_repo)
@@ -252,6 +352,10 @@ def main():
                     args.export_to,
                     args.ciat_repo,
                 )
+    if is_delta:
+        print(
+            f"Delta contains {len(archive_ids(records))} file versions beyond the seed."
+        )
     changed = {path for step in records["changes"] for path in step["updates"]}
     noun = "tables" if args.profile == "core" else "paths"
     print(
