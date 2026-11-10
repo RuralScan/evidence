@@ -32,6 +32,8 @@ Rehearse restoring browser drafts and feedback into a fresh or already-used prof
 
 Replay screening, source verification and extraction in one command, then reproduce the reviewed bench-terrace rainfall row from its historical inputs. [Run the terrace rainfall example](examples/terrace-rainfall/README.md)
 
+Practice entering a source, correcting a claim and resolving a review question on disposable records. The exercise ends with an independent six-practice candidate rebuild. [Try the evidence handoff exercise](examples/evidence-challenge/README.md)
+
 Rebuild the six-practice candidate release and check how many analytical rows and selectable functions each practice contributes. [Check the candidate release](workflows/recipe_release/README.md) · [View the verified counts](workflows/recipe_release/counts.md)
 
 ## Planned structure

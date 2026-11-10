@@ -1,0 +1,23 @@
+{
+  "votes": [
+    {
+      "evidence_id": "training_contour_tree_siting",
+      "decision": "ok",
+      "note": "Keep the siting observation. Numerical calibration stays open."
+    },
+    {
+      "evidence_id": "training_plot_description",
+      "decision": "drop",
+      "reason": "off_scope",
+      "note": "This sentence describes only the sample plot."
+    },
+    {
+      "evidence_id": "training_species_envelope",
+      "decision": "reclassify",
+      "reason": "species_envelope",
+      "claim_scope": "species_specific",
+      "taxon": "Faidherbia albida",
+      "note": "Retain this envelope on the named species."
+    }
+  ]
+}
