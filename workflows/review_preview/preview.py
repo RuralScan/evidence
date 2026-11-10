@@ -116,7 +116,14 @@ def main():
         type=Path,
         help="Local Git objects for the engine and record revisions",
     )
+    cli.add_argument(
+        "--rehearse-recovery",
+        action="store_true",
+        help="Interrupt a disposable local submission, advance its records and retry.",
+    )
     args = cli.parse_args()
+    if args.rehearse_recovery and args.records and not args.previous_records:
+        cli.error("Private recovery requires --previous-records and --records")
     if (
         args.example
         and (args.pending_dir or args.previous_records)
@@ -173,6 +180,7 @@ def main():
             "-I",
             "-B",
             str(HERE / "worker.py"),
+            *(["--rehearse-recovery"] if args.rehearse_recovery else []),
             str(code / "src"),
             str(records.resolve()),
             str(pending.resolve()),
