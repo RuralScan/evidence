@@ -7,5 +7,12 @@
     "manifest": "data-model/definition-snapshot.json",
     "sha256": "408719be0dac3c47ea5a87659c0da149785b6582954252c630b86283c3f306a0"
   },
+  "haiti_example": {
+    "runtime_revision": "e690d4e413d925c28c273945a5268ddbfb2d67cc",
+    "guide_revision": "25cb657a523c53911c4c1179d69f39f0ec907083",
+    "package": "agroforestry-t4/developer-v0.1.5",
+    "contract_sha256": "44060be57f2ac16234c20b0d4291a4188e265e0eaeef590fc82a1fa2491de5cf",
+    "policy_id": "planted_terrain_soil_v1"
+  },
   "practices": ["agroforestry", "forest_restoration", "mangrove_restoration", "riparian_buffer", "water_harvesting_conservation", "wetland_management"]
 }

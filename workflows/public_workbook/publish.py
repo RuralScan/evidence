@@ -27,8 +27,26 @@ def render(template, data):
     return template.replace(marker, encoded)
 
 
-def publish(source, release, summary, output, check, *, recovered_evidence=None):
+def publish(
+    source, release, summary, output, check, *, recovered_evidence=None, haiti_lock=None
+):
     data = build_data(source, release, summary, recovered_evidence=recovered_evidence)
+    if haiti_lock:
+        from .haiti import handoff
+
+        example = handoff(source, release, summary["source_revision"], haiti_lock)
+        row_ids = {
+            row["id"]
+            for row in data["rows"]
+            if row["table"] == "T4"
+            and row["family"] == "agroforestry__planted_silvoarable"
+            and row["evidence_ids"]
+        }
+        require(
+            all(c["id"] in row_ids for c in example["criteria"]),
+            "Haiti criterion lacks a workbook mapping with direct evidence",
+        )
+        data["haiti_example"] = example
     html = render((HERE / "workbook.html").read_text(encoding="utf-8"), data)
     encoded = html.encode("utf-8")
     if check:
