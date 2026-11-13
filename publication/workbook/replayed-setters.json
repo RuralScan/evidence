@@ -1,0 +1,426 @@
+{
+  "assessment_revision": "e930734c0705406f14757ee3e62e90537e8d4095",
+  "by_record": {
+    "agroforestry__asset_threat__drought": [],
+    "agroforestry__asset_threat__extreme_rainfall": [
+      "ev_asset_extreme_rainfall_wocat_1358_2017_local_rainstorm"
+    ],
+    "agroforestry__asset_threat__fire": [],
+    "agroforestry__asset_threat__flood": [
+      "ev_asset_flood_wocat_1358_2017_general_river_flood"
+    ],
+    "agroforestry__asset_threat__heat_stress": [
+      "ev_crop_yield_ipccar6ch5_1"
+    ],
+    "agroforestry__asset_threat__wind_cyclone": [],
+    "agroforestry__biodiversity_priority": [
+      "ev_biodiversity_outcome_biswas22_1",
+      "ev_biodiversity_outcome_giraldo10_1",
+      "ev_biodiversity_outcome_nguyen26_8",
+      "ev_biodiversity_outcome_niether20_1"
+    ],
+    "agroforestry__carbon_sequestration_potential": [
+      "ev_carbon_sequestration_hawkins24_1",
+      "ev_carbon_sequestration_kim16_1",
+      "ev_carbon_sequestration_murg13_2",
+      "ev_soil_organic_carbon_biswas22_1"
+    ],
+    "agroforestry__catchment_water_yield": [
+      "ev_groundwater_recharge_potential_ipccar6_1",
+      "ev_water_yield_zhu19_1"
+    ],
+    "agroforestry__drought__all": [
+      "ev_crop_yield_morel24_1",
+      "ev_crop_yield_sida18_2",
+      "ev_forage_productivity_singhrao08_2"
+    ],
+    "agroforestry__drought_hazard": [
+      "ev_drought_hazard_abdul18_1",
+      "ev_drought_hazard_faosen24_17",
+      "ev_drought_hazard_moran18_1",
+      "ev_drought_hazard_singhrao08_1",
+      "ev_drought_hazard_welc02_2",
+      "ev_t3_drought_importance_quandt17_8"
+    ],
+    "agroforestry__fire__all": [],
+    "agroforestry__flood__all": [],
+    "agroforestry__flood_hazard": [
+      "ev_t3_flood_conclusion_quandt17_11"
+    ],
+    "agroforestry__food_insecurity": [],
+    "agroforestry__gender_inequity": [
+      "ev_gender_inequity_botreij09_34",
+      "ev_gender_inequity_kiptot11_2",
+      "ev_gender_inequity_kiptot11_3",
+      "ev_gender_inequity_kiptot11_4"
+    ],
+    "agroforestry__heat_stress__all": [],
+    "agroforestry__heat_stress_hazard": [],
+    "agroforestry__production_gap": [],
+    "agroforestry__rural_poverty": [],
+    "agroforestry__soil_erosion_risk": [],
+    "agroforestry__water_quality_risk": [
+      "ev_nutrient_removal_zhu19_2",
+      "ev_sediment_retention_wocat_507_2019_downstream_siltation"
+    ],
+    "agroforestry__water_stress": [
+      "ev_soil_water_retention_kuyah19_1"
+    ],
+    "agroforestry__waterlogging__all": [
+      "ev_crop_yield_ram11_2",
+      "ev_waterlogging_hazard_dobhal24_9"
+    ],
+    "agroforestry__wind_cyclone__all": [
+      "ev_crop_yield_philpott08_6",
+      "ev_wind_cyclone_hazard_taboada20_5",
+      "ev_windbreak_protection_hao26_1",
+      "ev_windbreak_protection_lasco14_1"
+    ],
+    "forest_restoration__asset_threat__drought": [
+      "ev_climate_shock_laughlin18_1",
+      "ev_establishment_survival_gross26_1",
+      "ev_establishment_survival_gross26_3",
+      "ev_establishment_survival_svejcar23_2"
+    ],
+    "forest_restoration__asset_threat__extreme_rainfall": [],
+    "forest_restoration__asset_threat__fire": [],
+    "forest_restoration__asset_threat__flood": [
+      "ev_flood_hazard_preece23_1"
+    ],
+    "forest_restoration__asset_threat__heat_stress": [
+      "ev_establishment_survival_gross26_2",
+      "ev_establishment_survival_svejcar23_1"
+    ],
+    "forest_restoration__asset_threat__landslide": [
+      "ev_asset_landslide_wocat_4372_2019_landslide",
+      "ev_asset_landslide_wocat_5243_2019_landslide"
+    ],
+    "forest_restoration__asset_threat__waterlogging": [
+      "ev_establishment_survival_loureiro21_1"
+    ],
+    "forest_restoration__asset_threat__wind_cyclone": [],
+    "forest_restoration__biodiversity_priority": [],
+    "forest_restoration__carbon_sequestration_potential": [
+      "ev_carbon_sequestration_jakovac24_1",
+      "ev_carbon_sequestration_wocat_5243_2019_emission_of_carbon_and_greenhouse_gases",
+      "ev_soil_organic_carbon_yang23_3"
+    ],
+    "forest_restoration__catchment_water_yield": [
+      "ev_water_regulation_meaza22_1",
+      "ev_water_yield_zhang17_6"
+    ],
+    "forest_restoration__drought__all": [
+      "ev_soil_water_retention_meaza22_1"
+    ],
+    "forest_restoration__drought_hazard": [
+      "ev_drought_hazard_teo22_1",
+      "ev_drought_hazard_wocat_2325_2017_drought_impacts",
+      "ev_drought_hazard_wocat_5243_2019_drought_impacts"
+    ],
+    "forest_restoration__fire__all": [
+      "ev_fire_hazard_ieg13_1",
+      "ev_fire_hazard_wocat_1607_2014_fire_risk",
+      "ev_fire_hazard_wocat_5243_2019_fire_risk"
+    ],
+    "forest_restoration__flood__all": [
+      "ev_flood_hazard_bahremand06_4",
+      "ev_flood_hazard_bruij90_6",
+      "ev_flood_hazard_filoso17_1",
+      "ev_flood_hazard_herath25_1",
+      "ev_flood_hazard_zhang17_1"
+    ],
+    "forest_restoration__flood_hazard": [
+      "ev_flood_hazard_filoso17_1"
+    ],
+    "forest_restoration__food_insecurity": [
+      "ev_food_security_kimwanga26_3"
+    ],
+    "forest_restoration__heat_stress__all": [],
+    "forest_restoration__heat_stress_hazard": [],
+    "forest_restoration__production_gap": [
+      "ev_crop_yield_mezgebo26_1",
+      "ev_crop_yield_mezgebo26_2",
+      "ev_crop_yield_mezgebo26_3",
+      "ev_crop_yield_wocat_1072_2011_crop_production"
+    ],
+    "forest_restoration__rural_poverty": [
+      "ev_economic_return_gefieo19_1",
+      "ev_economic_return_ramamo12_1",
+      "ev_economic_return_seixas24_1",
+      "ev_economic_return_snilstveit19_1",
+      "ev_economic_return_snilstveit19_2",
+      "ev_farm_asset_index_kimwanga26_11",
+      "ev_farm_asset_index_kimwanga26_14",
+      "ev_household_income_ieg13_1",
+      "ev_household_income_ieg18_2",
+      "ev_household_income_iufro20_3",
+      "ev_household_income_iufro20_5",
+      "ev_household_income_iufro20_6",
+      "ev_household_income_iufro20_7",
+      "ev_household_income_le12_1",
+      "ev_household_income_samii14_5",
+      "ev_household_income_snilstveit19_2"
+    ],
+    "forest_restoration__soil_erosion_risk": [],
+    "forest_restoration__water_quality_risk": [
+      "ev_sediment_retention_bruij90_13"
+    ],
+    "forest_restoration__water_stress": [
+      "ev_water_access_deficit_wocat_1607_2014_water_quantity",
+      "ev_water_access_deficit_wocat_5243_2019_water_quantity"
+    ],
+    "forest_restoration__wind_cyclone__all": [
+      "ev_wind_cyclone_hazard_wocat_5243_2019_impacts_of_cyclones_rain_storms"
+    ],
+    "mangrove_restoration__asset_threat__drought": [
+      "ev_establishment_survival_kodikara17_2"
+    ],
+    "mangrove_restoration__asset_threat__extreme_rainfall": [
+      "ev_asset_extreme_rainfall_wocat_1442_2011_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_4300_2019_local_thunderstorm"
+    ],
+    "mangrove_restoration__asset_threat__flood": [
+      "ev_establishment_survival_kodikara17_3"
+    ],
+    "mangrove_restoration__asset_threat__sedimentation": [
+      "ev_establishment_survival_gijsman21_1"
+    ],
+    "mangrove_restoration__asset_threat__waterlogging": [
+      "ev_establishment_survival_kodikara17_1"
+    ],
+    "mangrove_restoration__asset_threat__wind_cyclone": [
+      "ev_asset_wind_cyclone_wocat_1442_2011_local_windstorm"
+    ],
+    "mangrove_restoration__biodiversity_priority": [
+      "ev_biodiversity_outcome_su21_1"
+    ],
+    "mangrove_restoration__carbon_sequestration_potential": [
+      "ev_carbon_sequestration_ahammad13_3",
+      "ev_carbon_sequestration_su21_1",
+      "ev_frmg_vnppar_3"
+    ],
+    "mangrove_restoration__flood__all": [
+      "ev_frmg_erw09_2",
+      "ev_frmg_nara16_5"
+    ],
+    "mangrove_restoration__flood_hazard": [
+      "ev_avoided_damage_value_badola05_10"
+    ],
+    "mangrove_restoration__rural_poverty": [
+      "ev_economic_return_wbmang25_1"
+    ],
+    "mangrove_restoration__soil_erosion_risk": [
+      "ev_frmg_vnppar_1"
+    ],
+    "mangrove_restoration__wind_cyclone__all": [],
+    "riparian_buffer__asset_threat__flood": [
+      "ev_flood_hazard_cole20_3",
+      "ev_flood_hazard_schultz95_3"
+    ],
+    "riparian_buffer__biodiversity_priority": [
+      "ev_biodiversity_outcome_cole20_4",
+      "ev_biodiversity_outcome_lee04_1",
+      "ev_biodiversity_outcome_lee04_2",
+      "ev_biodiversity_outcome_lee04_3",
+      "ev_biodiversity_outcome_lee04_4",
+      "ev_biodiversity_outcome_lee04_6",
+      "ev_biodiversity_outcome_lee04_7",
+      "ev_biodiversity_outcome_meli19_1",
+      "ev_biodiversity_outcome_meli19_2",
+      "ev_biodiversity_outcome_meli19_6"
+    ],
+    "riparian_buffer__carbon_sequestration_potential": [
+      "ev_carbon_sequestration_cole20_1",
+      "ev_carbon_sequestration_lang22_1"
+    ],
+    "riparian_buffer__flood__all": [
+      "ev_flood_hazard_meli19_4"
+    ],
+    "riparian_buffer__flood_hazard": [
+      "ev_flood_hazard_meli19_4"
+    ],
+    "riparian_buffer__production_gap": [
+      "ev_crop_yield_osbo93_18"
+    ],
+    "riparian_buffer__soil_erosion_risk": [],
+    "riparian_buffer__water_quality_risk": [],
+    "water_harvesting_conservation__asset_threat__drought": [
+      "ev_climate_shock_barr05_6",
+      "ev_drought_hazard_iegtun13_2"
+    ],
+    "water_harvesting_conservation__asset_threat__extreme_rainfall": [
+      "ev_asset_extreme_rainfall_wocat_1219_2014_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1493_2011_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1528_2012_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1553_2012_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1613_2014_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1614_2014_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1616_2014_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_1652_2014_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_6715_2023_local_rainstorm",
+      "ev_asset_extreme_rainfall_wocat_6729_2023_local_thunderstorm"
+    ],
+    "water_harvesting_conservation__asset_threat__fire": [
+      "ev_asset_fire_wocat_5210_2019_forest_fire"
+    ],
+    "water_harvesting_conservation__asset_threat__flood": [],
+    "water_harvesting_conservation__asset_threat__landslide": [],
+    "water_harvesting_conservation__asset_threat__sedimentation": [],
+    "water_harvesting_conservation__asset_threat__wind_cyclone": [],
+    "water_harvesting_conservation__biodiversity_priority": [],
+    "water_harvesting_conservation__carbon_sequestration_potential": [
+      "ev_soil_organic_carbon_locat20_1"
+    ],
+    "water_harvesting_conservation__catchment_water_yield": [],
+    "water_harvesting_conservation__drought__all": [
+      "ev_crop_yield_kosm18_4",
+      "ev_crop_yield_roose94_2"
+    ],
+    "water_harvesting_conservation__drought_hazard": [
+      "ev_drought_hazard_sime15h2_1"
+    ],
+    "water_harvesting_conservation__fire__all": [
+      "ev_fire_hazard_roose06_1"
+    ],
+    "water_harvesting_conservation__flood__all": [
+      "ev_flood_hazard_heusch95_1",
+      "ev_flood_hazard_luca21_3",
+      "ev_flood_hazard_ritc21_1",
+      "ev_flood_hazard_roose17_1",
+      "ev_flood_hazard_roose17_3",
+      "ev_flood_hazard_roose94_3",
+      "ev_flood_hazard_wocat_6715_2023_downstream_flooding",
+      "ev_flood_hazard_yem12_4",
+      "ev_runoff_reduction_bergaoui00_4",
+      "ev_runoff_reduction_bergaoui00_7",
+      "ev_runoff_reduction_locat20_1"
+    ],
+    "water_harvesting_conservation__flood_hazard": [
+      "ev_flood_hazard_heusch95_1",
+      "ev_flood_hazard_roose94_3"
+    ],
+    "water_harvesting_conservation__food_insecurity": [],
+    "water_harvesting_conservation__heat_stress__all": [
+      "ev_crop_yield_mala24_5"
+    ],
+    "water_harvesting_conservation__production_gap": [],
+    "water_harvesting_conservation__rural_poverty": [
+      "ev_economic_return_adim16_4"
+    ],
+    "water_harvesting_conservation__soil_erosion_risk": [],
+    "water_harvesting_conservation__water_quality_risk": [],
+    "water_harvesting_conservation__water_stress": [
+      "ev_water_access_deficit_wocat_1528_2012_water_quantity"
+    ],
+    "water_harvesting_conservation__waterlogging__all": [],
+    "water_harvesting_conservation__wind_cyclone__all": [
+      "ev_wind_cyclone_hazard_wocat_7778_2026_impacts_of_cyclones_rain_storms"
+    ],
+    "wetland_management__asset_threat__drought": [
+      "ev_climate_shock_hooi24_5",
+      "ev_climate_shock_hooi24_6",
+      "ev_wgy_blr_6",
+      "ev_wgy_ram_22"
+    ],
+    "wetland_management__asset_threat__extreme_rainfall": [],
+    "wetland_management__asset_threat__fire": [
+      "ev_wet_assetfire_budi20_1",
+      "ev_wgy_ram_20"
+    ],
+    "wetland_management__asset_threat__flood": [
+      "ev_climate_shock_doh18_1",
+      "ev_wet_assetflood_budi20_1",
+      "ev_wgy_ram_21"
+    ],
+    "wetland_management__biodiversity_priority": [
+      "ev_biodiversity_outcome_bgicr_1",
+      "ev_biodiversity_outcome_bgicr_2",
+      "ev_biodiversity_outcome_ghicr_1",
+      "ev_biodiversity_outcome_liu24_1",
+      "ev_biodiversity_outcome_meli14_1",
+      "ev_biodiversity_outcome_meli14_3"
+    ],
+    "wetland_management__carbon_sequestration_potential": [
+      "ev_carbon_sequestration_evan21_4",
+      "ev_carbon_sequestration_gunt20_1",
+      "ev_carbon_sequestration_gunt20_2",
+      "ev_carbon_sequestration_gunt20_6",
+      "ev_carbon_sequestration_ojan20_5",
+      "ev_carbon_sequestration_tail20w1_1",
+      "ev_carbon_sequestration_tan20_1",
+      "ev_carbon_sequestration_wils16_5",
+      "ev_carbon_sequestration_xu25_3",
+      "ev_carbon_sequestration_zou22_2",
+      "ev_carbon_sequestration_zou22_7"
+    ],
+    "wetland_management__catchment_water_yield": [
+      "ev_water_yield_bull03_6",
+      "ev_water_yield_bull03_9"
+    ],
+    "wetland_management__fire__all": [
+      "ev_fire_hazard_jauhiainen16_5",
+      "ev_fire_hazard_tauf23_1",
+      "ev_wet_fire_budi20_1",
+      "ev_wet_fire_budi20_2"
+    ],
+    "wetland_management__flood__all": [
+      "ev_flood_hazard_feder22_4",
+      "ev_flood_hazard_gour20_4",
+      "ev_flood_hazard_jacob15_5",
+      "ev_flood_hazard_nara16_1",
+      "ev_flood_hazard_rowl26w1_1",
+      "ev_flood_hazard_shep11_1",
+      "ev_flood_hazard_shep11_2",
+      "ev_flood_hazard_worl23_4",
+      "ev_wetflA_gatis_lag_reversal",
+      "ev_wetflA_gatis_peakflow",
+      "ev_wetflA_gatis_q5_highflows",
+      "ev_wetflA_shut_peakq_N",
+      "ev_wetflA_shut_peakq_O",
+      "ev_wetflA_shut_peakq_largestorm_N",
+      "ev_wetflA_shut_peakq_largestorm_O"
+    ],
+    "wetland_management__flood_hazard": [
+      "ev_flood_hazard_feder22_4",
+      "ev_flood_hazard_gour20_4",
+      "ev_flood_hazard_jacob15_5",
+      "ev_flood_hazard_worl23_4",
+      "ev_wetflA_acre_inundation_stage_up",
+      "ev_wetflA_gatis_lag_reversal"
+    ],
+    "wetland_management__food_insecurity": [
+      "ev_food_security_fp034e_4"
+    ],
+    "wetland_management__production_gap": [
+      "ev_wgy_poy_2"
+    ],
+    "wetland_management__rural_poverty": [
+      "ev_wgy_poy_1"
+    ],
+    "wetland_management__soil_erosion_risk": [
+      "ev_erosion_hazard_liu24_1"
+    ],
+    "wetland_management__water_quality_risk": [
+      "ev_nutrient_removal_meli14_5",
+      "ev_nutrient_removal_ury23w1_3",
+      "ev_nutrient_removal_ury23w1_4"
+    ],
+    "wetland_management__water_stress": [
+      "ev_wgy_lao_1"
+    ],
+    "wetland_management__waterlogging__all": [],
+    "wetland_management__wind_cyclone__all": [
+      "ev_avoided_damage_value_sun20_7"
+    ]
+  },
+  "producer_revision": "e5c8da02e72810956cfd179cb32cd137fc4ba398",
+  "release_id": "2ff6f85ed5493b25a8b2279c572d792cc23ed5251fa99463f1421a4380730f2b",
+  "tested_findings_per_practice": {
+    "agroforestry": 751,
+    "forest_restoration": 429,
+    "mangrove_restoration": 122,
+    "riparian_buffer": 167,
+    "water_harvesting_conservation": 1044,
+    "wetland_management": 537
+  }
+}
