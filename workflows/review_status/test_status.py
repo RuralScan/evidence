@@ -68,6 +68,23 @@ class StatusTests(unittest.TestCase):
         )
         self.assertTrue(status["rows"][HEADLINE]["rating_reviews"])
 
+    def test_historical_rename_excludes_only_the_counter_duplicate(self):
+        data = json.loads((PUBLISHED / "review-status.json").read_bytes())
+        historical = data["unmatched_finding_reviews"]
+        key = "ev_asset_extreme_rainfall_wocat_6716_2023_17"
+        alias = historical[key]
+        self.assertEqual(alias["disposition"], "renamed")
+        self.assertEqual(
+            sum(r["disposition"] == "deferred" for r in historical.values()), 7
+        )
+        duplicate = data["findings"][alias["current_evidence_id"]]
+        self.assertTrue(duplicate["excluded"])
+        self.assertEqual(duplicate["latest_event"]["historical_evidence_id"], key)
+        self.assertEqual(duplicate["latest_event"]["line"], 1626)
+        survivor = data["findings"][alias["active_sibling_id"]]
+        self.assertFalse(survivor["excluded"])
+        self.assertIsNone(survivor["latest_event"])
+
     def test_unknown_and_empty_coverage(self):
         self.assertIsNone(coverage([], [], {})["provisional"])
         self.assertIsNone(coverage(["A"], [], {})["provisional"])

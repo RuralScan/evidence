@@ -273,6 +273,58 @@ def roose_replay(repo, rev, rows):
     return affected
 
 
+def historical_duplicate_rename(repo, edition):
+    """Verify CIAT #293 renamed both WOCAT copies without changing their dispositions."""
+    commit = "e83f489f33cee0c692955c4261f8918dafcd0a67"
+    path = "schema/registers/EV_evidence_register.json"
+    before, after = [
+        {r["evidence_id"]: r for r in read(repo, rev, path)}
+        for rev in (commit + "^1", commit)
+    ]
+    targets = []
+    for suffix, excluded in [("17", True), ("landslide", False)]:
+        old = "ev_asset_extreme_rainfall_wocat_6716_2023_" + suffix
+        new = "ev_asset_landslide_wocat_6716_2023_" + suffix
+        original = before[old]
+        require(
+            new not in before and old not in after and old not in edition,
+            "Ambiguous hazard rename",
+        )
+        expected = dict(
+            original,
+            evidence_id=new,
+            context=dict(original["context"], hazard_type="landslide"),
+        )
+        require(after[new] == expected, "CIAT rename changed other evidence fields")
+        require(
+            (edition[new].get("review_state") == "dropped") == excluded,
+            "WOCAT copy disposition differs",
+        )
+        require(
+            all(
+                edition[new].get(k) == original.get(k)
+                for k in ("source_id", "quote", "locator")
+            ),
+            "WOCAT source or locator differs",
+        )
+        targets.append((old, new))
+    old, duplicate = targets[0]
+    active = targets[1][1]
+    require(
+        all(
+            edition[duplicate][k] == edition[active][k]
+            for k in ("source_id", "quote", "locator")
+        ),
+        "Distinct WOCAT profiles",
+    )
+    return old, {
+        "disposition": "renamed",
+        "current_evidence_id": duplicate,
+        "active_sibling_id": active,
+        "rename_commit": commit,
+    }
+
+
 def build(repo, workbook, assessed):
     pin = json.loads(PIN.read_bytes())
     rev = pin["source_revision"]
@@ -293,6 +345,21 @@ def build(repo, workbook, assessed):
     events = defaultdict(list)
     for r, origin in logged(repo, rev, FINDING_LOG):
         events[r["evidence_id"]].append(public_event(r, origin))
+    register = {
+        r["evidence_id"]: r
+        for r in read(repo, rev, "schema/registers/EV_evidence_register.json")
+    }
+    old_id, rename = historical_duplicate_rename(repo, register)
+    new_id = rename["current_evidence_id"]
+    require(
+        events[old_id] and events[old_id][-1]["decision"] == "drop",
+        "Missing duplicate drop",
+    )
+    events[new_id] = sorted(
+        events[new_id]
+        + [dict(e, historical_evidence_id=old_id) for e in events[old_id]],
+        key=lambda e: e["line"],
+    )
     cards = navigation(repo)
     live_register = read(repo, LIVE, "docs/dashboard_data.json")["registers"][
         "EV_evidence_register"
@@ -301,8 +368,7 @@ def build(repo, workbook, assessed):
         r["evidence_id"] for r in live_register if r.get("review_state") != "dropped"
     }
     findings = {}
-    for ev in read(repo, rev, "schema/registers/EV_evidence_register.json"):
-        key = ev["evidence_id"]
+    for key, ev in register.items():
         findings[key] = {
             **finding_state(ev, events[key]),
             "live_queue_available": key in live_active,
@@ -327,7 +393,9 @@ def build(repo, workbook, assessed):
             "latest_event": events[key][-1],
             "deferred_register": deferred_path if archived else None,
             "deferred_review_state": archived.get("review_state") if archived else None,
+            "disposition": "deferred" if archived else "unresolved",
         }
+    unmatched[old_id].update(rename)
     rows = {}
     for item in data["rows"]:
         table, practice, key = item["table"], item["practice"], item["id"]
