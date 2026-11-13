@@ -88,3 +88,27 @@ python3 "$tool" apply-delta --profile review-support --ciat-repo "$repo" \
 The result is a new revision directory at `$work/advanced/$target`. Each exported file is read-only. Keep the base export for rollback or to repeat the comparison. To retry, select a fresh output directory. The verifier compares the entire seed inventory and all archive members against the two Git pins before publishing. A seed for a different revision, a modified file or an unexpected extra file stops the operation.
 
 This interval spans seven commits. Four of the eleven scoped paths changed, and the archive contains eight new file versions. The target adds three source records and ten evidence records. Sixty-five existing evidence records changed, including two drops. The acquisition queue has three updated records, and nine events were appended to the evidence review log. All 229 search records match the seed. Browser drafts, staged files and compiled recipe releases have separate checkpoints.
+
+## Register migration seed
+
+[Browse the registers](../../registers/) or read the [machine-readable manifest](../../registers/manifest.json). This is the starting copy for migration at [CIAT #691](https://github.com/CIAT/nbs_ruralscan/pull/691), commit `e43c42bd581dba791ce1f1697b6b41952ab0cfe3`. Public issues already receive submissions in RuralScan/evidence. CIAT retains authority to update the registers during this preparation stage.
+
+The manifest gives each file's source path, SHA-256, size and CSV record count, plus the exact Git objects for external inputs. The seed includes the seven core tables and four review-support files listed above, six configuration registers, rating setters, the ranking and flags, benchmark divergences, and the extraction sweep and learning history. Finding decisions, rating reviews and method decisions have separate tables. The method ledger preserves every scientific decision ID, question, option, recommendation, recorded outcome and status. Its public copy omits the named task-assignment column (`owner`). The manifest records hashes for both representations. All other files match the source bytes exactly.
+
+The pinned source commit supplies the remaining compiler inputs, historical extraction rules, review batches and archive. Open a source path at that commit to reproduce it, including the [review batch index](https://github.com/CIAT/nbs_ruralscan/blob/e43c42bd581dba791ce1f1697b6b41952ab0cfe3/docs/review/index.json) and [answered holds](https://github.com/CIAT/nbs_ruralscan/blob/e43c42bd581dba791ce1f1697b6b41952ab0cfe3/docs/review/ratings_top60_holds_answered_2026-11-13.json). Raw source files continue to use their existing library locators.
+
+### Verify locally
+
+Use a CIAT clone or bare repository containing the pinned commit. Python's standard library can verify the transferred records. Add `--rebuild` in the evidence-checks Python environment to apply the destination register bytes to a disposable copy of the pinned compiler and compare the T3, T4, T6 and T6E outputs for all six practices with their audited tables.
+
+```sh
+python3 workflows/evidence_snapshot/verify_registers.py --ciat-repo /path/to/nbs_ruralscan --rebuild
+```
+
+To reproduce the directory independently, pass `--export-to /path/to/new-folder`. The command refuses to overwrite an existing destination. The initial parity check catches changed or missing records while CIAT is still the writer. At the official switch, preserve this seed by its RuralScan Git commit and validate later changes as reviewed deltas against it. The switch requires reconciliation of any newer CIAT writes, the destination apply path and protection of both repositories' register paths.
+
+### Reconciliation at the merge
+
+Compared with parent `69f53985`, the evidence register gained seven IDs, changed 83 existing records and removed zero. All 6,839 findings resolve to the 834 registered sources. The search register has 252 records. The finding log grew from 3,993 to 4,083 events, with its original sequence intact. The 90 additional events include the 60 Top 60 votes (23 approved, nine soft-dropped, 28 held), 21 further attributed corrections, eight AI correction events and one supersession. The 37 rating-review events are byte-identical to the parent. The method ledger moved 22 Round 7 questions to decided, parked three, and added 18 open Round 8 questions.
+
+The 28 original holds correspond to 29 cards awaiting a human response. The Thierfelder finding was superseded by two successor findings. Its original review and soft-dropped evidence record remain traceable. The remaining 27 held IDs occur directly in the answered batch. A source correction or an AI answer does not establish human sign-off. The prospective T4 Evans correction stays staged outside these committed records.

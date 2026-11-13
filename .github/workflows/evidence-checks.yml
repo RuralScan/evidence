@@ -34,3 +34,5 @@ jobs:
         run: python -m unittest discover -v -s workflows/review_status
       - name: Check authenticated submission handling
         run: python -m unittest discover -v -s workflows/submissions
+      - name: Verify the starting registers and rebuild all six practices
+        run: python workflows/evidence_snapshot/verify_registers.py --ciat-repo "$CIAT_TEST_REPO" --rebuild

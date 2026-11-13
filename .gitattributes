@@ -1,0 +1,2 @@
+# Preserve reviewed register bytes (including embedded line breaks) on every OS.
+/registers/** -text
