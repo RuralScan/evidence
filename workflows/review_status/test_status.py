@@ -74,15 +74,41 @@ class StatusTests(unittest.TestCase):
         self.assertFalse(coverage([], [], {}, complete=True)["provisional"])
         self.assertEqual(
             finding_state(
-                {"source_id": "s", "reviewer_ok": False}, {"decision": "reopen"}
+                {"source_id": "s", "reviewer_ok": False},
+                [{"decision": "reopen", "actor_kind": "human"}],
             )["status"],
             "unreviewed",
         )
         contradictory = finding_state(
-            {"source_id": "s", "reviewer_ok": True}, {"decision": "flag"}
+            {"source_id": "s", "reviewer_ok": True},
+            [{"decision": "flag", "actor_kind": "human"}],
         )
         self.assertTrue(contradictory["reconciliation_required"])
         self.assertEqual(contradictory["status"], "held")
+
+    def test_automation_cannot_grant_human_signoff(self):
+        ev = {"source_id": "test", "reviewer_ok": True}
+        auto = {"decision": "ok", "actor_kind": "automated"}
+        human = {"decision": "ok", "actor_kind": "human"}
+        flag = {"decision": "flag", "actor_kind": "human"}
+        for history, expected in [
+            ([auto], "unreviewed"),
+            ([flag, auto], "held"),
+            ([human, auto], "signed_off"),
+            ([flag, human], "signed_off"),
+        ]:
+            self.assertEqual(finding_state(ev, history)["status"], expected)
+        s = json.loads((PUBLISHED / "review-status.json").read_bytes())
+        for key in ["ev_wet_assetflood_budi20_1", "ev_fire_hazard_tauf23_1"]:
+            self.assertEqual(s["findings"][key]["status"], "unreviewed")
+        self.assertTrue(s["findings"][FLOOD]["live_queue_available"])
+        self.assertFalse(s["findings"][DROUGHT]["live_queue_available"])
+        row = s["rows"]["water_harvesting_conservation__flood__all"]
+        self.assertLess(row["tested_count"], row["practice_removal_count"])
+        self.assertIn(
+            "ev_t6_carbon_mitigation_potential_zomer14_5",
+            s["unmatched_finding_reviews"],
+        )
 
     @unittest.skipUnless(
         os.environ.get("CIAT_TEST_REPO"), "Set CIAT_TEST_REPO to a full CIAT clone"
@@ -141,7 +167,7 @@ class StatusTests(unittest.TestCase):
             self.assertEqual((agreed, conflicts), ({}, [key]))
             self.assertEqual(previous, files.log.read_bytes())
             self.assertEqual(
-                finding_state({"source_id": "s", "reviewer_ok": False}, None)["status"],
+                finding_state({"source_id": "s", "reviewer_ok": False}, [])["status"],
                 "unreviewed",
             )
 
@@ -179,8 +205,9 @@ class StatusTests(unittest.TestCase):
             files.evidence.with_suffix(".json").write_text(json.dumps(regenerated))
             with files.log.open(newline="") as stream:
                 event = list(csv.DictReader(stream))[-1]
+            event["actor_kind"] = "human"
             held = finding_state(
-                next(ev for ev in regenerated if ev["evidence_id"] == key), event
+                next(ev for ev in regenerated if ev["evidence_id"] == key), [event]
             )
             self.assertEqual(
                 (event["decision"], held["status"], held["excluded"]),

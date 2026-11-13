@@ -84,24 +84,48 @@ def logged(repo, rev, path):
         yield row, {"commit": commits[line], "line": line}
 
 
+def actor_kind(raw):
+    names = {name.strip().casefold() for name in raw.split(",")}
+    if names and names <= {"pete", "peter", "pete steward", "peetmate", "namita-j"}:
+        return "human"
+    if names and all(
+        n == "orchestrator" or n.startswith(("ai_", "codex ")) for n in names
+    ):
+        return "automated"
+    return "unverified"
+
+
 def public_event(row, origin):
     return {
         **origin,
         "date": row["date"],
+        "actor_kind": actor_kind(row["reviewer"]),
         "decision": row["decision"],
         "reason": row["reason"] if row["reason"] in REASONS else None,
     }
 
 
-def finding_state(ev, event):
-    dec = event["decision"] if event else None
+def finding_state(ev, events):
+    """Separate applied updates from evidence of a human's effective sign-off."""
+    event = events[-1] if events else None
+    disposition = None
+    for entry in events:
+        decision = entry["decision"]
+        if decision in ("drop", "reopen", "flag", "query"):
+            disposition = entry
+        elif (
+            decision in ("ok", "keep", "reclassify") and entry["actor_kind"] == "human"
+        ):
+            disposition = entry
+
     signed = ev.get("reviewer_ok") is True
     excluded = ev.get("review_state") == "dropped"
+    decision = disposition["decision"] if disposition else None
     if excluded:
         status = "rejected"
-    elif dec in ("flag", "query"):
+    elif decision in ("flag", "query"):
         status = "held"
-    elif signed and dec not in ("drop", "reopen"):
+    elif signed and decision in ("ok", "keep", "reclassify"):
         status = "signed_off"
     else:
         status = "unreviewed"
@@ -113,12 +137,13 @@ def finding_state(ev, event):
         "flag": "held",
         "query": "held",
         "reopen": "unreviewed",
-    }.get(dec)
+    }.get(decision)
     return {
         "source_id": ev["source_id"],
         "excluded": excluded,
         "status": status,
         "latest_event": event,
+        "status_event": disposition,
         "reconciliation_required": (expected is not None and status != expected)
         or (signed and status in ("held", "unreviewed")),
     }
@@ -269,11 +294,18 @@ def build(repo, workbook, assessed):
     for r, origin in logged(repo, rev, FINDING_LOG):
         events[r["evidence_id"]].append(public_event(r, origin))
     cards = navigation(repo)
+    live_register = read(repo, LIVE, "docs/dashboard_data.json")["registers"][
+        "EV_evidence_register"
+    ]
+    live_active = {
+        r["evidence_id"] for r in live_register if r.get("review_state") != "dropped"
+    }
     findings = {}
     for ev in read(repo, rev, "schema/registers/EV_evidence_register.json"):
         key = ev["evidence_id"]
         findings[key] = {
-            **finding_state(ev, next(reversed(events[key]), None)),
+            **finding_state(ev, events[key]),
+            "live_queue_available": key in live_active,
             "live_batch": cards.get(key),
         }
     require(
@@ -281,6 +313,21 @@ def build(repo, workbook, assessed):
         == {c["id"] for c in data["claims"]},
         "EV inclusion differs from workbook",
     )
+    deferred_path = "schema/registers/_deferred/EV_T3_T6_deferred_2026-09.csv"
+    deferred = {
+        r["evidence_id"]: r
+        for r in csv.DictReader(
+            io.StringIO(blob(repo, rev, deferred_path).decode(), newline="")
+        )
+    }
+    unmatched = {}
+    for key in sorted(events.keys() - findings.keys()):
+        archived = deferred.get(key)
+        unmatched[key] = {
+            "latest_event": events[key][-1],
+            "deferred_register": deferred_path if archived else None,
+            "deferred_review_state": archived.get("review_state") if archived else None,
+        }
     rows = {}
     for item in data["rows"]:
         table, practice, key = item["table"], item["practice"], item["id"]
@@ -321,7 +368,9 @@ def build(repo, workbook, assessed):
         "Setter replay pin mismatch",
     )
     headlines = set()
+    table_pools = defaultdict(set)
     for key, r in rows.items():
+        table_pools[r["practice"], r["table"]].update(r["evidence_ids"])
         native = table_rows(repo, rev, r["practice"], r["table"])[key]
         if (
             not native.get("scope_type")
@@ -339,6 +388,16 @@ def build(repo, workbook, assessed):
             and all(i in findings and not findings[i]["excluded"] for i in ids),
             "Invalid setter IDs",
         )
+        practice, table = rows[key]["practice"], rows[key]["table"]
+        require(
+            set(ids) <= table_pools[practice, table],
+            "Setter outside assessed practice/table population",
+        )
+        union = table_pools[practice, "T3"] | table_pools[practice, "T6"]
+        require(
+            len(union) == assessed["tested_findings_per_practice"][practice],
+            "Practice replay count differs from pinned population",
+        )
         if key in traces:
             obs = traces[key]
             require(
@@ -346,9 +405,10 @@ def build(repo, workbook, assessed):
                 "Independent Roose assessment disagrees",
             )
         rows[key].update(coverage([], ids, findings, complete=True))
-        rows[key]["tested_count"] = assessed["tested_findings_per_practice"][
-            rows[key]["practice"]
+        rows[key]["practice_removal_count"] = assessed["tested_findings_per_practice"][
+            practice
         ]
+        rows[key]["tested_count"] = len(table_pools[(practice, table)])
         # Complete assessments use a practice-wide universe; listing [] as the
         # tested IDs would incorrectly imply an empty universe.
         rows[key].pop("tested_ids")
@@ -370,6 +430,7 @@ def build(repo, workbook, assessed):
         "findings": findings,
         "rows": rows,
         "rating_reviews": reviews,
+        "unmatched_finding_reviews": unmatched,
         "method_decisions": methods,
         "history": history(repo, rev, events),
         "setter_assessment": {
