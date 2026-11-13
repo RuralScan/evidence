@@ -34,7 +34,27 @@ HERE = Path(__file__).resolve().parent
 
 class Desk:
     def __init__(self, repo, pin, sandbox=None, test_inbox=False):
-        self.cohort = Cohort(repo, pin)
+        from registers import FIRST, ROOT, SEED, member
+
+        if member(ROOT, FIRST, pin) and member(ROOT, pin, "origin/main"):
+            from types import SimpleNamespace
+            from registers import blob, rows, EV
+
+            records = rows(blob(ROOT, pin, "registers/" + EV))
+            self.cohort = SimpleNamespace(
+                pin=pin,
+                reasons=Cohort(repo, SEED).reasons,
+                evidence={r["evidence_id"]: r for r in records},
+                lanes={
+                    lane: {r["evidence_id"] for r in records if r["use_role"] in roles}
+                    for lane, roles in {
+                        "T4": {"structural_suitability"},
+                        "T3/T6": {"asset_vulnerability", "nbs_effect"},
+                    }.items()
+                },
+            )
+        else:
+            self.cohort = Cohort(repo, pin)
         self.pin = pin
         self.sandbox = sandbox
         self.test = bool(sandbox) or test_inbox
