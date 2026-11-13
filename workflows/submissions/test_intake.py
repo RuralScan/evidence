@@ -35,6 +35,21 @@ class IntakeTests(unittest.TestCase):
                     intake.receive("vote", "T4", PIN, {})
                 self.assertEqual(api.call_count, 1)
 
+    def test_retry_recovers_original_remote_receipt(self):
+        payload = dict(evidence_id="test_bench_terrace", decision="hold")
+        item = issue(17, "reader_a", "T4", "vote", payload)
+        item["html_url"] = "https://github.com/RuralScan/evidence-intake/issues/17"
+        with (
+            patch("intake.signed_in", return_value="reader_a"),
+            patch("intake.submissions", return_value=[item]),
+            patch("intake.original", return_value="reader_a"),
+            patch("intake.gh") as post,
+        ):
+            self.assertEqual(
+                intake.receive("vote", "T4", PIN, payload, test=True), item["html_url"]
+            )
+            post.assert_not_called()
+
     def test_edited_or_misattributed_body(self):
         item = issue(1, "a", "T4", "vote", {})
         for author, edited in [("b", None), ("a", "yesterday")]:

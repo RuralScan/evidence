@@ -76,6 +76,10 @@ def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
     )
     body = encode(kind, lane, pin, payload, test=test)
     require(len(body.encode()) <= 65000, "Split this batch into smaller submissions")
+    # A timeout can arrive after GitHub has accepted the first request.
+    for previous in submissions(actor):
+        if previous["body"] == body and original(previous) == actor:
+            return previous["html_url"]
     title = f"{'TEST · ' if test else ''}{lane} · {kind} submission"
     issue = gh("repos/" + INBOX + "/issues", data={"title": title, "body": body})
     require(issue["user"]["login"] == actor, "Authenticated receipt identity differs")
@@ -159,12 +163,12 @@ class Cohort:
     def __init__(self, repo, pin):
         require(re.fullmatch("[0-9a-f]{40}", pin), "Invalid cohort revision")
         self.pin = pin
-        self.repo = repo
-        self.blob = lambda path: subprocess.check_output(
-            ["git", "-C", repo, "show", f"{pin}:{path}"]
-        )
-        records = json.loads(self.blob("docs/dashboard_data.json"))
-        source = ast.parse(self.blob("src/nbs_ruralscan/schema_tools/review.py"))
+
+        def blob(path):
+            return subprocess.check_output(["git", "-C", repo, "show", f"{pin}:{path}"])
+
+        records = json.loads(blob("docs/dashboard_data.json"))
+        source = ast.parse(blob("src/nbs_ruralscan/schema_tools/review.py"))
         self.reasons = next(
             ast.literal_eval(n.value)
             for n in source.body
