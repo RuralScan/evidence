@@ -52,11 +52,15 @@ def stage_votes(pending, csv_files, mapping_file):
     )
     inputs = {name: read_copy(pending, name) for name in PENDING}
     raw = inputs["decisions.json"]
-    store = (
-        {}
-        if raw is None
-        else json.loads(raw.decode("utf-8-sig"), object_pairs_hook=unique_object)
-    )
+    store = {}
+    if raw is not None:
+        try:
+            text = raw.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            text = raw.decode(
+                "cp1252"
+            )  # Same historical fallback as CIAT read_decisions.
+        store = json.loads(text, object_pairs_hook=unique_object)
     require(isinstance(store, dict), "Malformed pending decisions")
     mapping = json.loads(
         private_path(mapping_file).read_bytes(), object_pairs_hook=unique_object
@@ -104,8 +108,12 @@ def stage_votes(pending, csv_files, mapping_file):
             io.StringIO(data.decode("utf-8-sig"), newline=""), strict=True
         )
         require(
-            reader.fieldnames and sorted(reader.fieldnames) == sorted(FIELDS),
-            "Expected the eight evidence-review CSV columns exactly once",
+            reader.fieldnames
+            and len(reader.fieldnames) == len(set(reader.fieldnames))
+            and {"evidence_id", "reviewer", "decision"}
+            <= set(reader.fieldnames)
+            <= set(FIELDS),
+            "Expected evidence_id, reviewer and decision plus known optional evidence-review fields",
         )
         seen = False
         for ordinal, row in enumerate(reader, 1):
@@ -114,17 +122,20 @@ def stage_votes(pending, csv_files, mapping_file):
                 None not in row and None not in row.values(),
                 "Incomplete or excess CSV fields",
             )
-            for key in ("evidence_id", "reviewer", "batch", "date", "decision"):
+            for key in ("evidence_id", "reviewer"):
                 require(
                     row[key] and row[key] == row[key].strip(),
                     f"Missing or ambiguous {key}",
                 )
             require(row["reviewer"] in mapping, "Unmapped CSV reviewer")
-            require(row["decision"] in VERDICT, "Unsupported or absent CSV verdict")
+            decision = row["decision"].strip().lower()
+            require(not decision or decision in VERDICT, "Unsupported CSV verdict")
             user = mapping[row["reviewer"]]
-            reason = row["reason"].strip()
-            note = row["note"].strip()
-            flags = [f.strip() for f in row["picos_flags"].split(";") if f.strip()]
+            reason = row.get("reason", "").strip()
+            note = row.get("note", "").strip()
+            flags = [
+                f.strip() for f in row.get("picos_flags", "").split(";") if f.strip()
+            ]
             if flags:
                 note = (
                     (note + " " if note else "")
@@ -132,21 +143,35 @@ def stage_votes(pending, csv_files, mapping_file):
                     + ",".join(flags)
                     + "]"
                 )
-            vote = {
-                "decision": VERDICT[row["decision"]],
-                "note": note,
-                "reason": reason
-                or ("confirmed_pass" if row["decision"] == "approve" else ""),
-            }
+            require(
+                decision or flags or reason or note,
+                "Empty CSV row without a verdict or annotation",
+            )
             votes = store.setdefault(row["evidence_id"], {})
-            previous = votes.get(user)
-            if previous is None:
-                previous = votes[user] = dict(vote)
-            else:
-                require(
-                    all(previous.get(k, "") == v for k, v in vote.items()),
-                    "Different vote or annotation for the same reviewer and finding; reconcile privately",
-                )
+            previous = votes.setdefault(user, {})
+            if decision:
+                vote = {
+                    "decision": VERDICT[decision],
+                    "note": note,
+                    "reason": reason
+                    or ("confirmed_pass" if decision == "approve" else ""),
+                }
+                if previous.get("decision"):
+                    require(
+                        all(previous.get(k, "") == v for k, v in vote.items()),
+                        "Different vote or annotation for the same reviewer and finding; reconcile privately",
+                    )
+                else:
+                    require(
+                        all(
+                            not previous.get(k) or previous[k] == v
+                            for k, v in vote.items()
+                        ),
+                        "Pending annotations differ; reconcile privately before adding a verdict",
+                    )
+                    previous.update(vote)
+            # A PICOS-only row documents a concern. Keep its full source below;
+            # a later or earlier ballot remains a separately attributable decision.
             sources = previous.setdefault("csv_sources", [])
             require(isinstance(sources, list), "Invalid saved CSV provenance")
             source = {

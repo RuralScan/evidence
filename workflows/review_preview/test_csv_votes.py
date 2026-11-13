@@ -61,6 +61,30 @@ class CsvVotesTests(unittest.TestCase):
         self.assertEqual(vote["csv_sources"][0]["file"], "b.csv")
         self.assertEqual(len(vote["csv_sources"][0]["sha256"]), 64)
 
+    def test_optional_fields_picos_only_and_legacy_encoding(self):
+        flags = self.root / "flags.csv"
+        flags.write_text(
+            "evidence_id,reviewer,decision,date,picos_flags,note\nexample_conflict,A,,,I,Concern\n"
+        )
+        self.mapping.write_text('{"A":"reader_a","B":"reader_b","Existing":"existing"}')
+        (self.pending / "decisions.json").write_bytes(
+            '{"example_keep":{"existing":{"note":"révision"}}}'.encode("cp1252")
+        )
+        annotations = stage_votes(self.pending, [flags], self.mapping)
+        stored = json.loads(annotations["decisions.json"])
+        self.assertEqual(stored["example_keep"]["existing"]["note"], "révision")
+        entry = stored["example_conflict"]["reader_a"]
+        self.assertFalse(entry.get("decision"))
+        self.assertEqual(entry["csv_sources"][0]["values"]["picos_flags"], "I")
+        ballot = self.root / "ballot.csv"
+        ballot.write_text("evidence_id,reviewer,decision\nexample_conflict,A,approve\n")
+        for order in ([ballot, flags], [flags, ballot]):
+            result = json.loads(
+                stage_votes(self.pending, order, self.mapping)["decisions.json"]
+            )
+            entry = result["example_conflict"]["reader_a"]
+            self.assertEqual((entry["decision"], len(entry["csv_sources"])), ("ok", 2))
+
     def test_identity_mapping_changes_cannot_clone_an_existing_vote(self):
         publish_copy(
             self.root / "first", stage_votes(self.pending, [self.a], self.mapping)
@@ -97,6 +121,8 @@ class CsvVotesTests(unittest.TestCase):
         snapshot(code, REPO, ENGINE, ["/src/"], Path(os.environ["CIAT_TEST_REPO"]))
         records = self.root / "records"
         copytree(HERE / "example/records", records)
+        ev = records / EV
+        ev.write_bytes(ev.read_bytes().replace(b",,false,", b",,,"))
         pending = records / "pipeline/review"
         pending.mkdir()
         first = stage_votes(self.pending, [self.a], self.mapping)
@@ -130,6 +156,20 @@ class CsvVotesTests(unittest.TestCase):
             self.assertEqual(p.returncode == 0, ok, p.stderr)
             return p.stdout
 
+        flags = self.root / "annotations.csv"
+        flags.write_text(
+            "evidence_id,reviewer,decision,picos_flags\nexample_conflict,B,,I\n"
+        )
+        note_only = stage_votes(self.pending, [flags], self.mapping)
+        (pending / "decisions.json").write_bytes(note_only["decisions.json"])
+        measured = json.loads(
+            run(
+                "from worker import measure; import json; print(json.dumps(measure(root, check_csv=True)))"
+            )
+        )
+        self.assertEqual(
+            (sum(measured["applied"].values()), measured["agreed_verdict_ids"]), (0, 0)
+        )
         never_reviewed = (records / LOG).read_bytes()
         ev_before = (records / EV).read_bytes()
         (pending / "decisions.json").write_bytes(combined["decisions.json"])

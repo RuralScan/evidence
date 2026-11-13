@@ -63,7 +63,7 @@ def measure(root, *, check_csv=False):
         from nbs_ruralscan.schema_tools.review import REASON_CODES
 
         require(
-            not ((set(agreed) | set(conflicts)) - before.keys()),
+            not (store.keys() - before.keys()),
             "Unknown pending evidence ID",
         )
         require(
@@ -72,7 +72,7 @@ def measure(root, *, check_csv=False):
         )
         for votes in store.values():
             for vote in votes.values():
-                if vote.get("csv_sources") and vote["decision"] == "drop":
+                if vote.get("csv_sources") and vote.get("decision") == "drop":
                     require(
                         vote.get("reason") in REASON_CODES, "Invalid rejection reason"
                     )
@@ -84,7 +84,7 @@ def measure(root, *, check_csv=False):
                 eid in recorded
                 or (
                     before[eid].get("review_state", "") == ""
-                    and before[eid].get("reviewer_ok", "").lower() == "false"
+                    and before[eid].get("reviewer_ok", "").lower() in {"", "false"}
                 )
                 for eid in agreed
             ),
