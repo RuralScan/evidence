@@ -423,6 +423,10 @@ def prepare(ciat, corpus, selected, *, publish=False):
         git("add", "--", "registers", LIVE, cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if publish:
+            require(
+                member(ROOT, git("rev-parse", "HEAD", cwd=ROOT).decode().strip(), base),
+                "Pull the merged register writer before opening an official PR",
+            )
             # CIAT archival certification must already be on its public main. A
             # held register delta or a missing retirement commit stops the switch.
             authority = intake.gh(
