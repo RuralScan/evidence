@@ -129,6 +129,20 @@ def participants(receipts, selected, targets):
     return result
 
 
+def ballot_verdict(row):
+    decision = row["decision"].strip().lower()
+    require(decision in intake.VERDICT, "A note alone has no finding verdict")
+    note = row.get("note", "").strip()
+    if row.get("picos_flags"):
+        note = (note + " [PICOS fails: " + row["picos_flags"] + "]").strip()
+    return dict(
+        decision=intake.VERDICT[decision],
+        reason=row.get("reason", "").strip()
+        or ("confirmed_pass" if decision == "approve" else ""),
+        note=note,
+    )
+
+
 def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus):
     from nbs_ruralscan.schema_tools import evidence_intake, review
     from nbs_ruralscan.schema_tools.migrate_effects import _cell, resync_vars_extracted
@@ -188,17 +202,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             eid = row["evidence_id"]
             if eid not in targets:
                 continue
-            decision = row["decision"].strip().lower()
-            require(decision in intake.VERDICT, "A note alone has no finding verdict")
-            note = row.get("note", "").strip()
-            if row.get("picos_flags"):
-                note = (note + " [PICOS fails: " + row["picos_flags"] + "]").strip()
-            vote = dict(
-                decision=intake.VERDICT[decision],
-                reason=row.get("reason", "").strip()
-                or ("confirmed_pass" if decision == "approve" else ""),
-                note=note,
-            )
+            vote = ballot_verdict(row)
             require(
                 actor not in votes[eid] or votes[eid][actor] == vote,
                 f"Conflicting receipts for {eid} by {actor}",

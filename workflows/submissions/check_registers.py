@@ -1,6 +1,7 @@
 """Verify applied-PR lineage and rebuild the published queue from destination records."""
 
 import argparse
+from collections import defaultdict
 from pathlib import Path
 import sys
 import json
@@ -155,8 +156,10 @@ def check(ciat, *, base=None):
                 "New related vote arrived; rebuild consensus",
             )
             verdicts = {}
+            individual = defaultdict(dict)
+            added_events = rows(current_log)[len(rows(prior_log)) :]
             for n in related:
-                from intake import VERDICT
+                from registers import ballot_verdict
 
                 entry = public[n]["entry"]
                 ballots = (
@@ -167,14 +170,29 @@ def check(ciat, *, base=None):
                 for ballot in ballots:
                     eid = ballot["evidence_id"]
                     if eid in target_ids:
-                        verdict = VERDICT[ballot["decision"].strip().lower()]
+                        vote = ballot_verdict(ballot)
+                        actor = public[n]["actor"]
+                        require(
+                            ballot.get("reviewer", actor).casefold()
+                            == actor.casefold(),
+                            "Spoofed CSV voter",
+                        )
+                        require(
+                            individual[eid].setdefault(actor, vote) == vote,
+                            "Contradictory voter receipts",
+                        )
+                        verdict = vote["decision"]
                         require(
                             verdicts.setdefault(eid, verdict) == verdict,
                             "Opposing votes remain pending",
                         )
                         row = ev[eid]
                         require(
-                            (row["reviewer_ok"].lower() == "true") == (verdict == "ok")
+                            (
+                                verdict == "drop"
+                                or (row["reviewer_ok"].lower() == "true")
+                                == (verdict == "ok")
+                            )
                             and (row["review_state"] == "dropped")
                             == (verdict == "drop"),
                             "Register disagrees with vote",
@@ -188,6 +206,61 @@ def check(ciat, *, base=None):
                             all(row[f] == old_ev[eid][f] for f in protected),
                             "Vote changed scientific fields",
                         )
+            for eid, ballot in individual.items():
+                actors = sorted(ballot)
+                expected = {
+                    "source_id": ev[eid]["source_id"],
+                    "decision": verdicts[eid],
+                    "reviewer": ",".join(actors),
+                    "reason": ";".join(
+                        sorted({v["reason"] for v in ballot.values() if v["reason"]})
+                    ),
+                    "note": " | ".join(v["note"] for v in ballot.values() if v["note"]),
+                }
+                additions = [
+                    event for event in added_events if event["evidence_id"] == eid
+                ]
+
+                def matches(event):
+                    return all(event[k] == v for k, v in expected.items())
+
+                if additions:
+                    require(
+                        len(additions) == 1 and matches(additions[0]),
+                        "Missing or misattributed consensus event",
+                    )
+                else:
+                    require(
+                        old_ev[eid] == ev[eid]
+                        and any(
+                            matches(event)
+                            for event in rows(prior_log)
+                            if event["evidence_id"] == eid
+                        ),
+                        "Missing finding decision",
+                    )
+            for eid in ids - target_ids:
+                events = [
+                    event for event in added_events if event["evidence_id"] == eid
+                ]
+                if eid in old_ev and old_ev[eid] != ev[eid]:
+                    owner = next(
+                        k
+                        for k in new
+                        if public[int(k)]["entry"]["kind"] == "extraction"
+                        and any(
+                            u["evidence_id"] == eid
+                            for u in public[int(k)]["entry"]["payload"]
+                        )
+                    )
+                    require(
+                        len(events) == 1
+                        and events[0]["decision"] == "reopen"
+                        and events[0]["reviewer"] == f"RuralScan receipt #{owner}",
+                        "Invalid correction history",
+                    )
+                else:
+                    require(not events, "Extraction created a review decision")
             ids.update(target_ids)
         require(
             all(row == old_ev.get(eid) or eid in ids for eid, row in ev.items()),

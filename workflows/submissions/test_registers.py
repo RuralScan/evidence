@@ -67,7 +67,9 @@ class RegisterTests(unittest.TestCase):
             actor=actor,
             digest=hashlib.sha256(str(payload).encode()).hexdigest(),
             labels=set(labels),
-            entry=dict(test=False,revision=reg.SEED, kind=kind, lane=lane, payload=payload),
+            entry=dict(
+                test=False, revision=reg.SEED, kind=kind, lane=lane, payload=payload
+            ),
         )
 
     def apply(self, *numbers):
