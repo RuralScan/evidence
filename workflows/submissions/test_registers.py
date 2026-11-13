@@ -135,6 +135,35 @@ class RegisterTests(unittest.TestCase):
             self.apply(2)
         self.assertEqual(after, (self.engine / reg.LOG).read_bytes())
 
+    def test_excel_csv_conflict_and_annotation(self):
+        self.receipt(
+            10, "reader_a", "vote", "T4", dict(evidence_id=self.t4, decision="approve")
+        )
+        self.receipt(
+            11,
+            "reader_b",
+            "csv",
+            "T4",
+            f"\ufeffevidence_id,reviewer,decision,reason,note\r\n"
+            f"{self.t4},reader_b,reject,wrong_practice,\r\n",
+        )
+        before = (self.engine / reg.LOG).read_bytes()
+        with self.assertRaisesRegex(ValueError, "Include all"):
+            self.apply(10)
+        with self.assertRaisesRegex(ValueError, "Opposing"):
+            self.apply(10, 11)
+        self.assertEqual(before, (self.engine / reg.LOG).read_bytes())
+        self.receipt(
+            12,
+            "reader_c",
+            "csv",
+            "T4",
+            f"\ufeffevidence_id,reviewer,decision,note\r\n"
+            f"{self.t4},reader_c,,Check transferability\r\n",
+        )
+        self.assertEqual(self.apply(12), [12])
+        self.assertEqual(before, (self.engine / reg.LOG).read_bytes())
+
     def test_changed_locator_rejected(self):
         ev = self.ev[self.t4]
         self.receipt(

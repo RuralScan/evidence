@@ -14,7 +14,7 @@ import sys
 from tempfile import TemporaryDirectory
 
 import intake
-from handoff import check_replays, scientific_fields
+from handoff import check_replays, same_value, scientific_fields
 from git_snapshot import git, require, snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -120,10 +120,16 @@ def participants(receipts, selected, targets):
         if entry["kind"] == "vote":
             raw = [entry["payload"]]
         elif entry["kind"] == "csv" and isinstance(entry["payload"], str):
-            raw = list(csv.DictReader(io.StringIO(entry["payload"], newline="")))
+            raw = intake.csv_reader(entry["payload"])
         else:
             continue
-        ids = {r.get("evidence_id") for r in raw if isinstance(r, dict)}
+        ids = {
+            r["evidence_id"]
+            for r in raw
+            if isinstance(r, dict)
+            and r.get("evidence_id")
+            and (r.get("decision") or "").strip()
+        }
         if number in selected or ids & targets:
             result[number] = ids
     return result
@@ -200,7 +206,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
 
         for row in intake.vote_rows(entry, actor, VoteCohort):
             eid = row["evidence_id"]
-            if eid not in targets:
+            if not row["decision"].strip() or eid not in targets:
                 continue
             vote = ballot_verdict(row)
             require(
@@ -301,8 +307,9 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             u
             for u in units
             if u["evidence_id"] in current
-            and scientific_fields(current[u["evidence_id"]])
-            != scientific_fields_dict(u)
+            and not same_value(
+                scientific_fields(current[u["evidence_id"]]), scientific_fields_dict(u)
+            )
         ]
         for u in changed:
             eid = u["evidence_id"]

@@ -158,18 +158,18 @@ def check(ciat, *, base=None):
             verdicts = {}
             individual = defaultdict(dict)
             added_events = rows(current_log)[len(rows(prior_log)) :]
-            for n in related:
+            for n in sorted(related):
                 from registers import ballot_verdict
 
                 entry = public[n]["entry"]
                 ballots = (
                     [entry["payload"]]
                     if entry["kind"] == "vote"
-                    else rows(entry["payload"].encode())
+                    else intake.csv_reader(entry["payload"])
                 )
                 for ballot in ballots:
                     eid = ballot["evidence_id"]
-                    if eid in target_ids:
+                    if eid in target_ids and ballot["decision"].strip():
                         vote = ballot_verdict(ballot)
                         actor = public[n]["actor"]
                         require(
