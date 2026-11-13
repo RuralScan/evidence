@@ -14,14 +14,15 @@ def issue(number, actor, lane, kind, payload, test=True):
     return dict(
         number=number,
         node_id=str(number),
+        author_association="MEMBER",
         user=dict(login=actor),
         body=intake.encode(kind, lane, PIN, payload, test=test),
     )
 
 
 class IntakeTests(unittest.TestCase):
-    def test_refuse_public_or_wrong_inbox(self):
-        for name, private in [(intake.INBOX, False), ("elsewhere/private", True)]:
+    def test_refuse_wrong_destination(self):
+        for name, private in [(intake.INBOX, True), ("elsewhere/public", False)]:
             with patch(
                 "intake.gh",
                 return_value=dict(
@@ -38,7 +39,7 @@ class IntakeTests(unittest.TestCase):
     def test_retry_recovers_original_remote_receipt(self):
         payload = dict(evidence_id="test_bench_terrace", decision="hold")
         item = issue(17, "reader_a", "T4", "vote", payload)
-        item["html_url"] = "https://github.com/RuralScan/evidence-intake/issues/17"
+        item["html_url"] = "https://github.com/RuralScan/evidence/issues/17"
         with (
             patch("intake.signed_in", return_value="reader_a"),
             patch("intake.submissions", return_value=[item]),
@@ -48,6 +49,40 @@ class IntakeTests(unittest.TestCase):
             self.assertEqual(
                 intake.receive("vote", "T4", PIN, payload, test=True), item["html_url"]
             )
+            post.assert_not_called()
+
+    def test_public_access_does_not_establish_reviewer_authority(self):
+        public = {"author_association": "NONE", "labels": []}
+        self.assertFalse(intake.reviewer_eligible(public))
+        self.assertTrue(
+            intake.reviewer_eligible(
+                {**public, "labels": [{"name": "confirmed-reviewer"}]}
+            )
+        )
+        self.assertTrue(
+            intake.reviewer_eligible({"author_association": "COLLABORATOR"})
+        )
+
+    def test_desk_and_github_line_endings(self):
+        row = issue(1, "a", "T4", "vote", {})
+        self.assertEqual(
+            intake.decode(row),
+            intake.decode({**row, "body": row["body"].replace("\n", "\r\n")}),
+        )
+
+    def test_cli_refuses_another_reviewers_csv_before_publication(self):
+        with (
+            patch("intake.signed_in", return_value="reader_a"),
+            patch("intake.gh") as post,
+        ):
+            with self.assertRaisesRegex(ValueError, "signed-in"):
+                intake.receive(
+                    "csv",
+                    "T4",
+                    PIN,
+                    "evidence_id,reviewer,decision\ntest_bench_terrace,b,approve",
+                    test=True,
+                )
             post.assert_not_called()
 
     def test_edited_or_misattributed_body(self):
@@ -95,6 +130,25 @@ class IntakeTests(unittest.TestCase):
                 dict(evidence_id="test_hazard_scorecard", decision="hold"),
             ),
         ]
+        rows.extend(
+            [
+                {
+                    **issue(
+                        5,
+                        "guest",
+                        "T4",
+                        "vote",
+                        dict(
+                            evidence_id="test_bench_terrace",
+                            decision="reject",
+                            reason="other",
+                        ),
+                    ),
+                    "author_association": "NONE",
+                },
+                {**rows[0], "number": 6, "body": intake.HEADER + "\n{malformed"},
+            ]
+        )
         for index, actor in [(1, "impostor")]:
             with self.assertRaisesRegex(ValueError, "signed-in"):
                 intake.vote_rows(intake.decode(rows[index]), actor, cohort)
@@ -117,6 +171,14 @@ class IntakeTests(unittest.TestCase):
                 self.assertEqual(result["conflicted_ids"], 1)
                 self.assertEqual(sum(result["applied"].values()), 1)
                 self.assertTrue(result["second_replay_byte_identical"])
+                statuses = {
+                    r["number"]: r["status"]
+                    for r in json.loads((out / "receipts.json").read_bytes())[
+                        "receipts"
+                    ]
+                }
+                self.assertEqual(statuses[5], "pending reviewer confirmation")
+                self.assertEqual(statuses[6], "held")
 
     def test_extraction_keeps_roles_and_prevents_signoff(self):
         for lane, role in [("T4", "structural_suitability"), ("T3/T6", "nbs_effect")]:

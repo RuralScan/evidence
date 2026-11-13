@@ -1,4 +1,4 @@
-"""Receive finding votes and extraction proposals in the private RuralScan inbox."""
+"""Receive finding votes and extraction proposals as public issues in RuralScan/evidence."""
 
 import ast
 import argparse
@@ -21,7 +21,7 @@ from handoff import check, invalid_number  # noqa: E402
 from git_snapshot import snapshot  # noqa: E402
 from preview import ENGINE, EV, HISTORY, LOG, require  # noqa: E402
 
-INBOX = "RuralScan/evidence-intake"
+INBOX = "RuralScan/evidence"
 PRODUCER = "https://github.com/CIAT/nbs_ruralscan.git"
 HEADER = "RuralScan submission v1"
 LANES = {"T4", "T3/T6"}
@@ -39,15 +39,18 @@ def gh(*args, data=None):
     )
 
 
-def signed_in():
+def check_destination():
     repo = gh("repos/" + INBOX)
     require(
-        repo["private"]
-        and repo["visibility"] == "private"
+        repo["visibility"] == "public"
         and repo["full_name"].lower() == INBOX.lower()
         and repo["has_issues"],
-        "The configured RuralScan inbox must be private and accept issues",
+        "Expected public RuralScan/evidence with Issues enabled",
     )
+
+
+def signed_in():
+    check_destination()
     return gh("user")["login"]
 
 
@@ -75,10 +78,32 @@ def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
         "GitHub account changed. Restart the desk.",
     )
     body = encode(kind, lane, pin, payload, test=test)
+    if kind == "csv":
+        rows = csv.DictReader(
+            io.StringIO(payload.lstrip("\ufeff"), newline=""), strict=True
+        )
+        require(
+            rows.fieldnames
+            and {"evidence_id", "reviewer", "decision"}
+            <= set(rows.fieldnames)
+            <= set(FIELDS),
+            "Expected an evidence vote CSV before publishing",
+        )
+        seen = False
+        for row in rows:
+            seen = True
+            require(
+                (row.get("reviewer") or "").casefold() == actor.casefold(),
+                "CSV reviewer differs from signed-in account",
+            )
+        require(seen, "No votes supplied")
     require(len(body.encode()) <= 65000, "Split this batch into smaller submissions")
     # A timeout can arrive after GitHub has accepted the first request.
     for previous in submissions(actor):
-        if previous["body"] == body and original(previous) == actor:
+        if (
+            previous["body"].replace("\r\n", "\n").strip() == body
+            and original(previous) == actor
+        ):
             return previous["html_url"]
     title = f"{'TEST · ' if test else ''}{lane} · {kind} submission"
     issue = gh("repos/" + INBOX + "/issues", data={"title": title, "body": body})
@@ -87,13 +112,7 @@ def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
 
 
 def submissions(actor=None):
-    repo = gh("repos/" + INBOX)
-    require(
-        repo["private"]
-        and repo["visibility"] == "private"
-        and repo["full_name"].lower() == INBOX.lower(),
-        "Expected private RuralScan inbox",
-    )
+    check_destination()
     result = []
     page = 1
     while True:
@@ -102,9 +121,9 @@ def submissions(actor=None):
             f"repos/{INBOX}/issues?state=all&sort=created&direction=asc&per_page=100&page={page}{suffix}"
         )
         for issue in items:
-            if issue.get("pull_request") or not (issue.get("body") or "").startswith(
-                HEADER + "\n"
-            ):
+            if issue.get("pull_request") or (issue.get("body") or "").splitlines()[
+                :1
+            ] != [HEADER]:
                 continue
             result.append(issue)
         if len(items) < 100:
@@ -113,7 +132,7 @@ def submissions(actor=None):
 
 
 def decode(issue):
-    body = issue["body"]
+    body = issue["body"].replace("\r\n", "\n")
     require(body.startswith(HEADER + "\n"), "Unknown submission format")
     entry = json.loads(
         body.split("\n", 1)[1],
@@ -124,6 +143,12 @@ def decode(issue):
         isinstance(entry, dict)
         and set(entry) == {"kind", "lane", "revision", "test", "payload"},
         "Malformed submission",
+    )
+    require(
+        isinstance(entry["kind"], str)
+        and isinstance(entry["lane"], str)
+        and isinstance(entry["revision"], str),
+        "Malformed submission fields",
     )
     require(type(entry["test"]) is bool, "Invalid test flag")
     encode(
@@ -157,6 +182,14 @@ def original(issue):
         "Edited or unattributable submission. Return a fresh original.",
     )
     return issue["user"]["login"]
+
+
+def reviewer_eligible(issue):
+    if issue.get("author_association") in {"OWNER", "MEMBER", "COLLABORATOR"}:
+        return True
+    return any(
+        label.get("name") == "confirmed-reviewer" for label in issue.get("labels", [])
+    )
 
 
 class Cohort:
@@ -304,18 +337,28 @@ def collect(issues, repo, pin, out, corpus=None, test=False):
         ballots, mapping, received = [], {}, []
         checkout = None
         for issue in issues:
-            entry = decode(issue)
+            number = issue["number"]
+            try:
+                entry = decode(issue)
+            except (ValueError, RecursionError) as error:
+                received.append(dict(number=number, status="held", reason=str(error)))
+                continue
             if entry["test"] != test:
                 continue
             if entry["revision"] != pin:
                 continue
-            actor = original(issue)
-            number = issue["number"]
+            try:
+                actor = original(issue)
+            except ValueError as error:
+                received.append(dict(number=number, status="held", reason=str(error)))
+                continue
             folder = package / str(number)
             folder.mkdir(mode=0o700)
             (folder / "original.json").write_text(json.dumps(issue, ensure_ascii=False))
             outcome = {"status": "received"}
-            if entry["kind"] == "extraction":
+            if not reviewer_eligible(issue):
+                outcome = {"status": "pending reviewer confirmation"}
+            elif entry["kind"] == "extraction":
                 if checkout is None:
                     checkout = root / "engine"
                     snapshot(
@@ -332,10 +375,18 @@ def collect(issues, repo, pin, out, corpus=None, test=False):
                     )
                 try:
                     outcome = extraction(entry, checkout, corpus, folder)
-                except ValueError as error:
+                except (ValueError, TypeError, KeyError) as error:
                     outcome = {"status": "held", "reason": str(error)}
             else:
-                rows = vote_rows(entry, actor, cohort)
+                try:
+                    rows = vote_rows(entry, actor, cohort)
+                except (ValueError, csv.Error) as error:
+                    received.append(
+                        dict(
+                            number=number, actor=actor, status="held", reason=str(error)
+                        )
+                    )
+                    continue
                 path = folder / f"receipt-{number}.csv"
                 with path.open("w", newline="") as stream:
                     writer = csv.DictWriter(stream, FIELDS)

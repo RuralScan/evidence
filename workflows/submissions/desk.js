@@ -26,7 +26,7 @@ async function history() {
       (row.kind === 'csv' ? 'CSV received' : row.payload.evidence_id + ' · ' + row.payload.decision);
     if (row.url) {
       const link = document.createElement('a');
-      link.href = row.url; link.textContent = ' View private receipt';
+      link.href = row.url; link.textContent = ' View public receipt';
       item.append(link);
     }
     list.append(item);
@@ -37,10 +37,10 @@ async function submit(kind, payload) {
   const result = await request('/api/submit', {method:'POST', headers:{'Content-Type':'application/json'},
     body:JSON.stringify({kind, payload, lane:byId('lane').value, revision:session.revision})});
   byId('status').textContent = result.test ? 'Test receipt #' + result.receipt + ' saved for ' + session.actor :
-    'Received for private consensus. ';
+    'Submitted to RuralScan/evidence. ';
   if (result.url) {
     const link = document.createElement('a');
-    link.href = result.url; link.textContent = 'View private receipt';
+    link.href = result.url; link.textContent = 'View public receipt';
     byId('status').append(link);
   }
   await history();
@@ -50,8 +50,8 @@ async function init() {
   if (params.has('revision') && params.get('revision') !== session.revision)
     throw Error('This desk is serving another revision. Restart it at the revision on the finding link.');
   byId('account').textContent = 'Signed in as ' + session.actor;
-  byId('mode').textContent = session.test ? 'Test copy · synthetic findings only' :
-    'Private intake · proposals await consensus · source ' + session.revision.slice(0,8);
+  byId('mode').textContent = session.local_only ? 'Local test · synthetic findings only' : session.test ? 'Public GitHub test · synthetic findings only' :
+    'Your submission and GitHub name will be public in RuralScan/evidence · source ' + session.revision.slice(0,8);
   if (['T4','T3/T6'].includes(params.get('lane'))) byId('lane').value = params.get('lane');
   const selectId = () => {
     byId('eid').value = session.test ? session.fixtures[byId('lane').value] : (params.get('finding') || '');

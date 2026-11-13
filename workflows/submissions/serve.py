@@ -54,10 +54,14 @@ class Desk:
         if not self.sandbox:
             result = []
             for issue in reversed(submissions(actor=self.identity)):
-                item = decode(issue)
+                try:
+                    item = decode(issue)
+                    author = original(issue)
+                except (ValueError, RecursionError):
+                    continue
                 if item["test"] != self.test or item["kind"] == "extraction":
                     continue
-                if original(issue) != self.identity:
+                if author != self.identity:
                     continue
                 result.append(
                     dict(
@@ -187,6 +191,7 @@ def handler(desk, origin):
                         actor=desk.identity,
                         revision=desk.pin,
                         test=desk.test,
+                        local_only=bool(desk.sandbox),
                         fixtures=FIXTURES,
                         reasons=desk.cohort.reasons,
                     )
@@ -240,7 +245,7 @@ def main():
     modes.add_argument(
         "--test-inbox",
         action="store_true",
-        help="Send only synthetic findings to the private inbox.",
+        help="Send only synthetic findings to public RuralScan/evidence issues.",
     )
     modes.add_argument(
         "--sandbox",
