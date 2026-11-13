@@ -32,3 +32,5 @@ jobs:
         run: python -m unittest discover -v -s workflows/review_preview
       - name: Check published decisions and provisional ratings
         run: python -m unittest discover -v -s workflows/review_status
+      - name: Check authenticated submission handling
+        run: python -m unittest discover -v -s workflows/submissions
