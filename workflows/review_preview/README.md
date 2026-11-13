@@ -63,3 +63,34 @@ For a private rehearsal, add `--rehearse-recovery` to the two-revision command a
 Git fetch, worktree creation, commit and push run against a disposable file-only remote. The first attempt must release its submission lock, retain its failed checkout for inspection by the rehearsal and leave all remote refs intact. The rehearsal uses the pinned record replay in place of the full generation command and simulates GitHub authentication and PR creation. Temporary repositories are removed on exit. Save the JSON receipt outside Git. Live decisions and submission stay in CIAT.
 
 To verify the deliverable after recovery, [rebuild the pinned public workbook](../public_workbook/README.md#rebuild-after-an-interrupted-review-submission).
+
+## Collect CSV votes for private consensus
+
+Use the browser’s evidence-review CSV to collect a vote. The command below merges it into a **private copy** of the dashboard decision store and previews CIAT consensus on disposable records. One reviewer can supply an agreed verdict. Opposing votes on the same finding remain pending. CIAT still owns live submission.
+
+Start in the evidence repository. Set `repo` to the CIAT clone, `records` to the verified revision directory from the review-support export, and `work` to a private directory outside Git. Keep source CSVs there. In `$work/initial`, place a stable copy of the existing pending decisions and clarifications. Use an empty directory only for a known fresh rehearsal. The mapping file must name each actual CSV display name and canonical reviewer ID. Include identities for every reviewer in the selected pending copy.
+
+```sh
+cat > "$work/reviewers.json" <<'JSON'
+{"Reader A":"reader_a","Reader B":"reader_b"}
+JSON
+preview_csv() {
+  uv run --python 3.12 --locked --script workflows/review_preview/preview.py \
+    --ciat-repo "$repo" --records "$records" --reviewers "$work/reviewers.json" "$@"
+}
+preview_csv --csv "$work/reader-a.csv" --pending-dir "$work/initial" --out-pending "$work/first"
+preview_csv --csv "$work/reader-b.csv" --pending-dir "$work/first" --out-pending "$work/both"
+preview_csv --csv "$work/reader-a.csv" --pending-dir "$work/both" --out-pending "$work/retry"
+diff -r "$work/both" "$work/retry"
+```
+
+Each step writes a new owner-only directory after preview succeeds. Use the preceding output for the next import. Distinct branches must be reconciled before continuing. Keep the starting files and source editions private. The tool preserves pending clarifications, original CSV fields, record number, filename and SHA-256. PICOS flags also travel in the decision note. A CSV name is a label supplied by the reviewer. Verify its owner separately before mapping it. Export dates are retained for audit. Changing the order of inputs never settles opposing judgments.
+
+For opposite verdicts on one previously undecided finding, the second and third previews should show one conflict and zero newly applied events for that finding. The initial single-vote preview changes only a disposable record. If an earlier vote already reached the register, supply its pending ballot alongside the new vote and use the matching later record revision. The conflict then counts under `pending_challenges_with_prior_events`; the existing applied record and history survive. If a retained ballot is missing or a replay would change prior reviewed state, reconcile the original decision before continuing. Reclassification conflicts, missing IDs, unmapped names and differing votes or notes by the same reviewer also require reconciliation. An identical retry leaves the pending copy unchanged. For an unaudited CSV whose original finding version is uncertain, inspect the passage and history before using it. The browser CSV contains no producer revision or authenticated identity.
+
+Run the synthetic separate-import, late-challenge and stale-replay checks against the pinned engine:
+
+```sh
+CIAT_TEST_REPO="$repo" uv run --no-project --python 3.12 --with requests==2.34.2 \
+  python -m unittest discover -s workflows/review_preview
+```

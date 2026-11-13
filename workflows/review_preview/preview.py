@@ -8,9 +8,9 @@
 import argparse
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 from tempfile import TemporaryDirectory
 
 HERE = Path(__file__).resolve().parent
@@ -121,12 +121,39 @@ def main():
         action="store_true",
         help="Interrupt a disposable local submission, advance its records and retry.",
     )
+    cli.add_argument(
+        "--csv",
+        type=Path,
+        action="append",
+        help="Stage a private evidence vote CSV; repeat for multiple exports",
+    )
+    cli.add_argument(
+        "--reviewers",
+        type=Path,
+        help="Private JSON mapping CSV names to canonical reviewer IDs",
+    )
+    cli.add_argument(
+        "--out-pending",
+        type=Path,
+        help="Fresh private directory for verified pending inputs",
+    )
     args = cli.parse_args()
+    csv_mode = any((args.csv, args.reviewers, args.out_pending))
+    if csv_mode and not (
+        args.csv and args.reviewers and args.out_pending and args.pending_dir
+    ):
+        cli.error(
+            "CSV rehearsal requires --csv, --reviewers, --pending-dir and --out-pending"
+        )
+    if csv_mode and (args.previous_records or args.rehearse_recovery):
+        cli.error(
+            "Run interval comparison and recovery separately on the resulting copy"
+        )
     if args.rehearse_recovery and args.records and not args.previous_records:
         cli.error("Private recovery requires --previous-records and --records")
     if (
         args.example
-        and (args.pending_dir or args.previous_records)
+        and ((args.pending_dir and not csv_mode) or args.previous_records)
         or args.records
         and not (args.pending_dir and args.ciat_repo)
     ):
@@ -169,6 +196,13 @@ def main():
             )
     with TemporaryDirectory(prefix="ruralscan-review-preview-") as tmp:
         work = Path(tmp)
+        if csv_mode:
+            from csv_votes import stage_votes, write_copy
+
+            inputs = stage_votes(pending, args.csv, args.reviewers)
+            pending = work / "csv-pending"
+            pending.mkdir(mode=0o700)
+            write_copy(pending, inputs)
         code = work / "engine"
         snapshot(code, REPO, ENGINE, ["/src/"], args.ciat_repo)
         home = work / "user"
@@ -180,6 +214,7 @@ def main():
             "-I",
             "-B",
             str(HERE / "worker.py"),
+            *(["--check-csv"] if csv_mode else []),
             *(["--rehearse-recovery"] if args.rehearse_recovery else []),
             str(code / "src"),
             str(records.resolve()),
@@ -203,6 +238,10 @@ def main():
         "example": args.example,
         **json.loads(result.stdout),
     }
+    if csv_mode:
+        from csv_votes import publish_copy
+
+        publish_copy(args.out_pending, inputs)
     print(json.dumps(report, indent=2))
 
 

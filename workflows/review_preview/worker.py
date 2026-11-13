@@ -1,9 +1,10 @@
 """Measure the effects of the pinned replay on disposable record copies."""
 
-from collections import Counter
+import csv
 import json
-from pathlib import Path
 import sys
+from collections import Counter
+from pathlib import Path
 from tempfile import TemporaryDirectory
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -35,7 +36,7 @@ def split_reclassification_targets(store):
     return count
 
 
-def measure(root):
+def measure(root, *, check_csv=False):
     # The worker imports only the pinned engine. All records and its user lock
     # are under the temporary workspace created by the caller.
     from nbs_ruralscan.schema_tools.clarifications import event_key, read_events
@@ -58,6 +59,37 @@ def measure(root):
     agreed, conflicts = consensus_decisions(store)
     before = evidence_rows(root)
     original_log = (root / LOG).read_bytes()
+    if check_csv:
+        from nbs_ruralscan.schema_tools.review import REASON_CODES
+
+        require(
+            not ((set(agreed) | set(conflicts)) - before.keys()),
+            "Unknown pending evidence ID",
+        )
+        require(
+            not split_reclassification_targets(store),
+            "Conflicting reclassification targets",
+        )
+        for votes in store.values():
+            for vote in votes.values():
+                if vote.get("csv_sources") and vote["decision"] == "drop":
+                    require(
+                        vote.get("reason") in REASON_CODES, "Invalid rejection reason"
+                    )
+        with (root / LOG).open(encoding="utf-8", newline="") as stream:
+            initial_events = list(csv.DictReader(stream))
+        recorded = {row["evidence_id"] for row in initial_events}
+        require(
+            all(
+                eid in recorded
+                or (
+                    before[eid].get("review_state", "") == ""
+                    and before[eid].get("reviewer_ok", "").lower() == "false"
+                )
+                for eid in agreed
+            ),
+            "Effective prior state without matching history; reconcile privately",
+        )
     known_events = Counter(event_key(e) for e in read_events(root / HISTORY))
     outcome = replay(root)
     after = evidence_rows(root)
@@ -70,6 +102,22 @@ def measure(root):
     require(
         (root / LOG).read_bytes().startswith(original_log), "Earlier review log changed"
     )
+    if check_csv:
+        with (root / LOG).open(encoding="utf-8", newline="") as stream:
+            new_events = list(csv.DictReader(stream))
+        # An old vote must not replace a later verdict, correction or reopening,
+        # even when the pinned replay would consider it eligible to apply.
+        initial_count = len(initial_events)
+        require(
+            not any(
+                row["evidence_id"] in recorded for row in new_events[initial_count:]
+            ),
+            "Prior applied history would change. Restore the earlier pending votes or reconcile privately.",
+        )
+        require(
+            not any(eid in recorded and after[eid] != before[eid] for eid in agreed),
+            "Existing reviewed evidence would change",
+        )
     events = Counter(event_key(e) for e in read_events(root / HISTORY))
     require(
         known_events.keys() <= events.keys(), "An earlier clarification disappeared"
@@ -88,7 +136,7 @@ def measure(root):
     counts = {
         key: applied.get(key, 0) for key in ("ok", "dropped", "queried", "reclassified")
     }
-    return {
+    result = {
         "evidence_rows": len(before),
         "agreed_verdict_ids": len(agreed),
         "divergent_reclassification_targets": split_reclassification_targets(store),
@@ -103,6 +151,11 @@ def measure(root):
         ),
         "second_replay_byte_identical": True,
     }
+    if check_csv:
+        result["pending_challenges_with_prior_events"] = len(
+            recorded.intersection(conflicts)
+        )
+    return result
 
 
 def stage(root, inputs):
@@ -140,6 +193,9 @@ def example_advance(root, earlier):
 
 def main():
     arguments = sys.argv[1:]
+    check_csv = arguments[:1] == ["--check-csv"]
+    if check_csv:
+        arguments = arguments[1:]
     recovery = arguments[:1] == ["--rehearse-recovery"]
     engine, records, pending, *source = arguments[1:] if recovery else arguments
     sys.path.insert(0, engine)
@@ -178,7 +234,7 @@ def main():
             comparison.update(
                 previous_revision=old_pin, previous_preview=measure(old_root)
             )
-        result = measure(root)
+        result = measure(root, check_csv=check_csv)
         if recovery:
             from shipping_rehearsal import rehearse_shipping
 
