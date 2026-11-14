@@ -8838,12 +8838,12 @@ low (<1%)
 Groundwater table
 5 – 50 m",4,false,Groundwater table,,,"WOCAT SLM Technologies Database, technology #1616 'Contour stone bunds' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Contour stone bunds",4,,,,v1.6.0
-ev_fr_precip_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""501 – 750 mm"", ""751 – 1 000 mm""], ""observed_min"": 501, ""observed_max"": 750, ""unit"": ""mm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
+ev_fr_precip_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""501 – 750 mm"", ""751 – 1 000 mm""], ""observed_min"": 501, ""observed_max"": 1000, ""unit"": ""mm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""NER"", ""income_group"": ""low""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 501 – 750 mm
 751 – 1 000 mm
 Agro-climatic zone
-semi-arid",3,false,Average annual rainfall,,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+semi-arid",3,false,Average annual rainfall,,,"[VERIFY-FLAG mismatch: re-opened for review] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_aridity_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""semi-arid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
