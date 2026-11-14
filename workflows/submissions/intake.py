@@ -71,6 +71,12 @@ def encode(kind, lane, pin, payload, *, test=False):
     )
 
 
+def csv_reader(payload):
+    return csv.DictReader(
+        io.StringIO(payload.lstrip("\ufeff"), newline=""), strict=True
+    )
+
+
 def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
     actor = signed_in()
     require(
@@ -79,9 +85,7 @@ def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
     )
     body = encode(kind, lane, pin, payload, test=test)
     if kind == "csv":
-        rows = csv.DictReader(
-            io.StringIO(payload.lstrip("\ufeff"), newline=""), strict=True
-        )
+        rows = csv_reader(payload)
         require(
             rows.fieldnames
             and {"evidence_id", "reviewer", "decision"}
@@ -241,9 +245,7 @@ def vote_rows(entry, actor, cohort):
         rows = [dict(payload, reviewer=actor)]
     else:
         require(isinstance(payload, str), "CSV must be text")
-        reader = csv.DictReader(
-            io.StringIO(payload.lstrip("\ufeff"), newline=""), strict=True
-        )
+        reader = csv_reader(payload)
         fields = reader.fieldnames or []
         require(
             len(fields) == len(set(fields))
