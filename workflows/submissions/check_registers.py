@@ -323,7 +323,7 @@ def check(ciat, *, base=None):
         from queue_view import build
 
         require(
-            (ROOT / LIVE).read_bytes() == json_bytes(build(producer)),
+            (ROOT / LIVE).read_bytes() == json_bytes(build(producer, ROOT)),
             "Published review queue differs from current registers",
         )
     print(
