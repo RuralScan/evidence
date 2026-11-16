@@ -19,6 +19,9 @@ def compile_candidate(producer, evidence_repo):
     from nbs_ruralscan.recipe import t3t6_build, t4_build
     from tempfile import TemporaryDirectory
 
+    from configuration import overlay
+
+    configuration = overlay(producer, evidence_repo)
     schema = producer / "schema"
     registers = {
         name: _csv_to_rows(schema / "registers" / (name + ".csv"))
@@ -109,6 +112,9 @@ def compile_candidate(producer, evidence_repo):
             "ids": [u["evidence_id"] for u in batch["units"] if "evidence_id" in u],
         }
     review_log = read(producer / "pipeline/metrics/review_log.csv")
+    candidate = manifest(evidence_repo, hashes, rows, stale)
+    if configuration:
+        candidate["configuration"] = configuration
     return {
         "corrections": correction_history(evidence_repo, review_log),
         "batches": batches,
@@ -120,7 +126,7 @@ def compile_candidate(producer, evidence_repo):
         **({"stale_wording": stale} if stale else {}),
         "recipes": rows,
         "membership": {key: sorted(ids) for key, ids in membership.items()},
-    }, manifest(evidence_repo, hashes, rows, stale)
+    }, candidate
 
 
 def build(producer, evidence_repo):

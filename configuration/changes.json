@@ -1,0 +1,43 @@
+[
+  {
+    "before_sha256": "8c5cc78f760e4db6545187c9b003be9f0217575cdb4a61ba825aa1a8ef50153e",
+    "changes": {
+      "locator": "Details of Methodology",
+      "url": "https://github.com/saraheb3/AgroforestrySuitability_GEE"
+    },
+    "id": "saraheb3-repository-locator",
+    "key": {
+      "tool_id": "saraheb3_af_midwest"
+    },
+    "method_revision": "638f4c080745756818647eed58e1523572f7f9ec",
+    "provenance": {
+      "evidence_ids": [
+        "ev_production_gap_saraheb3_tool"
+      ],
+      "locator": "Details of Methodology",
+      "source_id": "saraheb3_af_midwest"
+    },
+    "reason": "Use the repository that contains the registered commit and the section cited by the source finding.",
+    "table": "schema/registers/TOOL_tool_registry.csv"
+  },
+  {
+    "before_sha256": "d13a147ceb260dddad0d0f0e420ca3c807c7204b2a47d441f388e388ca96f1f6",
+    "changes": {
+      "why": "direction confirmed against the full quote in the 2026-10-23 blind audit (two coders + adjudication); the cue wording cannot decide it (comparison between options, reversed noun, or the variable named as a benefit). Source p. 9 compares the cost of retaining buffer trees in low-productivity stands."
+    },
+    "id": "tiwari-direction-page",
+    "key": {
+      "evidence_id": "ev_project_cost_tiwari16_8"
+    },
+    "method_revision": "638f4c080745756818647eed58e1523572f7f9ec",
+    "provenance": {
+      "evidence_ids": [
+        "ev_project_cost_tiwari16_8"
+      ],
+      "locator": "page 9",
+      "source_id": "site_specific_vs_fixed_width_cost_2016"
+    },
+    "reason": "Identify the page and comparison already cited by this finding in the direction audit.",
+    "table": "schema/lookups/direction_cue_exceptions.csv"
+  }
+]
