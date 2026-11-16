@@ -247,6 +247,31 @@ class RegistrationTests(unittest.TestCase):
         self.base = self.commit()
         args = self.source_args()
         op = cli.operation(args, self.root)
+        # A second acquired PDF with the same copied citation and a different
+        # screened title cannot use the queued identity.
+        other_title = "An unrelated handbook for land restoration"
+        other_candidate = op["candidate"] | {"title": other_title}
+        other_pdf = self.tmp / "other.pdf"
+        with pymupdf.open() as doc:
+            doc.new_page().insert_text((30, 45), other_title)
+            doc.save(other_pdf)
+        other_plan = op["plan"] | {
+            "expected_sha256": content_digest(other_pdf.read_bytes())
+        }
+        other_receipt, _ = reg.acquisition.acquire(
+            other_candidate, other_plan, other_pdf
+        )
+        with self.assertRaisesRegex(ValueError, "Screened title differs"):
+            reg.promote(
+                self.root,
+                op
+                | {
+                    "candidate": other_candidate,
+                    "plan": other_plan,
+                    "receipt": other_receipt,
+                },
+                self.engine,
+            )
         before = (self.root / "registers" / EV).read_bytes()
         self.assertTrue(self.install(op))
         self.replay()
