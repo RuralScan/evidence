@@ -12,7 +12,7 @@ import configuration as config
 from queue_view import compile_candidate
 
 BASE = "017544fe55929cd03579494bbd4062db67697363"
-METHOD_PIN = "638f4c080745756818647eed58e1523572f7f9ec"
+METHOD_PIN = "e50a3a01b6b164bebed8dfd09229c4df83086c01"
 POLICY = "schema/lookups/family_rollup_policy.csv"
 
 
