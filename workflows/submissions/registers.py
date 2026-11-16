@@ -426,7 +426,7 @@ def prepare(ciat, corpus, selected, *, publish=False):
         ledger.write_bytes(json_bytes(journal))
         from queue_view import build
 
-        (dest / LIVE).write_bytes(json_bytes(build(producer)))
+        (dest / LIVE).write_bytes(json_bytes(build(producer, dest)))
         git("add", "--", "registers", LIVE, cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if publish:
