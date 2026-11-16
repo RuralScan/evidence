@@ -4,7 +4,7 @@
     "revision": "e43c42bd581dba791ce1f1697b6b41952ab0cfe3"
   },
   "configuration": {
-    "evidence_changes_sha256": "f7b6129d06f9db777e724089c57e389f23ac4560eb0382309dbab8562911096c",
+    "evidence_changes_sha256": "8f8e76dd66085d738c5ae1d391cba6d455fcd55e712ae8e7b64909b803c90664",
     "inputs": {
       "schema/lookups/comparator_policy.csv": "15326207e7548869752ae24ce235bf8046a183af209d43e460fe2dec8c763275",
       "schema/lookups/configuration_vocabulary.csv": "757efa996eb2cab752ed5818b295514d48471e1301b952071cc0eacd9a9f8b1b",
@@ -32,7 +32,7 @@
       "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
     },
     "method_release_sha256": "50dda004920917ad0355d8b89a44316379920930f4d13054fca5f1dd8e8ca7a7",
-    "method_revision": "638f4c080745756818647eed58e1523572f7f9ec"
+    "method_revision": "e50a3a01b6b164bebed8dfd09229c4df83086c01"
   },
   "format": "ruralscan.recipe-candidate.v1",
   "inputs": {

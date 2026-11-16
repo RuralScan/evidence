@@ -75,15 +75,17 @@ def local_method():
 
 def pinned_release(sha, local=None):
     with TemporaryDirectory() as tmp:
-        root = Path(tmp) / "method"
-        snapshot(
-            root,
-            METHOD,
-            revision(sha),
-            ["/configuration/", "/data-model/configuration/"],
-            local,
-        )
-        manifest = (root / RELEASE).read_bytes()
+        revision(sha)
+        root = local or Path(tmp) / "method"
+        if local is None:
+            snapshot(
+                root,
+                METHOD,
+                sha,
+                ["/configuration/", "/data-model/configuration/"],
+                None,
+            )
+        manifest = blob(root, sha, RELEASE)
         edition = json.loads(manifest)
         require(
             edition["format"] == "ruralscan.compiler-definitions.v1",
@@ -103,7 +105,7 @@ def pinned_release(sha, local=None):
             )
             source = f"{expected_dir}/{Path(target).name}"
             require(meta["file"] == source, "Unexpected method release source")
-            data = (root / source).read_bytes()
+            data = blob(root, sha, source)
             require(digest(data) == meta["sha256"], f"Method hash mismatch: {target}")
             files[target] = data
         require(METHOD_REGISTERS <= files.keys(), "Incomplete register release")

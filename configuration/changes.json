@@ -9,7 +9,7 @@
     "key": {
       "tool_id": "saraheb3_af_midwest"
     },
-    "method_revision": "638f4c080745756818647eed58e1523572f7f9ec",
+    "method_revision": "e50a3a01b6b164bebed8dfd09229c4df83086c01",
     "provenance": {
       "evidence_ids": [
         "ev_production_gap_saraheb3_tool"
@@ -29,7 +29,7 @@
     "key": {
       "evidence_id": "ev_project_cost_tiwari16_8"
     },
-    "method_revision": "638f4c080745756818647eed58e1523572f7f9ec",
+    "method_revision": "e50a3a01b6b164bebed8dfd09229c4df83086c01",
     "provenance": {
       "evidence_ids": [
         "ev_project_cost_tiwari16_8"
