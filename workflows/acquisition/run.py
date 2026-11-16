@@ -118,6 +118,10 @@ def selected(path, candidate_id):
 
 def read_plan(path):
     plan = json.loads(path.read_bytes())
+    return validate_plan(plan)
+
+
+def validate_plan(plan):
     require(isinstance(plan, dict), "Expected an acquisition plan")
     supported = {
         "candidate_id",
@@ -389,8 +393,11 @@ def publish(out, receipt, body):
         raise
 
 
-def check(out, plan, candidate, sources=None):
-    receipt = json.loads((out / "receipt.json").read_bytes())
+def check_provenance(receipt, plan, candidate):
+    require(
+        plan.get("candidate_id", candidate["candidate_id"]) == candidate["candidate_id"],
+        "Acquisition plan selects another candidate",
+    )
     sid, kind = (
         candidate.get("reuse_source_id", candidate["candidate_id"]),
         plan["kind"],
@@ -406,22 +413,17 @@ def check(out, plan, candidate, sources=None):
     )
     canonical = receipt["canonical_source"]
     check_canonical(candidate, plan, canonical)
-    if sources:
-        require(
-            reuse_identity(candidate, plan, sources) == canonical or canonical is None,
-            "Current source register differs from recorded canonical identity",
-        )
     if receipt["status"] == "held":
-        require(
-            not (out / "cache").exists() and not (out / "library").exists(),
-            "Held bundle contains artifacts",
-        )
-        return receipt
-    meta = json.loads((out / "cache" / (sid + ".meta.json")).read_bytes())
+        return
+    meta = receipt["artifact"]
     require(
         receipt["status"] == "acquired"
-        and receipt["document"]["verified"]
-        and meta == receipt["artifact"]
+        and receipt["document"]["verified"] is True
+        and re.fullmatch(r"[a-f0-9]{64}", meta["sha256"])
+        and re.fullmatch(r"[a-f0-9]{40}", meta["sha1"])
+        and meta["sha256"] == plan.get("expected_sha256", meta["sha256"])
+        and type(meta["bytes"]) is int
+        and meta["bytes"] > 0
         and meta["source_id"] == sid
         and meta["kind"] == kind,
         "Invalid acquired receipt or provenance",
@@ -441,6 +443,10 @@ def check(out, plan, candidate, sources=None):
         identity["status"] in {"title_required", "doi_verified"} or allow_retry,
         "Recorded metadata has no eligible acquisition route",
     )
+    if kind != "code" and identity["status"] != "doi_verified":
+        require(
+            plan.get("publisher_hosts"), "Title-only acquisition needs publisher hosts"
+        )
     if kind == "code":
         require(
             meta["commit_sha"] == plan["commit"]
@@ -453,6 +459,30 @@ def check(out, plan, candidate, sources=None):
             source_url(meta["url"]).hostname in plan["publisher_hosts"],
             "Recorded origin is outside publisher hosts",
         )
+
+
+def check(out, plan, candidate, sources=None):
+    receipt = json.loads((out / "receipt.json").read_bytes())
+    check_provenance(receipt, plan, candidate)
+    sid, kind = receipt["source_id"], receipt["kind"]
+    canonical = receipt["canonical_source"]
+    if sources:
+        require(
+            reuse_identity(candidate, plan, sources) == canonical or canonical is None,
+            "Current source register differs from recorded canonical identity",
+        )
+    if receipt["status"] == "held":
+        require(
+            not (out / "cache").exists() and not (out / "library").exists(),
+            "Held bundle contains artifacts",
+        )
+        return receipt
+    meta = receipt["artifact"]
+    require(
+        meta == json.loads((out / "cache" / (sid + ".meta.json")).read_bytes()),
+        "Invalid acquired receipt or provenance",
+    )
+    identity = receipt["metadata"]
     name = sid + EXTENSIONS[kind]
     copies = [out / "cache" / name]
     if kind == "pdf":
