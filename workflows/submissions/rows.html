@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Review a recipe row · RuralScan</title><link rel="stylesheet" href="/desk.css"><script defer src="/rows.js"></script></head><body><main>
+<header><strong>RuralScan</strong><a href="/">Finding reviews</a></header>
+<h1>Review a recipe row</h1><p id="edition">Loading edition…</p>
+<label for="practice">Practice</label><select id="practice"></select>
+<label for="table">Table</label><select id="table"><option value="T3">T3 · Hazard ratings</option><option value="T4">T4 · Suitability mappings</option><option value="T6">T6 · Scorecard</option><option value="T6E">T6E · Economic profile</option></select>
+<label for="record">Row</label><select id="record"></select>
+<section id="card" hidden><h2>What you are reviewing</h2><p id="rating"></p><p id="current"></p><p id="warning"></p><details><summary>Evidence and compiled fields</summary><ul id="evidence"></ul><pre id="data"></pre></details>
+<form id="action"><label for="kind">What would you like to do?</label><select id="kind"><option value="rating">Review this rating</option><option value="wording">Suggest clearer wording</option></select>
+<div id="vote"><label for="decision">Decision</label><select id="decision"><option value="">Choose…</option><option value="approve">Approve</option><option value="hold">Hold</option><option value="reject">Reject</option></select>
+<label for="reason">Reason (required for hold or reject)</label><select id="reason"><option value="">Choose…</option><option value="wrong_class">Wrong class</option><option value="wrong_confidence">Wrong confidence</option><option value="prose_misleading">Misleading wording</option><option value="evidence_misrouted">Evidence assigned to the wrong row</option><option value="should_be_split">Row should be split</option><option value="other">Other</option></select>
+<label for="note">Review note</label><textarea id="note"></textarea></div>
+<div id="words" hidden><label for="mechanism" id="word-label">Mechanism</label><textarea id="mechanism"></textarea><label id="conditional-label" for="conditional">Conditions and caveats</label><textarea id="conditional"></textarea></div>
+<p>Submit creates a public GitHub receipt under your account. A protected register PR applies it. A rating review does not change the rating or approve its findings.</p><button id="submit">Submit public receipt</button></form></section>
+<p id="status" aria-live="polite" role="status"></p></main></body></html>

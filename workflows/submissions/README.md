@@ -1,4 +1,4 @@
-# Submit a finding vote or extraction proposal
+# Submit evidence and recipe reviews
 
 The November 10 dashboard lets you submit a finding under your own GitHub account. The vote, note and account name appear on a public RuralScan/evidence issue. Choose **Submit review** on a finding, enter your decision, continue to GitHub and create the issue. Its number is your receipt. **My reviewed** links to your public submissions alongside the historical records. Restricted source files stay in the source library.
 
@@ -10,8 +10,8 @@ Operators can register a completed search and its acquisition candidates, promot
 
 | Other work | What you can do now | Missing official route |
 |---|---|---|
-| Candidate tables and row wording | Applying register receipts recompiles T3, T4, T6 and T6E for the live queue. Existing published editions have their own pins. | Submit wording or authored recipe inputs and hand off a candidate for method acceptance ([evidence #38](https://github.com/RuralScan/evidence/issues/38)). |
-| Rating reviews | Inspect historical row decisions. Preserve a new rating review with its row ID and revision. | Apply a decision about a compiled row ([evidence #39](https://github.com/RuralScan/evidence/issues/39)). |
+| Candidate tables and row wording | [Propose wording, rebuild and compare a candidate](recipe-rows.md). Method acceptance is a separate PR. | — |
+| Rating reviews | [Review a compiled row](recipe-rows.md). The protected PR appends authenticated rating history. | — |
 | Method decisions | Consult the scientific decision ledger for existing codes. Its successor write procedure is unresolved. | Decide where new coded events are recorded and how to publish them ([method #17](https://github.com/RuralScan/method/issues/17)). |
 | Configuration and lookups | Inspect the pinned inputs, including VONT, FAM, BIND, XW, BANDS and TOOL. Method holds draft definitions. | Promote approved definitions into compilation ([method #18](https://github.com/RuralScan/method/issues/18)) and update evidence-owned tools and mappings ([evidence #40](https://github.com/RuralScan/evidence/issues/40)). |
 | Retrospectives | Preserve measured sweep results and links from feedback to changes in instructions or checks. | Record the sweep and advance its learnings cursor ([evidence #41](https://github.com/RuralScan/evidence/issues/41)). |

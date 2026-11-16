@@ -56,8 +56,10 @@ def check(ciat, *, base=None):
 def check_snapshot(producer, ciat, base):
     from registration import RECORDS, TRACKED, checked_source_base
 
+    import recipe_rows
+
     has_operations = (ROOT / RECORDS).exists()
-    if has_operations and not base:
+    if not base:
         base = git("rev-parse", "HEAD^1", cwd=ROOT).decode().strip()
     manifest = json.loads((ROOT / "registers/manifest.json").read_bytes())
     require(
@@ -74,13 +76,16 @@ def check_snapshot(producer, ciat, base):
     }
     require(expected == actual, "Unexpected register inventory")
     for name, meta in manifest["files"].items():
-        if not ((name in MUTABLE and applied) or (name in TRACKED and has_operations)):
+        if name != recipe_rows.LOG and not (
+            (name in MUTABLE and applied) or (name in TRACKED and has_operations)
+        ):
             require(
                 content_digest((ROOT / "registers" / name).read_bytes())
                 == meta["sha256"],
                 f"Unexpected change to {name}",
             )
     if base:
+        recipe_rows.verify(ROOT, base)
 
         def previous(path):
             return blob(ROOT, base, path)
@@ -334,10 +339,16 @@ def check_snapshot(producer, ciat, base):
     for name in manifest["files"]:
         if (producer / name).is_file():
             shutil.copyfile(ROOT / "registers" / name, producer / name)
-    from queue_view import build
+    from queue_view import compile_candidate
 
+    queue, candidate = compile_candidate(producer, ROOT)
     require(
-        (ROOT / LIVE).read_bytes() == json_bytes(build(producer, ROOT)),
+        (ROOT / recipe_rows.CANDIDATE).read_bytes()
+        == (json.dumps(candidate, sort_keys=True, indent=2) + "\n").encode(),
+        "Recipe candidate hashes or stale wording differ",
+    )
+    require(
+        (ROOT / LIVE).read_bytes() == json_bytes(queue),
         "Published review queue differs from current registers",
     )
     print(

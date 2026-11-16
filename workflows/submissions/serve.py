@@ -10,7 +10,7 @@ from pathlib import Path
 import secrets
 import sqlite3
 import subprocess
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from intake import (
     Cohort,
@@ -66,6 +66,54 @@ class Desk:
                 db.execute(
                     "CREATE TABLE IF NOT EXISTS receipts (number INTEGER PRIMARY KEY, actor TEXT, body TEXT, UNIQUE(actor,body))"
                 )
+
+    def recipe_queue(self):
+        from registers import ROOT, LIVE, blob, member, FIRST
+
+        require(
+            not self.test and member(ROOT, FIRST, self.pin),
+            "Use the desk with an official RuralScan revision to review a recipe row",
+        )
+        if not hasattr(self, "_recipe_queue"):
+            self._recipe_queue = json.loads(blob(ROOT, self.pin, LIVE))
+        return self._recipe_queue
+
+    def recipe_options(self, params):
+        from recipe_rows import TABLES, CANDIDATE, ident, lookup, target
+        from registers import ROOT, blob
+
+        queue = self.recipe_queue()
+        practice = params.get("practice", [""])[0]
+        table = params.get("table", [""])[0]
+        record = params.get("record", [""])[0]
+        if not practice or table not in TABLES:
+            return {
+                "practices": sorted(queue["recipes"]),
+                "revision": self.pin,
+                "actor": self.identity,
+            }
+        require(practice in queue["recipes"], "Unknown practice")
+        if not record:
+            return {
+                "records": [ident(r) for r in queue["recipes"][practice][TABLES[table]]]
+            }
+        row = lookup(queue, practice, table, record)
+        candidate = json.loads(blob(ROOT, self.pin, CANDIDATE))
+        return {
+            "row": row,
+            "target": target(queue, practice, table, record),
+            "stale": [
+                w
+                for w in candidate["stale_wording"].get(practice, [])
+                if w["table"] == table and w["record"] == record
+            ],
+        }
+
+    def submit_row(self, entry):
+        from recipe_rows import validate, send
+
+        validate(entry, self.recipe_queue(), self.pin)
+        return {"url": send(entry, expected_actor=self.identity)}
 
     def database(self):
         return sqlite3.connect(self.sandbox, timeout=15)
@@ -192,9 +240,11 @@ def handler(desk, origin):
             try:
                 self.check_host()
                 path = urlsplit(self.path).path
-                if path in ("/", "/desk.js", "/desk.css"):
+                if path in ("/", "/desk.js", "/desk.css", "/rows", "/rows.js"):
                     name, mime = {
                         "/": ("desk.html", "text/html"),
+                        "/rows": ("rows.html", "text/html"),
+                        "/rows.js": ("rows.js", "text/javascript"),
                         "/desk.js": ("desk.js", "text/javascript"),
                         "/desk.css": ("desk.css", "text/css"),
                     }[path]
@@ -202,7 +252,7 @@ def handler(desk, origin):
                         200,
                         (HERE / name).read_bytes(),
                         mime + "; charset=utf-8",
-                        cookie=path == "/",
+                        cookie=path in ("/", "/rows"),
                     )
                     return
                 self.check_session()
@@ -215,6 +265,8 @@ def handler(desk, origin):
                         fixtures=FIXTURES,
                         reasons=desk.cohort.reasons,
                     )
+                elif path == "/api/rows":
+                    data = desk.recipe_options(parse_qs(urlsplit(self.path).query))
                 elif path == "/api/history":
                     data = desk.history()
                 else:
@@ -234,7 +286,7 @@ def handler(desk, origin):
                 self.check_host()
                 self.check_session()
                 require(
-                    self.path == "/api/submit"
+                    self.path in ("/api/submit", "/api/rows")
                     and self.headers.get("Origin") == origin
                     and self.headers.get_content_type() == "application/json",
                     "Request must come from the local review form",
@@ -243,7 +295,12 @@ def handler(desk, origin):
                 require(
                     0 < length <= 65536, "Split this batch into smaller submissions"
                 )
-                result = desk.submit(json.loads(self.rfile.read(length)))
+                form = json.loads(self.rfile.read(length))
+                result = (
+                    desk.submit_row(form)
+                    if self.path == "/api/rows"
+                    else desk.submit(form)
+                )
                 self.respond(201, json.dumps(result).encode())
             except (
                 ValueError,
