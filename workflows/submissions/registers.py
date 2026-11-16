@@ -413,6 +413,9 @@ def prepare(ciat, corpus, selected, *, publish=False):
             target = producer / path.relative_to(dest / "registers")
             if path.is_file() and target.is_file():
                 shutil.copyfile(path, target)
+        from configuration import overlay
+
+        overlay(producer, dest)
         ledger = dest / JOURNAL
         journal = json.loads(ledger.read_bytes()) if ledger.exists() else {}
         applied = apply_batch(

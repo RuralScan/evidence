@@ -237,6 +237,9 @@ def prepare(args):
             args.ciat_repo,
         )
         sys.path.insert(0, str(engine / "src"))
+        from configuration import overlay
+
+        overlay(engine, dest)
         if args.kind == "row":
             from recipe_rows import append, fetch
 

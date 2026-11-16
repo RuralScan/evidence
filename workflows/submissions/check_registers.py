@@ -58,6 +58,9 @@ def check_snapshot(producer, ciat, base):
 
     import recipe_rows
 
+    import configuration
+
+    configuration.verify_method(ROOT, configuration.local_method())
     has_operations = (ROOT / RECORDS).exists()
     if not base:
         base = git("rev-parse", "HEAD^1", cwd=ROOT).decode().strip()
@@ -76,7 +79,11 @@ def check_snapshot(producer, ciat, base):
     }
     require(expected == actual, "Unexpected register inventory")
     for name, meta in manifest["files"].items():
-        if name != recipe_rows.LOG and not (
+        if name not in {
+            recipe_rows.LOG,
+            configuration.TOOL,
+            *configuration.METHOD_REGISTERS,
+        } and not (
             (name in MUTABLE and applied) or (name in TRACKED and has_operations)
         ):
             require(
@@ -85,6 +92,8 @@ def check_snapshot(producer, ciat, base):
                 f"Unexpected change to {name}",
             )
     if base:
+        configuration.verify_owned(ROOT, producer, base)
+        configuration.overlay(producer, ROOT)
         recipe_rows.verify(ROOT, base)
 
         def previous(path):
