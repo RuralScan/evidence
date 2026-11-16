@@ -43,8 +43,20 @@ async function load(record='', desired='') {
   $('current').textContent=[$('mechanism').value,$('conditional').value].filter(Boolean).join(' ');
   $('warning').textContent=d.stale.map(w=>'Wording needs review: '+w.reason).join('; ');
   $('evidence').replaceChildren();
-  for(const id of selected.evidence_ids) {const li=document.createElement('li'),a=document.createElement('a');
-    a.href='https://ruralscan.github.io/method/#review-evidence='+encodeURIComponent(id);a.textContent=id;li.append(a);$('evidence').append(li);}
+  for(const finding of d.evidence) {
+    const li=document.createElement('li'),a=document.createElement('a'),quote=document.createElement('blockquote');
+    a.href='https://ruralscan.github.io/method/#review-evidence='+encodeURIComponent(finding.id);
+    a.textContent='Open finding in current dashboard';
+    quote.textContent=finding.quote;
+    li.append(finding.citation+' · '+finding.locator,quote,a);$('evidence').append(li);
+  }
+  $('row-history').replaceChildren();$('history-empty').hidden=!!d.reviews.length;
+  for(const review of d.reviews) {
+    const li=document.createElement('li');
+    li.append([review.reviewer,review.decision,review.date.slice(0,10),review.reason,review.note].filter(Boolean).join(' · '));
+    if(review.receipt){const a=document.createElement('a');a.href='https://github.com/RuralScan/evidence/issues/'+review.receipt;a.textContent='Receipt #'+review.receipt;li.append(' · ',a);}
+    $('row-history').append(li);
+  }
   $('data').textContent=JSON.stringify(r,null,2);$('card').hidden=false;mode();
 }
 function err(e){$('status').textContent=e.message;}
