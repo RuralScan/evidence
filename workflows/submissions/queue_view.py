@@ -9,7 +9,8 @@ def read(path):
         return list(csv.DictReader(stream))
 
 
-def build(producer):
+def build(producer, evidence_repo):
+    from corrections import correction_history
     from nbs_ruralscan.schema_tools.generate import _csv_to_rows
     from nbs_ruralscan.recipe import t3t6_build, t4_build
     from tempfile import TemporaryDirectory
@@ -60,10 +61,12 @@ def build(producer):
             "title": item["title"],
             "ids": [u["evidence_id"] for u in batch["units"] if "evidence_id" in u],
         }
+    review_log = read(producer / "pipeline/metrics/review_log.csv")
     return {
+        "corrections": correction_history(evidence_repo, review_log),
         "batches": batches,
         "registers": registers,
-        "review_log": read(producer / "pipeline/metrics/review_log.csv"),
+        "review_log": review_log,
         "row_reviews": read(producer / "pipeline/metrics/row_review_log.csv"),
         "recipes": rows,
         "membership": {key: sorted(ids) for key, ids in membership.items()},
