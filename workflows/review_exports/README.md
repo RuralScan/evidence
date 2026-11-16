@@ -1,6 +1,6 @@
 # Preview a browser review CSV
 
-Use this when a reviewer has downloaded a CSV from an evidence or compiled-row review page. The command runs the actual importer on temporary copies, records the changes to review history and repeats the import to measure retry behaviour. Only the aggregate JSON receipt leaves the temporary directory. For a current finding CSV, use the [submission desk](../submissions/README.md). Compiled-row reviews have no official importer. Keep their exports for the [planned rating-review route](https://github.com/RuralScan/evidence/issues/39). For saved dashboard decisions in JSON, use the separate [decision preview](../review_preview/README.md).
+Use this when a reviewer has downloaded a CSV from an evidence or compiled-row review page. The command runs the actual importer on temporary copies, records the changes to review history and repeats the import to measure retry behaviour. Only the aggregate JSON receipt leaves the temporary directory. For a current finding CSV, use the [submission desk](../submissions/README.md). For a compiled row, inspect the export and submit your decision through the [rating-review desk](../submissions/recipe-rows.md); this historical CSV replay does not submit it. For saved dashboard decisions in JSON, use the separate [decision preview](../review_preview/README.md).
 
 ## Run the examples
 

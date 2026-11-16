@@ -19,7 +19,7 @@ from registers import (
     require,
     content_digest,
     intake,
-    json_bytes,
+    blob,
 )
 
 
@@ -237,18 +237,64 @@ def prepare(args):
             args.ciat_repo,
         )
         sys.path.insert(0, str(engine / "src"))
-        op = operation(args, dest)
-        if not install(dest, base, op, engine):
+        if args.kind == "row":
+            from recipe_rows import append, fetch
+
+            event = fetch(args.receipt)
+            op = {"kind": event["entry"]["kind"]}
+            name = f"row-{args.receipt}"
+            added = append(dest, event, base)
+        else:
+            op = operation(args, dest)
+            name = reg.stem(op)
+            added = install(dest, base, op, engine)
+        if not added:
             print("Already registered. No change.")
             return
-        if op["kind"] == "source":
-            from queue_view import build
+        if args.kind == "row" or op["kind"] == "source":
+            from queue_view import publish_files
 
             for path in (dest / "registers").rglob("*"):
                 target = engine / path.relative_to(dest / "registers")
                 if path.is_file() and target.is_file():
                     shutil.copyfile(path, target)
-            (dest / LIVE).write_bytes(json_bytes(build(engine, dest)))
+            candidate = publish_files(engine, dest)
+            if args.kind == "row":
+                from recipe_candidate import changes
+
+                before = json.loads(blob(dest, base, LIVE))
+                after = read(dest / LIVE)
+                diffs = list(changes(before["recipes"], after["recipes"]))
+                e = event["entry"]
+                if e["kind"] == "rating":
+                    require(not diffs, "Rating decision changed compiled rows")
+                else:
+                    require(
+                        not any(
+                            w.get("receipt") == args.receipt
+                            for w in candidate["stale_wording"].get(e["practice"], [])
+                        ),
+                        "Wording did not apply against the compiled evidence",
+                    )
+                    require(
+                        all(
+                            d["practice"] == e["practice"]
+                            and d["record"] == e["record"]
+                            and d["table"].split("_")[0] == e["table"]
+                            for d in diffs
+                        ),
+                        "Unrelated compiled rows changed",
+                    )
+                details = (
+                    f"Receipt #{args.receipt} from @{event['actor']}: {e['practice']} / {e['table']} / `{e['record']}`.\n\n"
+                    + (
+                        f"Rating: **{e['decision']}**. Reason and note are in the linked original receipt. No compiled values change."
+                        if e["kind"] == "rating"
+                        else "Inspect changed row fields (JSON):\n\n"
+                        + json.dumps(diffs, ensure_ascii=False, indent=2)
+                    )
+                )
+                print(details)
         git("add", "-A", cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if not args.open_pr:
@@ -260,7 +306,6 @@ def prepare(args):
             "Use the merged writer from a clean checkout",
         )
         intake.check_destination()
-        name = reg.stem(op)
         branch = f"registers/{base[:12]}-{name}"
         title = f"Register {name}"
         git("commit", "-qm", title, cwd=dest)
@@ -289,6 +334,7 @@ def prepare(args):
         body = tmp / "pr.md"
         body.write_text(
             f"Apply the recorded {op['kind']} operation against RuralScan/evidence revision `{base}`.\n"
+            + (details[:48000] if args.kind == "row" else "")
         )
         subprocess.run(
             [
@@ -319,6 +365,10 @@ def cli():
     )
     parser.add_argument("--open-pr", action="store_true")
     sub = parser.add_subparsers(dest="kind", required=True)
+    row = sub.add_parser(
+        "row", help="Replay an authenticated rating or wording receipt"
+    )
+    row.add_argument("receipt", type=int)
     discovery = sub.add_parser("discovery")
     discovery.add_argument("--plan", type=Path, required=True)
     discovery.add_argument("--decisions", type=Path, required=True)

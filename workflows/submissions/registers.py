@@ -424,10 +424,11 @@ def prepare(ciat, corpus, selected, *, publish=False):
         for name in (EV, SRC, LOG):
             shutil.copyfile(producer / name, dest / "registers" / name)
         ledger.write_bytes(json_bytes(journal))
-        from queue_view import build
+        from queue_view import publish_files
+        from recipe_rows import CANDIDATE
 
-        (dest / LIVE).write_bytes(json_bytes(build(producer, dest)))
-        git("add", "--", "registers", LIVE, cwd=dest)
+        publish_files(producer, dest)
+        git("add", "--", "registers", LIVE, CANDIDATE, cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if publish:
             require(

@@ -5,3 +5,5 @@ form,details,section {background:white;border:1px solid #bdcec5;padding:1rem;bor
 label {display:block;font-weight:600;margin:.8rem 0 .35rem} input,select,textarea {font:inherit;padding:.5rem;width:100%;box-sizing:border-box}
 button {font:inherit;font-weight:600;color:white;background:#145744;border:0;border-radius:.25rem;padding:.6rem .9rem;margin-top:.8rem;cursor:pointer}
 button:disabled {opacity:.55} a {color:#145744} summary {cursor:pointer} #status {font-weight:600} #quote {white-space:pre-wrap} li {margin:.4rem 0}
+
+#data {white-space:pre-wrap; overflow-wrap:anywhere} #edition {overflow-wrap:anywhere}

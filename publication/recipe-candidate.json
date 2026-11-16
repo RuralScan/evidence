@@ -1,0 +1,151 @@
+{
+  "compiler": {
+    "repository": "CIAT/nbs_ruralscan",
+    "revision": "e43c42bd581dba791ce1f1697b6b41952ab0cfe3"
+  },
+  "format": "ruralscan.recipe-candidate.v1",
+  "inputs": {
+    "recipe-inputs/wording.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "schema/lookups/comparator_policy.csv": "15326207e7548869752ae24ce235bf8046a183af209d43e460fe2dec8c763275",
+    "schema/lookups/crop_scope_policy.csv": "62f6bf68b618116e63d4bee57d7b01c6710b4a2ba62b4405bf7daf1662f9a5b4",
+    "schema/lookups/design_weights.csv": "f95fcf48cceaa40e03fb23952d80044a0f810d8751f1c9233c76476330507d93",
+    "schema/lookups/effect_locus.csv": "8f5d7d0e605c3937fb96929bac30510043a6d96f7f7c6b66e4fd3947816fe96b",
+    "schema/lookups/family_rollup_policy.csv": "5cda0b42e24b589b37d7336d56963c4ff58380f56ed797457e30c68fc04f5e78",
+    "schema/lookups/ipcc_confidence_matrix.csv": "ae32f02c79be6d17dbfef90e601f47f53750b59643033c03d32069463d051d35",
+    "schema/lookups/t4_numeric_compilation_policy.csv": "0613e337b0bb4d98a507f66d8c1ffe1080d94de0da3a18bc495eab4d8cd6bc73",
+    "schema/lookups/wb_income_groups.csv": "286c52a26a23daa78009907ea32c9a359b5042b38e67492218bc4eceb751d662",
+    "schema/lookups/xw_route_policy.csv": "72add2e55951c90fcd4b727d1aa03b88485f7edb3963a9a93bcf7b1888c97bef",
+    "schema/recipe_inputs/t4/agroforestry/authored_mappings.csv": "3a0a59781ea7dc28bddf8d5bb836f7f6b33b63bf791128925095c072a9212fd6",
+    "schema/recipe_inputs/t4/agroforestry/mapping_settings.csv": "1d912368006bbb20a9c19ee3f4ccd7c3f0aa49f02dba703a2ca4515bf784ebfc",
+    "schema/recipe_inputs/t4/agroforestry/review_holds.csv": "65a6d911993fd7fb76f16cfe10cf3e6fa0c1e17d4a35ab4531e0d4ccb4e3ea7d",
+    "schema/recipe_inputs/t4/forest_restoration/authored_mappings.csv": "8980d4cc3582f8a54f8d6e184ef061e23c062d23cbb021a7d7066e6b0bf7365f",
+    "schema/recipe_inputs/t4/practices.csv": "f71ed820993c68345cbca90170b344ab5a2b5b22ed5765708bb09265bc5ece6e",
+    "schema/recipe_inputs/t4/riparian_buffer/review_holds.csv": "9349f9694dd85c3e2496e02bbaf95b751e9d502c6283970f10cf51b892a2f220",
+    "schema/recipe_inputs/t4/water_harvesting_conservation/mapping_settings.csv": "deab24adc77320d192ea27050bdbe5444a71adf306e928e244985bc5eef7a576",
+    "schema/recipe_inputs/t4/water_harvesting_conservation/review_holds.csv": "768811ae2b124d463030bbd0952869089458302e0805eb076ad18f30a514c580",
+    "schema/recipe_inputs/t4/wetland_management/mapping_settings.csv": "5d31e9d1db0a0cc3733dd0b9a410ba7af7030c6bd739d90946e8b228a8a4f1d3",
+    "schema/recipes/agroforestry/T3T6_prose.json": "127bcb5bcf007824e324c6c38ecf81ea9155ad40a0b7b62abb81974ab85b3ad7",
+    "schema/recipes/forest_restoration/T3T6_prose.json": "a86a97dcad530a00db097b3c7f15f6c9858495b1c8f555bc5e272126aa67b380",
+    "schema/recipes/mangrove_restoration/T3T6_prose.json": "bd3a8c5e8bdf3d9ed31ba9e9836b3169d6ec33d27b7d13809d16b0ed1c184bf5",
+    "schema/recipes/riparian_buffer/T3T6_prose.json": "a065b5c8f38b4ead390c99c8e429d5d849ef5cdca269b6a9586050d6d7631af3",
+    "schema/recipes/water_harvesting_conservation/T3T6_prose.json": "586f46a2c81b93675019f58395f95ce7ad5a3dea9439a6f14e9e5cef539d18a1",
+    "schema/recipes/wetland_management/T3T6_prose.json": "e8dab8fb3f93b6a4d03204c15ecd6ce6d1e5420b21aa3187dd3471523d1cd806",
+    "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
+    "schema/registers/EV_evidence_register.csv": "d3e00044a6a2e839d461e58de21daf969de5122a7ecb5d90edc1d95668f33444",
+    "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
+    "schema/registers/SRC_source_register.csv": "242231533896d18a093de98176e378ccae26d0181d37fa9638ce1ee63e9a8269",
+    "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
+    "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
+  },
+  "stale_wording": {},
+  "tables": {
+    "agroforestry": {
+      "T3_nbs_hazard_farming": {
+        "rows": 59,
+        "sha256": "0bbb70b492d18a8f94a7e65fcc1b52a450766d54ce48ba5135508d96231b6296"
+      },
+      "T4_suitability_mappings": {
+        "rows": 26,
+        "sha256": "0a237bb87f59c2d25268332e06044cf0973e619408b98063e5bfada985cbe20e"
+      },
+      "T6E_economic_profile": {
+        "rows": 19,
+        "sha256": "4c904789bfbc0cf2b98cc2111d9515a44c29df11d69eef1c89f5ef7cee7556d8"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 113,
+        "sha256": "6f41eed27d974f08ed0f407276da41ba56b513a1a088d25000e9b6069a4b4082"
+      }
+    },
+    "forest_restoration": {
+      "T3_nbs_hazard_farming": {
+        "rows": 54,
+        "sha256": "c060bb3527351043cde70eb75ec7ec739ea74f628c4f0ea97ff5cc7d8d9ec65b"
+      },
+      "T4_suitability_mappings": {
+        "rows": 2,
+        "sha256": "84e2ccded74a4e45587e23ee80e50ef55879dbd2585179bee4b5f239f3b8738b"
+      },
+      "T6E_economic_profile": {
+        "rows": 17,
+        "sha256": "b27c5cbc6d705153408fdc5390251e83c27a920b4eb12c3f01604059c016ac10"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 73,
+        "sha256": "66933c6a53e69db45710d2546a19897a954d0b36e645a46a9046feaf43af1320"
+      }
+    },
+    "mangrove_restoration": {
+      "T3_nbs_hazard_farming": {
+        "rows": 21,
+        "sha256": "e50481ac9f28198f3077701b21f81ca4a5579db075700906c6032e7baada9b89"
+      },
+      "T4_suitability_mappings": {
+        "rows": 0,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "T6E_economic_profile": {
+        "rows": 5,
+        "sha256": "32d051827fa0325dde5325aa16b484a6dfee5b7af99bc377b1a1ab1bc35bfb76"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 22,
+        "sha256": "0404d93eaa19ca32e39dc602bdc727a845b2bb44ac47fd7e54be8c02e3ccf4a3"
+      }
+    },
+    "riparian_buffer": {
+      "T3_nbs_hazard_farming": {
+        "rows": 7,
+        "sha256": "de73f7ed1f37d66aceccf57711f96ec7893abc81c01f69024f4320d330ca0af3"
+      },
+      "T4_suitability_mappings": {
+        "rows": 2,
+        "sha256": "cae4d01a4d968d5d98eccf0a5c9b7fe9df8f236b600f55f18174244df1a40881"
+      },
+      "T6E_economic_profile": {
+        "rows": 2,
+        "sha256": "63e7e5d19feed26943df369209dd11ff0c4c403a324a39e47baba88165304448"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 27,
+        "sha256": "f8841be11cfe7078d8987529849997677bf58ddbcf5d60767d6eb78977456ece"
+      }
+    },
+    "water_harvesting_conservation": {
+      "T3_nbs_hazard_farming": {
+        "rows": 57,
+        "sha256": "21864c6fb67839a2ca52a0dd43b17e9649762857dd8dc126a8fe672803f397c0"
+      },
+      "T4_suitability_mappings": {
+        "rows": 20,
+        "sha256": "3c6c3f9a2508ccc235db27e50fe2ffc494fc779ebb4d2eaeeb63f8d5fe675108"
+      },
+      "T6E_economic_profile": {
+        "rows": 21,
+        "sha256": "8b806912a523e83a2bb1f560926ce7e69a62fb90fe5a983e33ccbf1caf467622"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 107,
+        "sha256": "1922b3c3891ad60a64f3cb9307f49dffb7fbca3bfe7b711713e8d4de90c77b58"
+      }
+    },
+    "wetland_management": {
+      "T3_nbs_hazard_farming": {
+        "rows": 23,
+        "sha256": "5e56055c72656acc485c2aa309648125afba988625da2a98cc3b303eff76a364"
+      },
+      "T4_suitability_mappings": {
+        "rows": 4,
+        "sha256": "cbfbacd01d941411468d342266a8dfca09a01585ad18f77a7362680d5adef2f6"
+      },
+      "T6E_economic_profile": {
+        "rows": 15,
+        "sha256": "6ca219fcbde9a5c1729d19c8742136c087bb5fc8731432316d748d059281b27a"
+      },
+      "T6_nbs_scorecard": {
+        "rows": 63,
+        "sha256": "60daa6faf49bfd009af4a030b9c83b624416c219ce0e50b2bee311ce28e0a1ca"
+      }
+    }
+  }
+}
