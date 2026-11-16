@@ -263,7 +263,7 @@ def main():
     pending = out / ".summary.tmp"
     pending.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     pending.rename(out / "summary.json")
-    print(f"\nComplete. See {out / 'summary.json'}. Live review continues in CIAT.")
+    print(f"\nComplete. See {out / 'summary.json'}. Review current findings at https://ruralscan.github.io/method/#review-queue")
 
 
 if __name__ == "__main__":

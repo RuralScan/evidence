@@ -1,6 +1,6 @@
 # Discover and screen sources
 
-Use this workflow to answer a bounded question such as “Which sources discuss annual rainfall for bench terraces?” The result is a set of candidate sources, screening reasons and search counts. Live registration, acquisition and evidence review continue in [CIAT/nbs_ruralscan](https://github.com/CIAT/nbs_ruralscan).
+Use this workflow to answer a bounded question such as “Which sources discuss annual rainfall for bench terraces?” The result is a set of candidate sources, screening reasons and search counts. Keep the resulting bundle with its run ID. The official search register and acquisition queue currently have no write route. [evidence #35](https://github.com/RuralScan/evidence/issues/35)
 
 ## Replay the terrace screening example
 
@@ -85,7 +85,7 @@ Open `report.md` for verbatim queries, coverage, omissions and per-record decisi
 
 Run `python3 -m unittest discover -s workflows/discovery` from the repository root to check capture and screening offline.
 
-## Validate the handoff in CIAT
+## Validate the handoff on a historical copy
 
 To confirm the teaching bundle against a disposable CIAT checkout, run the following from the evidence repository immediately after the **Replay the terrace screening example** commands above. The example uses the producer revision from which the three citations were selected. The validation command uses `uv` to select Python 3.12. With Python 3.12 already active, you can replace `uv run --no-project --python 3.12 python` with `python`.
 
@@ -104,7 +104,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$run_dir/ciat/src" uv run --no-project --p
   --log-names stock=terrace_stock_training.md --reuse-log terrace_stock_training_reuse.json
 ```
 
-Expect `DRY RUN: complete registration batch validated; nothing published`, zero new queue entries, one explicit reuse task and a stock protocol with one inclusion. For an operational handoff, use the current CIAT checkout and substitute the plan's practice, family, date, process, run ID, searched-by value and unique log names. The dry run checks source identity, family tags and inclusion counts against those registers. Resolve identity conflicts there before handing over the bundle with its input files. The ordinary CIAT intake and review process owns publication and progress updates. Staging a bundle here records no extraction or recipe change.
+Expect `DRY RUN: complete registration batch validated; nothing published`, zero new queue entries, one explicit reuse task and a stock protocol with one inclusion. The dry run checks source identity, family tags and inclusion counts against the selected registers. For new work, retain the validated bundle, inputs and outstanding identity questions. An official progress stamp needs the [progress writer](https://github.com/RuralScan/evidence/issues/37).
 
 After screening, use the candidate bundle to [verify and acquire one source](../acquisition/README.md).
 

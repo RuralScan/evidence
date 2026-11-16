@@ -2,6 +2,23 @@
 
 The November 10 dashboard lets you submit a finding under your own GitHub account. The vote, note and account name appear on a public RuralScan/evidence issue. Choose **Submit review** on a finding, enter your decision, continue to GitHub and create the issue. Its number is your receipt. **My reviewed** links to your public submissions alongside the historical records. Restricted source files stay in the source library.
 
+## Which records can I update?
+
+The [live finding queue](https://ruralscan.github.io/method/#review-queue) accepts T4, T3 and T6 finding votes. The desk also accepts a reviewer’s finding CSV or a proposed new or corrected finding from a source already in SRC. A submitted issue records the proposal or vote. After a protected register PR merges, its receipt appears in the [applied journal](../../registers/applied-receipts.json) and the queue reads the new revision. The [operator procedure](#apply-approved-submissions) explains approval, consensus and application.
+
+| Other work | What you can do now | Missing official route |
+|---|---|---|
+| Discovery and the acquisition queue | Save the plan, captures, screening decisions and validated bundle with its run ID. Keep zero-result searches and record existing-source reuse. | Publish SRCH and queue changes together ([evidence #35](https://github.com/RuralScan/evidence/issues/35)). |
+| A new source | Verify identity, acquisition and edition. Retain the receipt, source ID and team-library locator. The register check requires the same set of source IDs before and after an extraction. | Promote a verified source to SRC with extraction pending ([evidence #36](https://github.com/RuralScan/evidence/issues/36)). |
+| Progress | Preserve the run and the records that support its stage. | Stamp the official progress ledger from the completed step ([evidence #37](https://github.com/RuralScan/evidence/issues/37)). |
+| Candidate tables and row wording | Applying register receipts recompiles T3, T4, T6 and T6E for the live queue. Existing published editions have their own pins. | Submit wording or authored recipe inputs and hand off a candidate for method acceptance ([evidence #38](https://github.com/RuralScan/evidence/issues/38)). |
+| Rating reviews | Inspect historical row decisions. Preserve a new rating review with its row ID and revision. | Apply a decision about a compiled row ([evidence #39](https://github.com/RuralScan/evidence/issues/39)). |
+| Method decisions | Consult the scientific decision ledger for existing codes. Its successor write procedure is unresolved. | Decide where new coded events are recorded and how to publish them ([method #17](https://github.com/RuralScan/method/issues/17)). |
+| Configuration and lookups | Inspect the pinned inputs, including VONT, FAM, BIND, XW, BANDS and TOOL. Method holds draft definitions. | Promote approved definitions into compilation ([method #18](https://github.com/RuralScan/method/issues/18)) and update evidence-owned tools and mappings ([evidence #40](https://github.com/RuralScan/evidence/issues/40)). |
+| Retrospectives | Preserve measured sweep results and links from feedback to changes in instructions or checks. | Record the sweep and advance its learnings cursor ([evidence #41](https://github.com/RuralScan/evidence/issues/41)). |
+
+The [CIAT retirement check](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/scripts/check-retired-evidence.py#L7-L32) protects the archived records. The [RuralScan register check](https://github.com/RuralScan/evidence/blob/4198da5febfb8e4fbc0707ccbdbbade8a2147cff/workflows/submissions/check_registers.py#L30-L54) enforces the starting inventory and hashes. [Source ID check](https://github.com/RuralScan/evidence/blob/4198da5febfb8e4fbc0707ccbdbbade8a2147cff/workflows/submissions/check_registers.py#L69-L74) · [Queue compiler](https://github.com/RuralScan/evidence/blob/4198da5febfb8e4fbc0707ccbdbbade8a2147cff/workflows/submissions/queue_view.py#L24-L69)
+
 ## Use the local desk for browser or CSV entry
 
 Use a single-user computer with Git, GitHub CLI and Python 3.12. Sign in with your own GitHub account. Run these commands from a checkout of RuralScan/evidence. Set the paths to your own clone and corpus. Use the full register revision shown on the finding or linked from the live queue. The example resolves the current RuralScan main commit. The analytical edition has a separate pin.
@@ -28,7 +45,7 @@ python3 workflows/submissions/intake.py extraction t4-units.json --lane T4 --rev
 python3 workflows/submissions/intake.py extraction effects.json --lane T3/T6 --revision "$pin"
 ```
 
-## Preview historical CIAT submissions for one revision
+## Preview receipts pinned to a historical CIAT revision
 
 Run in the evidence pipeline's Python environment with its intake dependencies and acquired corpus. For this historical preview, set the pin to the CIAT revision on the original receipt. Choose a fresh private output directory outside Git each time. The command reads open and closed receipts, checks GitHub's original author and edit history, and processes the requested revision. Organization members and repository collaborators enter the consensus preview. Other signed-in users can submit public receipts. A maintainer can confirm the reviewer for that receipt by applying the `confirmed-reviewer` issue label. Unconfirmed submissions stay visible and pending. An edited receipt requires a new original. Keep previous receipts for audit. Reconcile revisions before joining results across cohorts.
 
@@ -37,7 +54,7 @@ python3 workflows/submissions/intake.py collect --ciat-repo "$source_repo" \
   --revision "$pin" --corpus /path/to/private/corpus --out /private/work/batch-01
 ```
 
-Inspect `receipts.json` for validated or held extractions. The operator can inspect the original content and staged units in each numbered folder. Dashboard and CSV votes use the same consensus process. `consensus.json` reports disagreements, potential register changes and retry checks against copies. Opposing votes stay pending. A proposed change to an already reviewed finding needs reconciliation against its existing event. Review the receipt before applying any register changes during the coordinated migration. Multiple receipts with an identical ballot produce one effective reviewer vote. Row reviews and method decisions use their existing separate workflows.
+Inspect `receipts.json` for validated or held extractions. The operator can inspect the original content and staged units in each numbered folder. Dashboard and CSV votes use the same consensus process. `consensus.json` reports disagreements, potential register changes and retry checks against copies. Opposing votes stay pending. A proposed change to an already reviewed finding needs reconciliation against its existing event. Compare preview results with the receipt and the register revision it names. Multiple receipts with an identical ballot produce one effective reviewer vote. This preview concerns finding votes. For rating reviews and method decisions, see [which records can be updated](#which-records-can-i-update).
 
 ## Verify the connection
 

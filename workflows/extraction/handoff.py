@@ -77,7 +77,7 @@ def overlap(a, b):
 
 
 def scientific_fields(row):
-    """Decode stored CSV values to intake types, leaving live review ownership in CIAT."""
+    """Decode stored CSV values to intake types, excluding review fields owned by the register workflow."""
     values = {}
     for key, value in row.items():
         if value == "" or key in {"reviewer_ok", "review_state"}:

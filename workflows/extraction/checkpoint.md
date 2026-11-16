@@ -1,6 +1,6 @@
 # Preserve a staged extraction batch
 
-Use this before transferring a set of pending proposals. Select the unit lists in their intended intake order. The checkpoint keeps their original bytes, records where each occurrence appeared, and compares it with the evidence register at an explicit CIAT commit. Review, correction and registration continue in CIAT.
+Use this before transferring a set of pending proposals. Select the unit lists in their intended intake order. The checkpoint keeps their original bytes, records where each occurrence appeared, and compares it with the evidence register at an explicit CIAT commit. Check current findings at their RuralScan revision before submitting through the [submission desk](../submissions/README.md).
 
 ## Capture and restore
 

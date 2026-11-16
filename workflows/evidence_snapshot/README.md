@@ -1,6 +1,6 @@
 # Reproduce committed evidence updates
 
-Use this workflow to make a private, read-only copy of the committed evidence tables at a particular revision, or to inspect how they changed between revisions. Live registration, corrections and review continue in CIAT.
+Use this workflow to make a private, read-only copy of the committed evidence tables at a particular revision, or to inspect how they changed between revisions. Use the [submission desk](../submissions/README.md) for current finding votes and extraction proposals.
 
 ## What the snapshot contains
 
@@ -91,7 +91,7 @@ This interval spans seven commits. Four of the eleven scoped paths changed, and 
 
 ## Register migration seed
 
-[Browse the registers](../../registers/) or read the [machine-readable manifest](../../registers/manifest.json). This is the starting copy for migration at [CIAT #691](https://github.com/CIAT/nbs_ruralscan/pull/691), commit `e43c42bd581dba791ce1f1697b6b41952ab0cfe3`. Public issues already receive submissions in RuralScan/evidence. CIAT retains authority to update the registers during this preparation stage.
+[Browse the original seed](https://github.com/RuralScan/evidence/tree/3d734daa5cf5452b69a5a63c6815efae7be0181d/registers) or read its [machine-readable manifest](../../registers/manifest.json). It records the starting copy for migration at [CIAT #691](https://github.com/CIAT/nbs_ruralscan/pull/691), commit `e43c42bd581dba791ce1f1697b6b41952ab0cfe3`. CIAT was the writer when this seed was taken. RuralScan/evidence now applies finding votes and reviewed extractions through protected register PRs. [Writer switch](https://github.com/CIAT/nbs_ruralscan/pull/692) · [Available write routes](../submissions/README.md#which-records-can-i-update)
 
 The manifest gives each file's source path, SHA-256, size and CSV record count, plus the exact Git objects for external inputs. The seed includes the seven core tables and four review-support files listed above, six configuration registers, rating setters, the ranking and flags, benchmark divergences, and the extraction sweep and learning history. Finding decisions, rating reviews and method decisions have separate tables. The method ledger preserves every scientific decision ID, question, option, recommendation, recorded outcome and status. Its public copy omits the named task-assignment column (`owner`). The manifest records hashes for both representations. All other files match the source bytes exactly.
 
@@ -99,13 +99,13 @@ The pinned source commit supplies the remaining compiler inputs, historical extr
 
 ### Verify locally
 
-Use a CIAT clone or bare repository containing the pinned commit. Python's standard library can verify the transferred records. Add `--rebuild` in the evidence-checks Python environment to apply the destination register bytes to a disposable copy of the pinned compiler and compare the T3, T4, T6 and T6E outputs for all six practices with their audited tables.
+Run the seed check from a RuralScan/evidence checkout at `3d734daa5cf5452b69a5a63c6815efae7be0181d`, with a CIAT clone or bare repository containing the pinned source commit. Python's standard library can verify the transferred records. Add `--rebuild` in the evidence-checks Python environment to apply the destination register bytes to a disposable copy of the pinned compiler and compare the T3, T4, T6 and T6E outputs for all six practices with their audited tables.
 
 ```sh
 python3 workflows/evidence_snapshot/verify_registers.py --ciat-repo /path/to/nbs_ruralscan --rebuild
 ```
 
-To reproduce the directory independently, pass `--export-to /path/to/new-folder`. The command refuses to overwrite an existing destination. The initial parity check catches changed or missing records while CIAT is still the writer. At the official switch, preserve this seed by its RuralScan Git commit and validate later changes as reviewed deltas against it. The switch requires reconciliation of any newer CIAT writes, the destination apply path and protection of both repositories' register paths.
+To reproduce the directory independently, pass `--export-to /path/to/new-folder`. The command refuses to overwrite an existing destination. For current registers, use `python3 workflows/submissions/check_registers.py --ciat-repo /path/to/nbs_ruralscan` from the RuralScan/evidence revision you want to verify.
 
 ### Reconciliation at the merge
 

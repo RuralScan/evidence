@@ -10,7 +10,7 @@ From the repository root with Git and uv installed, run the following command. T
 uv run --python 3.12 --locked --script workflows/recipe_release/check.py
 ```
 
-To use a local CIAT clone and cached dependencies, add `--offline` immediately after `uv run` and append `--ciat-repo /path/to/nbs_ruralscan`. The clone must contain the pinned Git objects. The command reads that revision in a separate checkout. Local edits and live review decisions stay in the original checkout.
+To use a local CIAT clone and cached dependencies, add `--offline` immediately after `uv run` and append `--ciat-repo /path/to/nbs_ruralscan`. The clone must contain the pinned Git objects. The command reads that revision in a separate checkout. The release check reads only the selected committed records.
 
 To check an existing store without rebuilding, append `--store /path/to/recipe-store`. It must contain the exact release named in the pin. The reader verifies all members by hash, checks provenance and checks the practice inventory. Append `--json` for machine-readable counts. Any missing or altered member, changed release ID or source mismatch stops the check.
 
@@ -32,7 +32,7 @@ uv run --python 3.12 --locked --script workflows/recipe_release/check.py --index
 diff -ru publication/recipes "$work/recipes"
 ```
 
-The destination must be new. The same options for a local clone and an existing store apply. A matching comparison produces no output. GitHub renders the pages directly. Registration, corrections and review continue in CIAT.
+The destination must be new. The same options for a local clone and an existing store apply. A matching comparison produces no output. GitHub renders the pages directly. For current finding corrections and votes, use the [submission desk](../submissions/README.md).
 
 ## Check the method definitions used for comparison
 

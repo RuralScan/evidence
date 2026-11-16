@@ -1,6 +1,6 @@
 # Preview pending evidence decisions
 
-This preview answers three questions before a review batch is submitted in CIAT. Which decisions would change a record? Which votes disagree? Would a second replay change anything? It runs the pinned CIAT review code twice on disposable copies with a private review lock. The output is a JSON summary. Registration, human decisions and submission continue in CIAT. [Pinned review code](https://github.com/CIAT/nbs_ruralscan/blob/ece8d8226fed4a0b04d155888a8b4925d8f35386/src/nbs_ruralscan/schema_tools/submit_review.py)
+This preview answers three questions about a saved historical review batch. Which decisions would change a record? Which votes disagree? Would a second replay change anything? It runs the pinned CIAT review code twice on disposable copies with a private review lock. The output is a JSON summary. For current finding votes, use the RuralScan [submission desk](../submissions/README.md). [Pinned review code](https://github.com/CIAT/nbs_ruralscan/blob/ece8d8226fed4a0b04d155888a8b4925d8f35386/src/nbs_ruralscan/schema_tools/submit_review.py)
 
 ## Run the example
 
@@ -45,7 +45,7 @@ The earlier commit must lie on the target’s first-parent history. The preview 
 | `clarification_history_changed_ids` | A recorded thread linked to the claim changed. The comparison includes replies that name only the issue. |
 | `pending_issues_with_changed_history` | Number of issues in the pending clarification file whose recorded history differs. The separate count `pending_issues_without_linked_claims` identifies pending issues that could only be checked at thread level. |
 
-Changes are measured between the selected exports. A receipt with identical replay counts can still list changes to individual records. Keep the comparison receipt private as it includes claim IDs. Consult CIAT for subsequent edits, and submit any confirmed decisions through its live review workflow.
+Changes are measured between the selected exports. A receipt with identical replay counts can still list changes to individual records. Keep the comparison receipt private as it includes claim IDs. Check subsequent changes on the [live finding queue](https://ruralscan.github.io/method/#review-queue) before submitting a vote against the current finding.
 
 ## Rehearse an interrupted submission and retry
 
@@ -60,13 +60,13 @@ The example interrupts the first changed record immediately after its replacemen
 
 For a private rehearsal, add `--rehearse-recovery` to the two-revision command above. Use different revisions to exercise a real change in history. The receipt reports whether an installation was interrupted. If the earlier replay changes no bytes, only the pre-push failure and retry are exercised. A retry with no changes should create no branch on the local remote.
 
-Git fetch, worktree creation, commit and push run against a disposable file-only remote. The first attempt must release its submission lock, retain its failed checkout for inspection by the rehearsal and leave all remote refs intact. The rehearsal uses the pinned record replay in place of the full generation command and simulates GitHub authentication and PR creation. Temporary repositories are removed on exit. Save the JSON receipt outside Git. Live decisions and submission stay in CIAT.
+Git fetch, worktree creation, commit and push run against a disposable file-only remote. The first attempt must release its submission lock, retain its failed checkout for inspection by the rehearsal and leave all remote refs intact. The rehearsal uses the pinned record replay in place of the full generation command and simulates GitHub authentication and PR creation. Temporary repositories are removed on exit. Save the JSON receipt outside Git.
 
 To verify the deliverable after recovery, [rebuild the pinned public workbook](../public_workbook/README.md#rebuild-after-an-interrupted-review-submission).
 
 ## Collect CSV votes for private consensus
 
-Use the browser’s evidence-review CSV to collect a vote. The command below merges it into a **private copy** of the dashboard decision store and previews CIAT consensus on disposable records. One reviewer can supply an agreed verdict. Opposing votes on the same finding remain pending. CIAT still owns live submission.
+Use the browser’s evidence-review CSV to collect a vote. The command below merges it into a **private copy** of the dashboard decision store and previews CIAT consensus on disposable records. One reviewer can supply an agreed verdict. Opposing votes on the same finding remain pending. For current votes, [submit your CSV](../submissions/README.md#submit-an-exported-csv-or-extraction-file) under your own GitHub account.
 
 Start in the evidence repository. Set `repo` to the CIAT clone, `records` to the verified revision directory from the review-support export, and `work` to a private directory outside Git. Keep source CSVs there. In `$work/initial`, place a stable copy of the existing pending decisions and clarifications. Use an empty directory only for a known fresh rehearsal. The mapping file must name each actual CSV display name and canonical reviewer ID. Include identities for every reviewer in the selected pending copy.
 

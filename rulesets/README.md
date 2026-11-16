@@ -2,6 +2,8 @@
 
 Use the search record or proposed evidence unit’s ruleset stamp to find its archive. The public exercise and the historical records it examines used different versions. Each catalog entry names a CIAT commit and includes the SHA-256 of every file in that version’s archive directory. [Instruction catalog](catalog.json)
 
+For an operating run, read the [pinned CIAT entry points](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/AGENTS.md#L53-L62). They identify discovery v1.8.1 and extraction v1.10.1 at that revision. Record the version actually used. The migration plan places model-neutral procedures and historical archives in RuralScan/evidence, with tool-specific commands as adapters. [Planned ruleset locations](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/methodology/migration/2026-11-05/migration-map.csv#L19-L21)
+
 | Part of the example | Archived version | What the version identifies |
 |---|---|---|
 | Discovery and screening exercise | [v1.8.1](https://github.com/CIAT/nbs_ruralscan/tree/1773e86e76d45ec7a61f8fbd3673047f9601072d/.agents/skills/_versions/v1.8.1) | Bounded discovery, screening rubric and search protocol. |

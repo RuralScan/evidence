@@ -1,6 +1,6 @@
 # Rehearse a browser draft restore
 
-Use this when moving review drafts or dashboard feedback between browser profiles or addresses. The rehearsal reads an exported JSON backup, restores it into disposable memory, retries, then exports and restores the combined result. It checks every captured storage key and value, including whitespace inside a saved note. Only counts, pinned revisions and the outcome appear in the receipt. CIAT remains the place to review or submit evidence decisions.
+Use this when moving review drafts or dashboard feedback between browser profiles or addresses. The rehearsal reads an exported JSON backup, restores it into disposable memory, retries, then exports and restores the combined result. It checks every captured storage key and value, including whitespace inside a saved note. Only counts, pinned revisions and the outcome appear in the receipt. Review the current finding and submit your own vote in the [live finding queue](https://ruralscan.github.io/method/#review-queue).
 
 ## Try the example
 
@@ -32,7 +32,7 @@ Omitting `--destination` models empty storage. Use the receiving backup to test 
 | Outcome | Interpretation and next action |
 |---|---|
 | Successful receipt | `installed` counts previously absent keys, `already_present` counts identical saved values and `retry_installed` should be zero. One key can hold many votes or feedback notes. Retain both original backups. |
-| `destination_conflict` | Both exports contain the same key with different stored text. Neither wins automatically. Keep both copies and reconcile in CIAT. |
+| `destination_conflict` | Both exports contain the same key with different stored text. Neither wins automatically. Keep both copies and reconcile the conflicting draft text with the reviewer before submitting a finding vote. |
 | `source_batch_archived` or `destination_batch_archived` | The receiving index lists a batch in its archive. Rehearse with the revision where it was active and recover it separately. |
 | `invalid_source` or `invalid_destination` | Check the backup format, nested value types and receiving batch index. Unknown keys, repeated entries and unrecognised batches stop the run. |
 

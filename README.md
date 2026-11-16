@@ -2,7 +2,7 @@
 
 This repository will document and run the evidence workflow behind Rural Scan: discovery, screening, acquisition, extraction, validation, human review and compilation into candidate analytical tables.
 
-Use the [submission desk](workflows/submissions/README.md) to send T4 and T3/T6 extraction proposals or finding votes to public issues in RuralScan/evidence. The workflows below run locally. Use the [protected register workflow](workflows/submissions/README.md#apply-approved-submissions) to apply decisions in RuralScan after CIAT retirement.
+Use the [submission desk](workflows/submissions/README.md) to send T4 and T3/T6 extraction proposals or finding votes to public issues in RuralScan/evidence. The workflows below run locally. Use the [protected register workflow](workflows/submissions/README.md#apply-approved-submissions) to apply decisions in RuralScan. [Which records can I update?](workflows/submissions/README.md#which-records-can-i-update)
 
 The [register baseline](registers/manifest.json) identifies the reviewed records at the merge of CIAT #691. [Inspect and verify the starting registers](workflows/evidence_snapshot/README.md#register-migration-seed).
 
