@@ -99,8 +99,28 @@ class Desk:
             }
         row = lookup(queue, practice, table, record)
         candidate = json.loads(blob(ROOT, self.pin, CANDIDATE))
+        ids = set(row.get("evidence_ids") or [])
+        sources = {s["source_id"]: s for s in queue["registers"]["SRC_source_register"]}
+        evidence = [
+            {
+                "id": e["evidence_id"],
+                "citation": sources[e["source_id"]].get("citation", e["source_id"]),
+                "locator": e.get("locator")
+                or (f"page {e['page']}" if e.get("page") else ""),
+                "quote": e.get("quote", ""),
+            }
+            for e in queue["registers"]["EV_evidence_register"]
+            if e["evidence_id"] in ids
+        ]
         return {
             "row": row,
+            "evidence": evidence,
+            "reviews": [
+                r
+                for r in queue["row_reviews"]
+                if (r["nbs_id"], r["table"], r["record_id"])
+                == (practice, table, record)
+            ],
             "target": target(queue, practice, table, record),
             "stale": [
                 w
