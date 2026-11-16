@@ -1,6 +1,6 @@
 # Discover and screen sources
 
-Use this workflow to answer a bounded question such as “Which sources discuss annual rainfall for bench terraces?” The result is a set of candidate sources, screening reasons and search counts. Keep the resulting bundle with its run ID. The official search register and acquisition queue currently have no write route. [evidence #35](https://github.com/RuralScan/evidence/issues/35)
+Use this workflow to answer a bounded question such as “Which sources discuss annual rainfall for bench terraces?” The result is a set of candidate sources, screening reasons and search counts. Keep the resulting bundle with its run ID. Use the [discovery registration command](../submissions/registration.md#record-a-discovery-run) to propose the search record, acquisition queue and optional progress stamp together.
 
 ## Replay the terrace screening example
 
@@ -104,7 +104,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$run_dir/ciat/src" uv run --no-project --p
   --log-names stock=terrace_stock_training.md --reuse-log terrace_stock_training_reuse.json
 ```
 
-Expect `DRY RUN: complete registration batch validated; nothing published`, zero new queue entries, one explicit reuse task and a stock protocol with one inclusion. The dry run checks source identity, family tags and inclusion counts against the selected registers. For new work, retain the validated bundle, inputs and outstanding identity questions. An official progress stamp needs the [progress writer](https://github.com/RuralScan/evidence/issues/37).
+Expect `DRY RUN: complete registration batch validated; nothing published`, zero new queue entries, one explicit reuse task and a stock protocol with one inclusion. The dry run checks source identity, family tags and inclusion counts against the selected registers. For new work, retain the validated bundle, inputs and outstanding identity questions. The [RuralScan writer](../submissions/registration.md#record-a-discovery-run) can stamp the executed search and screening step.
 
 After screening, use the candidate bundle to [verify and acquire one source](../acquisition/README.md).
 

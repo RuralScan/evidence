@@ -1,6 +1,6 @@
 # Verify and acquire a screened source
 
-Start with an included or reused candidate from [discovery and screening](../discovery/README.md). Check the citation, obtain the source, and check that the file identifies the same work. The result is a private source bundle or a receipt explaining the hold. The queue and SRC can be read in [RuralScan/evidence](../../registers/). A new source ID needs the planned [source-registration route](https://github.com/RuralScan/evidence/issues/36).
+Start with an included or reused candidate from [discovery and screening](../discovery/README.md). Check the citation, obtain the source, and check that the file identifies the same work. The result is a private source bundle or a receipt explaining the hold. The queue and SRC can be read in [RuralScan/evidence](../../registers/). Use [source registration](../submissions/registration.md#register-an-acquired-source) to propose a verified queued source for SRC before its first extraction.
 
 ## Worked example · WOCAT terrace manual
 

@@ -31,6 +31,34 @@ MUTABLE = {EV, SRC, LOG}
 
 
 def check(ciat, *, base=None):
+    with TemporaryDirectory() as tmp:
+        producer = Path(tmp).resolve() / "engine"
+        snapshot(
+            producer,
+            "",
+            SEED,
+            [
+                "/src/",
+                "/schema/",
+                "/pipeline/",
+                "/docs/review/*.json",
+                "!/docs/review/*/",
+            ],
+            ciat,
+        )
+        sys.path.insert(0, str(producer / "src"))
+        try:
+            check_snapshot(producer, ciat, base)
+        finally:
+            sys.path.remove(str(producer / "src"))
+
+
+def check_snapshot(producer, ciat, base):
+    from registration import RECORDS, TRACKED, checked_source_base
+
+    has_operations = (ROOT / RECORDS).exists()
+    if has_operations and not base:
+        base = git("rev-parse", "HEAD^1", cwd=ROOT).decode().strip()
     manifest = json.loads((ROOT / "registers/manifest.json").read_bytes())
     require(
         (ROOT / "registers/manifest.json").read_bytes()
@@ -46,7 +74,7 @@ def check(ciat, *, base=None):
     }
     require(expected == actual, "Unexpected register inventory")
     for name, meta in manifest["files"].items():
-        if name not in MUTABLE or not applied:
+        if not ((name in MUTABLE and applied) or (name in TRACKED and has_operations)):
             require(
                 content_digest((ROOT / "registers" / name).read_bytes())
                 == meta["sha256"],
@@ -65,7 +93,8 @@ def check(ciat, *, base=None):
         )
         new = {k: v for k, v in applied.items() if k not in prior}
         old_ev = index(rows(previous("registers/" + EV)), "evidence_id")
-        old_src = index(rows(previous("registers/" + SRC)), "source_id")
+        source_base = checked_source_base(ROOT, base, producer)
+        old_src = index(rows(source_base), "source_id")
         ev = index(rows((ROOT / "registers" / EV).read_bytes()), "evidence_id")
         src = index(rows((ROOT / "registers" / SRC).read_bytes()), "source_id")
         require(
@@ -281,7 +310,8 @@ def check(ciat, *, base=None):
             require(
                 prior_log == current_log
                 and all(
-                    previous("registers/" + p) == (ROOT / "registers" / p).read_bytes()
+                    (source_base if p == SRC else previous("registers/" + p))
+                    == (ROOT / "registers" / p).read_bytes()
                     for p in MUTABLE
                 ),
                 "Register bytes changed without receipts",
@@ -301,31 +331,15 @@ def check(ciat, *, base=None):
                 ),
                 "Extraction changed source identity or locator",
             )
-    with TemporaryDirectory() as tmp:
-        producer = Path(tmp).resolve() / "engine"
-        snapshot(
-            producer,
-            "",
-            SEED,
-            [
-                "/src/",
-                "/schema/",
-                "/pipeline/",
-                "/docs/review/*.json",
-                "!/docs/review/*/",
-            ],
-            ciat,
-        )
-        for name in manifest["files"]:
-            if (producer / name).is_file():
-                shutil.copyfile(ROOT / "registers" / name, producer / name)
-        sys.path.insert(0, str(producer / "src"))
-        from queue_view import build
+    for name in manifest["files"]:
+        if (producer / name).is_file():
+            shutil.copyfile(ROOT / "registers" / name, producer / name)
+    from queue_view import build
 
-        require(
-            (ROOT / LIVE).read_bytes() == json_bytes(build(producer, ROOT)),
-            "Published review queue differs from current registers",
-        )
+    require(
+        (ROOT / LIVE).read_bytes() == json_bytes(build(producer, ROOT)),
+        "Published review queue differs from current registers",
+    )
     print(
         "Verified register provenance and rebuilt T3, T4, T6 and T6E for six practices."
     )
