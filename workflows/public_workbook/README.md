@@ -31,7 +31,7 @@ uv run --locked --python 3.12 --script workflows/recipe_release/check.py --check
 
 Use `--workbook-dir /path/to/new-directory` in place of `--check-workbook` to write a fresh copy. The JSON receipt includes the file checksum, row and link totals. To rerun offline with dependencies already cached, add `--offline` immediately after `uv run` and pass `--ciat-repo /path/to/nbs_ruralscan` to the checker. The local clone must contain the pinned Git objects. [Candidate and producer revisions](../recipe_release/pin.json)
 
-The publication uses the recipe index’s record links, field labels and table definitions. The source and claim registers supply a limited set of bibliographic fields, identifiers and locators. Live evidence review continues in CIAT. [Recipe index](../../publication/recipes/README.md)
+The publication uses the recipe index’s record links, field labels and table definitions. The source and claim registers supply a limited set of bibliographic fields, identifiers and locators. Use the [live finding queue](https://ruralscan.github.io/method/#review-queue) for current findings. [Recipe index](../../publication/recipes/README.md)
 
 ## Rebuild after an interrupted review submission
 
@@ -47,4 +47,4 @@ uv run --offline --locked --python 3.12 --script workflows/recipe_release/check.
 2. The rehearsal interrupts a changed record during local submission, checks rollback and retries against the later history. All nine decisions are already recorded there. Expect `record_install_interrupted: true` and `retry_changed_records: 0`. Duplicating an event would fail the check.
 3. The checker takes the three records from the disposable Git remote, regenerates the typed evidence register from the recovered CSV and rebuilds all six recipes. It uses the regenerated register to render the workbook, verifies the evidence links against the immutable revision and compares the entire HTML file byte for byte with the published copy.
 
-A successful receipt contains `workbook_recovery` and `public_workbook`. Compare the latter with the ordinary clean-build receipt above. The exercise writes temporary copies and prints aggregate results. Live review and release approval continue in CIAT. To exercise a retry that still has changes to submit, use the [private two-revision rehearsal](../review_preview/README.md#rehearse-an-interrupted-submission-and-retry).
+A successful receipt contains `workbook_recovery` and `public_workbook`. Compare the latter with the ordinary clean-build receipt above. The exercise writes temporary copies and prints aggregate results. To exercise a retry that still has changes to submit, use the [private two-revision rehearsal](../review_preview/README.md#rehearse-an-interrupted-submission-and-retry).

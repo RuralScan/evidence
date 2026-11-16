@@ -14,7 +14,7 @@ Rows cover T3 and T6. Every assessed headline reports all confirmed setters and 
 
 Finding events, rating reviews and decided method codes have distinct records. The rating-review log supplies the reviewed record ID and review date. Its rows have no browser version pin, so `row_revision` is null. A method decision's recorded commit is its ledger provenance. A separate implementing commit requires evidence of implementation and is null where unverified. The IEG comparison records two adjacent CIAT commits, the subsequent workbook edition, explicit evidence membership and the ratings in each. Later changes have unverified attribution.
 
-Live links use membership in indexed, active CIAT batches at the separately identified navigation revision. `live_queue_available` records whether the finding occurs in the active EV register of the pinned CIAT dashboard, providing a direct queue route when no named batch contains it.
+The edition’s links reflect the CIAT batches at its navigation revision. Use the [live finding queue](https://ruralscan.github.io/method/#review-queue) to submit a finding vote today. `live_queue_available` records whether the finding occurs in the active EV register of the pinned CIAT dashboard, providing a direct queue route when no named batch contains it.
 
 Run the historical assertions and the conflict/hold fixtures against a temporary checkout using the same Python dependencies as the release worker:
 

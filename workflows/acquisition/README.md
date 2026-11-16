@@ -1,6 +1,6 @@
 # Verify and acquire a screened source
 
-Start with an included or reused candidate from [discovery and screening](../discovery/README.md). Check the citation, obtain the source, and check that the file identifies the same work. The result is a private source bundle or a receipt explaining the hold. CIAT continues to run the live acquisition queue, source register and evidence review.
+Start with an included or reused candidate from [discovery and screening](../discovery/README.md). Check the citation, obtain the source, and check that the file identifies the same work. The result is a private source bundle or a receipt explaining the hold. The queue and SRC can be read in [RuralScan/evidence](../../registers/). A new source ID needs the planned [source-registration route](https://github.com/RuralScan/evidence/issues/36).
 
 ## Worked example · WOCAT terrace manual
 
@@ -44,7 +44,7 @@ Use the verified manual to [extract a page-anchored evidence unit](../extraction
 1. **Select the screened record.** Use the candidate ID in `candidates.json`. Keep `screening.json` beside it, especially for older bundles which store full titles only in the screening audit. Run `verify` as above with the selected ID.
 2. **Prepare the acquisition plan.** Copy [terrace-manual.json](example/terrace-manual.json). Replace its candidate ID, format and publisher hosts. Remove the example digest for a new download, or replace it with the independently recorded hash of a known edition. Fields are listed below.
 3. **Run `acquire` into a new private directory.** Check `receipt.json` for the resolved metadata, document identity, route, attempted URLs and hashes. An exit code of 2 means a source is on hold. In that case only the receipt is written. Inspect the reason before trying another route. An existing output directory can be inspected with `check`. Each new attempt gets a new directory.
-4. **Hand off verified material.** Supply the source ID, citation, verification outcome, final URL, file hashes and locator information through normal CIAT intake. For a PDF, place the approved library copy in the team's source library through that process. The local `library/` directory is a staging copy. Shared-library transfer, source registration and extraction are separate events.
+4. **Hand off verified material.** Retain the source ID, citation, verification outcome, final URL, file hashes and locator with the acquisition receipt. For a PDF, store the approved library copy in the team’s source library and record its shared locator. If SRC already contains the verified source ID, findings can proceed through the [submission desk](../submissions/README.md). The local `library/` directory is a staging copy. Shared-library transfer, source registration and extraction are separate events.
 
 | Plan field | How to use it |
 |---|---|
@@ -55,7 +55,7 @@ Use the verified manual to [extract a page-anchored evidence unit](../extraction
 | `commit` | For code, provide the full Git commit plus a raw GitHub file URL in `artifact_url`. The code file must belong to the screened repository and respect any screened file, subtree or immutable revision. Use a commit permalink for a branch with an ambiguous name. |
 | `retry_by_title` | Set to `true` only after recovering an independent publisher route for a definitively rejected DOI. Supply `artifact_url` and `publisher_hosts`. The receipt preserves the rejected identifier. A temporary Crossref failure stays on hold. |
 
-For a proposed reuse, pass `--sources /path/to/CIAT/schema/registers/SRC_source_register.csv` to `acquire`. The tool checks the canonical ID, citation and any shared DOI read-only. This is required when the discovery ID and existing source ID differ. For an already pinned edition under the same ID, the worked example can run without the register.
+For a proposed reuse, pass `--sources /path/to/RuralScan/evidence/registers/schema/registers/SRC_source_register.csv` to `acquire`. The tool checks the canonical ID, citation and any shared DOI read-only. This is required when the discovery ID and existing source ID differ. For an already pinned edition under the same ID, the worked example can run without the register.
 
 ### Bibliographic identity and access
 

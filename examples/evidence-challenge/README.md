@@ -1,6 +1,6 @@
 # Practice an evidence handoff
 
-Can you enter a source, correct a claim and resolve a reviewer’s question? This exercise uses a fictional field sheet for intake, a verified WOCAT passage for extraction, and three synthetic claims for review. At the end it independently rebuilds the published candidate tables from their pinned inputs. The practice decisions stay in your private workspace. Live evidence review continues in CIAT.
+Can you enter a source, correct a claim and resolve a reviewer’s question? This exercise uses a fictional field sheet for intake, a verified WOCAT passage for extraction, and three synthetic claims for review. At the end it independently rebuilds the published candidate tables from their pinned inputs. The practice decisions stay in your private workspace. For a real finding, use the [live finding queue](https://ruralscan.github.io/method/#review-queue).
 
 ## Work through the cases
 

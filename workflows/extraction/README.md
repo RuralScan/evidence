@@ -1,6 +1,6 @@
 # Extract evidence from a verified source
 
-This workflow turns a passage in a verified PDF into a proposed Evidence Register unit. The operator selects the claim and interprets it. The tool retrieves the quotation from the specified page, checks the draft, and writes a private staging file. CIAT owns review, corrections and publication.
+This workflow turns a passage in a verified PDF into a proposed Evidence Register unit. The operator selects the claim and interprets it. The tool retrieves the quotation from the specified page, checks the draft, and writes a private staging file. Submit eligible findings for an existing source through the RuralScan [submission desk](../submissions/README.md).
 
 ## Worked example · rainfall and bench terraces
 
@@ -27,7 +27,7 @@ cat "$work/extraction/inventory.json"
 
 Expect one proposed unit for `annual_precipitation` in family `water_harvesting__terracing`. On PDF page **129** (printed **116**), the manual describes contour forward-sloping bench terraces used in areas receiving **200–600 mm/year**. The proposal retains that range under `context.reported_values`. The manual establishes neither a suitability boundary nor a response to increasing rainfall, so direction is unclear and calibration stays on hold. The slope and catchment ratio in the same paragraph are outside this extraction. This exercise covers one passage in the 210-page source.
 
-**Outputs.** `staging.json` is a list of proposed CIAT units; `inventory.json` records scope, checked edition, inspected pages, source-purpose quotation, dispositions and staged IDs. Quotes are continuous spans of the PDF text layer with whitespace normalised. Private outputs can contain licensed source passages. Keep them beside the acquisition bundle. Use a new output directory for another run.
+**Outputs.** `staging.json` is a list of proposed evidence units; `inventory.json` records scope, checked edition, inspected pages, source-purpose quotation, dispositions and staged IDs. Quotes are continuous spans of the PDF text layer with whitespace normalised. Private outputs can contain licensed source passages. Keep them beside the acquisition bundle. Use a new output directory for another run.
 
 ## Recheck the historical record in CIAT
 
@@ -53,11 +53,11 @@ The archived unit should pass with **zero new units**. The comparison names diff
 
 ## Extract a different claim
 
-1. **Frame the lane.** Select a screened and acquired source, practice, suitability family, role and canonical variable. Check FAM and VONT in CIAT. Review existing evidence IDs and coverage before assigning an ID. Roles distinguish establishment suitability (`structural_suitability`), outcomes (`nbs_effect`), hazards to the asset (`asset_vulnerability`) and implementation feasibility (`operational_risk`).
+1. **Frame the lane.** Select a screened and acquired source, practice, suitability family, role and canonical variable. Read FAM and VONT at the revision used for the run. Review existing evidence IDs and coverage before assigning an ID. Roles distinguish establishment suitability (`structural_suitability`), outcomes (`nbs_effect`), hazards to the asset (`asset_vulnerability`) and implementation feasibility (`operational_risk`).
 2. **Inspect the source.** Use `inspect --find` for page numbers and `inspect --page` for page text. Read the original PDF for columns, headings, figures, footnotes, tables and continuations. Record coverage gaps, including scans and missing supplements. A search hit or a site description alone cannot justify a suitability claim.
 3. **Fill in a worksheet.** Copy [the terrace worksheet](example/terrace-rainfall.json). Replace the source ID and edition hash with those in the acquisition receipt. Record inspected PDF pages, coverage and a source-purpose disposition. A pass requires a locatable source passage. For T4, explain how the source addresses *where the specified practice can be implemented*. Record holds, exclusions and referrals explicitly.
 4. **Describe one claim per unit.** Give the PDF page and two unambiguous boundary phrases on that page. Preserve original scope, units, raw variable name and attribution. Separate evidence for variable use, direction, reported values and relative importance. A numeric value must be grounded in its own passage. Record the cited primary source for secondary claims, and the taxon for crop- or species-specific claims. If an AI assists, give it the same scoped worksheet and page text, ask for reasons and anchors, then check them against the original page. Archive the prompt/model version privately alongside the worksheet.
-5. **Stage and inspect.** Run `stage` and read both outputs. Confirm what the numbers measure, which practice they apply to and whether the passage supports the proposed interpretation. Local checks catch transcription and formatting problems. CIAT’s central gate also checks identities, vocabularies, context, bands and direction. Use the handoff command above with the applicable role flag for the intended lane; effects use the default. Only validated, genuinely new units should advance to CIAT review.
+5. **Stage and inspect.** Run `stage` and read both outputs. Confirm what the numbers measure, which practice they apply to and whether the passage supports the proposed interpretation. Local checks catch transcription and formatting problems. CIAT’s central gate also checks identities, vocabularies, context, bands and direction. Use the handoff command above with the applicable role flag for the intended lane; effects use the default. For a new finding, submit the validated proposal. For a correction, retain the evidence ID and original ruleset stamp and identify the fields that changed.
 
 This workbench stages v1.9.9 proposals. CIAT’s later v1.10.0 instructions have their own archived copy. [Compare instruction versions](../../rulesets/README.md)
 
