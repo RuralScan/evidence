@@ -211,6 +211,12 @@ def promote(root, op, engine):
         "Queue record cannot be promoted",
     )
     acquisition.validate_reuse(candidate | {"reuse_source_id": sid}, queue_row)
+    title = screen.title_key(candidate["title"])
+    queued_citation = screen.title_key(queue_row["citation"])
+    require(
+        title and f" {title} " in f" {queued_citation} ",
+        "Screened title differs from queued citation",
+    )
     require(
         candidate["url"] == queue_row["url"]
         and candidate.get("doi", "").casefold() == queue_row["doi"].casefold(),
@@ -223,6 +229,8 @@ def promote(root, op, engine):
                 identity["doi"]
                 and source["doi"].casefold() == identity["doi"].casefold()
             )
+            and screen.title_key(acquisition.citation_title(source["citation"]))
+            != title
             and screen.normalized(source["citation"])
             not in {
                 screen.normalized(candidate["citation"]),
