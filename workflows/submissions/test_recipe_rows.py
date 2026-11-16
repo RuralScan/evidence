@@ -138,6 +138,11 @@ class CompiledRows(unittest.TestCase):
             ],
             Path(os.environ["CIAT_TEST_REPO"]),
         )
+        cls.prior_modules = {
+            k: v for k, v in sys.modules.items() if k.split(".")[0] == "nbs_ruralscan"
+        }
+        for name in cls.prior_modules:
+            del sys.modules[name]
         sys.path.insert(0, str(cls.engine / "src"))
         cls.base = (
             "a6089348100e8b9ca168ab7695b55ba5ee6a4482"  # immutable pre-route edition
@@ -145,6 +150,12 @@ class CompiledRows(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # Other suites load their own temporary pinned compiler. Do not leave
+        # Python pointing into this class's deleted checkout.
+        for name in list(sys.modules):
+            if name.split(".")[0] == "nbs_ruralscan":
+                del sys.modules[name]
+        sys.modules.update(cls.prior_modules)
         sys.path.remove(str(cls.engine / "src"))
         cls.temp.cleanup()
 
@@ -298,3 +309,8 @@ class CompiledRows(unittest.TestCase):
             "Fixture description.",
         )
         self.assertNotEqual(c["inputs"][reg.EV], c2["inputs"][reg.EV])
+        next(r for r in rs if r["evidence_id"] == eid)["review_state"] = "dropped"
+        reg.write_csv(f, rs)
+        q3, _ = compile_candidate(self.engine, self.dest)
+        self.assertNotIn(eid, q3["membership"]["T3"])
+        self.assertIn(eid, self.q["membership"]["T3"])
