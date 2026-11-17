@@ -16,6 +16,7 @@ from intake import (
     Cohort,
     FIXTURES,
     LANES,
+    REVIEW_ROLES,
     decode,
     encode,
     private_path,
@@ -47,10 +48,7 @@ class Desk:
                 evidence={r["evidence_id"]: r for r in records},
                 lanes={
                     lane: {r["evidence_id"] for r in records if r["use_role"] in roles}
-                    for lane, roles in {
-                        "T4": {"structural_suitability"},
-                        "T3/T6": {"asset_vulnerability", "nbs_effect"},
-                    }.items()
+                    for lane, roles in REVIEW_ROLES.items()
                 },
             )
         else:

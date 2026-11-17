@@ -110,6 +110,48 @@ class RegisterTests(unittest.TestCase):
         self.assertEqual(self.apply(1, 2), [])
         self.assertEqual((self.engine / reg.LOG).read_bytes(), before)
 
+    def test_hosted_wetland_batch_and_m2b_csv_consensus(self):
+        operational = "ev_tenure_security_gour20_6"
+        structural = "ev_wet_slope_worley22_1"
+        effect = "ev_wet_carbon_sequestration_ramsar18_1"
+        votes = (
+            "lane,evidence_id,reviewer,decision,reason,note\n"
+            f"M2b,{operational},reader_a,hold,,Check tenure\n"
+            f"T4,{structural},reader_a,approve,,\n"
+            f"T3/T6,{effect},reader_a,approve,,\n"
+        )
+        self.receipt(1, "reader_a", "csv", "Mixed", votes)
+        self.receipt(
+            2,
+            "reader_b",
+            "csv",
+            "M2b",
+            f"evidence_id,reviewer,decision\n{operational},reader_b,approve\n",
+        )
+        before = (self.engine / reg.LOG).read_bytes()
+        with self.assertRaisesRegex(ValueError, "Opposing"):
+            self.apply(1, 2)
+        self.assertEqual((self.engine / reg.LOG).read_bytes(), before)
+        self.assertFalse(self.journal)
+        self.items.pop(2)
+        self.items[1]["entry"]["payload"] = votes.replace("M2b,", "T4,")
+        with self.assertRaisesRegex(ValueError, "outside selected lane"):
+            self.apply(1)
+        self.items[1]["entry"]["payload"] = votes
+        self.assertEqual(self.apply(1), [1])
+        recorded = {
+            r["evidence_id"]: r["decision"]
+            for r in reg.rows((self.engine / reg.LOG).read_bytes())
+            if r["reviewer"] == "reader_a"
+        }
+        self.assertEqual(
+            {k: recorded[k] for k in (operational, structural, effect)},
+            {operational: "flag", structural: "ok", effect: "ok"},
+        )
+        self.assertEqual(self.apply(1), [])
+        with self.assertRaisesRegex(ValueError, "Unknown submission"):
+            reg.intake.encode("extraction", "M2b", reg.SEED, [])
+
     def test_opposition_before_or_after_first_application(self):
         self.receipt(
             1, "reader_a", "vote", "T4", dict(evidence_id=self.t4, decision="approve")

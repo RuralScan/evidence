@@ -135,6 +135,16 @@ def participants(receipts, selected, targets):
     return result
 
 
+def checked_votes(entry, actor, evidence, reasons):
+    from types import SimpleNamespace
+
+    lanes = {
+        lane: {eid for eid, row in evidence.items() if row["use_role"] in roles}
+        for lane, roles in intake.REVIEW_ROLES.items()
+    }
+    return intake.vote_rows(entry, actor, SimpleNamespace(lanes=lanes, reasons=reasons))
+
+
 def ballot_verdict(row):
     decision = row["decision"].strip().lower()
     require(decision in intake.VERDICT, "A note alone has no finding verdict")
@@ -189,22 +199,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
         item = receipts[n]
         entry, actor = item["entry"], item["actor"]
         old, old_sources = pinned(entry["revision"])
-        roles = {
-            "T4": {"structural_suitability"},
-            "T3/T6": {"asset_vulnerability", "nbs_effect"},
-        }
-
-        class VoteCohort:
-            reasons = review.REASON_CODES
-            lanes = {
-                entry["lane"]: {
-                    eid
-                    for eid, row in old.items()
-                    if row["use_role"] in roles[entry["lane"]]
-                }
-            }
-
-        for row in intake.vote_rows(entry, actor, VoteCohort):
+        for row in checked_votes(entry, actor, old, review.REASON_CODES):
             eid = row["evidence_id"]
             if not row["decision"].strip() or eid not in targets:
                 continue
