@@ -95,6 +95,9 @@ def check_snapshot(producer, ciat, base):
         configuration.verify_owned(ROOT, producer, base)
         configuration.overlay(producer, ROOT)
         recipe_rows.verify(ROOT, base)
+        from priorities import verify as verify_priorities
+
+        verify_priorities(ROOT, base)
 
         def previous(path):
             return blob(ROOT, base, path)

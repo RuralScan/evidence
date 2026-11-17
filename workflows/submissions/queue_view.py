@@ -115,7 +115,7 @@ def compile_candidate(producer, evidence_repo):
     candidate = manifest(evidence_repo, hashes, rows, stale)
     if configuration:
         candidate["configuration"] = configuration
-    return {
+    queue = {
         "corrections": correction_history(evidence_repo, review_log),
         "batches": batches,
         "registers": registers,
@@ -126,7 +126,18 @@ def compile_candidate(producer, evidence_repo):
         **({"stale_wording": stale} if stale else {}),
         "recipes": rows,
         "membership": {key: sorted(ids) for key, ids in membership.items()},
-    }, candidate
+    }
+    from nbs_ruralscan.schema_tools.review_priorities import load_review_priorities
+    from priorities import publish
+
+    requests = load_review_priorities(producer)
+    known = {(r["batch_id"], r["evidence_id"]) for r in requests}
+    for batch_id, batch in batches.items():
+        for eid in dict.fromkeys(batch["ids"]):
+            if (batch_id, eid) not in known:
+                requests.append(dict(batch_id=batch_id, batch_label=batch["title"], evidence_id=eid, priority="normal"))
+    queue["priority_requests"] = publish(queue, requests, evidence_repo)
+    return queue, candidate
 
 
 def build(producer, evidence_repo):
