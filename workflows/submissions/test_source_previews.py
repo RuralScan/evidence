@@ -55,3 +55,9 @@ class PreviewTests(unittest.TestCase):
                 item["key"],
                 signature(finding, dict(sources[0], access_status="unknown")),
             )
+
+            # A locator correction removes the obsolete crop in the same register PR.
+            corrected = dict(finding, page=1)
+            queue["registers"]["EV_evidence_register"] = [corrected]
+            self.assertEqual(build(queue, root, dest, updated={"table"}), 0)
+            self.assertFalse((dest / "pages" / item["image"]).exists())

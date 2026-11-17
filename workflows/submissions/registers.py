@@ -426,7 +426,25 @@ def prepare(ciat, corpus, selected, *, publish=False):
         from recipe_rows import CANDIDATE
 
         publish_files(producer, dest)
-        git("add", "--", "registers", LIVE, CANDIDATE, cwd=dest)
+        updated = {
+            unit["evidence_id"]
+            for n in applied
+            if receipts[n]["entry"]["kind"] == "extraction"
+            for unit in receipts[n]["entry"]["payload"]
+        }
+        paths = ["registers", LIVE, CANDIDATE]
+        if updated:
+            from source_previews import build as build_previews
+
+            previews = "publication/source-previews"
+            build_previews(
+                json.loads((dest / LIVE).read_bytes()),
+                corpus,
+                dest / previews,
+                updated=updated,
+            )
+            paths.append(previews)
+        git("add", "--", *paths, cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if publish:
             require(

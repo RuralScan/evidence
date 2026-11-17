@@ -123,13 +123,22 @@ def web_previews(corpus, sid, findings, src, index):
             )
 
 
-def build(queue, corpus, dest):
+def build(queue, corpus, dest, *, updated=None):
     dest.mkdir(parents=True, exist_ok=True)
-    index = {}
+    manifest = dest / "index.json"
+    index = (
+        json.loads(manifest.read_bytes())
+        if updated is not None and manifest.is_file()
+        else {}
+    )
+    old_images = {item["image"] for item in index.values() if "image" in item}
+    for eid in updated or ():
+        index.pop(eid, None)
     grouped = defaultdict(list)
     sources = {s["source_id"]: s for s in queue["registers"]["SRC_source_register"]}
     for ev in queue["registers"]["EV_evidence_register"]:
-        grouped[ev["source_id"]].append(ev)
+        if updated is None or ev["evidence_id"] in updated:
+            grouped[ev["source_id"]].append(ev)
     for sid, findings in sorted(grouped.items()):
         src = sources[sid]
         pdf = corpus / (sid + ".pdf")
@@ -225,10 +234,14 @@ def build(queue, corpus, dest):
                     continue
                 index[ev["evidence_id"]] = item
             page_text.cache_clear()
-    (dest / "index.json").write_text(
+    manifest.write_text(
         json.dumps(index, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
         + "\n"
     )
+    used = {item["image"] for item in index.values() if "image" in item}
+    for name in old_images - used:
+        if re.fullmatch(r"[0-9a-f]{64}\.webp", name):
+            (dest / "pages" / name).unlink(missing_ok=True)
     return len(index)
 
 
