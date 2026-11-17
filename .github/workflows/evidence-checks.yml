@@ -44,7 +44,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
         run: |
+          # Compare with the branch as it stood before this change. A pull request merged as
+          # several commits must not be compared with its own earlier commits. Without a usable
+          # earlier commit the script falls back to the parent of the head commit.
           args=()
-          if [[ -n "$PR_BASE" ]]; then args+=(--base "$PR_BASE"); fi
+          if [[ -n "$PR_BASE" ]]; then
+            args+=(--base "$PR_BASE")
+          elif git cat-file -e "${PUSH_BEFORE}^{commit}" 2>/dev/null; then
+            args+=(--base "$PUSH_BEFORE")
+          fi
           python workflows/submissions/check_registers.py --ciat-repo "$CIAT_TEST_REPO" "${args[@]}"
