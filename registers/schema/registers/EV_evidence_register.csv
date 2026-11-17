@@ -8850,14 +8850,14 @@ Average annual rainfall
 501 – 750 mm
 751 – 1 000 mm
 Agro-climatic zone
-semi-arid",3,false,Average annual rainfall,,,"[VERIFY-FLAG mismatch: re-opened for review] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+semi-arid",3,true,Average annual rainfall,,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_aridity_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""semi-arid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 501 – 750 mm
 751 – 1 000 mm
 Agro-climatic zone
-semi-arid",3,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+semi-arid",3,true,Agro-climatic zone,,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_slope_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,slope,"{""type"": ""observed_presence"", ""observed_classes"": [""flat (0-2%)"", ""gentle (3-5%)""], ""observed_min"": 0, ""observed_max"": 5, ""unit"": ""percent"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 flat (0-2%)
@@ -8880,7 +8880,7 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",3,false,Slope,,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+5 – 50 m",3,true,Slope,,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_soildepth_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,soil_depth_to_bedrock,"{""type"": ""observed_presence"", ""observed_classes"": [""very shallow (0-20 cm)"", ""shallow (21-50 cm)""], ""observed_min"": 0, ""observed_max"": 50, ""unit"": ""cm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 flat (0-2%)
@@ -8903,7 +8903,7 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",3,false,Soil depth,,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+5 – 50 m",3,true,Soil depth,,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_texture_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,soil_texture,"{""type"": ""observed_presence"", ""observed_classes"": [""medium (loamy, silty)"", ""fine/ heavy (clay)""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 flat (0-2%)
@@ -8926,7 +8926,7 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",3,false,Soil texture (topsoil),,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+5 – 50 m",3,true,Soil texture (topsoil),,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_fr_watertable_wocat1626_1,wocat_1626_2014,forest_restoration,forest_restoration__assisted_regeneration,water_table_depth,"{""type"": ""observed_presence"", ""observed_classes"": [""5 – 50 m""], ""observed_min"": 5, ""observed_max"": 50, ""unit"": ""m"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 flat (0-2%)
@@ -8949,7 +8949,7 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",3,false,Groundwater table,,,"WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+5 – 50 m",3,true,Groundwater table,,,"[reviewed 2026-11-17 by peetmate; reason:other; note:Approved by Pete in chat on 17 November 2026. Keep all six WOCAT Niger findings as one regional implementation profile, retaining every published class. Check the source meaning of soil depth before binding it to depth to bedrock. Leave shared suitability cutoffs open.] WOCAT SLM Technologies Database, technology #1626 'Assisted natural regeneration' (Niger): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
 Assisted natural regeneration",3,,,,v1.6.0
 ev_wh_precip_wocat1652_1,wocat_1652_2014,water_harvesting_conservation,water_harvesting__in_situ,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""501 – 750 mm"", ""751 – 1 000 mm""], ""observed_min"": 501, ""observed_max"": 750, ""unit"": ""mm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Niger""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
