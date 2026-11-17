@@ -52,7 +52,7 @@ async function init() {
   byId('account').textContent = 'Signed in as ' + session.actor;
   byId('mode').textContent = session.local_only ? 'Local test · synthetic findings only' : session.test ? 'Public GitHub test · synthetic findings only' :
     'Your submission and GitHub name will be public in RuralScan/evidence · source ' + session.revision.slice(0,8);
-  if (['T4','T3/T6'].includes(params.get('lane'))) byId('lane').value = params.get('lane');
+  if (['T4','T3/T6','M2b'].includes(params.get('lane'))) byId('lane').value = params.get('lane');
   const selectId = () => {
     byId('eid').value = session.test ? session.fixtures[byId('lane').value] : (params.get('finding') || '');
     byId('decision').value = ''; byId('reason').value = ''; byId('note').value = '';

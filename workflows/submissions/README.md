@@ -4,7 +4,7 @@ The November 10 dashboard lets you submit a finding under your own GitHub accoun
 
 ## Which records can I update?
 
-The [live finding queue](https://ruralscan.github.io/method/#review-queue) accepts T4, T3 and T6 finding votes. The desk also accepts a reviewer’s finding CSV or a proposed new or corrected finding from a source already in SRC. A submitted issue records the proposal or vote. After a protected register PR merges, its receipt appears in the [applied journal](../../registers/applied-receipts.json) and the queue reads the new revision. The [operator procedure](#apply-approved-submissions) explains approval, consensus and application.
+The [live finding queue](https://ruralscan.github.io/method/#review-queue) accepts structural suitability (T4), hazard and scorecard (T3/T6), and operational feasibility (M2b) finding votes. The desk also accepts a reviewer’s finding CSV or a proposed new or corrected finding from a source already in SRC. A submitted issue records the proposal or vote. After a protected register PR merges, its receipt appears in the [applied journal](../../registers/applied-receipts.json) and the queue reads the new revision. The [operator procedure](#apply-approved-submissions) explains approval, consensus and application.
 
 Operators can register a completed search and its acquisition candidates, promote a verified source before extraction, and stamp progress from its producing step. Each proposal travels through a protected RuralScan/evidence PR. [Commands and expected register changes](registration.md)
 
@@ -17,6 +17,22 @@ Operators can register a completed search and its acquisition candidates, promot
 | Retrospectives | Preserve measured sweep results and links from feedback to changes in instructions or checks. | Record the sweep and advance its learnings cursor ([evidence #41](https://github.com/RuralScan/evidence/issues/41)). |
 
 The [CIAT retirement check](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/scripts/check-retired-evidence.py#L7-L32) protects the archived records. The [RuralScan register check](check_registers.py) verifies the migration inventory and replays each new change against its base revision. · [Queue compiler](https://github.com/RuralScan/evidence/blob/4198da5febfb8e4fbc0707ccbdbbade8a2147cff/workflows/submissions/queue_view.py#L24-L69)
+
+## Submit findings together in the hosted queue
+
+Select your GitHub reviewer name, open a finding, choose **Review finding** and **Save to batch**. Use **Submit all my decisions** to check your list and open one issue per batch in RuralScan/evidence. For a large batch, copy the supplied description into the issue. Create the issue while signed in as the selected reviewer, then enter its number to clear the matching drafts. Opening an issue draft alone leaves the votes on this device. The queue separates different register revisions and splits batches above the issue size limit.
+
+Single-lane batches use the existing vote CSV. A cross-lane CSV uses `lane: Mixed` in its receipt and a `lane` column on every row. Each ID must match its own lane at the pinned revision. M2b accepts finding reviews for `operational_risk`; extraction proposals retain their existing lanes. Submission, consensus, retry and protected register application use the same path as desk CSVs.
+
+## Source previews
+
+**View source preview** shows a passage matched against the acquired source or a cropped table image. Public assets in `publication/source-previews/` bind to source, locator, quote and access metadata. When no matching public preview exists, reviewers can open the cited source or select acquired PDFs on their device for inline reading. Restricted PDFs stay in the team library.
+
+Rebuild previews with the current register, acquired corpus and Python with PyMuPDF and Pillow. Generate into a fresh directory, inspect coverage and replace the published directory together with its index in a PR.
+
+```sh
+python workflows/submissions/source_previews.py --corpus /path/to/acquired/corpus --out /tmp/new-source-previews
+```
 
 ## Use the local desk for browser or CSV entry
 

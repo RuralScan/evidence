@@ -24,8 +24,19 @@ from preview import ENGINE, EV, HISTORY, LOG, require  # noqa: E402
 INBOX = "RuralScan/evidence"
 PRODUCER = "https://github.com/CIAT/nbs_ruralscan.git"
 HEADER = "RuralScan submission v1"
-LANES = {"T4", "T3/T6"}
-FIXTURES = {"T4": "test_bench_terrace", "T3/T6": "test_hazard_scorecard"}
+REVIEW_ROLES = {
+    "T4": {"structural_suitability"},
+    "T3/T6": {"asset_vulnerability", "nbs_effect"},
+    "M2b": {"operational_risk"},
+}
+LANES = set(REVIEW_ROLES)
+MIXED = "Mixed"  # One CSV receipt; each row carries its own queue.
+EXTRACTION_LANES = {"T4", "T3/T6"}
+FIXTURES = {
+    "T4": "test_bench_terrace",
+    "T3/T6": "test_hazard_scorecard",
+    "M2b": "test_operational_risk",
+}
 
 
 def gh(*args, data=None):
@@ -56,7 +67,9 @@ def signed_in():
 
 def encode(kind, lane, pin, payload, *, test=False):
     require(
-        kind in {"vote", "csv", "extraction"} and lane in LANES,
+        (kind == "csv" and lane in LANES | {MIXED})
+        or (kind == "vote" and lane in LANES)
+        or (kind == "extraction" and lane in EXTRACTION_LANES),
         "Unknown submission type or lane",
     )
     require(re.fullmatch("[0-9a-f]{40}", pin), "Supply the full source revision")
@@ -90,12 +103,14 @@ def receive(kind, lane, pin, payload, *, test=False, expected_actor=None):
             rows.fieldnames
             and {"evidence_id", "reviewer", "decision"}
             <= set(rows.fieldnames)
-            <= set(FIELDS),
+            <= (set(FIELDS) | ({"lane"} if lane == MIXED else set())),
             "Expected an evidence vote CSV before publishing",
         )
         seen = False
         for row in rows:
             seen = True
+            if lane == MIXED:
+                require(row.get("lane") in LANES, "Missing or unknown finding lane")
             require(
                 (row.get("reviewer") or "").casefold() == actor.casefold(),
                 "CSV reviewer differs from signed-in account",
@@ -219,6 +234,11 @@ class Cohort:
             for row in records["registers"]["EV_evidence_register"]
         }
         self.lanes = {
+            "M2b": {
+                eid
+                for eid, row in self.evidence.items()
+                if row["use_role"] == "operational_risk"
+            },
             "T4": {
                 eid
                 for eid, row in self.evidence.items()
@@ -249,7 +269,9 @@ def vote_rows(entry, actor, cohort):
         fields = reader.fieldnames or []
         require(
             len(fields) == len(set(fields))
-            and {"evidence_id", "reviewer", "decision"} <= set(fields) <= set(FIELDS),
+            and {"evidence_id", "reviewer", "decision"}
+            <= set(fields)
+            <= (set(FIELDS) | ({"lane"} if lane == MIXED else set())),
             "Invalid evidence vote CSV header",
         )
         rows = list(reader)
@@ -264,7 +286,9 @@ def vote_rows(entry, actor, cohort):
             "CSV reviewer differs from signed-in account",
         )
         eid = row.get("evidence_id", "")
-        ids = {FIXTURES[lane]} if entry["test"] else cohort.lanes[lane]
+        row_lane = row.pop("lane", "") if lane == MIXED else lane
+        require(row_lane in LANES, "Missing or unknown finding lane")
+        ids = {FIXTURES[row_lane]} if entry["test"] else cohort.lanes[row_lane]
         require(eid in ids, "Finding outside selected lane or cohort")
         decision = row.get("decision", "").lower().strip()
         require(
@@ -463,7 +487,11 @@ def main():
     for kind in ("csv", "extraction"):
         cmd = sub.add_parser(kind)
         cmd.add_argument("file", type=Path)
-        cmd.add_argument("--lane", choices=sorted(LANES), required=True)
+        cmd.add_argument(
+            "--lane",
+            choices=sorted(LANES | {MIXED} if kind == "csv" else EXTRACTION_LANES),
+            required=True,
+        )
         cmd.add_argument("--revision", required=True)
         cmd.add_argument("--test", action="store_true")
     cmd = sub.add_parser("collect")

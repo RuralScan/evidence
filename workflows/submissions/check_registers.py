@@ -128,7 +128,8 @@ def check_snapshot(producer, ciat, base):
             from registers import scientific_fields_dict, cohort
 
             cohorts = {}
-            from registers import authenticated, participants
+            from registers import authenticated, participants, checked_votes
+            from nbs_ruralscan.schema_tools.review import REASON_CODES
 
             public = authenticated(intake.submissions())
             target_ids = set()
@@ -182,6 +183,7 @@ def check_snapshot(producer, ciat, base):
                         ids.add(eid)
                         source_ids.add(sid)
                 else:
+                    checked_votes(entry, item["actor"], seen_ev, REASON_CODES)
                     for eid in participants({n: item}, {n}, set())[n]:
                         require(
                             eid in old_ev
@@ -205,10 +207,11 @@ def check_snapshot(producer, ciat, base):
                 from registers import ballot_verdict
 
                 entry = public[n]["entry"]
-                ballots = (
-                    [entry["payload"]]
-                    if entry["kind"] == "vote"
-                    else intake.csv_reader(entry["payload"])
+                pin = entry["revision"]
+                if pin not in cohorts:
+                    cohorts[pin] = cohort(ROOT, base, ciat, pin)
+                ballots = checked_votes(
+                    entry, public[n]["actor"], cohorts[pin][0], REASON_CODES
                 )
                 for ballot in ballots:
                     eid = ballot["evidence_id"]
