@@ -240,12 +240,15 @@ def prepare(args):
         from configuration import overlay
 
         overlay(engine, dest)
-        if args.kind == "row":
-            from recipe_rows import append, fetch
+        if args.kind in {"row", "priority"}:
+            if args.kind == "row":
+                from recipe_rows import append, fetch
+            else:
+                from priorities import append, fetch
 
             event = fetch(args.receipt)
             op = {"kind": event["entry"]["kind"]}
-            name = f"row-{args.receipt}"
+            name = f"{args.kind}-{args.receipt}"
             added = append(dest, event, base)
         else:
             op = operation(args, dest)
@@ -254,7 +257,7 @@ def prepare(args):
         if not added:
             print("Already registered. No change.")
             return
-        if args.kind == "row" or op["kind"] == "source":
+        if args.kind in {"row", "priority"} or op["kind"] == "source":
             from queue_view import publish_files
 
             for path in (dest / "registers").rglob("*"):
@@ -298,6 +301,12 @@ def prepare(args):
                     )
                 )
                 print(details)
+            if args.kind == "priority":
+                before = json.loads(blob(dest, base, LIVE))
+                after = read(dest / LIVE)
+                require(all(before[k] == after[k] for k in ("registers", "review_log", "row_reviews", "recipes", "membership", "corrections")), "Priority change altered scientific records")
+                details = f"Priority receipt #{args.receipt} from @{event['actor']}: {event['entry']['action']}.\n\nRecorded reason: {event['entry']['reason']}\n\nFinding decisions and ratings are unchanged."
+                print(details)
         git("add", "-A", cwd=dest)
         print(git("diff", "--cached", "--stat", cwd=dest).decode(), flush=True)
         if not args.open_pr:
@@ -337,7 +346,7 @@ def prepare(args):
         body = tmp / "pr.md"
         body.write_text(
             f"Apply the recorded {op['kind']} operation against RuralScan/evidence revision `{base}`.\n"
-            + (details[:48000] if args.kind == "row" else "")
+            + (details[:48000] if args.kind in {"row", "priority"} else "")
         )
         subprocess.run(
             [
@@ -372,6 +381,8 @@ def cli():
         "row", help="Replay an authenticated rating or wording receipt"
     )
     row.add_argument("receipt", type=int)
+    priority = sub.add_parser("priority", help="Replay authenticated team priority status with its reason")
+    priority.add_argument("receipt", type=int)
     discovery = sub.add_parser("discovery")
     discovery.add_argument("--plan", type=Path, required=True)
     discovery.add_argument("--decisions", type=Path, required=True)

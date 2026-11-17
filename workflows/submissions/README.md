@@ -14,6 +14,7 @@ Operators can register a completed search and its acquisition candidates, promot
 | Rating reviews | [Review a compiled row](recipe-rows.md). The protected PR appends authenticated rating history. | — |
 | Method decisions | [Propose, decide, implement or supersede a coded scientific ruling in RuralScan/method](https://github.com/RuralScan/method/blob/040f701fa0455c0dfc3fddbeee8ef6c74fe636f9/decisions/README.md). | — |
 | Configuration and lookups | [Adopt reviewed method definitions, update tools or source-specific mappings, and rebuild the pinned candidate](../../configuration/README.md). | The guide identifies inputs still held at archived revisions. |
+| Shared priority status | [Record addressed requests, deprioritize or restore them with a reason](../../priority-reviews/README.md). Priority events do not cast finding or rating votes. | — |
 | Retrospectives | Preserve measured sweep results and links from feedback to changes in instructions or checks. | Record the sweep and advance its learnings cursor ([evidence #41](https://github.com/RuralScan/evidence/issues/41)). |
 
 The [CIAT retirement check](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/scripts/check-retired-evidence.py#L7-L32) protects the archived records. The [RuralScan register check](check_registers.py) verifies the migration inventory and replays each new change against its base revision. · [Queue compiler](https://github.com/RuralScan/evidence/blob/4198da5febfb8e4fbc0707ccbdbbade8a2147cff/workflows/submissions/queue_view.py#L24-L69)
