@@ -28,7 +28,7 @@ Single-lane batches use the existing vote CSV. A cross-lane CSV uses `lane: Mixe
 
 **View source preview** shows a passage matched against the acquired source or a cropped table image. Public assets in `publication/source-previews/` bind to source, locator, quote and access metadata. When no matching public preview exists, reviewers can open the cited source or select acquired PDFs on their device for inline reading. Restricted PDFs stay in the team library.
 
-Rebuild previews with the current register, acquired corpus and Python with PyMuPDF and Pillow. Generate into a fresh directory, inspect coverage and replace the published directory together with its index in a PR.
+Applying approved extractions through the register writer refreshes previews for those findings with the supplied corpus in the same PR. For a full rebuild, use the current register, acquired corpus and Python with PyMuPDF and Pillow. Generate into a fresh directory, inspect coverage and replace the published directory together with its index in a PR.
 
 ```sh
 python workflows/submissions/source_previews.py --corpus /path/to/acquired/corpus --out /tmp/new-source-previews
