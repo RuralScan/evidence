@@ -65,6 +65,32 @@ For a PDF, the tool checks the signature, reads the file, and matches the title 
 
 The PDF route tries the supplied URL and eligible alternatives. Set `UNPAYWALL_EMAIL` in your environment to enable Unpaywall recovery for a verified DOI. A failed request, a browser challenge or an empty Unpaywall result leaves access unresolved. Before referring a source for institutional access, search the distinctive title, first author and year in publisher, university, agency and author repositories, including green copies or preprints. Record queries, links, dates and outcomes. Flag ResearchGate or Academia for a human browser check if access is uncertain. [Source recovery protocol](https://github.com/CIAT/nbs_ruralscan/blob/157a26c2729c05cccf2b1d9374a63e28c97acac6/methodology/search_protocol.md)
 
+**Recovery routes, cheapest first** (tested 2026-11-18 on 159 hard T3/T6 rows; 20 recovered). Use legitimate hosts only. Never use stealth or automation-hiding browser settings, CAPTCHA solving, shadow libraries, university proxy mirrors, shared logins, publisher text-mining links that need a token, or Crossref similarity-checking links. If a host shows a challenge page, list the URL for a person to download in a browser.
+
+1. Check the team library and the local corpus.
+2. Send a plain HTTP request (`Accept: application/pdf,*/*`, follow redirects) to every location in OpenAlex, Unpaywall and Semantic Scholar `openAccessPdf`, not only the best one. Re-test hosts noted as "blocked" earlier, because blocks change. AJOL and the NESP hub served files on retest.
+3. Use known file routes for specific hosts:
+   - MDPI: `mdpi-res.com/d_attachment/<journal>/<journal>-<vol>-<id>/article_deploy/<journal>-<vol>-<id>.pdf`
+   - AgEconSearch: list the file URLs at `/record/<id>/export/xm`, then make a plain request to `/record/<id>/files/<name>.pdf`.
+   - DSpace 7: `<base>/server/api/pid/find?id=hdl:<handle>`, then the ORIGINAL bundle, then the bitstream content.
+   - The PMC open-access S3 bucket `pmc-oa-opendata`: check with a prefix listing. It holds only the OA-licensed subset.
+4. Use a Wayback raw capture (`web.archive.org/web/<timestamp>id_/<url>`; find the timestamp with `archive.org/wayback/available`), but only for a URL that was publicly served. This route recovered 12 of the 20. It works for moved journals, dead author or NGO pages, repositories that later restricted a file, and gold open-access PDFs now behind a challenge. Space requests at least 12 s apart; web.archive.org refuses connections after about 30 fast lookups. Do not use it for closed publisher PDF URLs.
+5. Only after these steps, refer the source for a person's browser download, a ResearchGate or author request, or institutional access.
+
+Identity checks after recovery:
+- Look past proceedings front matter.
+- OCR image-only scans to confirm the title, and mark the file as needing OCR before extraction.
+- Check the page count: a table-of-contents file can contain the title.
+- Record the version: published, accepted manuscript, thesis chapter or Wayback capture.
+- Note reuse limits for a publisher PDF found on a third-party site.
+
+On 2026-11-18 these hosts showed challenges or refused scripts:
+- ScienceDirect, Wiley, link.springer.com, Europe PMC and core.ac.uk
+- Hindawi, IWA and the main MDPI site
+- research.utwente.nl, the Smithsonian repository, Auburn AURORA and ERDC
+- UVic DSpace and dehesa.unex.es
+- SEAFDEC: timed out
+
 **Special formats.** Use the established paired-artifact procedures for Word masters with a once-rendered PDF and for structured WOCAT technology questionnaires with a source payload and transcript. Those procedures preserve the master, selected version and locators. The worked WOCAT *manual* is an ordinary publisher PDF. Datasets remain discovery seeds pending a dataset intake adapter. [Format-specific acquisition procedures](https://github.com/CIAT/nbs_ruralscan/blob/157a26c2729c05cccf2b1d9374a63e28c97acac6/methodology/search_protocol.md)
 
 ## Inspect or test the bundle
