@@ -6,7 +6,7 @@ The November 10 dashboard lets you submit a finding under your own GitHub accoun
 
 The [live finding queue](https://ruralscan.github.io/method/#review-queue) accepts structural suitability (T4), hazard and scorecard (T3/T6), and operational feasibility (M2b) finding votes. The desk also accepts a reviewer’s finding CSV or a proposed new or corrected finding from a source already in SRC. A submitted issue records the proposal or vote. After a protected register PR merges, its receipt appears in the [applied journal](../../registers/applied-receipts.json) and the queue reads the new revision. The [operator procedure](#apply-approved-submissions) explains approval, consensus and application.
 
-Operators can register a completed search and its acquisition candidates, promote a verified source before extraction, and stamp progress from its producing step. Each proposal travels through a protected RuralScan/evidence PR. [Commands and expected register changes](registration.md)
+Operators can register a completed search and its acquisition candidates, repair queued metadata with a recorded reason, promote one or a batch of verified sources before extraction, and stamp progress from its producing step. Each proposal travels through a protected RuralScan/evidence PR. [Commands and expected register changes](registration.md)
 
 | Other work | What you can do now | Missing official route |
 |---|---|---|

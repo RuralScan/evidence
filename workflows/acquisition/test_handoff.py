@@ -59,6 +59,30 @@ class HandoffTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "checksum"):
             run.check(self.out, self.plan, self.candidate)
 
+    def test_metadata_page_can_use_independent_artifact_origin(self):
+        candidate = self.candidate | {"url": "https://openalex.org/W123"}
+        receipt, body = run.acquire(candidate, self.plan, self.file)
+        self.assertEqual(receipt["status"], "held")
+        plan = self.plan | {"artifact_url": self.candidate["url"]}
+        receipt, body = run.acquire(candidate, plan, self.file)
+        run.publish(self.out, receipt, body)
+        saved = run.check(self.out, plan, candidate)
+        self.assertEqual(saved["status"], "acquired")
+        self.assertEqual(saved["artifact"]["url"], self.candidate["url"])
+        self.assertEqual(candidate["url"], "https://openalex.org/W123")
+
+    def test_follow_on_paper_is_held_and_never_published_as_acquired(self):
+        with pymupdf.open() as doc:
+            doc.new_page().insert_text(
+                (20, 50), "A different follow-on paper\nIntroduction\n" + self.title
+            )
+            data = doc.tobytes()
+        self.file.write_bytes(data)
+        self.plan["expected_sha256"] = hashlib.sha256(data).hexdigest()
+        receipt = self.write_bundle()
+        self.assertEqual(receipt["status"], "held")
+        self.assertEqual([p.name for p in self.out.iterdir()], ["receipt.json"])
+
     def test_corrupted_receipt_cannot_rewrite_verification(self):
         receipt = self.write_bundle()
         path = self.out / "receipt.json"
