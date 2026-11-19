@@ -193,6 +193,9 @@ class IntakeTests(unittest.TestCase):
                 patch("intake.check", return_value=0) as gate,
             ):
                 folder = Path(tmp)
+                register = folder / intake.EV
+                register.parent.mkdir(parents=True)
+                register.write_text("evidence_id,claim_basis\n")
                 entry = {"lane": lane, "payload": [row]}
                 self.assertEqual(
                     intake.extraction(entry, folder, folder, folder)["status"],
@@ -213,6 +216,21 @@ class IntakeTests(unittest.TestCase):
                         folder,
                         folder,
                     )
+
+    def test_current_extraction_requires_separate_classification(self):
+        with TemporaryDirectory() as tmp, patch("intake.check", return_value=0) as gate:
+            folder = Path(tmp)
+            register = folder / intake.EV
+            register.parent.mkdir(parents=True)
+            register.write_text("evidence_id,claim_basis,knowledge_basis,extraction_format\n")
+            row = dict(evidence_id="new", use_role="structural_suitability", quote="a source quotation", claim_basis="table")
+            entry = dict(lane="T4", payload=[row])
+            with self.assertRaisesRegex(ValueError, "knowledge_basis"):
+                intake.extraction(entry, folder, folder, folder)
+            gate.assert_not_called()
+            row.update(claim_basis="expert_assertion", knowledge_basis="expert_assertion", extraction_format="table")
+            self.assertEqual(intake.extraction(entry, folder, folder, folder)["status"], "validated")
+            self.assertEqual(gate.call_count, 2)
 
 
 if __name__ == "__main__":

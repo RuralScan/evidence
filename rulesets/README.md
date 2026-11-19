@@ -23,3 +23,7 @@ python3 -IB rulesets/check.py --ciat-repo /path/to/nbs_ruralscan
 ```
 
 Use Git supporting `--no-lazy-fetch` and a clone with the four specified commits and their archive blobs. The command reads committed objects offline and leaves the checkout untouched. Expect five entries and 32 verified file occurrences across their archives. Missing objects, a different file inventory, changed checksums or a mismatched declared version stop the check. The catalog hash identifies the exact catalog used for the receipt.
+
+## Current classification addendum
+
+The [knowledge-basis and format contract](evidence-classification.json) and [intake guidance](../workflows/extraction/classification.md) extend current submissions. Their pin records the immutable method revision. They do not restamp or rewrite archived extraction instructions.

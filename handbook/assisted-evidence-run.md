@@ -54,3 +54,7 @@ Record the retained inputs, actual prompt files and checked outputs in a private
 For the worked exercise, run `python3 examples/terrace-rainfall/run-workflow.py --out "$work/terrace"` from the repository root, with `work` set to a new private working directory. It replays three screening decisions, stages one WOCAT observation and independently reproduces the historical recipe row. The replay performs no fresh search, model call or human approval. [Worked example](../examples/terrace-rainfall/README.md) · [Find the corresponding review record](review-records.md)
 
 To practise the handoff, enter a training source, correct an unsupported terrace rainfall limit and resolve a synthetic review question. [Try the evidence handoff exercise](../examples/evidence-challenge/README.md)
+
+## Current classification addendum
+
+For new evidence, record knowledge basis independently from extraction format. A table is not proof of measurement. Use the [classification contract and intake rules](../workflows/extraction/classification.md); retain unknown-basis proposals in staging for source review. Expert judgement is derived from literature in this workflow. Document repeated data and shared study/model/panel origins rather than counting rows as independent votes. Preserve actual ruleset stamps and record this addendum with the run instructions.

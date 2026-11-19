@@ -15,6 +15,7 @@ from tempfile import TemporaryDirectory
 
 import intake
 from handoff import check_replays, same_value, scientific_fields
+from classification import equivalent, proposal, normalize
 from git_snapshot import git, require, snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -214,7 +215,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
                 # source or scientific record, including a later review stamp, needs a fresh vote.
                 require(
                     eid in current
-                    and old[eid] == current[eid]
+                    and equivalent(old[eid], current[eid])
                     and old_sources[old[eid]["source_id"]]
                     == sources.get(old[eid]["source_id"]),
                     f"Finding/source changed since receipt #{n}: {eid}",
@@ -277,13 +278,15 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             require(
                 sid in sources
                 and sources[sid] == old_sources.get(sid)
-                and current.get(eid) == old.get(eid),
+                and equivalent(current.get(eid), old.get(eid)),
                 f"Stale source or finding for {eid}",
             )
             require(
                 u.get("reviewer_ok") in (None, False, "") and not u.get("review_state"),
                 "Extraction carries a review decision",
             )
+            if "knowledge_basis" in next(iter(current.values()), {}):
+                proposal(u, current.get(eid))
             issues = evidence_intake.gate([u], roles, paths=paths)
             prev = current.get(eid)
             if prev and u.get("ruleset_version") == prev["ruleset_version"]:
@@ -303,7 +306,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             for u in units
             if u["evidence_id"] in current
             and not same_value(
-                scientific_fields(current[u["evidence_id"]]), scientific_fields_dict(u)
+                normalize(scientific_fields(current[u["evidence_id"]])), normalize(scientific_fields_dict(u))
             )
         ]
         for u in changed:

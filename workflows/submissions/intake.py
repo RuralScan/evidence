@@ -327,6 +327,15 @@ def extraction(entry, checkout, corpus, folder):
         ),
         "Invalid extraction lane or supplied review state",
     )
+    if checkout:
+        from classification import proposal
+        with (checkout / EV).open(newline="", encoding="utf-8") as stream:
+            reader = csv.DictReader(stream)
+            classified = "knowledge_basis" in (reader.fieldnames or [])
+            previous = {r["evidence_id"]: r for r in reader}
+        if classified:
+            for unit in units:
+                proposal(unit, previous.get(unit["evidence_id"]))
     path = folder / "staging.json"
     path.write_text(json.dumps(units, allow_nan=False))
     require(

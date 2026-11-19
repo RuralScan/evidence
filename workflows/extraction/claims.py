@@ -10,6 +10,8 @@ import json
 import math
 import re
 
+from classification import FIELDS, new_claim
+
 
 RULESET = "v1.9.9"
 SCOPE_FIELDS = ("nbs_id", "suitability_family_id", "variable", "use_role")
@@ -325,7 +327,7 @@ def build_unit(draft, scope, source_id, quote, page):
         set(SCOPE_FIELDS)
         | CHOICES.keys()
         | TEXT_FIELDS
-        | {"evidence_id", "relationship", "context"},
+        | {"evidence_id", "relationship", "context", *FIELDS},
         "draft",
     )
     if not isinstance(scope, dict):
@@ -342,6 +344,8 @@ def build_unit(draft, scope, source_id, quote, page):
         raise ValueError("Quote too short to anchor the claim")
     for field, choices in CHOICES.items():
         choice(draft.get(field), choices, field)
+    if any(key in draft for key in FIELDS):
+        new_claim(draft)
     for key in draft.keys() & TEXT_FIELDS:
         nonempty(draft[key], key)
     if (draft["claim_scope"] != "practice_technology") != bool(draft.get("taxon")):

@@ -2,6 +2,7 @@
 
 import csv
 import json
+from classification import compiler_record
 from pathlib import Path
 
 
@@ -37,7 +38,7 @@ def compile_candidate(producer, evidence_repo):
     )
     current_ev = registers["EV_evidence_register"]
     changed_ids = {
-        r["evidence_id"] for r in current_ev if r != old_ev.get(r["evidence_id"])
+        r["evidence_id"] for r in current_ev if compiler_record(r) != old_ev.get(r["evidence_id"])
     }
     old_sources = index(csv_rows(blob(producer, SEED, SRC)), "source_id")
     # Source assessment/locator changes also invalidate prose; extraction progress does not.
