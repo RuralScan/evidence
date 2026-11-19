@@ -39,6 +39,10 @@ def records(root, name):
 
 
 def stem(op):
+    if op["kind"] == "queue":
+        from queue_corrections import name
+
+        return name(op["request"])
     if op["kind"] == "source":
         return "source-" + screen.identifier(op["receipt"]["source_id"])
     scope = op["plan"] if op["kind"] == "discovery" else op
@@ -441,7 +445,11 @@ def verification(root, op, repo):
 
 
 def apply(root, op, engine, repo):
-    if op["kind"] == "discovery":
+    if op["kind"] == "queue":
+        from queue_corrections import apply as correct_queue
+
+        return correct_queue(root, op)
+    elif op["kind"] == "discovery":
         discover(root, op)
     elif op["kind"] == "source":
         return promote(root, op, engine)

@@ -183,6 +183,38 @@ class DocumentTests(unittest.TestCase):
         ):
             self.assertFalse(self.check(source)["verified"])
 
+    def test_cited_title_is_not_document_identity(self):
+        for opening in (
+            "A different follow-on paper\nWe build on the earlier work titled "
+            + TITLE
+            + " to compare results.",
+            "A different follow-on paper\nAbstract\n" + TITLE,
+            "A different follow-on paper\n1. Introduction\n" + TITLE,
+            "A different follow-on paper\nContents\n" + TITLE,
+            "A different follow-on paper\nWe build on the earlier work titled\n"
+            + TITLE
+            + "\nto compare new results.",
+            "A different follow-on paper\nSmith (1978)\n" + TITLE,
+            TITLE + " revisited with new experiments",
+        ):
+            with self.subTest(opening=opening):
+                self.assertFalse(self.check(pdf(opening))["verified"])
+        self.assertTrue(
+            self.check(
+                pdf(
+                    "Terraced catchments and infiltration\nin upland watersheds\nAuthors\nAbstract\nNew results"
+                )
+            )["verified"]
+        )
+
+    def test_numbered_report_keeps_substantive_title(self):
+        self.assertEqual(
+            identity.citation_title(
+                "Author (1989). Report 21. Factors affecting seedling mortality. Publisher."
+            ),
+            "Report 21. Factors affecting seedling mortality",
+        )
+
     def test_parts_bind_to_matching_pdf_only(self):
         title = TITLE + " Part II"
         self.assertTrue(self.check(pdf(title), title=title)["verified"])

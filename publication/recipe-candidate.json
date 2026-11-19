@@ -62,9 +62,9 @@
     "schema/recipes/water_harvesting_conservation/T3T6_prose.json": "586f46a2c81b93675019f58395f95ce7ad5a3dea9439a6f14e9e5cef539d18a1",
     "schema/recipes/wetland_management/T3T6_prose.json": "e8dab8fb3f93b6a4d03204c15ecd6ce6d1e5420b21aa3187dd3471523d1cd806",
     "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
-    "schema/registers/EV_evidence_register.csv": "7d1953fa47cef3bae7d5e5194da9ee20b0bf94570a4c1a09c0e4a7f8e2c546fc",
+    "schema/registers/EV_evidence_register.csv": "215fb20bb8d4b9a1b50005f4a6a3bf0da8d40b59782454f6c99bb99263a3c9e2",
     "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
-    "schema/registers/SRC_source_register.csv": "399b42153a483a6e1974701a9663c13a94adb03f5f4dc6eed68410b109180927",
+    "schema/registers/SRC_source_register.csv": "c560f52f8b7487b2b7a04d3cc1e905f3d31faf534e23fb2995a893a2bf69f35f",
     "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
   },
