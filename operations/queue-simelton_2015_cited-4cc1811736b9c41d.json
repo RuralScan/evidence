@@ -1,0 +1,74 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "simelton_2015_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "simelton_2015_cited",
+      "nbs_id": "agroforestry",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Simelton et al. (2015). Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam. Agroforestry Systems.",
+      "doi": "10.1007/s10457-015-9835-5",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy) — candidate: https://hdl.handle.net/10568/76605; check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv simelton_2015; rows_fed 6; cited by quandt_resilience_2017). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (The CGSpace record hdl 10568/76605 gives this exact title, the authors and 2015, and is marked Restricted/Limited Access.) The CGSpace copy is restricted. The ICRAF knowledge page cifor-icraf.org/knowledge/publication/26470 may host a PDF; not verified. As a CGIAR staff member, Pete | OA 2026-11-11: CGSpace item visible but only a thumbnail is public (main file restricted); ICRAF SEA PDF link returns 401 CIFOR-ICRAF staff/browser may reach the file; else ResearchGate.",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10457-015-9835-5",
+      "submitted_doi": "10.1007/s10457-015-9835-5",
+      "citation": "Simelton et al. (2015). Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam. Agroforestry Systems.",
+      "title": "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10457-015-9835-5",
+          "title": [
+            "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam"
+          ],
+          "container-title": [
+            "Agroforestry Systems"
+          ],
+          "author": [
+            {
+              "family": "Simelton"
+            },
+            {
+              "family": "Dam"
+            },
+            {
+              "family": "Catacutan"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2015
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

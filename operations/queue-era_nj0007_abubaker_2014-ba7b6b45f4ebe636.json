@@ -1,0 +1,44 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "era_nj0007_abubaker_2014",
+      "changes": {
+        "url": "https://pakjas.com.pk/papers/2342.pdf",
+        "citation": "Abubaker, B. M. A.; Yu, S. E.; Shao, G. C.; Alhadi, M. (2014). IMPACT OF DIFFERENT WATER HARVESTING TECHNIQUES ON SOIL MOISTURE CONTENT AND YIELD COMPONENTS OF SORGHUM. Pakistan Journal of Agricultural Sciences 51(4): 779-788."
+      },
+      "reason": "Queue row has no URL. The journal's own site serves this article at papers/2342.pdf (fetched 2026-11-20); page 1 header reads 'Pak. J. Agri. Sci., Vol. 51(4), 779-788; 2014' and carries the screened title; bytes identical (SHA-256 9200f193...fdf621) to the team-library copy. Adds volume/pages to the citation; title, authors and year unchanged. No DOI exists. Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "era_nj0007_abubaker_2014",
+      "nbs_id": "water_harvesting_conservation",
+      "family": "water_harvesting__runoff_catchment|water_harvesting__in_situ",
+      "tables": "T6",
+      "citation": "Abubaker, B. M. A.; Yu, S. E.; Shao, G. C.; Alhadi, M. (2014). IMPACT OF DIFFERENT WATER HARVESTING TECHNIQUES ON SOIL MOISTURE CONTENT AND YIELD COMPONENTS OF SORGHUM. Pakistan Journal of Agricultural Sciences.",
+      "doi": "",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "OA web-search 2026-10-07 found no copy: Pak J Agri Sci 2014; no hosted PDF found (pakjas site not indexed); human check journal site.",
+      "access_route": "web (publisher domain)",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "Namita-J",
+      "date_added": "2026-10-05",
+      "note": "water_synthesis_first_2026-10-05 (ruleset v1.6.0, synthesis-first). process=stock; method_subtype=primary_field_study; study_scope=['SDN']; income_groups_covered=['low']; evaluation_design=experimental/on-farm (per ERA); report_number_or_handle=ERA code NJ0007 (ERAg::ERA_Bibliography); t6_targets=economics,production_gap; families=water_harvesting__runoff_catchment|water_harvesting__in_situ; has_effect_sizes=True; proposed_tier=Med (Peer-reviewed primary selected via the benchmarked ERA economics dataset; ERA is a dataset (adapter PAUSED), u); No DOI; Crossref title-search best hit is a DIFFERENT paper (ratio 0.58). Acquire by TITLE (WoS:000349562000002); scope inferred, verify. Country scope inferred from title/ERA; verify. | OA recovery 2026-11-04: web-searched, no free copy verified (Confirmed bibliographic details (Pakistan J. Agric. Sci. 51(4):779-788, 2014) via multiple secondary citations, but pakjas.com.pk is not indexed/reachable by search and no PDF mirror (CORE, Semantic Scholar, ResearchGate)",
+      "doi_verified": "",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "",
+      "submitted_doi": "",
+      "citation": "Abubaker, B. M. A.; Yu, S. E.; Shao, G. C.; Alhadi, M. (2014). IMPACT OF DIFFERENT WATER HARVESTING TECHNIQUES ON SOIL MOISTURE CONTENT AND YIELD COMPONENTS OF SORGHUM. Pakistan Journal of Agricultural Sciences 51(4): 779-788.",
+      "title": "IMPACT OF DIFFERENT WATER HARVESTING TECHNIQUES ON SOIL MOISTURE CONTENT AND YIELD COMPONENTS OF SORGHUM",
+      "status": "title_required",
+      "reason": "No DOI; verify the source title against the artifact."
+    }
+  }
+}

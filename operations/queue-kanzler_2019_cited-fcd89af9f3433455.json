@@ -1,0 +1,80 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "kanzler_2019_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "kanzler_2019_cited",
+      "nbs_id": "agroforestry",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Kanzler et al. (2018). Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system. Agroforestry Systems.",
+      "doi": "10.1007/s10457-018-0289-4",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy) — candidate: https://core.ac.uk/download/443831123.pdf; check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original (pipeline/cited_originals.csv kanzler_2019; rows_fed 9; cited by dobhal_2024). Acquire to replace second-hand readings. | OA recovery 2026-11-05: web-searched, no free copy verified (Unpaywall and Semantic Scholar both confirm closed access for 10.1007/s10457-018-0289-4. The Springer 'content/pdf' link redirects to an IdP login wall (idp.springer.com), confirming no gold OA. No in) | OA 2026-11-11: Unpaywall is_oa=false; web search title+author+year found no free full text on Springer; search engine associated a CORE PDF with this title but CORE returns a Cloudflare challenge (403), so identity not verified Best candidate is the CORE link (likely a BTU Cottbus repository copy) - person to open",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10457-018-0289-4",
+      "submitted_doi": "10.1007/s10457-018-0289-4",
+      "citation": "Kanzler et al. (2018). Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system. Agroforestry Systems.",
+      "title": "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10457-018-0289-4",
+          "title": [
+            "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system"
+          ],
+          "container-title": [
+            "Agroforestry Systems"
+          ],
+          "author": [
+            {
+              "family": "Kanzler"
+            },
+            {
+              "family": "Böhm"
+            },
+            {
+              "family": "Mirck"
+            },
+            {
+              "family": "Schmitt"
+            },
+            {
+              "family": "Veste"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2018
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

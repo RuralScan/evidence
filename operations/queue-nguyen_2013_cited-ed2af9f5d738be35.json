@@ -1,0 +1,77 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "nguyen_2013_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "nguyen_2013_cited",
+      "nbs_id": "agroforestry",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Nguyen et al. (2012). Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam. Climatic Change.",
+      "doi": "10.1007/s10584-012-0550-1",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy) — candidate: https://cifor-icraf.org/knowledge/publication/11064; check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv nguyen_2013; rows_fed 7; cited by dobhal_2024). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (SLU research portal, CIFOR-ICRAF publication 11064 and RePEc records match exact title/authors; vol 117 2013 (online 2012).) CIFOR-ICRAF publication page (cifor-icraf.org/knowledge/publication/11064) returned 401 to scripts - may host a PDF; human should check it and SLU portal (resea | OA 2026-11-11: Unpaywall is_oa=false; web search title+author+year found no free full text; CIFOR-ICRAF publication page returns 401 to scripts; SLU research page shows no file CIFOR-ICRAF page may offer a PDF in a browser - person to check; else ResearchGate.",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10584-012-0550-1",
+      "submitted_doi": "10.1007/s10584-012-0550-1",
+      "citation": "Nguyen et al. (2012). Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam. Climatic Change.",
+      "title": "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10584-012-0550-1",
+          "title": [
+            "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam"
+          ],
+          "container-title": [
+            "Climatic Change"
+          ],
+          "author": [
+            {
+              "family": "Nguyen"
+            },
+            {
+              "family": "Hoang"
+            },
+            {
+              "family": "Öborn"
+            },
+            {
+              "family": "van Noordwijk"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2012
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

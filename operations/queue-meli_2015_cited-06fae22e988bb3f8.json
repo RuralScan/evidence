@@ -1,0 +1,77 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "meli_2015_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "meli_2015_cited",
+      "nbs_id": "riparian_buffer",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Meli et al. (2015). Social Perceptions of Rainforest and Climatic Change from Rural Communities in Southern Mexico. Ecosystems.",
+      "doi": "10.1007/s10021-015-9903-8",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy); check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv meli_2015; rows_fed 5; cited by latam_riparian_forest_buffers_2019). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (ANID investigadores record and Peeref match title/journal/vol/pages/DOI; authors include Meli, Landa, Carabias.) No OA copy found; check ResearchGate / Paula Meli profile by hand. Co-author list beyond Meli/Landa/Carabias not tool-verified. | OA 2026-11-11: Unpaywall is_oa=false; web search title+author+year found no free full text; only catalogue records No copy found.",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10021-015-9903-8",
+      "submitted_doi": "10.1007/s10021-015-9903-8",
+      "citation": "Meli et al. (2015). Social Perceptions of Rainforest and Climatic Change from Rural Communities in Southern Mexico. Ecosystems.",
+      "title": "Social Perceptions of Rainforest and Climatic Change from Rural Communities in Southern Mexico",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10021-015-9903-8",
+          "title": [
+            "Social Perceptions of Rainforest and Climatic Change from Rural Communities in Southern Mexico"
+          ],
+          "container-title": [
+            "Ecosystems"
+          ],
+          "author": [
+            {
+              "family": "Meli"
+            },
+            {
+              "family": "Landa"
+            },
+            {
+              "family": "López-Medellín"
+            },
+            {
+              "family": "Carabias"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2015
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Social Perceptions of Rainforest and Climatic Change from Rural Communities in Southern Mexico",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

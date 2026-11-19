@@ -1,0 +1,77 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "karki_2014_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "karki_2014_cited",
+      "nbs_id": "wetland_management",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Karki et al. (2014). Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level. Plant and Soil.",
+      "doi": "10.1007/s11104-014-2164-z",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy); check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv karki_2014; rows_fed 6; cited by tan_paludiculture_tropical_review_2020). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (Multiple indexes (Peeref, Springer) agree on title, authors, volume and pages.) Not the same paper as Karki, Elsgaard & Lærke 2015 Biogeosciences 12:595 ('Effect of reed canary grass cultivation on GHG emission from peat soil at controlled  | OA 2026-11-11: Unpaywall: no OA copy. Web search (title+first author+year+pdf): no free full text on repositories/author/agency sites; only abstract/index pages. ResearchGate cannot be checked by tool; Aarhus Pure has other Karki papers (2015 Biogeosciences, 2016 GCB Bioenergy) - different papers Person: check RG",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s11104-014-2164-z",
+      "submitted_doi": "10.1007/s11104-014-2164-z",
+      "citation": "Karki et al. (2014). Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level. Plant and Soil.",
+      "title": "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s11104-014-2164-z",
+          "title": [
+            "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level"
+          ],
+          "container-title": [
+            "Plant and Soil"
+          ],
+          "author": [
+            {
+              "family": "Karki"
+            },
+            {
+              "family": "Elsgaard"
+            },
+            {
+              "family": "Audet"
+            },
+            {
+              "family": "Lærke"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2014
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

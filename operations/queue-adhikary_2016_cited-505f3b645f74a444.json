@@ -1,0 +1,80 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "adhikary_2016_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "adhikary_2016_cited",
+      "nbs_id": "agroforestry",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Adhikary et al. (2016). Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems. Agroforestry Systems.",
+      "doi": "10.1007/s10457-016-9958-3",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy) — candidate: https://krishi.icar.gov.in/jspui/handle/123456789/38337; check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original (pipeline/cited_originals.csv adhikary_2016; rows_fed 9; cited by morantes_2018_es). Acquire to replace second-hand readings. | OA recovery 2026-11-05: web-searched, no free copy verified (Unpaywall/Semantic Scholar confirm closed access for 10.1007/s10457-016-9958-3. The ICAR KRISHI institutional repository holds a record for this exact paper, but the domain could not be resolved/fetch) | OA 2026-11-11: Unpaywall is_oa=false; web search title+author+year found no free full text; ICAR KRISHI repository record exists but the server did not respond to scripts (connection failed) KRISHI may host the full text - person to open in browser; else ResearchGate.",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10457-016-9958-3",
+      "submitted_doi": "10.1007/s10457-016-9958-3",
+      "citation": "Adhikary et al. (2016). Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems. Agroforestry Systems.",
+      "title": "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10457-016-9958-3",
+          "title": [
+            "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems"
+          ],
+          "container-title": [
+            "Agroforestry Systems"
+          ],
+          "author": [
+            {
+              "family": "Adhikary"
+            },
+            {
+              "family": "Hombegowda"
+            },
+            {
+              "family": "Barman"
+            },
+            {
+              "family": "Jakhar"
+            },
+            {
+              "family": "Madhu"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2016
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}

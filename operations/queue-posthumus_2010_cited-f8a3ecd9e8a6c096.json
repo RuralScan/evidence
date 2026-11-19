@@ -1,0 +1,71 @@
+{
+  "base": "8ffe9322151763263065002ee78ed83b874e3b09",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "posthumus_2010_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "posthumus_2010_cited",
+      "nbs_id": "water_harvesting_conservation",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Posthumus et al. (2009). To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes. Environment, Development and Sustainability.",
+      "doi": "10.1007/s10668-009-9193-4",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy); check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv posthumus_2010; rows_fed 6; cited by arnaez_2015|wei_2016). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (Univ. Greenwich GALA eprint 3333 matches exact title/authors/volume/pages (metadata only, 'full text not available').) Check WUR edepot / Posthumus PhD thesis (Wageningen 2005?, 'Adoption of terraces in the Peruvian Andes') which may contain a version of this chapter; human chec | OA 2026-11-11: Unpaywall: no OA copy. Web search (title+first author+year+pdf): no free full text on repositories/author/agency sites; only abstract/index pages. ResearchGate cannot be checked by tool; Greenwich GALA record restricted; Unpaywall WUR record has no file Related open PhD thesis (Posthumus 2005, edepo",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1007/s10668-009-9193-4",
+      "submitted_doi": "10.1007/s10668-009-9193-4",
+      "citation": "Posthumus et al. (2009). To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes. Environment, Development and Sustainability.",
+      "title": "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1007/s10668-009-9193-4",
+          "title": [
+            "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes"
+          ],
+          "container-title": [
+            "Environment, Development and Sustainability"
+          ],
+          "author": [
+            {
+              "family": "Posthumus"
+            },
+            {
+              "family": "Stroosnijder"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                2009
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}
