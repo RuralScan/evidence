@@ -197,6 +197,95 @@ def install(dest, base, op, engine):
     return True
 
 
+def operations(args, dest):
+    """Load a batch without changing the checkout or publishing partial results."""
+    if args.kind == "queue":
+        from queue_corrections import build
+
+        requests = read(args.corrections)
+        requests = requests if isinstance(requests, list) else [requests]
+        require(requests, "Empty queue correction batch")
+        ids = [r["source_id"] for r in requests]
+        require(len(set(ids)) == len(ids), "Duplicate source in queue corrections")
+        result = []
+        for request in requests:
+            try:
+                result.append(build(dest, request))
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                raise ValueError(f"Queue {request['source_id']}: {exc}") from exc
+        return result
+    if args.kind != "source-batch":
+        return [operation(args, dest)]
+    entries = read(args.manifest)
+    require(
+        isinstance(entries, list) and entries, "Expected a nonempty source manifest"
+    )
+    result = []
+    for n, entry in enumerate(entries, 1):
+        label = f"manifest entry {n}"
+        try:
+            require(
+                isinstance(entry, dict)
+                and set(entry)
+                <= {
+                    "candidates",
+                    "plan",
+                    "bundle",
+                    "assessment",
+                    "library_root",
+                    "library_path",
+                },
+                "Unknown source manifest field",
+            )
+            values = dict(kind="source", library_root=None, library_path="") | entry
+            for key in ("candidates", "plan", "bundle", "assessment", "library_root"):
+                if key == "library_root" and not values[key]:
+                    continue
+                require(
+                    isinstance(values[key], str) and values[key],
+                    f"Missing manifest path: {key}",
+                )
+                values[key] = (args.manifest.parent / values[key]).resolve()
+            label = read(values["plan"])["candidate_id"]
+            result.append(operation(argparse.Namespace(**values), dest))
+        except (ValueError, OSError, KeyError, TypeError) as exc:
+            raise ValueError(f"Source {label}: {exc}") from exc
+    require(
+        len({reg.stem(op) for op in result}) == len(result),
+        "Duplicate source in manifest",
+    )
+    return result
+
+
+def install_many(dest, base, ops, engine):
+    """Validate the whole batch on disposable copies before replacing any output."""
+    require(
+        ops and len({reg.stem(op) for op in ops}) == len(ops),
+        "Empty or duplicate operation batch",
+    )
+    with TemporaryDirectory() as folder:
+        stage = Path(folder)
+        for name in ("registers", reg.RECORDS, reg.REPORTS):
+            if (dest / name).exists():
+                shutil.copytree(dest / name, stage / name)
+        added = []
+        # Match CI's operation-file order, including SRC append order.
+        for op in sorted(ops, key=reg.stem):
+            try:
+                if install(stage, base, op, engine):
+                    added.append(op)
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                raise ValueError(f"{reg.stem(op)}: {exc}") from exc
+        for name in reg.TRACKED:
+            path = stage / "registers" / name
+            if path.exists():
+                shutil.copyfile(path, dest / "registers" / name)
+        for name in (reg.RECORDS, reg.REPORTS):
+            if (stage / name).exists():
+                shutil.copytree(stage / name, dest / name, dirs_exist_ok=True)
+        return added
+
+
 def prepare(args):
     remote = (
         git("remote", "get-url", "origin", cwd=ROOT)
@@ -251,13 +340,58 @@ def prepare(args):
             name = f"{args.kind}-{args.receipt}"
             added = append(dest, event, base)
         else:
-            op = operation(args, dest)
-            name = reg.stem(op)
-            added = install(dest, base, op, engine)
+            ops = operations(args, dest)
+            op = ops[0]
+            name = (
+                reg.stem(op)
+                if len(ops) == 1
+                else args.kind
+                + "-"
+                + reg.screen.fingerprint(sorted(ops, key=reg.stem))[:24]
+            )
+            added = (
+                install_many(dest, base, ops, engine)
+                if args.kind in {"source-batch", "queue"}
+                else install(dest, base, op, engine)
+            )
+            if args.kind in {"source-batch", "queue"}:
+                details = (
+                    "Recorded operations (review each identity and locator):\n\n"
+                    + "\n".join("- `" + reg.stem(item) + "`" for item in added)
+                )
+                if args.kind == "queue":
+                    for item in added:
+                        request = item["request"]
+                        details += (
+                            "\n\n" + request["source_id"] + ": " + request["reason"]
+                        )
+                        details += (
+                            "\n\n```json\n"
+                            + json.dumps(
+                                {
+                                    "before": {
+                                        k: item["before"][k]
+                                        for k in ("url", "citation", "doi")
+                                    },
+                                    "requested_changes": request["changes"],
+                                    "doi_locator": request.get("doi_locator", False),
+                                },
+                                indent=2,
+                            )
+                            + "\n```"
+                        )
+                        if request.get("confirm_title_change"):
+                            details += (
+                                "\n\n**Title change explicitly proposed. Confirm this is the same screened work before merging.** Identity reference: "
+                                + request["identity_reference"]
+                            )
         if not added:
             print("Already registered. No change.")
             return
-        if args.kind in {"row", "priority"} or op["kind"] == "source":
+        if (
+            args.kind in {"row", "priority", "source-batch", "queue"}
+            or op["kind"] == "source"
+        ):
             from queue_view import publish_files
 
             for path in (dest / "registers").rglob("*"):
@@ -304,7 +438,20 @@ def prepare(args):
             if args.kind == "priority":
                 before = json.loads(blob(dest, base, LIVE))
                 after = read(dest / LIVE)
-                require(all(before[k] == after[k] for k in ("registers", "review_log", "row_reviews", "recipes", "membership", "corrections")), "Priority change altered scientific records")
+                require(
+                    all(
+                        before[k] == after[k]
+                        for k in (
+                            "registers",
+                            "review_log",
+                            "row_reviews",
+                            "recipes",
+                            "membership",
+                            "corrections",
+                        )
+                    ),
+                    "Priority change altered scientific records",
+                )
                 details = f"Priority receipt #{args.receipt} from @{event['actor']}: {event['entry']['action']}.\n\nRecorded reason: {event['entry']['reason']}\n\nFinding decisions and ratings are unchanged."
                 print(details)
         git("add", "-A", cwd=dest)
@@ -346,7 +493,11 @@ def prepare(args):
         body = tmp / "pr.md"
         body.write_text(
             f"Apply the recorded {op['kind']} operation against RuralScan/evidence revision `{base}`.\n"
-            + (details[:48000] if args.kind in {"row", "priority"} else "")
+            + (
+                details[:48000]
+                if args.kind in {"row", "priority", "source-batch", "queue"}
+                else ""
+            )
         )
         subprocess.run(
             [
@@ -381,7 +532,9 @@ def cli():
         "row", help="Replay an authenticated rating or wording receipt"
     )
     row.add_argument("receipt", type=int)
-    priority = sub.add_parser("priority", help="Replay authenticated team priority status with its reason")
+    priority = sub.add_parser(
+        "priority", help="Replay authenticated team priority status with its reason"
+    )
     priority.add_argument("receipt", type=int)
     discovery = sub.add_parser("discovery")
     discovery.add_argument("--plan", type=Path, required=True)
@@ -392,6 +545,14 @@ def cli():
         source.add_argument("--" + field, type=Path, required=True)
     source.add_argument("--library-path", default="")
     source.add_argument("--library-root", type=Path)
+    batch = sub.add_parser(
+        "source-batch", help="Register all verified sources in one manifest atomically"
+    )
+    batch.add_argument("--manifest", type=Path, required=True)
+    queue = sub.add_parser(
+        "queue", help="Repair queued metadata through recorded operations"
+    )
+    queue.add_argument("--corrections", type=Path, required=True)
     verification = sub.add_parser("verification")
     for field in ("practice", "table", "process", "run-id", "date", "operator"):
         verification.add_argument("--" + field, required=True)
