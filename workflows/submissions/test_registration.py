@@ -479,6 +479,15 @@ class RegistrationTests(unittest.TestCase):
         args.ciat_repo = Path(os.environ["CIAT_TEST_REPO"])
         args.base, args.open_pr = self.base, True
         with (
+            patch.dict(
+                os.environ,
+                {
+                    "GIT_AUTHOR_NAME": "Fixture",
+                    "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+                    "GIT_COMMITTER_NAME": "Fixture",
+                    "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+                },
+            ),
             patch.object(cli, "ROOT", self.root),
             patch.object(cli, "git", side_effect=local_git),
             patch.object(cli.intake, "check_destination"),
