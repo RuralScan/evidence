@@ -283,7 +283,7 @@ def _title_matches(title, text):
 
 
 def _opening_match(title, pages):
-    opening = "\n".join(pages)
+    opening = "\n\n".join(pages)
     # A cited work inside an opening-page bibliography cannot identify the book.
     opening = _REFERENCES.split(opening, maxsplit=1)[0]
     opening = re.split(
@@ -293,15 +293,16 @@ def _opening_match(title, pages):
         maxsplit=1,
         flags=re.I,
     )[0]
-    lines = [line.strip() for line in opening.splitlines() if line.strip()]
-    for i in range(len(lines)):
-        # Bound the token comparison to a compact title-sized passage. A whole
-        # introduction can contain all the same keywords without naming the paper.
+    paragraphs = re.split(r"\n\s*\n", opening)
+    for i, paragraph in enumerate(paragraphs):
+        lines = [line.strip() for line in paragraph.splitlines() if line.strip()]
+        # A title starts its text block. A line wrap inside a sentence quoting
+        # another title must not turn that embedded title into a heading.
         for length in range(1, 5):
-            window = " ".join(lines[i : i + length])
+            window = " ".join(lines[:length])
             if not _title_matches(title, window):
                 continue
-            prefix = _squash(" ".join(lines[max(0, i - 1) : i]))
+            prefix = _squash(paragraphs[i - 1]) if i else ""
             if re.search(r"(?:19|20)\d{2}[a-z]?$", prefix[-16:]):
                 continue
             return True
@@ -379,7 +380,14 @@ def verify_document(data: bytes, kind: str, title: str):
                         "verified": False,
                         "reason": "PDF is empty, encrypted or structurally damaged.",
                     }
-                pages = [document[i].get_text() for i in range(min(len(document), 3))]
+                pages = [
+                    "\n\n".join(
+                        block[4]
+                        for block in document[i].get_text("blocks")
+                        if block[6] == 0
+                    )
+                    for i in range(min(len(document), 3))
+                ]
         except (OSError, RuntimeError, ValueError):
             return {**facts, "verified": False, "reason": "PDF could not be read."}
         facts["needs_ocr"] = len("".join(pages).strip()) < 200

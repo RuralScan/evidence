@@ -191,6 +191,9 @@ class DocumentTests(unittest.TestCase):
             "A different follow-on paper\nAbstract\n" + TITLE,
             "A different follow-on paper\n1. Introduction\n" + TITLE,
             "A different follow-on paper\nContents\n" + TITLE,
+            "A different follow-on paper\nWe build on the earlier work titled\n"
+            + TITLE
+            + "\nto compare new results.",
             "A different follow-on paper\nSmith (1978)\n" + TITLE,
             TITLE + " revisited with new experiments",
         ):
