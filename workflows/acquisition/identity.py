@@ -22,7 +22,6 @@ _STOP = set(
     "study effects impact assessment analysis review journal international climate change".split()
 )
 DOI_THRESHOLD = 0.5
-TITLE_THRESHOLD = 0.8
 _REFERENCES = re.compile(
     r"(?:^|\n)\s*(?:\d+\.?\s+)?(?:references|literature cited|bibliography|"
     r"références|referencias|bibliografía|referências)\s*[:.]?\s*(?=\n|$)",
@@ -44,6 +43,11 @@ def citation_title(citation):
     """Read the legacy Author (Year). Title. Venue. citation when no title field exists."""
     body = citation.partition("). ")[2] or citation
     title, _, remainder = body.partition(". ")
+    if re.fullmatch(
+        r"(?:Report|Working Paper|Technical Report)\s+(?:No\.?\s*)?\d+", title, re.I
+    ):
+        title += ". " + remainder.partition(". ")[0]
+        remainder = remainder.partition(". ")[2]
     if _SERIES.match(remainder):
         title += ". " + remainder.partition(". ")[0]
     return title.strip().rstrip(".")
@@ -266,40 +270,42 @@ def _title_matches(title, text):
     squashed = _squash(text)
     if squashed == key:
         return True
-    terms = _tokens(title)
-    if len(terms) < 3:
-        # A single shared word in an unrelated title is a poor identity anchor.
-        return len(key) >= 20 and key in squashed
-    return len(terms & _tokens(text)) / len(terms) >= TITLE_THRESHOLD or (
-        len(key) >= 20 and key in squashed
-    )
+
+    # A title/subtitle can be reordered on a cover. Require every word on both
+    # sides, including years and short words: token coverage or containment also
+    # accepts a sentence citing the target work inside an unrelated paper.
+    def words(value):
+        return sorted(
+            re.findall(r"\w+", unicodedata.normalize("NFKC", value).casefold())
+        )
+
+    return words(title) == words(text)
 
 
 def _opening_match(title, pages):
-    opening = "\n".join(pages)
+    opening = "\n\n".join(pages)
     # A cited work inside an opening-page bibliography cannot identify the book.
     opening = _REFERENCES.split(opening, maxsplit=1)[0]
-    lines = [line.strip() for line in opening.splitlines() if line.strip()]
-    terms = _tokens(title)
-    key = _squash(title)
-    for i in range(len(lines)):
-        # Bound the token comparison to a compact title-sized passage. A whole
-        # introduction can contain all the same keywords without naming the paper.
-        window = " ".join(lines[i : i + 3])
-        if not _title_matches(title, window):
-            continue
-        normalized = _squash(window)
-        start = normalized.find(key)
-        if start == -1:
-            # A title may be wrapped or its title/subtitle reordered on a cover.
-            # Exclude citation-shaped entries even without a contiguous match.
-            if re.search(r"\b(?:19|20)\d{2}[a-z]?\b", window[:100]) and terms:
+    opening = re.split(
+        r"(?:^|\n)\s*(?:\d+[.)]?\s+)?(?:abstract|summary|introduction|"
+        r"table of contents|contents)\b",
+        opening,
+        maxsplit=1,
+        flags=re.I,
+    )[0]
+    paragraphs = re.split(r"\n\s*\n", opening)
+    for i, paragraph in enumerate(paragraphs):
+        lines = [line.strip() for line in paragraph.splitlines() if line.strip()]
+        # A title starts its text block. A line wrap inside a sentence quoting
+        # another title must not turn that embedded title into a heading.
+        for length in range(1, 5):
+            window = " ".join(lines[:length])
+            if not _title_matches(title, window):
                 continue
-        else:
-            prefix = _squash(" ".join(lines[max(0, i - 1) : i])) + normalized[:start]
+            prefix = _squash(paragraphs[i - 1]) if i else ""
             if re.search(r"(?:19|20)\d{2}[a-z]?$", prefix[-16:]):
                 continue
-        return True
+            return True
     return False
 
 
@@ -374,7 +380,14 @@ def verify_document(data: bytes, kind: str, title: str):
                         "verified": False,
                         "reason": "PDF is empty, encrypted or structurally damaged.",
                     }
-                pages = [document[i].get_text() for i in range(min(len(document), 3))]
+                pages = [
+                    "\n\n".join(
+                        block[4]
+                        for block in document[i].get_text("blocks")
+                        if block[6] == 0
+                    )
+                    for i in range(min(len(document), 3))
+                ]
         except (OSError, RuntimeError, ValueError):
             return {**facts, "verified": False, "reason": "PDF could not be read."}
         facts["needs_ocr"] = len("".join(pages).strip()) < 200

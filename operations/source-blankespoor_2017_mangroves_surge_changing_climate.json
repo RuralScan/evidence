@@ -1,0 +1,102 @@
+{
+  "base": "0fddc67735613f77f492809080c23fe76849ab6b",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "blankespoor_2017_mangroves_surge_changing_climate",
+      "kind": "pdf",
+      "expected_sha256": "d98a92cca2e0c0e3fae31abad9de324134a45bd0d189692cd4dc20a07064d2d9"
+    },
+    "candidate": {
+      "candidate_id": "blankespoor_2017_mangroves_surge_changing_climate",
+      "nbs_id": "mangrove_restoration",
+      "title": "Mangroves as a protection from storm surges in a changing climate",
+      "citation": "Blankespoor et al. (2016). Mangroves as a protection from storm surges in a changing climate. Ambio.",
+      "doi": "10.1007/s13280-016-0838-x",
+      "url": "https://doi.org/10.1007/s13280-016-0838-x",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued in mangrove_t3t6_lit_20261110; file recovered by browser download 2026-11-19."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "blankespoor_2017_mangroves_surge_changing_climate",
+      "candidate_sha256": "6a3a62207741df7c9ad0546b5fd5187e455001bfc64a986d821ac475218f08ec",
+      "source_id": "blankespoor_2017_mangroves_surge_changing_climate",
+      "kind": "pdf",
+      "plan_sha256": "e4c1a6f9548cce02b39392467808d60c6fbc13843f89f8a52fb3f6f1399c78a8",
+      "checked_at": "2026-11-19T19:19:51.714106+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s13280-016-0838-x",
+        "submitted_doi": "10.1007/s13280-016-0838-x",
+        "citation": "Blankespoor et al. (2016). Mangroves as a protection from storm surges in a changing climate. Ambio.",
+        "title": "Mangroves as a protection from storm surges in a changing climate",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s13280-016-0838-x",
+            "title": [
+              "Mangroves as a protection from storm surges in a changing climate"
+            ],
+            "container-title": [
+              "Ambio"
+            ],
+            "author": [
+              {
+                "family": "Blankespoor"
+              },
+              {
+                "family": "Dasgupta"
+              },
+              {
+                "family": "Lange"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2016
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Mangroves as a protection from storm surges in a changing climate",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "blankespoor_2017_mangroves_surge_changing_climate",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s13280-016-0838-x",
+        "requested_url": "https://doi.org/10.1007/s13280-016-0838-x",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 676120,
+        "sha1": "bd857e6b3529939b39842e18dc404778d0ed4691",
+        "sha256": "d98a92cca2e0c0e3fae31abad9de324134a45bd0d189692cd4dc20a07064d2d9"
+      },
+      "document": {
+        "pages": 14,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "modelling",
+      "region": "global",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/6_MangroveRestoration/blankespoor_2017_mangroves_surge_changing_climate.pdf"
+  }
+}
