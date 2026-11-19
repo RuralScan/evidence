@@ -148,3 +148,47 @@ class CorrectionTests(unittest.TestCase):
                     ),
                 ],
             )
+
+    def test_receipt_history_is_identical_on_branch_and_ci_merge(self):
+        """A metadata branch must not take credit for a receipt on its other parent."""
+        from classification import migrate_csv
+        import subprocess
+
+        with TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            git("init", "-q", "-b", "main", cwd=repo)
+            git("config", "user.name", "Fixture", cwd=repo)
+            git("config", "user.email", "fixture@example.invalid", cwd=repo)
+            (repo / REGISTER).parent.mkdir(parents=True)
+            row = dict(evidence_id="finding", claim_basis="modelled", quote="before")
+            write_csv(repo / REGISTER, [row])
+            (repo / JOURNAL).write_text("{}")
+
+            def commit(message):
+                git("add", ".", cwd=repo)
+                git("commit", "-qm", message, cwd=repo)
+                return git("rev-parse", "HEAD", cwd=repo).decode().strip()
+
+            base = commit("Base")
+            git("switch", "-qc", "classification", cwd=repo)
+            (repo / REGISTER).write_bytes(migrate_csv((repo / REGISTER).read_bytes()))
+            commit("Add classification metadata")
+            git("switch", "-q", "main", cwd=repo)
+            write_csv(repo / REGISTER, [row | {"quote": "after"}])
+            (repo / JOURNAL).write_text(json.dumps({"41": dict(base=base, kind="extraction")}))
+            applied = commit("Apply receipt 41")
+            log = [dict(evidence_id="finding", reviewer="RuralScan receipt #41", decision="reopen", date="2026-11-19")]
+            expected = correction_history(repo, log)
+            self.assertEqual(expected["finding"][0]["changes"], [dict(path=["quote"], before="before", after="after")])
+            git("switch", "-q", "classification", cwd=repo)
+            try:
+                git("merge", "--no-commit", "--no-ff", "main", cwd=repo)
+            except subprocess.CalledProcessError:
+                self.assertEqual(git("diff", "--name-only", "--diff-filter=U", cwd=repo).decode().strip(), REGISTER)
+            (repo / REGISTER).write_bytes(migrate_csv(git("show", applied + ":" + REGISTER, cwd=repo)))
+            commit("Resolve metadata migration against main")
+            branch_history = correction_history(repo, log)
+            git("switch", "-q", "main", cwd=repo)
+            git("merge", "--no-ff", "classification", "-m", "Synthetic PR test merge", cwd=repo)
+            self.assertEqual(correction_history(repo, log), expected)
+            self.assertEqual(branch_history, expected)

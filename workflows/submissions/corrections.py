@@ -72,12 +72,15 @@ def correction_history(repo, review_log):
 
     # Before commit, the writer uses the staged register. After merge, use the
     # commit that first published each receipt, even if a later review edited EV.
+    # Follow both merge parents, oldest ancestors first: a first-parent walk can
+    # mistake a later branch merge (and its unrelated edits) for publication.
     pending = {receipt for receipt, _ in events}
     applied_at = {}
     commits = git(
         "log",
         "--reverse",
-        "--first-parent",
+        "--topo-order",
+        "--full-history",
         "--format=%H",
         "HEAD",
         "--",
