@@ -1,7 +1,12 @@
 {
   "compiler": {
     "repository": "CIAT/nbs_ruralscan",
-    "revision": "e43c42bd581dba791ce1f1697b6b41952ab0cfe3"
+    "revision": "e43c42bd581dba791ce1f1697b6b41952ab0cfe3",
+    "tables": [
+      "T3",
+      "T6",
+      "T6E"
+    ]
   },
   "configuration": {
     "evidence_changes_sha256": "8f8e76dd66085d738c5ae1d391cba6d455fcd55e712ae8e7b64909b803c90664",
@@ -43,18 +48,8 @@
     "schema/lookups/effect_locus.csv": "8f5d7d0e605c3937fb96929bac30510043a6d96f7f7c6b66e4fd3947816fe96b",
     "schema/lookups/family_rollup_policy.csv": "9b7c11788996a9abb896011517f4e92894e32d72061b9070fef555bedab44e7b",
     "schema/lookups/ipcc_confidence_matrix.csv": "ae32f02c79be6d17dbfef90e601f47f53750b59643033c03d32069463d051d35",
-    "schema/lookups/t4_numeric_compilation_policy.csv": "0613e337b0bb4d98a507f66d8c1ffe1080d94de0da3a18bc495eab4d8cd6bc73",
     "schema/lookups/wb_income_groups.csv": "286c52a26a23daa78009907ea32c9a359b5042b38e67492218bc4eceb751d662",
     "schema/lookups/xw_route_policy.csv": "72add2e55951c90fcd4b727d1aa03b88485f7edb3963a9a93bcf7b1888c97bef",
-    "schema/recipe_inputs/t4/agroforestry/authored_mappings.csv": "3a0a59781ea7dc28bddf8d5bb836f7f6b33b63bf791128925095c072a9212fd6",
-    "schema/recipe_inputs/t4/agroforestry/mapping_settings.csv": "1d912368006bbb20a9c19ee3f4ccd7c3f0aa49f02dba703a2ca4515bf784ebfc",
-    "schema/recipe_inputs/t4/agroforestry/review_holds.csv": "65a6d911993fd7fb76f16cfe10cf3e6fa0c1e17d4a35ab4531e0d4ccb4e3ea7d",
-    "schema/recipe_inputs/t4/forest_restoration/authored_mappings.csv": "8980d4cc3582f8a54f8d6e184ef061e23c062d23cbb021a7d7066e6b0bf7365f",
-    "schema/recipe_inputs/t4/practices.csv": "f71ed820993c68345cbca90170b344ab5a2b5b22ed5765708bb09265bc5ece6e",
-    "schema/recipe_inputs/t4/riparian_buffer/review_holds.csv": "9349f9694dd85c3e2496e02bbaf95b751e9d502c6283970f10cf51b892a2f220",
-    "schema/recipe_inputs/t4/water_harvesting_conservation/mapping_settings.csv": "deab24adc77320d192ea27050bdbe5444a71adf306e928e244985bc5eef7a576",
-    "schema/recipe_inputs/t4/water_harvesting_conservation/review_holds.csv": "768811ae2b124d463030bbd0952869089458302e0805eb076ad18f30a514c580",
-    "schema/recipe_inputs/t4/wetland_management/mapping_settings.csv": "5d31e9d1db0a0cc3733dd0b9a410ba7af7030c6bd739d90946e8b228a8a4f1d3",
     "schema/recipes/agroforestry/T3T6_prose.json": "127bcb5bcf007824e324c6c38ecf81ea9155ad40a0b7b62abb81974ab85b3ad7",
     "schema/recipes/forest_restoration/T3T6_prose.json": "a86a97dcad530a00db097b3c7f15f6c9858495b1c8f555bc5e272126aa67b380",
     "schema/recipes/mangrove_restoration/T3T6_prose.json": "bd3a8c5e8bdf3d9ed31ba9e9836b3169d6ec33d27b7d13809d16b0ed1c184bf5",
@@ -65,10 +60,18 @@
     "schema/registers/EV_evidence_register.csv": "60a6688cfe13281c954045667abebead92621f32cbbae374f637224709740a22",
     "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
     "schema/registers/SRC_source_register.csv": "f69dbd4a32dd9d108938914534d90619de800f901d18bf9662da4141ec6c041d",
-    "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
   },
   "stale_wording": {},
+  "t4_synthesis": {
+    "current_evidence_applied": false,
+    "needs_agent_synthesis": true,
+    "path": "publication/review-queue.json",
+    "repository": "RuralScan/evidence",
+    "revision": "97dd21060d931b16464155d770c7eb7dd71c385a",
+    "sha256": "cb3cd472a895a527049c1a783fcc5f0499259df29ce7ee30fe64f287f6b3ae16",
+    "status": "historical_baseline"
+  },
   "tables": {
     "agroforestry": {
       "T3_nbs_hazard_farming": {

@@ -377,7 +377,7 @@ def check_snapshot(producer, ciat, base):
         "Published review queue differs from current registers",
     )
     print(
-        "Verified register provenance and rebuilt T3, T4, T6 and T6E for six practices."
+        "Verified register provenance, rebuilt T3/T6/T6E and retained the historical T4 baseline for six practices."
     )
 
 

@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 import configuration as config
 from queue_view import compile_candidate
@@ -160,7 +161,10 @@ class ConfigurationRoute(unittest.TestCase):
             config.verify_owned(self.dest, self.engine, BASE)
 
     def test_candidate_uses_selected_release_and_replays_old_pin(self):
-        q1, c1 = compile_candidate(self.engine, self.dest)
+        with patch.dict(sys.modules, {"nbs_ruralscan.recipe.t4_build": None}):
+            q1, c1 = compile_candidate(self.engine, self.dest)
+        self.assertTrue(c1["t4_synthesis"]["needs_agent_synthesis"])
+        self.assertFalse(q1["t4_synthesis"]["current_evidence_applied"])
         self.assertEqual(c1["configuration"]["method_revision"], METHOD_PIN)
         self.assertEqual(c1["configuration"]["inputs"][POLICY], c1["inputs"][POLICY])
 
@@ -200,6 +204,9 @@ class ConfigurationRoute(unittest.TestCase):
         next_pin = config.git("rev-parse", "HEAD", cwd=self.method).decode().strip()
         config.pin(self.dest, next_pin, self.method)
         q2, c2 = compile_candidate(self.engine, self.dest)
+        for practice in q1["recipes"]:
+            self.assertEqual(q1["recipes"][practice]["T4_suitability_mappings"],
+                             q2["recipes"][practice]["T4_suitability_mappings"])
         self.assertEqual(c2["configuration"]["method_revision"], next_pin)
         self.assertTrue((base[plantation] - base[aggregate]) & fire(q2)[aggregate])
         self.assertEqual(fire(q2)[plantation], base[plantation])

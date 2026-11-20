@@ -1,4 +1,4 @@
-"""Build the live queue from RuralScan register bytes using the pinned recipe compiler."""
+"""Build the live queue, effect candidates and explicitly frozen T4 baseline."""
 
 import csv
 import json
@@ -17,12 +17,14 @@ def compile_candidate(producer, evidence_repo):
     from registers import EV, SRC, SEED, blob, content_digest, index, rows as csv_rows
     from corrections import correction_history
     from nbs_ruralscan.schema_tools.generate import _csv_to_rows
-    from nbs_ruralscan.recipe import t3t6_build, t4_build
+    from nbs_ruralscan.recipe import t3t6_build
+    from t4_baseline import load as load_t4, TABLE as T4_TABLE
     from tempfile import TemporaryDirectory
 
     from configuration import overlay
 
     configuration = overlay(producer, evidence_repo)
+    t4_rows, t4_status = load_t4(evidence_repo)
     schema = producer / "schema"
     registers = {
         name: _csv_to_rows(schema / "registers" / (name + ".csv"))
@@ -62,8 +64,7 @@ def compile_candidate(producer, evidence_repo):
             continue
         name = folder.name
         effects = t3t6_build.T3T6BuildInputs.from_root(producer, name)
-        spatial = t4_build.T4BuildInputs.from_root(producer, name)
-        for path in (*effects.paths(), *spatial.compilation_paths()):
+        for path in effects.paths():
             if path != effects.evidence and path.is_file():
                 key = path.relative_to(producer).as_posix()
                 if key not in hashes:
@@ -77,20 +78,13 @@ def compile_candidate(producer, evidence_repo):
             for table in membership:
                 for record in computed[table]:
                     membership[table].update(record.get("evidence_ids") or [])
-            families = t4_build.synthesise(name, inputs=spatial, approved_only=True)
-            t4_build.write_recipe(
-                name,
-                families,
-                read(spatial.ontology),
-                inputs=spatial,
-                output_dir=output,
-            )
             t3t6_build.write_recipe(
                 name, computed, inputs=effects, output_dir=output, dry_run=False
             )
             rows[name] = {
                 file.stem: _csv_to_rows(file) for file in sorted(output.glob("*.csv"))
             }
+            rows[name][T4_TABLE] = t4_rows[name]
             # The native sidecar also rejects changed evidence membership or class.
             inherited = json.loads(effects.prose.read_bytes())
             for table in ("T3", "T6", "T6E"):
@@ -114,6 +108,7 @@ def compile_candidate(producer, evidence_repo):
         }
     review_log = read(producer / "pipeline/metrics/review_log.csv")
     candidate = manifest(evidence_repo, hashes, rows, stale)
+    candidate["t4_synthesis"] = t4_status
     if configuration:
         candidate["configuration"] = configuration
     queue = {
@@ -126,6 +121,7 @@ def compile_candidate(producer, evidence_repo):
         ),
         **({"stale_wording": stale} if stale else {}),
         "recipes": rows,
+        "t4_synthesis": t4_status,
         "membership": {key: sorted(ids) for key, ids in membership.items()},
     }
     from nbs_ruralscan.schema_tools.review_priorities import load_review_priorities
