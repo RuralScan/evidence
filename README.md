@@ -14,7 +14,7 @@ Use the operator handbook for an AI-assisted or manual run. It provides task bri
 
 ## Evidence meaning and source limitations
 
-Read the [registry and source guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/evidence-registry.md) and [T4 synthesis and weighting guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/combining-t4-evidence.md). Current intake distinguishes knowledge basis from extraction format; [classification migration and compatibility](workflows/extraction/classification.md) explain how historical records remain reproducible.
+Read the [registry and source guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/evidence-registry.md) and [T4 synthesis and weighting guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/suitability-synthesis.md). Current intake distinguishes knowledge basis from extraction format; [classification migration and compatibility](workflows/extraction/classification.md) explain how historical records remain reproducible.
 
 ## Runnable workflows
 
@@ -59,6 +59,6 @@ Rebuild the six-practice candidate release and check how many analytical rows an
 
 Every workflow stage must state its inputs, outputs, permitted writes, checks, human decisions, retry/stop conditions and an example run. Record source locators, instruction/model versions and review history. Model output is a proposal; only validated registration enters the records.
 
-The compiler consumes pinned method definitions and evidence snapshots, then publishes candidate results. Method acceptance is separate; runtime consumes accepted releases. Human review, source credibility and runtime readiness are separate judgements.
+AI authors T3/T6 scientific proposals from pinned definitions and evidence snapshots. The [synthesis workflow](workflows/synthesis/README.md) validates exact scientific acceptance and packages current accepted outputs; runtime reads them without re-rating. Historical rows remain historical. Human review, source credibility and runtime readiness are separate judgements.
 
 Keep source PDFs, restricted content, credentials, local decisions and recovery backups in approved external or ignored storage. Preserve stable source/evidence IDs, soft deletions and audit events. Public workbook builds use publication-approved material and expose no review submission route.

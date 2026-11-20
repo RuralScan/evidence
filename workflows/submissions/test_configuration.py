@@ -161,7 +161,7 @@ class ConfigurationRoute(unittest.TestCase):
             config.verify_owned(self.dest, self.engine, BASE)
 
     def test_candidate_uses_selected_release_and_replays_old_pin(self):
-        with patch.dict(sys.modules, {"nbs_ruralscan.recipe.t4_build": None}):
+        with patch.dict(sys.modules, {name: None for name in ("nbs_ruralscan.recipe.t4_build", "nbs_ruralscan.recipe.t3t6_build", "nbs_ruralscan.recipe.cell_synthesis", "nbs_ruralscan.recipe.synthesis")}):
             q1, c1 = compile_candidate(self.engine, self.dest)
         self.assertTrue(c1["t4_synthesis"]["needs_agent_synthesis"])
         self.assertFalse(q1["t4_synthesis"]["current_evidence_applied"])
@@ -177,7 +177,7 @@ class ConfigurationRoute(unittest.TestCase):
         aggregate = "forest_restoration__fire__all"
         self.assertTrue(base[plantation] - base[aggregate])
         # Deliberately reverse the lookup on a disposable method branch to prove
-        # that the real compiler reads the selected definition. Never publish this fixture.
+        # that policy provenance changes without re-running scientific synthesis.
         path = self.method / "configuration/lookups/family_rollup_policy.csv"
         path.write_bytes(path.read_bytes().replace(b",false,", b",true,"))
         manifest = self.method / config.RELEASE
@@ -208,7 +208,7 @@ class ConfigurationRoute(unittest.TestCase):
             self.assertEqual(q1["recipes"][practice]["T4_suitability_mappings"],
                              q2["recipes"][practice]["T4_suitability_mappings"])
         self.assertEqual(c2["configuration"]["method_revision"], next_pin)
-        self.assertTrue((base[plantation] - base[aggregate]) & fire(q2)[aggregate])
+        self.assertEqual(fire(q2), base)  # policy changes invalidate proposals; code never re-rates rows
         self.assertEqual(fire(q2)[plantation], base[plantation])
         self.assertEqual(q1["recipes"]["agroforestry"], q2["recipes"]["agroforestry"])
         config.pin(self.dest, METHOD_PIN, self.method)

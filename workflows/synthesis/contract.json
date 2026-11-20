@@ -1,0 +1,280 @@
+{
+  "format": "ruralscan.agent-effects-contract.v1",
+  "version": "1.0.0",
+  "decision": "https://github.com/RuralScan/method/issues/85",
+  "definition_inputs": [
+    "schema/registers/FAM_family_registry.csv",
+    "schema/registers/XW_target_crosswalk.csv",
+    "schema/registers/BANDS_magnitude_bands.csv",
+    "schema/T5_opportunity_space.csv",
+    "schema/T7_geographic_context.csv"
+  ],
+  "json_fields": [
+    "evidence_ids",
+    "justification",
+    "applicability",
+    "magnitude_summary",
+    "economic_value_range"
+  ],
+  "boolean_fields": [
+    "landscape_scale_only",
+    "context_dependent",
+    "family_spread"
+  ],
+  "number_fields": [
+    "asset_risk_weight"
+  ],
+  "minimum_numeric_origins": 2,
+  "asset_weight_hazards": [
+    "drought",
+    "flood",
+    "heat_stress",
+    "fire",
+    "wind_cyclone",
+    "waterlogging"
+  ],
+  "reasoning": [
+    "routing",
+    "dependence",
+    "compatibility",
+    "direction_strength",
+    "confidence",
+    "applicability",
+    "uncertainty",
+    "sensitivity"
+  ],
+  "tables": {
+    "T3": {
+      "columns": [
+        "record_id",
+        "nbs_id",
+        "hazard_type",
+        "farming_system",
+        "mitigation_potential",
+        "mitigation_mechanism",
+        "confidence",
+        "timescale_of_effect",
+        "landscape_scale_only",
+        "caveats",
+        "justification",
+        "risk_role",
+        "evidence_ids",
+        "suitability_family_id",
+        "scope_type",
+        "scope_id",
+        "applicability",
+        "family_spread",
+        "evidence_level",
+        "agreement_level",
+        "context_dependent",
+        "asset_sensitivity",
+        "asset_risk_weight"
+      ],
+      "required": [
+        "record_id",
+        "nbs_id",
+        "hazard_type",
+        "farming_system",
+        "risk_role",
+        "mitigation_mechanism",
+        "confidence",
+        "timescale_of_effect",
+        "landscape_scale_only",
+        "evidence_ids",
+        "evidence_level",
+        "agreement_level",
+        "context_dependent"
+      ],
+      "enum_values": {
+        "hazard_type": [
+          "drought",
+          "flood",
+          "heat_stress",
+          "fire",
+          "wind_cyclone",
+          "waterlogging",
+          "sedimentation",
+          "extreme_rainfall",
+          "landslide"
+        ],
+        "mitigation_potential": [
+          "very_negative",
+          "negative",
+          "none",
+          "low",
+          "moderate",
+          "high",
+          "very_high",
+          "conflicting_evidence"
+        ],
+        "risk_role": [
+          "livelihood_mitigation",
+          "asset_threat",
+          "both"
+        ],
+        "confidence": [
+          "very_low",
+          "low",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "timescale_of_effect": [
+          "immediate",
+          "short_term_1_3yr",
+          "medium_term_3_7yr",
+          "long_term_7yr_plus"
+        ],
+        "scope_type": [
+          "aez",
+          "farming_system",
+          "admin_country",
+          "admin_region",
+          "hydrobasin",
+          "income_group"
+        ],
+        "evidence_level": [
+          "limited",
+          "medium",
+          "robust"
+        ],
+        "agreement_level": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "asset_sensitivity": [
+          "none",
+          "low",
+          "moderate",
+          "high",
+          "very_high"
+        ]
+      },
+      "cell_fields": [
+        "hazard_type",
+        "risk_role",
+        "farming_system",
+        "suitability_family_id",
+        "scope_type",
+        "scope_id"
+      ]
+    },
+    "T6": {
+      "columns": [
+        "record_id",
+        "nbs_id",
+        "variable_id",
+        "variable_type",
+        "effect_direction",
+        "effect_confidence",
+        "effect_mechanism",
+        "conditionality",
+        "timescale_of_effect",
+        "economic_indicator_type",
+        "economic_value_range",
+        "justification",
+        "economic_archetype_id",
+        "evidence_ids",
+        "suitability_family_id",
+        "scope_type",
+        "scope_id",
+        "applicability",
+        "family_spread",
+        "magnitude_summary",
+        "evidence_level",
+        "agreement_level",
+        "context_dependent"
+      ],
+      "required": [
+        "record_id",
+        "nbs_id",
+        "variable_id",
+        "variable_type",
+        "effect_confidence",
+        "effect_mechanism",
+        "timescale_of_effect",
+        "evidence_ids",
+        "evidence_level",
+        "agreement_level",
+        "context_dependent"
+      ],
+      "enum_values": {
+        "economic_indicator_type": [
+          "establishment_cost",
+          "recurrent_cost",
+          "income_potential",
+          "cost_reduction",
+          "market_access",
+          "carbon_revenue",
+          "subsidy_dependency",
+          "cost_per_beneficiary",
+          "cost_per_hectare_restored",
+          "cost_per_tco2e_avoided",
+          "cost_per_farmer_reached"
+        ],
+        "variable_type": [
+          "opportunity_space_variable",
+          "climate_hazard_mitigation",
+          "economic_indicator"
+        ],
+        "effect_direction": [
+          "strong_negative",
+          "moderate_negative",
+          "slight_negative",
+          "no_relationship",
+          "slight_positive",
+          "moderate_positive",
+          "strong_positive",
+          "conflicting_evidence"
+        ],
+        "effect_confidence": [
+          "very_low",
+          "low",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "timescale_of_effect": [
+          "immediate",
+          "short_term_1_3yr",
+          "medium_term_3_7yr",
+          "long_term_7yr_plus"
+        ],
+        "scope_type": [
+          "aez",
+          "farming_system",
+          "admin_country",
+          "admin_region",
+          "hydrobasin",
+          "income_group"
+        ],
+        "evidence_level": [
+          "limited",
+          "medium",
+          "robust"
+        ],
+        "agreement_level": [
+          "low",
+          "medium",
+          "high"
+        ]
+      },
+      "cell_fields": [
+        "variable_id",
+        "variable_type",
+        "suitability_family_id",
+        "scope_type",
+        "scope_id"
+      ]
+    }
+  },
+  "income_scopes": [
+    "low",
+    "lower_middle",
+    "upper_middle",
+    "high",
+    "lic_lmic"
+  ],
+  "decision_id": "t3t6_agent_synthesis"
+}

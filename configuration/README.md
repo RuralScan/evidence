@@ -1,5 +1,11 @@
 # Update compiler configuration
 
+New T3/T6 scientific synthesis is AI-led. Definition adoption changes input context;
+it never automatically recalculates scientific ratings. The historical format names
+below remain for compatibility. Use [scientific proposals and acceptance](../workflows/synthesis/README.md)
+for new effect judgments. Historical scoring lookups are reference material only.
+
+
 A protected RuralScan/evidence PR adopts a method release or updates evidence-owned tool and lookup records. The [method pin](method-pin.json) names the immutable method commit, release digest and exact file hashes. The [change history](changes.json) records each source-backed edit. The [candidate manifest](../publication/recipe-candidate.json) identifies the inputs used to build T3, T4, T6 and T6E.
 
 ## Choose the owner

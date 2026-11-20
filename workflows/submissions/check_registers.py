@@ -361,6 +361,12 @@ def check_snapshot(producer, ciat, base):
     for name in manifest["files"]:
         if (producer / name).is_file():
             shutil.copyfile(ROOT / "registers" / name, producer / name)
+    from synthesis.acceptance import verify as verify_scientific_decisions
+
+    from synthesis.contract_pin import verify as verify_synthesis_contract
+
+    verify_synthesis_contract(ROOT)
+    verify_scientific_decisions(ROOT, base)
     from queue_view import compile_candidate
 
     queue, candidate = compile_candidate(producer, ROOT)
@@ -377,7 +383,7 @@ def check_snapshot(producer, ciat, base):
         "Published review queue differs from current registers",
     )
     print(
-        "Verified register provenance, rebuilt T3/T6/T6E and retained the historical T4 baseline for six practices."
+        "Verified register provenance and accepted scientific outputs; historical rows retained without re-synthesis."
     )
 
 
