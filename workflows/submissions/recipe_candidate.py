@@ -97,7 +97,10 @@ def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy):
 def manifest(root, hashes, tables, stale):
     return {
         "format": "ruralscan.recipe-candidate.v1",
-        "compiler": {"repository": "CIAT/nbs_ruralscan", "revision": SEED},
+        "compiler": {
+            "repository": "CIAT/nbs_ruralscan", "revision": SEED,
+            "tables": ["T3", "T6", "T6E"],
+        },
         "inputs": dict(
             hashes,
             **{RECORDS["wording"]: content_digest(local(root, RECORDS["wording"]))},

@@ -5,15 +5,10 @@ import csv
 import hashlib
 import io
 import json
-import os
 from pathlib import Path
-import shutil
-import subprocess
-import sys
 from tempfile import TemporaryDirectory
 
 from rehearse import PROFILES, git, require
-from git_snapshot import snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = "https://github.com/CIAT/nbs_ruralscan"
@@ -123,41 +118,11 @@ def verify(folder, files):
         )
 
 
-def rebuild(repo, folder):
-    with TemporaryDirectory() as tmp:
-        source = Path(tmp) / "producer"
-        snapshot(
-            source, SOURCE + ".git", REVISION, ["/src/", "/schema/", "/pipeline/"], repo
-        )
-        for path in PATHS:
-            if path != METHOD:
-                shutil.copyfile(folder / path, source / path)
-        env = {**os.environ, "PYTHONPATH": str(source / "src")}
-        subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "nbs_ruralscan.recipe.publish_release",
-                "check",
-                "--source-root",
-                str(source),
-            ],
-            cwd=source,
-            env=env,
-            check=True,
-        )
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ciat-repo", type=Path, required=True)
     parser.add_argument(
         "--export-to", type=Path, help="Write the verified seed to a new directory"
-    )
-    parser.add_argument(
-        "--rebuild",
-        action="store_true",
-        help="Recompile all practices with the migrated register bytes",
     )
     args = parser.parse_args()
     files = seed(args.ciat_repo)
@@ -181,8 +146,6 @@ def main():
         f"Verified {len(files) - 1} register and support files at {REVISION}.",
         flush=True,
     )
-    if args.rebuild:
-        rebuild(args.ciat_repo, folder)
 
 
 if __name__ == "__main__":

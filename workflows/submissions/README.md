@@ -93,3 +93,23 @@ python3 workflows/submissions/registers.py 29 --ciat-repo /path/to/nbs_ruralscan
 The local operator can process accepted votes in either lane. Allowlisted or maintainer-confirmed reviewer identity, original issue body, matching finding and source, and agreement across eligible ballots are checked. An opposing vote, including a late challenge, remains on its public receipt for reconciliation. The receipt ledger prevents duplicate application. A newly created register PR needs GitHub approval and current CI checks. The merge publishes new register bytes and the regenerated six-practice review queue as one Git revision. Reload the live queue to see the applied result. Each corrected T4 or T3/T6 finding shows the changed fields before and after application, the date and the receipt. Earlier corrections remain on the card after later edits or reviews. Historical analytical editions retain their original data.
 
 For rollback, stop applying register PRs, retain submissions received since the switch, and reconcile each changed finding, source, decision event and published output since the last common revision. Verify the reverse delta before restoring a writer. The immutable migration baseline is RuralScan `3d734daa5cf5452b69a5a63c6815efae7be0181d`.
+
+## T4 synthesis retirement
+
+Review intake still updates findings, source assessments, votes and approved wording.
+It no longer derives T4 mappings. The queue and candidate manifest include
+`t4_synthesis.status = historical_baseline`, an immutable evidence revision and SHA-256,
+`current_evidence_applied = false` and `needs_agent_synthesis = true`.
+The evidence checkout must contain the pinned Git revision; a shallow clone must fetch
+that revision before rebuilding the queue.
+The 54 baseline rows are retained verbatim apart from separately approved wording;
+this includes empty practice tables. New, changed or dropped evidence cannot silently
+change their analytical values. These rows are not newly approved or validated AI results.
+Consumers must show the historical status and must not treat this candidate as a fresh
+T4 release. Evidence review approval does not approve a mapping.
+
+T3/T6/T6E still use the existing effect engine. An AI-led scientific proposal and
+acceptance route remains to be implemented; AI prose does not replace that engine.
+The old T4 compiler and whole-recipe rebuild entrypoints are retired. Historical
+Git editions remain readable; the current release checker requires an existing store.
+See the [decision audit](https://github.com/RuralScan/method/issues/85#issuecomment-7049325204).

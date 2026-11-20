@@ -3,10 +3,9 @@
 # dependencies = ["numpy==2.4.6", "requests==2.34.2"]
 # ///
 
-"""Rebuild or verify a pinned candidate recipe release and report dashboard counts."""
+"""Verify an existing pinned candidate recipe release and report dashboard counts."""
 
 import argparse
-import contextlib
 import json
 from pathlib import Path
 import re
@@ -76,7 +75,6 @@ def verify(
     source,
     store,
     pin,
-    build,
     index_dir=None,
     *,
     check_method=False,
@@ -89,15 +87,6 @@ def verify(
     sys.path.insert(0, str(source / "src"))
     from nbs_ruralscan.runtime.schema_loader import TABLE_STEMS, load_recipe_release
 
-    if build:
-        from nbs_ruralscan.recipe.publish_release import publish_recipes
-
-        with contextlib.redirect_stdout(sys.stderr):
-            generated = publish_recipes(source, store)
-        require(
-            generated.release_id == pin["release_id"],
-            "Rebuilt release differs from expected ID",
-        )
     release = load_recipe_release(store, pin["release_id"])
     provenance = json.loads(release.read_bytes("provenance.json"))
     require(
@@ -209,7 +198,8 @@ def main():
     p.add_argument(
         "--store",
         type=Path,
-        help="Verify an existing release store read-only; default rebuilds in temporary storage",
+        required=True,
+        help="Existing release store; T4 synthesis has been retired",
     )
     p.add_argument(
         "--pin",
@@ -247,12 +237,12 @@ def main():
     workbook.add_argument(
         "--check-recovered-workbook",
         metavar="EARLIER_COMMIT",
-        help="Rehearse review rollback and retry, rebuild the pinned release and check the workbook.",
+        help="Rehearse review rollback and retry, read the pinned release and check the workbook.",
     )
     args = p.parse_args()
-    if args.check_recovered_workbook and (not args.ciat_repo or args.store):
+    if args.check_recovered_workbook and not args.ciat_repo:
         p.error(
-            "--check-recovered-workbook requires --ciat-repo and a fresh release build"
+            "--check-recovered-workbook requires --ciat-repo"
         )
     pin = json.loads(args.pin.read_bytes())
     revision(pin["source_revision"])
@@ -262,15 +252,7 @@ def main():
     with TemporaryDirectory(prefix="recipe-check-") as tmp:
         root = Path(tmp)
         source = root / "source"
-        paths = (
-            ["/src/"]
-            if args.store
-            else [
-                "/src/",
-                "/schema/",
-                "/pipeline/t4_audit/agroforestry/importance_2026-10-21/source_weight_trees.csv",
-            ]
-        )
+        paths = ["/src/"]
         if args.check_recovered_workbook:
             paths.extend(["/pipeline/", "/docs/", "/methodology/discovery_logs/"])
         if (
@@ -299,9 +281,8 @@ def main():
             )
         result = verify(
             source,
-            args.store or root / "store",
+            args.store,
             pin,
-            args.store is None,
             args.index_dir,
             check_method=args.check_method or args.method_repo is not None,
             method_repo=args.method_repo,

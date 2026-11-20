@@ -99,10 +99,10 @@ The pinned source commit supplies the remaining compiler inputs, historical extr
 
 ### Verify locally
 
-Run the seed check from a RuralScan/evidence checkout at `3d734daa5cf5452b69a5a63c6815efae7be0181d`, with a CIAT clone or bare repository containing the pinned source commit. Python's standard library can verify the transferred records. Add `--rebuild` in the evidence-checks Python environment to apply the destination register bytes to a disposable copy of the pinned compiler and compare the T3, T4, T6 and T6E outputs for all six practices with their audited tables.
+Run the seed check from a RuralScan/evidence checkout at `3d734daa5cf5452b69a5a63c6815efae7be0181d`, with a CIAT clone or bare repository containing the pinned source commit. Python's standard library can verify the transferred records. The current checker verifies seed bytes only. Whole-recipe regeneration was removed when T4 synthesis was retired.
 
 ```sh
-python3 workflows/evidence_snapshot/verify_registers.py --ciat-repo /path/to/nbs_ruralscan --rebuild
+python3 workflows/evidence_snapshot/verify_registers.py --ciat-repo /path/to/nbs_ruralscan
 ```
 
 To reproduce the directory independently, pass `--export-to /path/to/new-folder`. The command refuses to overwrite an existing destination. For current registers, use `python3 workflows/submissions/check_registers.py --ciat-repo /path/to/nbs_ruralscan` from the RuralScan/evidence revision you want to verify.
