@@ -110,6 +110,31 @@ class RegisterTests(unittest.TestCase):
         self.assertEqual(self.apply(1, 2), [])
         self.assertEqual((self.engine / reg.LOG).read_bytes(), before)
 
+    def test_attached_wetland_votes_use_real_consensus_and_retry(self):
+        from test_attachments import body, issue
+        operational = "ev_tenure_security_gour20_6"
+        structural = "ev_wet_slope_worley22_1"
+        effect = "ev_wet_carbon_sequestration_ramsar18_1"
+        votes = ("lane,evidence_id,reviewer,decision,reason,note\n"
+                 f"M2b,{operational},reader_a,hold,,Check tenure\n"
+                 f"T4,{structural},reader_a,approve,,\n"
+                 f"T3/T6,{effect},reader_a,approve,,\n")
+        receipt = issue(body(votes, lane="Mixed", revision=reg.SEED, test=False, count=3))
+        with patch("intake.original", return_value="reader_a"), patch("attachments.download", return_value=votes.encode()):
+            self.items = reg.authenticated([receipt])
+        self.receipt(2, "reader_b", "vote", "T4", dict(evidence_id=structural,decision="reject",reason="wrong_variable"))
+        before = (self.engine / reg.LOG).read_bytes()
+        with self.assertRaisesRegex(ValueError,"Opposing"):
+            self.apply(123,2)
+        self.assertEqual((self.engine / reg.LOG).read_bytes(),before)
+        self.items.pop(2)
+        self.assertEqual(self.apply(123),[123])
+        recorded = {r["evidence_id"]:r["decision"] for r in reg.rows((self.engine / reg.LOG).read_bytes()) if r["reviewer"]=="reader_a"}
+        self.assertEqual({k:recorded[k] for k in (operational,structural,effect)}, {operational:"flag",structural:"ok",effect:"ok"})
+        after = (self.engine / reg.LOG).read_bytes()
+        self.assertEqual(self.apply(123),[])
+        self.assertEqual((self.engine / reg.LOG).read_bytes(),after)
+
     def test_hosted_wetland_batch_and_m2b_csv_consensus(self):
         operational = "ev_tenure_security_gour20_6"
         structural = "ev_wet_slope_worley22_1"

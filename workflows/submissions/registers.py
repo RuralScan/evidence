@@ -93,9 +93,13 @@ def authenticated(issues):
     """Fetch original receipts under the same issuer and identity policy as the desk."""
     accepted = {}
     for item in issues:
+        if not intake.reviewer_eligible(item):
+            # An unconfirmed public submission cannot trigger an external file
+            # fetch or block the processing of authenticated team ballots.
+            continue
         try:
             entry = intake.decode(item)
-        except (ValueError, TypeError):
+        except (ValueError, TypeError, csv.Error):
             continue
         if entry["test"] or not intake.reviewer_eligible(item):
             continue

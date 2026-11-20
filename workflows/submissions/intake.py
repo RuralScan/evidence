@@ -13,6 +13,7 @@ import re
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
+import attachments
 
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent / "review_preview"), str(HERE.parent / "extraction")]
@@ -142,7 +143,7 @@ def submissions(actor=None):
         for issue in items:
             if issue.get("pull_request") or (issue.get("body") or "").splitlines()[
                 :1
-            ] != [HEADER]:
+            ] not in ([HEADER], [attachments.HEADER]):
                 continue
             result.append(issue)
         if len(items) < 100:
@@ -152,6 +153,10 @@ def submissions(actor=None):
 
 def decode(issue):
     body = issue["body"].replace("\r\n", "\n")
+    if body.startswith(attachments.HEADER + "\n"):
+        # Verify the original issue author/body before reading an external file.
+        original(issue)
+        return attachments.decode(body, unique_object)
     require(body.startswith(HEADER + "\n"), "Unknown submission format")
     entry = json.loads(
         body.split("\n", 1)[1],
