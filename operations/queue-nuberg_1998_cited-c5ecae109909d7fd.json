@@ -1,0 +1,68 @@
+{
+  "base": "0ef143e2a941f580ab4e166649ac2eaac85c0e92",
+  "operation": {
+    "kind": "queue",
+    "request": {
+      "source_id": "nuberg_1998_cited",
+      "changes": {},
+      "doi_locator": true,
+      "reason": "Queue row has no URL. Use the Crossref-verified DOI as this screened work's locator (bibliographic identity only, not a download origin). Agent-proposed repair; not a human decision.",
+      "operator": "claude-t3t6-agent",
+      "date": "2026-11-20"
+    },
+    "before": {
+      "source_id": "nuberg_1998_cited",
+      "nbs_id": "agroforestry",
+      "family": "",
+      "tables": "T3|T6",
+      "citation": "Nuberg (1998). Effect of shelter on temperate crops: a review to define research for Australian conditions. Agroforestry Systems.",
+      "doi": "10.1023/a:1006071821948",
+      "url": "",
+      "access_status": "paywalled",
+      "blocker": "HUMAN CHECK (2026-11-11 OA pass: Unpaywall + web search found no free copy); check ResearchGate/author before institutional",
+      "access_route": "",
+      "target_library_path": "",
+      "status": "pending",
+      "assigned": "",
+      "date_added": "2026-11-05",
+      "note": "cited original round 3 (pipeline/cited_originals.csv nuberg_1998; rows_fed 6; cited by fao_2024_senegal_fr). Acquire to replace second-hand readings. | OA recovery 2026-11-05b: searched, no free copy verified (OpenAlex DOI record title and year match. The Adelaide digital library record hdl 2440/27855 carries the same title.) The Adelaide IR record says it has no files attached. Candidate for a human to check: https://core.ac.uk/download/17237396.pdf was a top hit for the exact-title | OA 2026-11-11: Unpaywall is_oa=false; web search title+author+year found no free full text; Adelaide repository record 2440/27855 states no files attached No copy found.",
+      "doi_verified": "true",
+      "duplicate_of": "",
+      "title_verified": ""
+    },
+    "metadata": {
+      "doi": "10.1023/a:1006071821948",
+      "submitted_doi": "10.1023/a:1006071821948",
+      "citation": "Nuberg (1998). Effect of shelter on temperate crops: a review to define research for Australian conditions. Agroforestry Systems.",
+      "title": "Effect of shelter on temperate crops: a review to define research for Australian conditions",
+      "crossref": {
+        "outcome": "ok",
+        "record": {
+          "DOI": "10.1023/a:1006071821948",
+          "title": [
+            "Effect of shelter on temperate crops: a review to define research for Australian conditions"
+          ],
+          "container-title": [
+            "Agroforestry Systems"
+          ],
+          "author": [
+            {
+              "family": "Nuberg"
+            }
+          ],
+          "issued": {
+            "date-parts": [
+              [
+                1998
+              ]
+            ]
+          }
+        }
+      },
+      "crossref_title": "Effect of shelter on temperate crops: a review to define research for Australian conditions",
+      "title_overlap": 1.0,
+      "status": "doi_verified",
+      "reason": "Crossref DOI and citation title match."
+    }
+  }
+}
