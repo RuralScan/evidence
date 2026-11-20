@@ -1,6 +1,5 @@
 """Compile authored wording independently of ratings and fingerprint the resulting tables."""
 
-from dataclasses import replace
 import json
 
 from recipe_rows import TABLES, RECORDS, digest, basis, ident, lines, local
@@ -15,24 +14,7 @@ def wording_index(root):
     return latest
 
 
-def effects_inputs(inputs, tmp, current_ev, changed_ids):
-    """Use the authoritative EV CSV; retire legacy prose on changed same-ID evidence."""
-    ev = tmp / "evidence.json"
-    ev.write_bytes(json_bytes(current_ev))
-    sidecar = json.loads(inputs.prose.read_bytes()) if inputs.prose.exists() else {}
-    invalid = {
-        key
-        for key, entry in sidecar.items()
-        if changed_ids.intersection(entry["evidence_ids"])
-    }
-    path = tmp / "T3T6_prose.json"
-    path.write_bytes(
-        json_bytes({key: value for key, value in sidecar.items() if key not in invalid})
-    )
-    return replace(inputs, evidence=ev, prose=path), invalid
-
-
-def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy):
+def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy, protected=()):
     from nbs_ruralscan.recipe import prose
 
     stale = []
@@ -52,6 +34,10 @@ def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy):
                             reason="Evidence changed since archived wording",
                         )
                     )
+                continue
+            if key in protected:
+                stale.append(dict(table=table, record=rid, receipt=event["receipt"],
+                                  reason="Accepted scientific output requires a new synthesis proposal for wording changes"))
                 continue
             e = event["entry"]
             if basis(row, table, ev_index) != e["basis_sha256"]:
@@ -88,7 +74,7 @@ def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy):
                     table=key[1],
                     record=key[2],
                     receipt=event["receipt"],
-                    reason="Row no longer compiled",
+                    reason="Row no longer published",
                 )
             )
     return stale
@@ -97,10 +83,8 @@ def apply_words(practice, tables, events, ev_index, raw_ev, invalid_legacy):
 def manifest(root, hashes, tables, stale):
     return {
         "format": "ruralscan.recipe-candidate.v1",
-        "compiler": {
-            "repository": "CIAT/nbs_ruralscan", "revision": SEED,
-            "tables": ["T3", "T6", "T6E"],
-        },
+        "producer": {"workflow": "ai_scientific_synthesis", "code_role": "validate_and_package",
+                     "historical_scoring_retired": True},
         "inputs": dict(
             hashes,
             **{RECORDS["wording"]: content_digest(local(root, RECORDS["wording"]))},
