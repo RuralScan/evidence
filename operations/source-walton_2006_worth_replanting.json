@@ -1,0 +1,107 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "walton_2006_worth_replanting",
+      "kind": "pdf",
+      "expected_sha256": "cd86034404c2e5276ed2c5f1c65b909e5c3ac3d0006d74740a011a36e10cad13"
+    },
+    "candidate": {
+      "candidate_id": "walton_2006_worth_replanting",
+      "nbs_id": "mangrove_restoration",
+      "title": "Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project",
+      "citation": "WALTON et al. (2006). Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project. Environmental Conservation.",
+      "doi": "10.1017/s0376892906003341",
+      "url": "https://doi.org/10.1017/s0376892906003341",
+      "process": "stock",
+      "tables": "T6",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "walton_2006_worth_replanting",
+      "candidate_sha256": "58a0d8b90feb8a5718e6100eb1e479e97a611cc6aaed40ef2b7ba4cea9c01cbe",
+      "source_id": "walton_2006_worth_replanting",
+      "kind": "pdf",
+      "plan_sha256": "224de6f5d447b128cd8f0ad67265e91b0ebe86a1ce50134804dbe5473ba6dae4",
+      "checked_at": "2026-11-19T19:21:47.726434+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1017/s0376892906003341",
+        "submitted_doi": "10.1017/s0376892906003341",
+        "citation": "WALTON et al. (2006). Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project. Environmental Conservation.",
+        "title": "Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1017/s0376892906003341",
+            "title": [
+              "Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project"
+            ],
+            "container-title": [
+              "Environmental Conservation"
+            ],
+            "author": [
+              {
+                "family": "WALTON"
+              },
+              {
+                "family": "SAMONTE-TAN"
+              },
+              {
+                "family": "PRIMAVERA"
+              },
+              {
+                "family": "EDWARDS-JONES"
+              },
+              {
+                "family": "LE VAY"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2006
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Are mangroves worth replanting? The direct economic benefits of a community-based reforestation project",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "walton_2006_worth_replanting",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1017/s0376892906003341",
+        "requested_url": "https://doi.org/10.1017/s0376892906003341",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 281221,
+        "sha1": "814501a9853937abfe457bb4948ac140c5682e8e",
+        "sha256": "cd86034404c2e5276ed2c5f1c65b909e5c3ac3d0006d74740a011a36e10cad13"
+      },
+      "document": {
+        "pages": 9,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "high",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "empirical",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/6_MangroveRestoration/walton_2006_worth_replanting.pdf"
+  }
+}

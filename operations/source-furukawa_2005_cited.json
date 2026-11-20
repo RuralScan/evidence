@@ -1,0 +1,106 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "furukawa_2005_cited",
+      "kind": "pdf",
+      "expected_sha256": "de0cd65b130deda3e6ecaacd556c750e4900bb0f12f2bc80395783f6c71393f8"
+    },
+    "candidate": {
+      "candidate_id": "furukawa_2005_cited",
+      "nbs_id": "wetland_management",
+      "title": "Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands",
+      "citation": "Furukawa et al. (2005). Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands. Nutrient Cycling in Agroecosystems.",
+      "doi": "10.1007/s10705-004-5286-5",
+      "url": "https://doi.org/10.1007/s10705-004-5286-5",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "furukawa_2005_cited",
+      "candidate_sha256": "2b85a7f4d3bda1cf8555ae970e4e6c33c492ade19ca66f98d8bd5e2093c4e00e",
+      "source_id": "furukawa_2005_cited",
+      "kind": "pdf",
+      "plan_sha256": "8c1706fec985eef80863834cd678ee9032a9c421ce529d12b71577887d379cb8",
+      "checked_at": "2026-11-20T00:32:27.887229+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10705-004-5286-5",
+        "submitted_doi": "10.1007/s10705-004-5286-5",
+        "citation": "Furukawa et al. (2005). Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands. Nutrient Cycling in Agroecosystems.",
+        "title": "Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10705-004-5286-5",
+            "title": [
+              "Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands"
+            ],
+            "container-title": [
+              "Nutrient Cycling in Agroecosystems"
+            ],
+            "author": [
+              {
+                "family": "Furukawa"
+              },
+              {
+                "family": "Inubushi"
+              },
+              {
+                "family": "Ali"
+              },
+              {
+                "family": "Itang"
+              },
+              {
+                "family": "Tsuruta"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2005
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Effect of changing groundwater levels caused by land-use changes on greenhouse gas fluxes from tropical peat lands",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "furukawa_2005_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10705-004-5286-5",
+        "requested_url": "https://doi.org/10.1007/s10705-004-5286-5",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 426186,
+        "sha1": "64bdcac773e6ddfb88c94b603ceca270561675b2",
+        "sha256": "de0cd65b130deda3e6ecaacd556c750e4900bb0f12f2bc80395783f6c71393f8"
+      },
+      "document": {
+        "pages": 11,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational"
+    },
+    "library_path": "library/5_Wetlands_Constructed/furukawa_2005_cited.pdf"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "thevathasan_2004_cited",
+      "kind": "pdf",
+      "expected_sha256": "69b6ac07a07e0d2b56b8911c47c110e9bfb28c397feab3c4bf0823b64a7a714a"
+    },
+    "candidate": {
+      "candidate_id": "thevathasan_2004_cited",
+      "nbs_id": "agroforestry",
+      "title": "Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada",
+      "citation": "Thevathasan et al. (2004). Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada. Agroforestry Systems.",
+      "doi": "10.1023/b:agfo.0000029003.00933.6d",
+      "url": "https://doi.org/10.1023/b:agfo.0000029003.00933.6d",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "thevathasan_2004_cited",
+      "candidate_sha256": "93be78512cf6e2c441ff0140b9952eeb2b1e9ca8b68ce5faf42872cbfd29f274",
+      "source_id": "thevathasan_2004_cited",
+      "kind": "pdf",
+      "plan_sha256": "7538f089e941122869bdf64819a6ad0de845a7122faf5db39167dcd8d8d81569",
+      "checked_at": "2026-11-20T00:32:33.969064+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1023/b:agfo.0000029003.00933.6d",
+        "submitted_doi": "10.1023/b:agfo.0000029003.00933.6d",
+        "citation": "Thevathasan et al. (2004). Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada. Agroforestry Systems.",
+        "title": "Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1023/b:agfo.0000029003.00933.6d",
+            "title": [
+              "Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada"
+            ],
+            "container-title": [
+              "Agroforestry Systems"
+            ],
+            "author": [
+              {
+                "family": "Thevathasan"
+              },
+              {
+                "family": "Gordon"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2004
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Ecology of tree intercropping systems in the North temperate region: Experiences from southern Ontario, Canada",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "thevathasan_2004_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1023/b:agfo.0000029003.00933.6d",
+        "requested_url": "https://doi.org/10.1023/b:agfo.0000029003.00933.6d",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 314305,
+        "sha1": "847eb868b67a234565743a61215af3b88fc2d8c2",
+        "sha256": "69b6ac07a07e0d2b56b8911c47c110e9bfb28c397feab3c4bf0823b64a7a714a"
+      },
+      "document": {
+        "pages": 12,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "review",
+      "study_income_group": "high"
+    },
+    "library_path": "library/1_Agroforestry/thevathasan_2004_cited.pdf"
+  }
+}

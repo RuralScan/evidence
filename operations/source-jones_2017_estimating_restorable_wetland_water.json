@@ -1,0 +1,119 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "jones_2017_estimating_restorable_wetland_water",
+      "kind": "pdf",
+      "expected_sha256": "c8d0b6ee112ee1fa1ebbd6fcfbc7714d7b77193317afa21453d3045c5e628993"
+    },
+    "candidate": {
+      "candidate_id": "jones_2017_estimating_restorable_wetland_water",
+      "nbs_id": "wetland_management",
+      "title": "Estimating restorable wetland water storage at landscape scales",
+      "citation": "Jones et al. (2017). Estimating restorable wetland water storage at landscape scales. Hydrological Processes.",
+      "doi": "10.1002/hyp.11405",
+      "url": "https://doi.org/10.1002/hyp.11405",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "jones_2017_estimating_restorable_wetland_water",
+      "candidate_sha256": "16520fcefbe0557756167d640b76c9cd55d96f029540da8d78d8510a593f0f63",
+      "source_id": "jones_2017_estimating_restorable_wetland_water",
+      "kind": "pdf",
+      "plan_sha256": "94046a1035240c28873642c8cf84ce8a6b4e46e2d6aafa705084920e463c3450",
+      "checked_at": "2026-11-19T19:21:45.276426+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1002/hyp.11405",
+        "submitted_doi": "10.1002/hyp.11405",
+        "citation": "Jones et al. (2017). Estimating restorable wetland water storage at landscape scales. Hydrological Processes.",
+        "title": "Estimating restorable wetland water storage at landscape scales",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1002/hyp.11405",
+            "title": [
+              "Estimating restorable wetland water storage at landscape scales"
+            ],
+            "container-title": [
+              "Hydrological Processes"
+            ],
+            "author": [
+              {
+                "family": "Jones"
+              },
+              {
+                "family": "Evenson"
+              },
+              {
+                "family": "McLaughlin"
+              },
+              {
+                "family": "Vanderhoof"
+              },
+              {
+                "family": "Lang"
+              },
+              {
+                "family": "McCarty"
+              },
+              {
+                "family": "Golden"
+              },
+              {
+                "family": "Lane"
+              },
+              {
+                "family": "Alexander"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2017
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Estimating restorable wetland water storage at landscape scales",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "jones_2017_estimating_restorable_wetland_water",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1002/hyp.11405",
+        "requested_url": "https://doi.org/10.1002/hyp.11405",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 1288695,
+        "sha1": "2c7a08438d55a0ededae6498d57505ddabd4a530",
+        "sha256": "c8d0b6ee112ee1fa1ebbd6fcfbc7714d7b77193317afa21453d3045c5e628993"
+      },
+      "document": {
+        "pages": 15,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "modelling",
+      "study_income_group": "high"
+    },
+    "library_path": "library/5_Wetlands_Constructed/jones_2017_estimating_restorable_wetland_water.pdf"
+  }
+}

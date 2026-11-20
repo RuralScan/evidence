@@ -1,0 +1,104 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "nguyen_2013_cited",
+      "kind": "pdf",
+      "expected_sha256": "b511b2db3b0d283fa55602813cfb9f27cbe955f5e0f385bee21b05fd10ef3b43"
+    },
+    "candidate": {
+      "candidate_id": "nguyen_2013_cited",
+      "nbs_id": "agroforestry",
+      "title": "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam",
+      "citation": "Nguyen et al. (2012). Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam. Climatic Change.",
+      "doi": "10.1007/s10584-012-0550-1",
+      "url": "https://doi.org/10.1007/s10584-012-0550-1",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "nguyen_2013_cited",
+      "candidate_sha256": "3d9ceb4f5db01946eccca48293e26eac20343165100b4f9d9ab98d60ee1b98fe",
+      "source_id": "nguyen_2013_cited",
+      "kind": "pdf",
+      "plan_sha256": "dd8cec2cf8714216cce104da39daa34e0749288a0e1deee50384386e684565f0",
+      "checked_at": "2026-11-20T00:32:30.870091+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10584-012-0550-1",
+        "submitted_doi": "10.1007/s10584-012-0550-1",
+        "citation": "Nguyen et al. (2012). Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam. Climatic Change.",
+        "title": "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10584-012-0550-1",
+            "title": [
+              "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam"
+            ],
+            "container-title": [
+              "Climatic Change"
+            ],
+            "author": [
+              {
+                "family": "Nguyen"
+              },
+              {
+                "family": "Hoang"
+              },
+              {
+                "family": "Öborn"
+              },
+              {
+                "family": "van Noordwijk"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2012
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Multipurpose agroforestry as a climate change resiliency option for farmers: an example of local adaptation in Vietnam",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "nguyen_2013_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10584-012-0550-1",
+        "requested_url": "https://doi.org/10.1007/s10584-012-0550-1",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 7120770,
+        "sha1": "4e54895324159a6b55ce262549c75ed25549bc2c",
+        "sha256": "b511b2db3b0d283fa55602813cfb9f27cbe955f5e0f385bee21b05fd10ef3b43"
+      },
+      "document": {
+        "pages": 17,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/1_Agroforestry/nguyen_2013_cited.pdf"
+  }
+}

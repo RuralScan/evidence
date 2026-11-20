@@ -1,0 +1,107 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "kanzler_2019_cited",
+      "kind": "pdf",
+      "expected_sha256": "1ec267f0ffa4e360ba958dc61aa4d14b671a0ab9975f75f3c86b062e39227cb1"
+    },
+    "candidate": {
+      "candidate_id": "kanzler_2019_cited",
+      "nbs_id": "agroforestry",
+      "title": "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system",
+      "citation": "Kanzler et al. (2018). Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system. Agroforestry Systems.",
+      "doi": "10.1007/s10457-018-0289-4",
+      "url": "https://doi.org/10.1007/s10457-018-0289-4",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "kanzler_2019_cited",
+      "candidate_sha256": "873b0c64494e1466aa1490899bd9ed9b98d3ffc262620d27ce18a962bc2ceb2a",
+      "source_id": "kanzler_2019_cited",
+      "kind": "pdf",
+      "plan_sha256": "a31dd802d2b2e10a2879513a5872f8881722af8cb7ff30d03e72b011ad46f265",
+      "checked_at": "2026-11-20T00:32:28.649616+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10457-018-0289-4",
+        "submitted_doi": "10.1007/s10457-018-0289-4",
+        "citation": "Kanzler et al. (2018). Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system. Agroforestry Systems.",
+        "title": "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10457-018-0289-4",
+            "title": [
+              "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system"
+            ],
+            "container-title": [
+              "Agroforestry Systems"
+            ],
+            "author": [
+              {
+                "family": "Kanzler"
+              },
+              {
+                "family": "Böhm"
+              },
+              {
+                "family": "Mirck"
+              },
+              {
+                "family": "Schmitt"
+              },
+              {
+                "family": "Veste"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2018
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Microclimate effects on evaporation and winter wheat (Triticum aestivum L.) yield within a temperate agroforestry system",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "kanzler_2019_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10457-018-0289-4",
+        "requested_url": "https://doi.org/10.1007/s10457-018-0289-4",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 2179891,
+        "sha1": "10d6a91a368b81f3a6ea95a5845a8e92ff0230be",
+        "sha256": "1ec267f0ffa4e360ba958dc61aa4d14b671a0ab9975f75f3c86b062e39227cb1"
+      },
+      "document": {
+        "pages": 21,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "high"
+    },
+    "library_path": "library/1_Agroforestry/kanzler_2019_cited.pdf"
+  }
+}

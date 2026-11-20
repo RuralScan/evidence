@@ -1,0 +1,98 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "posthumus_2010_cited",
+      "kind": "pdf",
+      "expected_sha256": "01e7734dd61d3d3f7e21bf621a56562fb1aed56cb59fa13a7035be5f7f9a187a"
+    },
+    "candidate": {
+      "candidate_id": "posthumus_2010_cited",
+      "nbs_id": "water_harvesting_conservation",
+      "title": "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes",
+      "citation": "Posthumus et al. (2009). To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes. Environment, Development and Sustainability.",
+      "doi": "10.1007/s10668-009-9193-4",
+      "url": "https://doi.org/10.1007/s10668-009-9193-4",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "posthumus_2010_cited",
+      "candidate_sha256": "19f718bcb9328544f74723a29799f7e41b78515b1f84b2c575df6f0d9a04d38c",
+      "source_id": "posthumus_2010_cited",
+      "kind": "pdf",
+      "plan_sha256": "5d709d8a3d13056602f7d6339967d38f78191db33cfda8b82d8f39be018d1753",
+      "checked_at": "2026-11-20T00:32:32.453051+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10668-009-9193-4",
+        "submitted_doi": "10.1007/s10668-009-9193-4",
+        "citation": "Posthumus et al. (2009). To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes. Environment, Development and Sustainability.",
+        "title": "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10668-009-9193-4",
+            "title": [
+              "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes"
+            ],
+            "container-title": [
+              "Environment, Development and Sustainability"
+            ],
+            "author": [
+              {
+                "family": "Posthumus"
+              },
+              {
+                "family": "Stroosnijder"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2009
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "To terrace or not: the short-term impact of bench terraces on soil properties and crop response in the Peruvian Andes",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "posthumus_2010_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10668-009-9193-4",
+        "requested_url": "https://doi.org/10.1007/s10668-009-9193-4",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 198425,
+        "sha1": "736bb94f35636d787c90486aa61050cb9f2f5525",
+        "sha256": "01e7734dd61d3d3f7e21bf621a56562fb1aed56cb59fa13a7035be5f7f9a187a"
+      },
+      "document": {
+        "pages": 14,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "upper_middle"
+    },
+    "library_path": "library/3_Water_Harvesting/posthumus_2010_cited.pdf"
+  }
+}

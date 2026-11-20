@@ -1,0 +1,101 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "gao_2025_typhoon_recovery_nbs_projects",
+      "kind": "pdf",
+      "expected_sha256": "732f121278aba35db9ea018c578d258586670502fd4e19f90ac5fb426153500e"
+    },
+    "candidate": {
+      "candidate_id": "gao_2025_typhoon_recovery_nbs_projects",
+      "nbs_id": "mangrove_restoration",
+      "title": "Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions",
+      "citation": "Gao et al. (2025). Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions. Global Ecology and Conservation.",
+      "doi": "10.1016/j.gecco.2025.e03667",
+      "url": "https://doi.org/10.1016/j.gecco.2025.e03667",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "gao_2025_typhoon_recovery_nbs_projects",
+      "candidate_sha256": "bd021e3d93e85477ab76604e5fa568f750be801f4e3ea0e100d29ffad038faad",
+      "source_id": "gao_2025_typhoon_recovery_nbs_projects",
+      "kind": "pdf",
+      "plan_sha256": "e5b4af3d5b1736a739cfbe0e3ce1cb309b05d71b4257018bf44aca193564794b",
+      "checked_at": "2026-11-19T19:21:43.784676+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.gecco.2025.e03667",
+        "submitted_doi": "10.1016/j.gecco.2025.e03667",
+        "citation": "Gao et al. (2025). Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions. Global Ecology and Conservation.",
+        "title": "Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.gecco.2025.e03667",
+            "title": [
+              "Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions"
+            ],
+            "container-title": [
+              "Global Ecology and Conservation"
+            ],
+            "author": [
+              {
+                "family": "Gao"
+              },
+              {
+                "family": "Leung"
+              },
+              {
+                "family": "Wang"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2025
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Assessing typhoon impacts on mangroves and post-typhoon recovery patterns to inform projects using mangroves as nature-based solutions",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "gao_2025_typhoon_recovery_nbs_projects",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.gecco.2025.e03667",
+        "requested_url": "https://doi.org/10.1016/j.gecco.2025.e03667",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 4383228,
+        "sha1": "b3b742301411526084e3af9d8effc2f35a0064dc",
+        "sha256": "732f121278aba35db9ea018c578d258586670502fd4e19f90ac5fb426153500e"
+      },
+      "document": {
+        "pages": 11,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational",
+      "study_income_group": "upper_middle"
+    },
+    "library_path": "library/6_MangroveRestoration/gao_2025_typhoon_recovery_nbs_projects.pdf"
+  }
+}

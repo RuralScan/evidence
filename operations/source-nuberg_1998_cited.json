@@ -1,0 +1,95 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "nuberg_1998_cited",
+      "kind": "pdf",
+      "expected_sha256": "051b26923234420049532084bcf4fbd478b268bb0d0493ac6cc86f0a1a8414cc"
+    },
+    "candidate": {
+      "candidate_id": "nuberg_1998_cited",
+      "nbs_id": "agroforestry",
+      "title": "Effect of shelter on temperate crops: a review to define research for Australian conditions",
+      "citation": "Nuberg (1998). Effect of shelter on temperate crops: a review to define research for Australian conditions. Agroforestry Systems.",
+      "doi": "10.1023/a:1006071821948",
+      "url": "https://doi.org/10.1023/a:1006071821948",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "nuberg_1998_cited",
+      "candidate_sha256": "8f12b78a0b674ba148d6e9887af7469f5dcf65bd6f4933c9d39a5be9d494711b",
+      "source_id": "nuberg_1998_cited",
+      "kind": "pdf",
+      "plan_sha256": "9bb6a82703c2a10c598e5b7f7cd05b856a5f0177199ccb691578497b4fad43c1",
+      "checked_at": "2026-11-20T00:32:31.684535+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1023/a:1006071821948",
+        "submitted_doi": "10.1023/a:1006071821948",
+        "citation": "Nuberg (1998). Effect of shelter on temperate crops: a review to define research for Australian conditions. Agroforestry Systems.",
+        "title": "Effect of shelter on temperate crops: a review to define research for Australian conditions",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1023/a:1006071821948",
+            "title": [
+              "Effect of shelter on temperate crops: a review to define research for Australian conditions"
+            ],
+            "container-title": [
+              "Agroforestry Systems"
+            ],
+            "author": [
+              {
+                "family": "Nuberg"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  1998
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Effect of shelter on temperate crops: a review to define research for Australian conditions",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "nuberg_1998_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1023/a:1006071821948",
+        "requested_url": "https://doi.org/10.1023/a:1006071821948",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 89761,
+        "sha1": "80a12e4e8d3669ff6cc9cf7b703b13efc201887e",
+        "sha256": "051b26923234420049532084bcf4fbd478b268bb0d0493ac6cc86f0a1a8414cc"
+      },
+      "document": {
+        "pages": 32,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "review",
+      "study_income_group": "high"
+    },
+    "library_path": "library/1_Agroforestry/nuberg_1998_cited.pdf"
+  }
+}

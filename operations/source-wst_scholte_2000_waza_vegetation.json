@@ -1,0 +1,106 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "wst_scholte_2000_waza_vegetation",
+      "kind": "pdf",
+      "expected_sha256": "4e8b1f4cce1bb976345acde30aedcbd50331533d304c37b4eb3fbc5976f71ee3"
+    },
+    "candidate": {
+      "candidate_id": "wst_scholte_2000_waza_vegetation",
+      "nbs_id": "wetland_management",
+      "title": "Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics",
+      "citation": "Scholte et al. (2000). Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics. Applied Vegetation Science.",
+      "doi": "10.2307/1478916",
+      "url": "https://doi.org/10.2307/1478916",
+      "process": "stock",
+      "tables": "T6",
+      "families": [
+        "wetland_management__restoration_rewetting"
+      ],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "wst_scholte_2000_waza_vegetation",
+      "candidate_sha256": "3a4682a68472630765eb5855484a19cfd4c925af63fa0bb8dfd2161cde3817b3",
+      "source_id": "wst_scholte_2000_waza_vegetation",
+      "kind": "pdf",
+      "plan_sha256": "d776eef419e4fac126a0973ceac6b302deb24876fa49864b58a74d845012328c",
+      "checked_at": "2026-11-19T19:21:49.445634+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.2307/1478916",
+        "submitted_doi": "10.2307/1478916",
+        "citation": "Scholte et al. (2000). Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics. Applied Vegetation Science.",
+        "title": "Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.2307/1478916",
+            "title": [
+              "Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics"
+            ],
+            "container-title": [
+              "Applied Vegetation Science"
+            ],
+            "author": [
+              {
+                "family": "Scholte"
+              },
+              {
+                "family": "Kirda"
+              },
+              {
+                "family": "Adam"
+              },
+              {
+                "family": "Kadiri"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2000
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Floodplain rehabilitation in North Cameroon: Impact on vegetation dynamics",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "wst_scholte_2000_waza_vegetation",
+        "kind": "pdf",
+        "url": "https://doi.org/10.2307/1478916",
+        "requested_url": "https://doi.org/10.2307/1478916",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 2108723,
+        "sha1": "49ce9979706dc8d89b250ebaa539a23ea677cb44",
+        "sha256": "4e8b1f4cce1bb976345acde30aedcbd50331533d304c37b4eb3fbc5976f71ee3"
+      },
+      "document": {
+        "pages": 11,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/5_Wetlands_Constructed/wst_scholte_2000_waza_vegetation.pdf"
+  }
+}

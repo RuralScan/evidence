@@ -1,0 +1,125 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "wet_cw_nutrient_reduction_ag_effluent_synth_2021",
+      "kind": "pdf",
+      "expected_sha256": "fde7614ae5c111914dc477c616e09576f13750f6f06fd9308b7e564a2fcb09d4"
+    },
+    "candidate": {
+      "candidate_id": "wet_cw_nutrient_reduction_ag_effluent_synth_2021",
+      "nbs_id": "wetland_management",
+      "title": "Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents",
+      "citation": "Messer et al. (2021). Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents. Transactions of the ASABE.",
+      "doi": "10.13031/trans.13976",
+      "url": "http://elibrary.asabe.org/azdez.asp?JID=3&AID=52167&t=2&v=64&i=2&CID=t2021&downPDF=Y&directPDF=Y",
+      "process": "updated_lit",
+      "tables": "T6",
+      "families": [
+        "wetland_management__constructed",
+        "wetland_management__creation"
+      ],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "wet_cw_nutrient_reduction_ag_effluent_synth_2021",
+      "candidate_sha256": "4aca025ebfec2c03b80adeb9ef5fdd2a721cd82e583958bfc646f30a35cda64f",
+      "source_id": "wet_cw_nutrient_reduction_ag_effluent_synth_2021",
+      "kind": "pdf",
+      "plan_sha256": "a7da2a08cc111a6b1e30a34f1cd37105cdf239225d65e62ccb6caaca4cc5d8d5",
+      "checked_at": "2026-11-19T19:21:48.307162+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.13031/trans.13976",
+        "submitted_doi": "10.13031/trans.13976",
+        "citation": "Messer et al. (2021). Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents. Transactions of the ASABE.",
+        "title": "Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.13031/trans.13976",
+            "title": [
+              "Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents"
+            ],
+            "container-title": [
+              "Transactions of the ASABE"
+            ],
+            "author": [
+              {
+                "family": "Messer"
+              },
+              {
+                "family": "Moore"
+              },
+              {
+                "family": "Nelson"
+              },
+              {
+                "family": "Ahiablame"
+              },
+              {
+                "family": "Bean"
+              },
+              {
+                "family": "Boles"
+              },
+              {
+                "family": "Cook"
+              },
+              {
+                "family": "Hall"
+              },
+              {
+                "family": "McMaine"
+              },
+              {
+                "family": "Schlea"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2021
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Constructed Wetlands for Water Quality Improvement: A Synthesis on Nutrient Reduction from Agricultural Effluents",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "wet_cw_nutrient_reduction_ag_effluent_synth_2021",
+        "kind": "pdf",
+        "url": "http://elibrary.asabe.org/azdez.asp?JID=3&AID=52167&t=2&v=64&i=2&CID=t2021&downPDF=Y&directPDF=Y",
+        "requested_url": "http://elibrary.asabe.org/azdez.asp?JID=3&AID=52167&t=2&v=64&i=2&CID=t2021&downPDF=Y&directPDF=Y",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 1216988,
+        "sha1": "45a3f2636a9a7d0dbf699265f04cdb343fa4d57e",
+        "sha256": "fde7614ae5c111914dc477c616e09576f13750f6f06fd9308b7e564a2fcb09d4"
+      },
+      "document": {
+        "pages": 15,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "high",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "review",
+      "study_income_group": "high"
+    },
+    "library_path": "library/5_Wetlands_Constructed/wet_cw_nutrient_reduction_ag_effluent_synth_2021.pdf"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "karki_2014_cited",
+      "kind": "pdf",
+      "expected_sha256": "df4995977d50b42bdfa587a1d193068799ed313e45ee0d0e4e67ddad85977885"
+    },
+    "candidate": {
+      "candidate_id": "karki_2014_cited",
+      "nbs_id": "wetland_management",
+      "title": "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level",
+      "citation": "Karki et al. (2014). Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level. Plant and Soil.",
+      "doi": "10.1007/s11104-014-2164-z",
+      "url": "https://doi.org/10.1007/s11104-014-2164-z",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "karki_2014_cited",
+      "candidate_sha256": "d605cf90cc7a96fb307b8892481742eee382aa810d326eee0df75ef9f09a6e06",
+      "source_id": "karki_2014_cited",
+      "kind": "pdf",
+      "plan_sha256": "a436e4567b51499110694b8eef817f9b3421a370463ec9e3429efe1248cd7ceb",
+      "checked_at": "2026-11-20T00:32:29.418944+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s11104-014-2164-z",
+        "submitted_doi": "10.1007/s11104-014-2164-z",
+        "citation": "Karki et al. (2014). Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level. Plant and Soil.",
+        "title": "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s11104-014-2164-z",
+            "title": [
+              "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level"
+            ],
+            "container-title": [
+              "Plant and Soil"
+            ],
+            "author": [
+              {
+                "family": "Karki"
+              },
+              {
+                "family": "Elsgaard"
+              },
+              {
+                "family": "Audet"
+              },
+              {
+                "family": "Lærke"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2014
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Mitigation of greenhouse gas emissions from reed canary grass in paludiculture: effect of groundwater level",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "karki_2014_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s11104-014-2164-z",
+        "requested_url": "https://doi.org/10.1007/s11104-014-2164-z",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 684626,
+        "sha1": "b66eb0bfa520726f50d86a62388c086c7046a6cd",
+        "sha256": "df4995977d50b42bdfa587a1d193068799ed313e45ee0d0e4e67ddad85977885"
+      },
+      "document": {
+        "pages": 14,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "high"
+    },
+    "library_path": "library/5_Wetlands_Constructed/karki_2014_cited.pdf"
+  }
+}

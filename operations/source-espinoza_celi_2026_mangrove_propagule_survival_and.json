@@ -1,0 +1,131 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "espinoza_celi_2026_mangrove_propagule_survival_and",
+      "kind": "pdf",
+      "expected_sha256": "042ca5ba508c7f54ef7ed58fe216ec07a11136f3fb1a5cabc3e573cb7b0b8519"
+    },
+    "candidate": {
+      "candidate_id": "espinoza_celi_2026_mangrove_propagule_survival_and",
+      "nbs_id": "mangrove_restoration",
+      "title": "Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime",
+      "citation": "Espinoza-Celi et al. (2026). Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime. Ecological Engineering.",
+      "doi": "10.1016/j.ecoleng.2026.108147",
+      "url": "https://doi.org/10.1016/j.ecoleng.2026.108147",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "espinoza_celi_2026_mangrove_propagule_survival_and",
+      "candidate_sha256": "6e9bbe017a9d5ddba7921204784140e524e1a08175ad25c7813afa5f059f85bb",
+      "source_id": "espinoza_celi_2026_mangrove_propagule_survival_and",
+      "kind": "pdf",
+      "plan_sha256": "03b946ead5850409f402e808d465529efbdfefe29f1aa4ee8cb5f1dfd1c9cef4",
+      "checked_at": "2026-11-19T19:21:43.180479+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.ecoleng.2026.108147",
+        "submitted_doi": "10.1016/j.ecoleng.2026.108147",
+        "citation": "Espinoza-Celi et al. (2026). Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime. Ecological Engineering.",
+        "title": "Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.ecoleng.2026.108147",
+            "title": [
+              "Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime"
+            ],
+            "container-title": [
+              "Ecological Engineering"
+            ],
+            "author": [
+              {
+                "family": "Espinoza-Celi"
+              },
+              {
+                "family": "Samain"
+              },
+              {
+                "family": "Schoutens"
+              },
+              {
+                "family": "Belliard"
+              },
+              {
+                "family": "Fivash"
+              },
+              {
+                "family": "Reyes-Chejin"
+              },
+              {
+                "family": "Ligot"
+              },
+              {
+                "family": "Stratigaki"
+              },
+              {
+                "family": "Evenepoel"
+              },
+              {
+                "family": "Caceres-Lucio"
+              },
+              {
+                "family": "Dominguez-Granda"
+              },
+              {
+                "family": "Ramos-Veliz"
+              },
+              {
+                "family": "Temmerman"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2026
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Mangrove propagule survival and growth on dredged sediments strongly depends on sediment type and secondarily on tidal inundation regime",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "espinoza_celi_2026_mangrove_propagule_survival_and",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.ecoleng.2026.108147",
+        "requested_url": "https://doi.org/10.1016/j.ecoleng.2026.108147",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 1770789,
+        "sha1": "46d06e2ede09fe1e23350c72703eeaf590bb1bb2",
+        "sha256": "042ca5ba508c7f54ef7ed58fe216ec07a11136f3fb1a5cabc3e573cb7b0b8519"
+      },
+      "document": {
+        "pages": 10,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "upper_middle"
+    },
+    "library_path": "library/6_MangroveRestoration/espinoza_celi_2026_mangrove_propagule_survival_and.pdf"
+  }
+}

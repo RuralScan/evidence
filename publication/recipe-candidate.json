@@ -64,7 +64,7 @@
     "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
     "schema/registers/EV_evidence_register.csv": "60a6688cfe13281c954045667abebead92621f32cbbae374f637224709740a22",
     "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
-    "schema/registers/SRC_source_register.csv": "c560f52f8b7487b2b7a04d3cc1e905f3d31faf534e23fb2995a893a2bf69f35f",
+    "schema/registers/SRC_source_register.csv": "f69dbd4a32dd9d108938914534d90619de800f901d18bf9662da4141ec6c041d",
     "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
   },
