@@ -12,6 +12,10 @@ Browse the six practices to see which hazards, suitability variables, scorecard 
 
 Use the operator handbook for an AI-assisted or manual run. It provides task briefs for searching, screening and extracting evidence, and shows how to record which instructions were used. [Run an assisted evidence search and extraction](handbook/assisted-evidence-run.md)
 
+## Evidence meaning and source limitations
+
+Read the [registry and source guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/evidence-registry.md) and [T4 synthesis and weighting guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/combining-t4-evidence.md). Current intake distinguishes knowledge basis from extraction format; [classification migration and compatibility](workflows/extraction/classification.md) explain how historical records remain reproducible.
+
 ## Runnable workflows
 
 Find sources, screen a bounded result set and prepare a candidate bundle. The guide includes an offline replay and a dry run against the CIAT registrar. [Run discovery and screening](workflows/discovery/README.md)

@@ -61,6 +61,9 @@ def check_snapshot(producer, ciat, base):
     import configuration
 
     configuration.verify_method(ROOT, configuration.local_method())
+    import schema_migration
+
+    schema_migration.verify_contract(ROOT)
     has_operations = (ROOT / RECORDS).exists()
     if not base:
         base = git("rev-parse", "HEAD^1", cwd=ROOT).decode().strip()
@@ -109,7 +112,9 @@ def check_snapshot(producer, ciat, base):
             "Removed or altered an applied receipt",
         )
         new = {k: v for k, v in applied.items() if k not in prior}
-        old_ev = index(rows(previous("registers/" + EV)), "evidence_id")
+        expected_ev = schema_migration.expected_previous(ROOT, base)
+        old_ev = index(rows(expected_ev), "evidence_id")
+        schema_migration.check_rows((ROOT / "registers" / EV).read_bytes())
         source_base = checked_source_base(ROOT, base, producer)
         old_src = index(rows(source_base), "source_id")
         ev = index(rows((ROOT / "registers" / EV).read_bytes()), "evidence_id")
@@ -129,6 +134,7 @@ def check_snapshot(producer, ciat, base):
             import intake
             from handoff import same_value, scientific_fields
             from registers import scientific_fields_dict, cohort
+            from classification import equivalent, proposal, normalize
 
             cohorts = {}
             from registers import authenticated, participants, checked_votes
@@ -163,12 +169,13 @@ def check_snapshot(producer, ciat, base):
                         require(
                             eid not in ids
                             and ev[eid]["source_id"] == sid
-                            and seen_ev.get(eid) == old_ev.get(eid)
+                            and equivalent(seen_ev.get(eid), old_ev.get(eid))
                             and seen_src.get(sid) == old_src.get(sid),
                             "Stale or overlapping extraction",
                         )
-                        actual_science = scientific_fields(ev[eid])
-                        proposed = scientific_fields_dict(u)
+                        proposal(u, old_ev.get(eid))
+                        actual_science = normalize(scientific_fields(ev[eid]))
+                        proposed = normalize(scientific_fields_dict(u))
                         if eid in old_ev and old_ev[eid] != ev[eid]:
                             # Reopen writes a review attribution; prove the scientific changes separately.
                             actual_science.pop("attribution", None)
@@ -190,7 +197,7 @@ def check_snapshot(producer, ciat, base):
                     for eid in participants({n: item}, {n}, set())[n]:
                         require(
                             eid in old_ev
-                            and seen_ev.get(eid) == old_ev[eid]
+                            and equivalent(seen_ev.get(eid), old_ev[eid])
                             and seen_src.get(old_ev[eid]["source_id"])
                             == old_src[old_ev[eid]["source_id"]],
                             "Stale finding vote",
@@ -330,7 +337,7 @@ def check_snapshot(producer, ciat, base):
             require(
                 prior_log == current_log
                 and all(
-                    (source_base if p == SRC else previous("registers/" + p))
+                    (source_base if p == SRC else expected_ev if p == EV else previous("registers/" + p))
                     == (ROOT / "registers" / p).read_bytes()
                     for p in MUTABLE
                 ),
@@ -357,6 +364,9 @@ def check_snapshot(producer, ciat, base):
     from queue_view import compile_candidate
 
     queue, candidate = compile_candidate(producer, ROOT)
+    if base and expected_ev != previous("registers/" + EV):
+        prior_candidate = json.loads(previous(recipe_rows.CANDIDATE))
+        require(candidate["tables"] == prior_candidate["tables"], "Schema migration changed analytical tables; separate scientific review required")
     require(
         (ROOT / recipe_rows.CANDIDATE).read_bytes()
         == (json.dumps(candidate, sort_keys=True, indent=2) + "\n").encode(),

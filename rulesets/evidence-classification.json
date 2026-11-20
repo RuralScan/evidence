@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "decision_ref": "https://github.com/RuralScan/method/issues/57",
+  "fields": {
+    "knowledge_basis": {
+      "values": [
+        "primary_measured",
+        "modelled",
+        "cited_secondary",
+        "expert_assertion",
+        "unknown"
+      ],
+      "meaning": "How the claim was established; unknown means the source basis has not been established."
+    },
+    "extraction_format": {
+      "values": [
+        "prose",
+        "table",
+        "figure",
+        "code",
+        "unknown"
+      ],
+      "meaning": "The presentation from which the claim was extracted; not a credibility rank."
+    }
+  },
+  "legacy_field": "claim_basis",
+  "legacy_mapping": {
+    "primary_measured": {
+      "knowledge_basis": "primary_measured",
+      "extraction_format": "unknown"
+    },
+    "modelled": {
+      "knowledge_basis": "modelled",
+      "extraction_format": "unknown"
+    },
+    "cited_secondary": {
+      "knowledge_basis": "cited_secondary",
+      "extraction_format": "unknown"
+    },
+    "expert_assertion": {
+      "knowledge_basis": "expert_assertion",
+      "extraction_format": "unknown"
+    },
+    "table": {
+      "knowledge_basis": "unknown",
+      "extraction_format": "table"
+    },
+    "figure_read": {
+      "knowledge_basis": "unknown",
+      "extraction_format": "figure"
+    }
+  },
+  "compatibility": "Historical claim_basis is preserved for the pinned compiler and historical receipts. This metadata migration does not recalibrate published rules. New claims require a known knowledge basis matching claim_basis and an explicit extraction format; unresolved-basis proposals remain staged for review.",
+  "independence": "Retain observations and source profiles. Repeated rows, shared datasets and repeated expert judgements do not create independent votes. Shared authorship is a dependency flag, not proof of duplication.",
+  "expert_scope": "Expert judgement is extracted from literature; no new elicitation is part of this change."
+}

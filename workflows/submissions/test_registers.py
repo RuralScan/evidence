@@ -222,6 +222,31 @@ class RegisterTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "changed"):
                 self.apply(1)
 
+    def test_historical_vote_survives_additive_classification_migration(self):
+        from classification import migrate_csv, normalize
+        path = self.engine / reg.EV
+        path.write_bytes(migrate_csv(path.read_bytes()))
+        self.receipt(1, "reader", "vote", "T4", dict(evidence_id=self.t4, decision="approve"))
+        self.assertEqual(self.apply(1), [1])
+        row = reg.index(reg.rows(path.read_bytes()), "evidence_id")[self.t4]
+        self.assertEqual(row["knowledge_basis"], normalize(self.ev[self.t4])["knowledge_basis"])
+        self.assertEqual(row["extraction_format"], normalize(self.ev[self.t4])["extraction_format"])
+        self.assertEqual(row["reviewer_ok"], "true")
+
+    def test_pinned_writer_preserves_classification_for_new_claim(self):
+        from classification import migrate_csv, new_claim, normalize
+        from nbs_ruralscan.schema_tools.migrate_effects import append_to_register
+        path = self.engine / reg.EV
+        path.write_bytes(migrate_csv(path.read_bytes()))
+        unit = normalize(dict(self.ev[self.t4]))
+        unit.update(evidence_id="test_classified_new_claim", claim_basis="primary_measured", knowledge_basis="primary_measured", extraction_format="table")
+        new_claim(unit)
+        self.assertEqual(append_to_register([unit], path), 1)
+        row = reg.index(reg.rows(path.read_bytes()), "evidence_id")[unit["evidence_id"]]
+        self.assertEqual(row["knowledge_basis"], "primary_measured")
+        self.assertEqual(row["extraction_format"], "table")
+        self.assertEqual(row["quote"], unit["quote"])
+
     def test_extraction_approval_required(self):
         self.receipt(1, "agent", "extraction", "T4", [])
         with self.assertRaisesRegex(ValueError, "awaits scientific approval"):

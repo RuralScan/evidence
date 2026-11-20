@@ -11,6 +11,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+
+from classification import normalize
 from tempfile import TemporaryDirectory
 
 EV = "schema/registers/EV_evidence_register.csv"
@@ -106,9 +108,10 @@ def same_value(left, right):
 
 
 def changed_fields(historical, unit):
+    historical = normalize(historical)
     proposed = {
         k: v
-        for k, v in unit.items()
+        for k, v in normalize(unit).items()
         if v is not None and v != "" and k not in {"reviewer_ok", "review_state"}
     }
     return sorted(

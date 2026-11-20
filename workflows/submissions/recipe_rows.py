@@ -67,12 +67,14 @@ SOURCE_PROGRESS = {
 
 
 def evidence_index(registers):
+    from classification import compiler_record
+
     sources = {
         s["source_id"]: digest({k: v for k, v in s.items() if k not in SOURCE_PROGRESS})
         for s in registers["SRC_source_register"]
     }
     return {
-        e["evidence_id"]: digest([e, sources[e["source_id"]]])
+        e["evidence_id"]: digest([compiler_record(e), sources[e["source_id"]]])
         for e in registers["EV_evidence_register"]
     }
 
