@@ -1,6 +1,6 @@
 # Submit evidence and recipe reviews
 
-The November 10 dashboard lets you submit a finding under your own GitHub account. The vote, note and account name appear on a public RuralScan/evidence issue. Choose **Submit review** on a finding, enter your decision, continue to GitHub and create the issue. Its number is your receipt. **My reviewed** links to your public submissions alongside the historical records. Restricted source files stay in the source library.
+The review dashboard lets you submit a finding under your own GitHub account. The vote, note and account name appear on a public RuralScan/evidence issue. Choose **Submit review** on a finding, enter your decision, continue to GitHub and create the issue. Its number is your receipt. **My reviewed** links to your public submissions alongside the historical records. Restricted source files stay in the source library.
 
 ## Which records can I update?
 
@@ -21,7 +21,11 @@ The [CIAT retirement check](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7
 
 ## Submit findings together in the hosted queue
 
-Select your GitHub reviewer name, open a finding, choose **Review finding** and **Save to batch**. Use **Submit all my decisions** to check your list and open one issue per batch in RuralScan/evidence. For a large batch, copy the supplied description into the issue. Create the issue while signed in as the selected reviewer, then enter its number to clear the matching drafts. Opening an issue draft alone leaves the votes on this device. The queue separates different register revisions and splits batches above the issue size limit.
+Select your GitHub reviewer name, review findings and save decisions. **Submit my decisions** shows the batch and one **Open submission** button. Small batches open a prefilled GitHub issue with all decisions included: choose **Create**. Larger batches download a named CSV and open a prefilled issue: attach that CSV, wait for its upload to finish, then choose **Create**. No JSON copying, revision entry or local server is needed.
+
+Return to the queue to find the matching submission automatically, or choose **Check submissions**. The dashboard retains the original decisions on this device and shows **Submitted · awaiting validation and processing**. **Applied** appears only when the matching receipt is in the official applied journal. Opening an issue draft alone never marks votes submitted. Different register revisions and test/live votes remain separate; large CSVs split at a 1 MB transport limit.
+
+The `RuralScan review submission v2` issue carries a manifest in an HTML comment: lane, full revision, test flag, CSV byte count, row count and SHA-256. Small batches include CSV text in the manifest; large batches attach exactly one CSV through GitHub. The operator verifies the original issue author and edit history, downloads only allowed GitHub attachment storage, and checks the exact bytes before normal CSV validation and consensus. Missing/changed files are rejected; an unavailable attachment stops the preview so a possible opposing ballot cannot silently disappear. Existing v1 issues and CLI submissions remain valid. Attachments record votes only; they do not approve extractions or bypass register PR review.
 
 Single-lane batches use the existing vote CSV. A cross-lane CSV uses `lane: Mixed` in its receipt and a `lane` column on every row. Each ID must match its own lane at the pinned revision. M2b accepts finding reviews for `operational_risk`; extraction proposals retain their existing lanes. Submission, consensus, retry and protected register application use the same path as desk CSVs.
 
@@ -78,7 +82,7 @@ Add `--test-inbox` to the desk command to use marked synthetic finding IDs with 
 
 ## Apply approved submissions
 
-The November 10 queue reads the live RuralScan register revision. A finding vote (dashboard or CSV) is attributable to its signed-in GitHub author. A maintainer who has reviewed an extraction marks its original issue **approved-extraction**. Review the cited source and the exact proposed changes before applying that label. The correction path preserves the original extraction stamp and reopens a changed finding for review.
+The live queue reads the live RuralScan register revision. A finding vote (dashboard or CSV) is attributable to its signed-in GitHub author. A maintainer who has reviewed an extraction marks its original issue **approved-extraction**. Review the cited source and the exact proposed changes before applying that label. The correction path preserves the original extraction stamp and reopens a changed finding for review.
 
 From a clean checkout, run the command below with the issue numbers to process and your local corpus. Use the Python environment from the evidence checks (PyMuPDF, requests and NumPy). Preview is the default. Add `--open-pr` to open a normal, protected register PR with traceable receipts. The command reads current RuralScan main and refuses publication until the CIAT retirement marker is present on CIAT main.
 
