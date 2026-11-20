@@ -1,0 +1,113 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "wilts_2024_economic_potential_of_agriculturalriparian",
+      "kind": "pdf",
+      "expected_sha256": "d1842a98d83faa73190bb0a608db0d6e4a1c957f13a22c31658701af2c7108f3"
+    },
+    "candidate": {
+      "candidate_id": "wilts_2024_economic_potential_of_agriculturalriparian",
+      "nbs_id": "riparian_buffer",
+      "title": "Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI",
+      "citation": "Wilts et al. (2024). Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI. Biomass and Bioenergy.",
+      "doi": "10.1016/j.biombioe.2024.107118",
+      "url": "https://doi.org/10.1016/j.biombioe.2024.107118",
+      "process": "updated_lit",
+      "tables": "T6",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "wilts_2024_economic_potential_of_agriculturalriparian",
+      "candidate_sha256": "0121e533c4cfbb35473e6aa3df89bc879ccd80e538f9fa4ed3645cf3196188b1",
+      "source_id": "wilts_2024_economic_potential_of_agriculturalriparian",
+      "kind": "pdf",
+      "plan_sha256": "7883e9cee3ae82da8fe1bf56b2389fc4db5cba3133196a3c2eacf2e3123023a7",
+      "checked_at": "2026-11-19T19:21:48.906767+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.biombioe.2024.107118",
+        "submitted_doi": "10.1016/j.biombioe.2024.107118",
+        "citation": "Wilts et al. (2024). Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI. Biomass and Bioenergy.",
+        "title": "Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.biombioe.2024.107118",
+            "title": [
+              "Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI"
+            ],
+            "container-title": [
+              "Biomass and Bioenergy"
+            ],
+            "author": [
+              {
+                "family": "Wilts"
+              },
+              {
+                "family": "Burton"
+              },
+              {
+                "family": "Farooque"
+              },
+              {
+                "family": "Schroeder"
+              },
+              {
+                "family": "Murray"
+              },
+              {
+                "family": "Murphy"
+              },
+              {
+                "family": "Ramsay"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2024
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Economic potential of agricultural-riparian shrub willow: An evaluation of the biomass producing capabilities and costs of cultivating Salix viminalis downslope of potato cropping systems in PEI",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "wilts_2024_economic_potential_of_agriculturalriparian",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.biombioe.2024.107118",
+        "requested_url": "https://doi.org/10.1016/j.biombioe.2024.107118",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 2170461,
+        "sha1": "19514da7c44e46c0a08f91ad4b7d23f104b18f93",
+        "sha256": "d1842a98d83faa73190bb0a608db0d6e4a1c957f13a22c31658701af2c7108f3"
+      },
+      "document": {
+        "pages": 13,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "high"
+    },
+    "library_path": "library/4_Riparian_Buffers/wilts_2024_economic_potential_of_agriculturalriparian.pdf"
+  }
+}

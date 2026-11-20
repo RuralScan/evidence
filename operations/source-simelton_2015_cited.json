@@ -1,0 +1,101 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "simelton_2015_cited",
+      "kind": "pdf",
+      "expected_sha256": "02ebefa18d84bd7aa8dde59b241181109ba7fb2c759af8cb2d073196efdce2ee"
+    },
+    "candidate": {
+      "candidate_id": "simelton_2015_cited",
+      "nbs_id": "agroforestry",
+      "title": "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam",
+      "citation": "Simelton et al. (2015). Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam. Agroforestry Systems.",
+      "doi": "10.1007/s10457-015-9835-5",
+      "url": "https://doi.org/10.1007/s10457-015-9835-5",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "simelton_2015_cited",
+      "candidate_sha256": "2d1b0612f1f584696a9f0cd6fdbc70aa02f9767bf0d3a0d1e1e2b28920dbae45",
+      "source_id": "simelton_2015_cited",
+      "kind": "pdf",
+      "plan_sha256": "8dc2e4c30d41b1ff6cce3ef19f3c3d69171ef4616cc64eadd92f64d8c08d2efa",
+      "checked_at": "2026-11-20T00:32:33.198162+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10457-015-9835-5",
+        "submitted_doi": "10.1007/s10457-015-9835-5",
+        "citation": "Simelton et al. (2015). Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam. Agroforestry Systems.",
+        "title": "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10457-015-9835-5",
+            "title": [
+              "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam"
+            ],
+            "container-title": [
+              "Agroforestry Systems"
+            ],
+            "author": [
+              {
+                "family": "Simelton"
+              },
+              {
+                "family": "Dam"
+              },
+              {
+                "family": "Catacutan"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2015
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Trees and agroforestry for coping with extreme weather events: experiences from northern and central Viet Nam",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "simelton_2015_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10457-015-9835-5",
+        "requested_url": "https://doi.org/10.1007/s10457-015-9835-5",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 1080102,
+        "sha1": "cf20c7986b47df9d880f9f155a5d4618e2bd445b",
+        "sha256": "02ebefa18d84bd7aa8dde59b241181109ba7fb2c759af8cb2d073196efdce2ee"
+      },
+      "document": {
+        "pages": 18,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/1_Agroforestry/simelton_2015_cited.pdf"
+  }
+}

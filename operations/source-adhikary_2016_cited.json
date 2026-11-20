@@ -1,0 +1,107 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "adhikary_2016_cited",
+      "kind": "pdf",
+      "expected_sha256": "fd6a63c564328a3fb09484317e2ea862ea030761e89f21a8ef552ac40df35850"
+    },
+    "candidate": {
+      "candidate_id": "adhikary_2016_cited",
+      "nbs_id": "agroforestry",
+      "title": "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems",
+      "citation": "Adhikary et al. (2016). Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems. Agroforestry Systems.",
+      "doi": "10.1007/s10457-016-9958-3",
+      "url": "https://doi.org/10.1007/s10457-016-9958-3",
+      "process": "updated_lit",
+      "tables": "T3|T6",
+      "families": [],
+      "relevance_note": "Cited original queued for acquisition; file recovered 2026-11-19 via Zotero and title-checked; process=updated_lit follows the 23 *_cited sources already in SRC."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "adhikary_2016_cited",
+      "candidate_sha256": "e1a0c657cd294131a0aacd8bdd2440d0963d60af8589c066571e848b160e1566",
+      "source_id": "adhikary_2016_cited",
+      "kind": "pdf",
+      "plan_sha256": "cb9bf98f97463e9d8880d6407fc5e5eff669e73f6cc40c146cab420e35b93e5f",
+      "checked_at": "2026-11-20T00:32:27.193348+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1007/s10457-016-9958-3",
+        "submitted_doi": "10.1007/s10457-016-9958-3",
+        "citation": "Adhikary et al. (2016). Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems. Agroforestry Systems.",
+        "title": "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1007/s10457-016-9958-3",
+            "title": [
+              "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems"
+            ],
+            "container-title": [
+              "Agroforestry Systems"
+            ],
+            "author": [
+              {
+                "family": "Adhikary"
+              },
+              {
+                "family": "Hombegowda"
+              },
+              {
+                "family": "Barman"
+              },
+              {
+                "family": "Jakhar"
+              },
+              {
+                "family": "Madhu"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2016
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Soil erosion control and carbon sequestration in shifting cultivated degraded highlands of eastern India: performance of two contour hedgerow systems",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "adhikary_2016_cited",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1007/s10457-016-9958-3",
+        "requested_url": "https://doi.org/10.1007/s10457-016-9958-3",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 958216,
+        "sha1": "4c4dc28c24f8b7af0ebe64acc0cb36b06864b20d",
+        "sha256": "fd6a63c564328a3fb09484317e2ea862ea030761e89f21a8ef552ac40df35850"
+      },
+      "document": {
+        "pages": 15,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "field_experiment",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/1_Agroforestry/adhikary_2016_cited.pdf"
+  }
+}

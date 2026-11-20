@@ -1,0 +1,110 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "sittadewi_2024_postlandslide_restoration_through_multistrata",
+      "kind": "pdf",
+      "expected_sha256": "6dcb25f3a23bba69001eadac57019c8c2180177ec78cbd38cfd4de37b87b77dd"
+    },
+    "candidate": {
+      "candidate_id": "sittadewi_2024_postlandslide_restoration_through_multistrata",
+      "nbs_id": "agroforestry",
+      "title": "Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia",
+      "citation": "Sittadewi et al. (2024). Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia. Trees, Forests and People.",
+      "doi": "10.1016/j.tfp.2024.100593",
+      "url": "https://doi.org/10.1016/j.tfp.2024.100593",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "sittadewi_2024_postlandslide_restoration_through_multistrata",
+      "candidate_sha256": "0924361bfca43db986bd9c9d6cab0754b91605b6c517b87153458893a634b342",
+      "source_id": "sittadewi_2024_postlandslide_restoration_through_multistrata",
+      "kind": "pdf",
+      "plan_sha256": "6063569c1306d8e3040a3902eb9534f24a24ab2e5dccdab4f3dc15a68b18419c",
+      "checked_at": "2026-11-19T19:21:47.168509+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.tfp.2024.100593",
+        "submitted_doi": "10.1016/j.tfp.2024.100593",
+        "citation": "Sittadewi et al. (2024). Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia. Trees, Forests and People.",
+        "title": "Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.tfp.2024.100593",
+            "title": [
+              "Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia"
+            ],
+            "container-title": [
+              "Trees, Forests and People"
+            ],
+            "author": [
+              {
+                "family": "Sittadewi"
+              },
+              {
+                "family": "Tejakusuma"
+              },
+              {
+                "family": "Mulyono"
+              },
+              {
+                "family": "Handayani"
+              },
+              {
+                "family": "Tohari"
+              },
+              {
+                "family": "Zakaria"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2024
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Post-landslide restoration through multistrata agroforestry-based land management in the West Bogor area of Indonesia",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "sittadewi_2024_postlandslide_restoration_through_multistrata",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.tfp.2024.100593",
+        "requested_url": "https://doi.org/10.1016/j.tfp.2024.100593",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 24895618,
+        "sha1": "d0327024ea1030f247c6b18a7f3df7733680ca6f",
+        "sha256": "6dcb25f3a23bba69001eadac57019c8c2180177ec78cbd38cfd4de37b87b77dd"
+      },
+      "document": {
+        "pages": 12,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "case_study",
+      "study_income_group": "upper_middle"
+    },
+    "library_path": "library/1_Agroforestry/sittadewi_2024_postlandslide_restoration_through_multistrata.pdf"
+  }
+}

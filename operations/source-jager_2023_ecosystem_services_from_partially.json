@@ -1,0 +1,110 @@
+{
+  "base": "3d3af84cd0384792299a7c523874aae5a646aaf3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "jager_2023_ecosystem_services_from_partially",
+      "kind": "pdf",
+      "expected_sha256": "1cabf07f6264abc6b18d0b2ceea4e571e8c7bd1f5a0cb1fb3e0a33b8b9ce9b61"
+    },
+    "candidate": {
+      "candidate_id": "jager_2023_ecosystem_services_from_partially",
+      "nbs_id": "riparian_buffer",
+      "title": "Ecosystem services from partially harvested riparian buffers can offset biomass production costs",
+      "citation": "Jager et al. (2023). Ecosystem services from partially harvested riparian buffers can offset biomass production costs. Science of The Total Environment.",
+      "doi": "10.1016/j.scitotenv.2023.164199",
+      "url": "https://doi.org/10.1016/j.scitotenv.2023.164199",
+      "process": "updated_lit",
+      "tables": "T6",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "jager_2023_ecosystem_services_from_partially",
+      "candidate_sha256": "c7510e7ef4bdcf57e3b88b8359349fb5e53e3b604f3138fd49199989fa456da0",
+      "source_id": "jager_2023_ecosystem_services_from_partially",
+      "kind": "pdf",
+      "plan_sha256": "53117805dc45f20fbebaec7fab822fadf4b8e00a7664d25bfeb9fadcaf6fd979",
+      "checked_at": "2026-11-19T19:21:44.668834+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.scitotenv.2023.164199",
+        "submitted_doi": "10.1016/j.scitotenv.2023.164199",
+        "citation": "Jager et al. (2023). Ecosystem services from partially harvested riparian buffers can offset biomass production costs. Science of The Total Environment.",
+        "title": "Ecosystem services from partially harvested riparian buffers can offset biomass production costs",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.scitotenv.2023.164199",
+            "title": [
+              "Ecosystem services from partially harvested riparian buffers can offset biomass production costs"
+            ],
+            "container-title": [
+              "Science of The Total Environment"
+            ],
+            "author": [
+              {
+                "family": "Jager"
+              },
+              {
+                "family": "Nair"
+              },
+              {
+                "family": "Efroymson"
+              },
+              {
+                "family": "DeRolph"
+              },
+              {
+                "family": "Parish"
+              },
+              {
+                "family": "Wang"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2023
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Ecosystem services from partially harvested riparian buffers can offset biomass production costs",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "jager_2023_ecosystem_services_from_partially",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.scitotenv.2023.164199",
+        "requested_url": "https://doi.org/10.1016/j.scitotenv.2023.164199",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 4881416,
+        "sha1": "2755ee0e12e9ad66e9cd3b1e64588a74ab91ca38",
+        "sha256": "1cabf07f6264abc6b18d0b2ceea4e571e8c7bd1f5a0cb1fb3e0a33b8b9ce9b61"
+      },
+      "document": {
+        "pages": 14,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "modelling",
+      "study_income_group": "high"
+    },
+    "library_path": "library/4_Riparian_Buffers/jager_2023_ecosystem_services_from_partially.pdf"
+  }
+}
