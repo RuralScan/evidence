@@ -1,9 +1,7 @@
-"""Build the live queue, effect candidates and explicitly frozen T4 baseline."""
+"""Publish evidence review and accepted AI outputs; never derive scientific ratings."""
 
 import csv
 import json
-from classification import compiler_record
-from pathlib import Path
 
 
 def read(path):
@@ -12,91 +10,80 @@ def read(path):
 
 
 def compile_candidate(producer, evidence_repo):
-    from recipe_candidate import wording_index, effects_inputs, apply_words, manifest
-    from recipe_rows import evidence_index, published_reviews, SOURCE_PROGRESS
-    from registers import EV, SRC, SEED, blob, content_digest, index, rows as csv_rows
+    from recipe_candidate import wording_index, apply_words, manifest
+    from recipe_rows import evidence_index, published_reviews, TABLES
+    from registers import EV, SRC, blob, content_digest
     from corrections import correction_history
     from nbs_ruralscan.schema_tools.generate import _csv_to_rows
-    from nbs_ruralscan.recipe import t3t6_build
-    from t4_baseline import load as load_t4, TABLE as T4_TABLE
-    from tempfile import TemporaryDirectory
-
+    from t4_baseline import REVISION, PATH, SHA256, load as load_t4
+    from synthesis.core import apply as accepted_effects
     from configuration import overlay
 
     configuration = overlay(producer, evidence_repo)
-    t4_rows, t4_status = load_t4(evidence_repo)
     schema = producer / "schema"
     registers = {
         name: _csv_to_rows(schema / "registers" / (name + ".csv"))
         for name in ("EV_evidence_register", "SRC_source_register")
     }
-    membership = {"T3": set(), "T6": set()}
-    rows = {}
+    frozen = blob(evidence_repo, REVISION, PATH)
+    if content_digest(frozen) != SHA256:
+        raise ValueError("Historical analytical baseline checksum differs")
+    baseline = json.loads(frozen)
+    rows, effect_status = accepted_effects(
+        evidence_repo, producer, registers, baseline["recipes"]
+    )
+    _, t4_status = load_t4(evidence_repo)
+    effect_status["baseline"] = {
+        "repository": "RuralScan/evidence",
+        "revision": REVISION,
+        "path": PATH,
+        "sha256": SHA256,
+    }
+    effect_status["T6E"] = (
+        "historical_baseline; new economic synthesis is outside this contract"
+    )
     events = wording_index(evidence_repo)
     ev_index = evidence_index(registers)
-    old_ev = index(
-        json.loads(blob(producer, SEED, str(Path(EV).with_suffix(".json")))),
-        "evidence_id",
-    )
-    current_ev = registers["EV_evidence_register"]
+    old_index = evidence_index(baseline["registers"])
     changed_ids = {
-        r["evidence_id"] for r in current_ev if compiler_record(r) != old_ev.get(r["evidence_id"])
+        eid for eid, value in ev_index.items() if old_index.get(eid) != value
     }
-    old_sources = index(csv_rows(blob(producer, SEED, SRC)), "source_id")
-    # Source assessment/locator changes also invalidate prose; extraction progress does not.
-    changed_sources = {
-        r["source_id"]
-        for r in read(producer / SRC)
-        if any(
-            v != old_sources.get(r["source_id"], {}).get(k)
-            for k, v in r.items()
-            if k not in SOURCE_PROGRESS
-        )
+    raw_ev = {r["evidence_id"]: r for r in read(producer / EV)}
+    hashes = {
+        path: content_digest((producer / path).read_bytes()) for path in (EV, SRC)
     }
-    changed_ids.update(
-        e["evidence_id"] for e in current_ev if e["source_id"] in changed_sources
-    )
-    raw_ev = index(read(producer / EV), "evidence_id")
-    hashes = {EV: content_digest((producer / EV).read_bytes())}
+    hashes.update(configuration.get("inputs", {}))
     stale = {}
-    for folder in sorted((schema / "recipes").iterdir()):
-        if not folder.is_dir() or folder.name.startswith("."):
-            continue
-        name = folder.name
-        effects = t3t6_build.T3T6BuildInputs.from_root(producer, name)
-        for path in effects.paths():
-            if path != effects.evidence and path.is_file():
-                key = path.relative_to(producer).as_posix()
-                if key not in hashes:
-                    hashes[key] = content_digest(path.read_bytes())
-        with TemporaryDirectory() as tmp:
-            output = Path(tmp).resolve()
-            effects, invalid = effects_inputs(effects, output, current_ev, changed_ids)
-            computed = t3t6_build.synthesise(
-                name, t3t6_build.load_inputs(name, [], inputs=effects)
-            )
-            for table in membership:
-                for record in computed[table]:
-                    membership[table].update(record.get("evidence_ids") or [])
-            t3t6_build.write_recipe(
-                name, computed, inputs=effects, output_dir=output, dry_run=False
-            )
-            rows[name] = {
-                file.stem: _csv_to_rows(file) for file in sorted(output.glob("*.csv"))
-            }
-            rows[name][T4_TABLE] = t4_rows[name]
-            # The native sidecar also rejects changed evidence membership or class.
-            inherited = json.loads(effects.prose.read_bytes())
-            for table in ("T3", "T6", "T6E"):
-                for record in computed[table]:
-                    rid = record["record_id"]
-                    if rid in inherited and (record.get("justification") or {}).get(
-                        "prose_pending"
-                    ):
-                        invalid.add(rid)
-            warnings = apply_words(name, rows[name], events, ev_index, raw_ev, invalid)
-            if warnings:
-                stale[name] = warnings
+    protected = {
+        (s["practice"], s["table"], s["record_id"]) for s in effect_status["rows"]
+    }
+    for name, tables in rows.items():
+        invalid = {
+            r["record_id"]
+            for t in ("T3", "T6", "T6E")
+            for r in tables[TABLES[t]]
+            if changed_ids.intersection(r.get("evidence_ids") or [])
+        }
+        warnings = apply_words(
+            name, tables, events, ev_index, raw_ev, invalid, protected
+        )
+        if warnings:
+            stale[name] = warnings
+    live_ids = {
+        r["evidence_id"]
+        for r in registers["EV_evidence_register"]
+        if r.get("review_state") != "dropped"
+    }
+    membership = {
+        t: {
+            eid
+            for tables in rows.values()
+            for r in tables[TABLES[t]]
+            for eid in (r.get("evidence_ids") or [])
+            if eid in live_ids
+        }
+        for t in ("T3", "T6")
+    }
 
     batch_index = json.loads((producer / "docs/review/index.json").read_bytes())
     batches = {}
@@ -109,6 +96,7 @@ def compile_candidate(producer, evidence_repo):
     review_log = read(producer / "pipeline/metrics/review_log.csv")
     candidate = manifest(evidence_repo, hashes, rows, stale)
     candidate["t4_synthesis"] = t4_status
+    candidate["effect_synthesis"] = effect_status
     if configuration:
         candidate["configuration"] = configuration
     queue = {
@@ -122,6 +110,7 @@ def compile_candidate(producer, evidence_repo):
         **({"stale_wording": stale} if stale else {}),
         "recipes": rows,
         "t4_synthesis": t4_status,
+        "effect_synthesis": effect_status,
         "membership": {key: sorted(ids) for key, ids in membership.items()},
     }
     from nbs_ruralscan.schema_tools.review_priorities import load_review_priorities
@@ -132,7 +121,14 @@ def compile_candidate(producer, evidence_repo):
     for batch_id, batch in batches.items():
         for eid in dict.fromkeys(batch["ids"]):
             if (batch_id, eid) not in known:
-                requests.append(dict(batch_id=batch_id, batch_label=batch["title"], evidence_id=eid, priority="normal"))
+                requests.append(
+                    dict(
+                        batch_id=batch_id,
+                        batch_label=batch["title"],
+                        evidence_id=eid,
+                        priority="normal",
+                    )
+                )
     queue["priority_requests"] = publish(queue, requests, evidence_repo)
     return queue, candidate
 

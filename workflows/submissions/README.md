@@ -10,6 +10,7 @@ Operators can register a completed search and its acquisition candidates, repair
 
 | Other work | What you can do now | Missing official route |
 |---|---|---|
+| AI-led T3/T6 science | [Prepare, validate, accept and package AI-authored proposals](../synthesis/README.md). | Historical rows are not accepted fallbacks. |
 | Candidate tables and row wording | [Propose wording, rebuild and compare a candidate](recipe-rows.md). Method acceptance is a separate PR. | — |
 | Rating reviews | [Review a compiled row](recipe-rows.md). The protected PR appends authenticated rating history. | — |
 | Method decisions | [Propose, decide, implement or supersede a coded scientific ruling in RuralScan/method](https://github.com/RuralScan/method/blob/040f701fa0455c0dfc3fddbeee8ef6c74fe636f9/decisions/README.md). | — |

@@ -241,36 +241,15 @@ def history(repo, rev, events):
 
 
 def roose_replay(repo, rev, rows):
-    practice = "water_harvesting_conservation"
-    with TemporaryDirectory() as temp:
-        source = Path(temp) / "snapshot"
-        snapshot(source, str(repo), rev, ["/src/", "/schema/"], local=repo)
-        run = subprocess.run(
-            [
-                sys.executable,
-                "-IB",
-                str(HERE / "replay.py"),
-                str(source),
-                practice,
-                FLOOD,
-            ],
-            stdout=subprocess.PIPE,
-            text=True,
-            check=True,
-        )
-        data = json.loads(run.stdout)
-    affected = {}
-    for key, r in rows.items():
-        if r["practice"] != practice:
-            continue
-        baseline = [r["rating"], r["confidence"]]
-        require(
-            data["baseline"][key] == baseline,
-            f"Replay disagrees with published baseline: {key}",
-        )
-        if FLOOD in r["evidence_ids"]:
-            affected[key] = {"before": baseline, "without": data["without"].get(key)}
-    return affected
+    """Verify an immutable historical assessment; never re-run scientific synthesis."""
+    archive = git("show", "97dd21060d931b16464155d770c7eb7dd71c385a:publication/workbook/review-status.json", cwd=PUBLISHED.parents[1])
+    require(hashlib.sha256(archive).hexdigest() == "c4ca34709a9d043b6fc5d1595a78beb1af8897bf39c5b52d535dc72b860f86d6", "Historical assessment checksum differs")
+    status = json.loads(archive)
+    require(status["producer_revision"] == rev, "Historical assessment revision differs")
+    traces = status["setter_assessment"]["results"]
+    for key, observation in traces.items():
+        require([rows[key]["rating"], rows[key]["confidence"]] == observation["before"], "Historical assessment no longer matches the pinned rows")
+    return traces
 
 
 def historical_duplicate_rename(repo, edition):

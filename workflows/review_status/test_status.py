@@ -130,7 +130,7 @@ class StatusTests(unittest.TestCase):
     @unittest.skipUnless(
         os.environ.get("CIAT_TEST_REPO"), "Set CIAT_TEST_REPO to a full CIAT clone"
     )
-    def test_conflict_then_hold_with_real_engine(self):
+    def test_conflict_then_hold_preserves_historical_output(self):
         import sys
 
         practice = "water_harvesting_conservation"
@@ -152,7 +152,6 @@ class StatusTests(unittest.TestCase):
             from nbs_ruralscan.schema_tools.submit_review import consensus_decisions
             from nbs_ruralscan.schema_tools.review import ReviewFiles, apply_decisions
             from nbs_ruralscan.schema_tools.generate import _csv_to_rows
-            from nbs_ruralscan.recipe import t3t6_build as compiler
 
             exports = root / "docs/review/exports"
             exports.mkdir(parents=True)
@@ -189,16 +188,9 @@ class StatusTests(unittest.TestCase):
             )
 
             def compiled():
-                inputs = compiler.load_inputs(
-                    practice,
-                    [],
-                    inputs=compiler.T3T6BuildInputs.from_root(root, practice),
-                )
-                return next(
-                    r
-                    for r in compiler.synthesise(practice, inputs)["T3"]
-                    if r["record_id"] == rid
-                )
+                # Review changes evidence status; published scientific values are immutable.
+                path = root / "schema/recipes" / practice / "T3_nbs_hazard_farming.json"
+                return next(r for r in json.loads(path.read_bytes()) if r["record_id"] == rid)
 
             before = compiled()
             self.assertIn(

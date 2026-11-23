@@ -38,6 +38,8 @@ jobs:
         run: python -m unittest discover -v -s workflows/review_preview
       - name: Check published decisions and provisional ratings
         run: python -m unittest discover -v -s workflows/review_status
+      - name: Check AI scientific synthesis acceptance and packaging
+        run: python -m unittest discover -v -s workflows/synthesis
       - name: Check authenticated submission handling
         run: python -m unittest discover -v -s workflows/submissions
       - name: Verify official registers and reproduce the queue
