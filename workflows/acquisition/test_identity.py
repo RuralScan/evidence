@@ -207,6 +207,50 @@ class DocumentTests(unittest.TestCase):
             )["verified"]
         )
 
+    def test_title_wrapped_across_blocks_or_under_label(self):
+        def blocks(*items):
+            with pymupdf.open() as doc:
+                page = doc.new_page()
+                for y, text in items:
+                    page.insert_text((50, y), text)
+                return doc.tobytes()
+
+        # Title split by the PDF into two consecutive blocks (issue #77: Birka, Rahman).
+        self.assertTrue(
+            self.check(
+                blocks(
+                    (60, "Research Paper"),
+                    (160, "Terraced catchments and infiltration"),
+                    (260, "in upland watersheds"),
+                    (360, "Authors"),
+                )
+            )["verified"]
+        )
+        # Short label line above the title in the same block (Primavera).
+        self.assertTrue(
+            self.check(pdf("Conference Proper\n" + TITLE + "\nA. Author"))["verified"]
+        )
+        # Title block emitted after the abstract in text-layer order (Abubaker).
+        self.assertTrue(
+            self.check(
+                blocks(
+                    (400, "Abstract\nRainwater harvesting improved soil water."),
+                    (100, "Terraced catchments and infiltration in upland watersheds"),
+                )
+            )["verified"]
+        )
+        # Still held: a title quoted after running text in the same block, and
+        # an author-year line is never a label.
+        for source in (
+            pdf(
+                "A different follow-on paper\nWe compare our results with the earlier work\n"
+                + TITLE
+            ),
+            pdf("Smith 1978\n" + TITLE + " revisited"),
+            pdf("Smith (1978)\n" + TITLE),
+        ):
+            self.assertFalse(self.check(source)["verified"])
+
     def test_numbered_report_keeps_substantive_title(self):
         self.assertEqual(
             identity.citation_title(

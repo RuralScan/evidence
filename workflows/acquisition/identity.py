@@ -294,18 +294,37 @@ def _opening_match(title, pages):
         flags=re.I,
     )[0]
     paragraphs = re.split(r"\n\s*\n", opening)
-    for i, paragraph in enumerate(paragraphs):
-        lines = [line.strip() for line in paragraph.splitlines() if line.strip()]
+    blocks = [
+        [line.strip() for line in paragraph.splitlines() if line.strip()]
+        for paragraph in paragraphs
+    ]
+    for i, lines in enumerate(blocks):
+        prefix = _squash(paragraphs[i - 1]) if i else ""
+        if re.search(r"(?:19|20)\d{2}[a-z]?$", prefix[-16:]):
+            continue
         # A title starts its text block. A line wrap inside a sentence quoting
         # another title must not turn that embedded title into a heading.
-        for length in range(1, 5):
-            window = " ".join(lines[:length])
-            if not _title_matches(title, window):
-                continue
-            prefix = _squash(paragraphs[i - 1]) if i else ""
-            if re.search(r"(?:19|20)\d{2}[a-z]?$", prefix[-16:]):
-                continue
-            return True
+        starts = [lines]
+        # One short label line (e.g. "Conference Proper", "Research Paper")
+        # may sit above the title inside the same block. Digits are excluded so
+        # an author-year citation line never qualifies.
+        if (
+            len(lines) > 1
+            and len(lines[0].split()) <= 3
+            and not re.search(r"\d", lines[0])
+        ):
+            starts.append(lines[1:])
+        for start in starts:
+            candidates = [start]
+            # A wrapped title can be split by the PDF into consecutive short
+            # blocks. Continue only from a short block made of title lines into
+            # the start of the next block, never from inside running text.
+            if len(start) <= 3 and i + 1 < len(blocks):
+                candidates.append(start + blocks[i + 1][:3])
+            for window_lines in candidates:
+                for length in range(1, min(len(window_lines), 6) + 1):
+                    if _title_matches(title, " ".join(window_lines[:length])):
+                        return True
     return False
 
 
@@ -380,18 +399,24 @@ def verify_document(data: bytes, kind: str, title: str):
                         "verified": False,
                         "reason": "PDF is empty, encrypted or structurally damaged.",
                     }
-                pages = [
-                    "\n\n".join(
-                        block[4]
-                        for block in document[i].get_text("blocks")
-                        if block[6] == 0
-                    )
-                    for i in range(min(len(document), 3))
+                # Text-layer order can put a title after the abstract; also read
+                # the blocks in page position order (top to bottom).
+                orders = [
+                    [
+                        "\n\n".join(
+                            block[4]
+                            for block in document[i].get_text("blocks", sort=sort)
+                            if block[6] == 0
+                        )
+                        for i in range(min(len(document), 3))
+                    ]
+                    for sort in (False, True)
                 ]
         except (OSError, RuntimeError, ValueError):
             return {**facts, "verified": False, "reason": "PDF could not be read."}
+        pages = orders[0]
         facts["needs_ocr"] = len("".join(pages).strip()) < 200
-        verified = _opening_match(title, pages)
+        verified = any(_opening_match(title, order) for order in orders)
         return {
             **facts,
             "verified": verified,
