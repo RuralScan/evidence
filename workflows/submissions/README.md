@@ -22,7 +22,7 @@ The [CIAT retirement check](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7
 
 ## Submit findings together in the hosted queue
 
-Select your GitHub reviewer name, review findings and save decisions. **Submit my decisions** shows the batch and one **Open submission** button. Small batches open a prefilled GitHub issue with all decisions included: choose **Create**. Larger batches download a named CSV and open a prefilled issue: attach that CSV, wait for its upload to finish, then choose **Create**. No JSON copying, revision entry or local server is needed.
+Select your GitHub reviewer name, review findings and save decisions. **Submit my decisions** shows the batch and one **Open submission** button. Small batches open a prefilled GitHub issue with all decisions included: choose **Create**. Larger batches download a named CSV and open a prefilled issue: attach that CSV, wait for its upload to finish, then choose **Create**. No JSON copying, revision entry or local server is needed. The CSV attachment link may appear before or after the submission heading; its exact bytes and the original issue author are still verified.
 
 Return to the queue to find the matching submission automatically, or choose **Check submissions**. The dashboard retains the original decisions on this device and shows **Submitted · awaiting validation and processing**. **Applied** appears only when the matching receipt is in the official applied journal. Opening an issue draft alone never marks votes submitted. Different register revisions and test/live votes remain separate; large CSVs split at a 1 MB transport limit.
 
@@ -75,7 +75,7 @@ python3 workflows/submissions/intake.py collect --ciat-repo "$source_repo" \
   --revision "$pin" --corpus /path/to/private/corpus --out /private/work/batch-01
 ```
 
-Inspect `receipts.json` for validated or held extractions. The operator can inspect the original content and staged units in each numbered folder. Dashboard and CSV votes use the same consensus process. `consensus.json` reports disagreements, potential register changes and retry checks against copies. Opposing votes stay pending. A proposed change to an already reviewed finding needs reconciliation against its existing event. Compare preview results with the receipt and the register revision it names. Multiple receipts with an identical ballot produce one effective reviewer vote. This preview concerns finding votes. For rating reviews and method decisions, see [which records can be updated](#which-records-can-i-update).
+Inspect `receipts.json` for validated or held extractions. The operator can inspect the original content and staged units in each numbered folder. Dashboard and CSV votes use the same consensus process. `consensus.json` reports disagreements, potential register changes and retry checks against copies. Opposing votes stay pending. A proposed change to an already reviewed finding needs reconciliation against its existing event. Compare preview results with the receipt and the register revision it names. Multiple receipts with an identical ballot produce one effective reviewer vote. Repeated approvals by the same reviewer also count once when their notes differ: the applied review retains each receipt number, reason and note. This does not resolve opposing decisions, differing holds or stale evidence; those remain blocked. This preview concerns finding votes. For rating reviews and method decisions, see [which records can be updated](#which-records-can-i-update).
 
 ## Verify the connection
 

@@ -15,6 +15,13 @@ MARKER = r"<!-- ruralscan-review\n(.*?)\n-->"
 LINK = r"\[[^\]\n]+\]\((https://github\.com/user-attachments/files/[0-9]+/[^\s)]+\.csv)\)"
 
 
+def has_header(body):
+    """Allow one GitHub CSV upload before the heading, never arbitrary prose."""
+    body = body.replace("\r\n", "\n")
+    return re.match(r"\A(?:" + LINK + r"\n(?:[ \t]*\n)*)?"
+                    + re.escape(HEADER) + r"\n", body) is not None
+
+
 class AttachmentUnavailable(RuntimeError):
     """Stop the entire preview if a potential opposing ballot cannot be read."""
 
@@ -56,7 +63,7 @@ def download(url, expected_size):
 
 
 def decode(body, unique_object):
-    require(body.startswith(HEADER + "\n"), "Unknown review submission format")
+    require(has_header(body), "Unknown review submission format")
     blocks = re.findall(MARKER, body, re.DOTALL)
     require(len(blocks) == 1, "Expected one review submission manifest")
     meta = json.loads(blocks[0], object_pairs_hook=unique_object)
