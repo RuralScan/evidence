@@ -137,7 +137,7 @@ def check_snapshot(producer, ciat, base):
             from classification import equivalent, proposal, normalize
 
             cohorts = {}
-            from registers import authenticated, participants, checked_votes
+            from registers import authenticated, participants, checked_votes, reviewer_ballot
             from nbs_ruralscan.schema_tools.review import REASON_CODES
 
             public = authenticated(intake.submissions())
@@ -211,7 +211,7 @@ def check_snapshot(producer, ciat, base):
                 "New related vote arrived; rebuild consensus",
             )
             verdicts = {}
-            individual = defaultdict(dict)
+            collected = defaultdict(lambda: defaultdict(list))
             added_events = rows(current_log)[len(rows(prior_log)) :]
             for n in sorted(related):
                 from registers import ballot_verdict
@@ -233,10 +233,7 @@ def check_snapshot(producer, ciat, base):
                             == actor.casefold(),
                             "Spoofed CSV voter",
                         )
-                        require(
-                            individual[eid].setdefault(actor, vote) == vote,
-                            "Contradictory voter receipts",
-                        )
+                        collected[eid][actor].append((n, vote))
                         verdict = vote["decision"]
                         require(
                             verdicts.setdefault(eid, verdict) == verdict,
@@ -262,6 +259,11 @@ def check_snapshot(producer, ciat, base):
                             all(row[f] == old_ev[eid][f] for f in protected),
                             "Vote changed scientific fields",
                         )
+            individual = {
+                eid: {actor: reviewer_ballot(eid, actor, entries)
+                      for actor, entries in reviewers.items()}
+                for eid, reviewers in collected.items()
+            }
             for eid, ballot in individual.items():
                 actors = sorted(ballot)
                 expected = {
