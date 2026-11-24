@@ -67,7 +67,7 @@
     "schema/registers/BIND_dataset_binding.csv": "6aeb5481a121cca768efd69ebe277b95a85e2c7f1ef9941e9cc74536c9bcfa35",
     "schema/registers/EV_evidence_register.csv": "733e8fd201f2ce616c49c7b9a92b388edd8b4704692a7c67955ce641e499cde6",
     "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
-    "schema/registers/SRC_source_register.csv": "f69dbd4a32dd9d108938914534d90619de800f901d18bf9662da4141ec6c041d",
+    "schema/registers/SRC_source_register.csv": "1781b74f2bab17738886eae619d4938b21702b36c1a47a6c0f3de97dfb5529de",
     "schema/registers/TOOL_tool_registry.csv": "e6f623e5b734060fb0f75249219878bff849f36f0daf35a9d8c68c10627fb6f6",
     "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
