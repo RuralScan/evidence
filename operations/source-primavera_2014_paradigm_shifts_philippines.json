@@ -1,0 +1,74 @@
+{
+  "base": "8728d0cf383f26e03d5aa484d7904d027397b50f",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "primavera_2014_paradigm_shifts_philippines",
+      "kind": "pdf",
+      "expected_sha256": "cb08b24922ce312421e31ec1c9dff51c7f12bde7a09fa261e8f049f6af75de7b",
+      "publisher_hosts": [
+        "repository.seafdec.org.ph"
+      ]
+    },
+    "candidate": {
+      "candidate_id": "primavera_2014_paradigm_shifts_philippines",
+      "nbs_id": "mangrove_restoration",
+      "title": "Paradigm shifts in mangrove rehabilitation in Southeast Asia: Focus on the Philippines",
+      "citation": "Primavera, J.H.; Guzman, A.M.T.; Coching, J.D.; Loma, R.J.A.; Curnick, D.; Koldewey, H.J. (2014). Paradigm shifts in mangrove rehabilitation in Southeast Asia: Focus on the Philippines. In Palis, H.G., Pasicolan, S.A., Villamor, C.I. (Eds.), Proceedings of the 1st ASEAN Congress on Mangrove Research and Development, 3-7 December 2012, Manila (pp. 17-30). DENR-ERDB, Manila.",
+      "doi": "",
+      "url": "https://repository.seafdec.org.ph/handle/10862/3282",
+      "process": "grey",
+      "tables": "T3",
+      "families": [
+        "mangrove_restoration__tidal_coastal"
+      ],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "primavera_2014_paradigm_shifts_philippines",
+      "candidate_sha256": "6221cefd997221a2fda67f84fafef2069d48f8d30dff49c8a7ff33e0fe26c836",
+      "source_id": "primavera_2014_paradigm_shifts_philippines",
+      "kind": "pdf",
+      "plan_sha256": "a7de84d92bb6b0523738703f37c428fa15eca5c5ebec0c1e834fcc8e04b7d87d",
+      "checked_at": "2026-11-24T21:14:11.700889+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "",
+        "submitted_doi": "",
+        "citation": "Primavera, J.H.; Guzman, A.M.T.; Coching, J.D.; Loma, R.J.A.; Curnick, D.; Koldewey, H.J. (2014). Paradigm shifts in mangrove rehabilitation in Southeast Asia: Focus on the Philippines. In Palis, H.G., Pasicolan, S.A., Villamor, C.I. (Eds.), Proceedings of the 1st ASEAN Congress on Mangrove Research and Development, 3-7 December 2012, Manila (pp. 17-30). DENR-ERDB, Manila.",
+        "title": "Paradigm shifts in mangrove rehabilitation in Southeast Asia: Focus on the Philippines",
+        "status": "title_required",
+        "reason": "No DOI; verify the source title against the artifact."
+      },
+      "artifact": {
+        "source_id": "primavera_2014_paradigm_shifts_philippines",
+        "kind": "pdf",
+        "url": "https://repository.seafdec.org.ph/handle/10862/3282",
+        "requested_url": "https://repository.seafdec.org.ph/handle/10862/3282",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 43956,
+        "sha1": "a5dd35b025b07001ce5ffc5a2fb4d558e1a4cb38",
+        "sha256": "cb08b24922ce312421e31ec1c9dff51c7f12bde7a09fa261e8f049f6af75de7b"
+      },
+      "document": {
+        "pages": 4,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "grey",
+      "method_type": "review",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/6_MangroveRestoration/primavera_2014_paradigm_shifts_philippines.pdf"
+  }
+}
