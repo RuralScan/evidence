@@ -1,0 +1,98 @@
+{
+  "base": "8728d0cf383f26e03d5aa484d7904d027397b50f",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "rahman_2013_effectiveness_of_coastal_bioshield",
+      "kind": "pdf",
+      "expected_sha256": "112a956ddea7f60af88cede6fd6484d65491d4e1960cb0db19dc9ada825a58b0"
+    },
+    "candidate": {
+      "candidate_id": "rahman_2013_effectiveness_of_coastal_bioshield",
+      "nbs_id": "forest_restoration",
+      "title": "Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones",
+      "citation": "Rahman et al. (2013). Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones. Procedia Engineering.",
+      "doi": "10.1016/j.proeng.2013.03.177",
+      "url": "https://doi.org/10.1016/j.proeng.2013.03.177",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "rahman_2013_effectiveness_of_coastal_bioshield",
+      "candidate_sha256": "1e0b625fd83e3751d4c781613cc4e1d486c83e77ff9718a6e1a570e44db0cf4d",
+      "source_id": "rahman_2013_effectiveness_of_coastal_bioshield",
+      "kind": "pdf",
+      "plan_sha256": "43189f75954f5ba5c571a4cbd9e5e29ac10f8b23bac8892ba2b4d77a3aa0f823",
+      "checked_at": "2026-11-24T21:14:12.326815+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1016/j.proeng.2013.03.177",
+        "submitted_doi": "10.1016/j.proeng.2013.03.177",
+        "citation": "Rahman et al. (2013). Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones. Procedia Engineering.",
+        "title": "Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1016/j.proeng.2013.03.177",
+            "title": [
+              "Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones"
+            ],
+            "container-title": [
+              "Procedia Engineering"
+            ],
+            "author": [
+              {
+                "family": "Rahman"
+              },
+              {
+                "family": "Rahman"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2013
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Effectiveness of Coastal Bio-Shield for Reduction of the Energy of Storm Surges and Cyclones",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "rahman_2013_effectiveness_of_coastal_bioshield",
+        "kind": "pdf",
+        "url": "https://doi.org/10.1016/j.proeng.2013.03.177",
+        "requested_url": "https://doi.org/10.1016/j.proeng.2013.03.177",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 2864124,
+        "sha1": "c3baca352d9d46323d165523bd3c52c7c5f5d59e",
+        "sha256": "112a956ddea7f60af88cede6fd6484d65491d4e1960cb0db19dc9ada825a58b0"
+      },
+      "document": {
+        "pages": 10,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "low",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "modelling",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/2_ForestRestoration/rahman_2013_effectiveness_of_coastal_bioshield.pdf"
+  }
+}

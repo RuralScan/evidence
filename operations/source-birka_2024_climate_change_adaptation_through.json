@@ -1,0 +1,101 @@
+{
+  "base": "8728d0cf383f26e03d5aa484d7904d027397b50f",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "birka_2024_climate_change_adaptation_through",
+      "kind": "pdf",
+      "expected_sha256": "12a4954c000de517586be602e47d1053583bc39be38da2393c619f17a33d47b0"
+    },
+    "candidate": {
+      "candidate_id": "birka_2024_climate_change_adaptation_through",
+      "nbs_id": "water_harvesting_conservation",
+      "title": "Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon",
+      "citation": "Birka et al. (2024). Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon. Journal of Water, Sanitation and Hygiene for Development.",
+      "doi": "10.2166/washdev.2024.120",
+      "url": "https://doi.org/10.2166/washdev.2024.120",
+      "process": "updated_lit",
+      "tables": "T3",
+      "families": [],
+      "relevance_note": "Queued source; file recovered 2026-11-19 (browser download or Zotero) and title-checked."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "birka_2024_climate_change_adaptation_through",
+      "candidate_sha256": "45616da5b5f2c2ca5bd9133b1c7a5f725c7422b71f5f88ddf81b3918a5d144be",
+      "source_id": "birka_2024_climate_change_adaptation_through",
+      "kind": "pdf",
+      "plan_sha256": "7d001be6f5800c23fd8cf37576d83fdec334f1a70120deb1513ae87d00bd7262",
+      "checked_at": "2026-11-24T21:14:11.049815+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.2166/washdev.2024.120",
+        "submitted_doi": "10.2166/washdev.2024.120",
+        "citation": "Birka et al. (2024). Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon. Journal of Water, Sanitation and Hygiene for Development.",
+        "title": "Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.2166/washdev.2024.120",
+            "title": [
+              "Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon"
+            ],
+            "container-title": [
+              "Journal of Water, Sanitation and Hygiene for Development"
+            ],
+            "author": [
+              {
+                "family": "Birka"
+              },
+              {
+                "family": "Jude Kawzu"
+              },
+              {
+                "family": "Nnaji"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2024
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Climate change adaptation through rainwater harvesting to enhance food security in Diamaré, Cameroon",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "birka_2024_climate_change_adaptation_through",
+        "kind": "pdf",
+        "url": "https://doi.org/10.2166/washdev.2024.120",
+        "requested_url": "https://doi.org/10.2166/washdev.2024.120",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 1490837,
+        "sha1": "d89896439be3eca4089361da37cb5ea352d09b10",
+        "sha256": "12a4954c000de517586be602e47d1053583bc39be38da2393c619f17a33d47b0"
+      },
+      "document": {
+        "pages": 16,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "empirical",
+      "study_income_group": "lower_middle"
+    },
+    "library_path": "library/3_Water_Harvesting/birka_2024_climate_change_adaptation_through.pdf"
+  }
+}
