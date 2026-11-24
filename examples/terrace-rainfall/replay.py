@@ -96,34 +96,6 @@ def verify_claims(case, registers, decision):
     return support, sources
 
 
-def apply_fixture_support(path, case, support, sources):
-    """Supply the example's reviewed membership to the compiler in its private copy."""
-    holds = csv_rows(path)
-    target = one(holds, mapping_id=case["mapping_id"])
-    params = json.loads(target["relationship_params"])
-    calibration = params["reviewed_adaptation"]["numerical_calibration"]
-    require(
-        calibration["status"] == "held" and calibration["scope"] == case["mapping_id"],
-        "Source configuration has no matching calibration hold",
-    )
-    profiles = calibration["retained_source_profiles"]
-    require(
-        [p["evidence_id"] for p in profiles]
-        == [c["evidence_id"] for c in case["claims"]],
-        "Authored hold and fixture reference different profiles",
-    )
-    calibration["excluded_from_annual_terrace_support_and_scoring"] = [
-        c["evidence_id"] for c in case["claims"] if c["evidence_id"] not in support
-    ]
-    target["evidence_ids"] = json.dumps(support)
-    target["n_sources"] = str(len(sources))
-    target["relationship_params"] = json.dumps(params, ensure_ascii=False)
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(target), lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(holds)
-
-
 def replay(work, method_repo, producer_repo):
     case = json.loads((EXAMPLE / "reviewed-claims.json").read_bytes())
     model = definitions(work / "method", method_repo)
@@ -169,40 +141,17 @@ def replay(work, method_repo, producer_repo):
         ],
         producer_repo,
     )
-    # Use the pinned method definitions as actual compiler inputs. The remaining
-    # synthesis policies and authored holds come with the historical producer.
+    # Verify pinned definitions and historical row bytes; do not derive a new mapping.
     for filename in ("FAM_family_registry.csv", "VONT_variable_ontology.csv"):
         shutil.copyfile(config / filename, root / "schema/registers" / filename)
     sys.path.insert(0, str(root / "src"))
-    from nbs_ruralscan.recipe.developer_corpus import rebuild
 
     audit = json.loads((root / case["review_record"]).read_bytes())
     decision = one(audit["decisions"], mapping_id=case["mapping_id"])
     support, sources = verify_claims(case, root / "schema/registers", decision)
-    apply_fixture_support(
-        root / "schema/recipe_inputs/t4" / practice / "review_holds.csv",
-        case,
-        support,
-        sources,
-    )
-
-    # Reconcile each entire practice before selecting the demonstration row.
-    builds = csv_rows(root / "schema/recipe_inputs/t4/practices.csv")
-    target = None
-    total = 0
-    for entry in builds:
-        result = rebuild(root, entry["nbs_id"])
-        total += len(result["rows"])
-        if entry["nbs_id"] == practice:
-            target = result
-    require(target is not None, f"Missing compiled practice: {practice}")
-    print(f"Full T4 comparison passed: {total} rows across {len(builds)} practices.")
-    row = one(
-        target["rows"],
-        mapping_id=case["mapping_id"],
-        variable=variable,
-        suitability_family_id=family,
-    )
+    row = one(csv_rows(root / "schema/recipes" / practice / "T4_suitability_mappings.csv"),
+              mapping_id=case["mapping_id"], variable=variable, suitability_family_id=family)
+    print("Read the immutable historical T4 row; scientific synthesis is retired.")
     require(
         json.loads(row["evidence_ids"]) == support
         and int(row["n_sources"]) == len(sources),
@@ -211,7 +160,7 @@ def replay(work, method_repo, producer_repo):
     one(datasets, dataset_id=row["dataset_id"])
     require(
         row["dataset_id"] == decision["dataset_id"],
-        "Recorded dataset differs from rebuilt row",
+        "Recorded dataset differs from historical row",
     )
     parameters = json.loads(row["relationship_params"])
     hold = parameters["reviewed_adaptation"]["numerical_calibration"]

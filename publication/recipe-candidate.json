@@ -1,13 +1,4 @@
 {
-  "compiler": {
-    "repository": "CIAT/nbs_ruralscan",
-    "revision": "e43c42bd581dba791ce1f1697b6b41952ab0cfe3",
-    "tables": [
-      "T3",
-      "T6",
-      "T6E"
-    ]
-  },
   "configuration": {
     "evidence_changes_sha256": "8f8e76dd66085d738c5ae1d391cba6d455fcd55e712ae8e7b64909b803c90664",
     "inputs": {
@@ -39,28 +30,52 @@
     "method_release_sha256": "50dda004920917ad0355d8b89a44316379920930f4d13054fca5f1dd8e8ca7a7",
     "method_revision": "e50a3a01b6b164bebed8dfd09229c4df83086c01"
   },
+  "effect_synthesis": {
+    "T6E": "historical_baseline; new economic synthesis is outside this contract",
+    "baseline": {
+      "path": "publication/review-queue.json",
+      "repository": "RuralScan/evidence",
+      "revision": "97dd21060d931b16464155d770c7eb7dd71c385a",
+      "sha256": "cb3cd472a895a527049c1a783fcc5f0499259df29ce7ee30fe64f287f6b3ae16"
+    },
+    "historical_rows_are_accepted": false,
+    "mode": "ai_led",
+    "rows": []
+  },
   "format": "ruralscan.recipe-candidate.v1",
   "inputs": {
     "recipe-inputs/wording.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "schema/lookups/comparator_policy.csv": "15326207e7548869752ae24ce235bf8046a183af209d43e460fe2dec8c763275",
+    "schema/lookups/configuration_vocabulary.csv": "757efa996eb2cab752ed5818b295514d48471e1301b952071cc0eacd9a9f8b1b",
     "schema/lookups/crop_scope_policy.csv": "62f6bf68b618116e63d4bee57d7b01c6710b4a2ba62b4405bf7daf1662f9a5b4",
     "schema/lookups/design_weights.csv": "f95fcf48cceaa40e03fb23952d80044a0f810d8751f1c9233c76476330507d93",
+    "schema/lookups/direction_cue_exceptions.csv": "dbab2bb1d58af78e6ea080ae3cf036af32bdfc95118171f9861f250a56937bfb",
+    "schema/lookups/display_vocab.csv": "33231b47f3432bd02c5a89de8e183dc17c068a157d4ff27742f7ed1129874fd0",
     "schema/lookups/effect_locus.csv": "8f5d7d0e605c3937fb96929bac30510043a6d96f7f7c6b66e4fd3947816fe96b",
     "schema/lookups/family_rollup_policy.csv": "9b7c11788996a9abb896011517f4e92894e32d72061b9070fef555bedab44e7b",
-    "schema/lookups/ipcc_confidence_matrix.csv": "ae32f02c79be6d17dbfef90e601f47f53750b59643033c03d32069463d051d35",
-    "schema/lookups/wb_income_groups.csv": "286c52a26a23daa78009907ea32c9a359b5042b38e67492218bc4eceb751d662",
+    "schema/lookups/m2b_variable_policy.csv": "addaf5e37107e786d66132f31eb5ac90aef099b1a2e0106c59e6d5c8a58f9c49",
+    "schema/lookups/scorecard_chip_scale.csv": "15e7cb3ae6bdc5535631cac2b2bae76d2b6ce3d35916689f6e01dd2c2793c06a",
+    "schema/lookups/scorecard_confidence_badge.csv": "d0a19ab62f3af68fbe82b0b1afd0dc03354af86438ea087a1f22f8d123841dc1",
+    "schema/lookups/scorecard_locus.csv": "2f0e7a33dbd5f0d9879da52dbfa4531a6220badb481256f30fad4376360f7e5e",
+    "schema/lookups/scorecard_row_tags.csv": "4ecff705b92c263788261af07495f47e5146af52e0a6dd28d863b3fe0b25ddbe",
+    "schema/lookups/scorecard_rows.csv": "e9d67a3c324c3cb83c5a7d8836fb89e11fe8b5c1801c7793f7be9100b0615904",
+    "schema/lookups/variable_direction_sense.csv": "b5451acb9dcc1d4a356d88815d23b34b39b50697efde8b31bd92db3a09810501",
+    "schema/lookups/wocat_hazard_map.csv": "fa2f44ad14da7ebcee2457ce3015a439c0d5585631ca862a022ebaf7d81f9cbd",
+    "schema/lookups/wocat_impact_map.csv": "4568dcac84c6837b3696f49e669d3e79b92edcbeb594030c552d349f0574cba0",
     "schema/lookups/xw_route_policy.csv": "72add2e55951c90fcd4b727d1aa03b88485f7edb3963a9a93bcf7b1888c97bef",
-    "schema/recipes/agroforestry/T3T6_prose.json": "127bcb5bcf007824e324c6c38ecf81ea9155ad40a0b7b62abb81974ab85b3ad7",
-    "schema/recipes/forest_restoration/T3T6_prose.json": "a86a97dcad530a00db097b3c7f15f6c9858495b1c8f555bc5e272126aa67b380",
-    "schema/recipes/mangrove_restoration/T3T6_prose.json": "bd3a8c5e8bdf3d9ed31ba9e9836b3169d6ec33d27b7d13809d16b0ed1c184bf5",
-    "schema/recipes/riparian_buffer/T3T6_prose.json": "a065b5c8f38b4ead390c99c8e429d5d849ef5cdca269b6a9586050d6d7631af3",
-    "schema/recipes/water_harvesting_conservation/T3T6_prose.json": "586f46a2c81b93675019f58395f95ce7ad5a3dea9439a6f14e9e5cef539d18a1",
-    "schema/recipes/wetland_management/T3T6_prose.json": "e8dab8fb3f93b6a4d03204c15ecd6ce6d1e5420b21aa3187dd3471523d1cd806",
     "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
+    "schema/registers/BIND_dataset_binding.csv": "6aeb5481a121cca768efd69ebe277b95a85e2c7f1ef9941e9cc74536c9bcfa35",
     "schema/registers/EV_evidence_register.csv": "60a6688cfe13281c954045667abebead92621f32cbbae374f637224709740a22",
     "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
     "schema/registers/SRC_source_register.csv": "f69dbd4a32dd9d108938914534d90619de800f901d18bf9662da4141ec6c041d",
+    "schema/registers/TOOL_tool_registry.csv": "e6f623e5b734060fb0f75249219878bff849f36f0daf35a9d8c68c10627fb6f6",
+    "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
+  },
+  "producer": {
+    "code_role": "validate_and_package",
+    "historical_scoring_retired": true,
+    "workflow": "ai_scientific_synthesis"
   },
   "stale_wording": {},
   "t4_synthesis": {
