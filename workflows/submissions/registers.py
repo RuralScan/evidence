@@ -164,6 +164,26 @@ def ballot_verdict(row):
     )
 
 
+def reviewer_ballot(eid, actor, ballots):
+    """Count repeated approvals once while preserving every receipt's rationale."""
+    first = ballots[0][1]
+    if all(vote == first for _, vote in ballots):
+        return first
+    require(
+        all(vote["decision"] == "ok" for _, vote in ballots),
+        f"Conflicting receipts for {eid} by {actor}",
+    )
+    reasons = {vote["reason"] for _, vote in ballots}
+    return dict(
+        decision="ok",
+        reason=first["reason"] if len(reasons) == 1 else "confirmed_pass",
+        note="\n".join(
+            f"Receipt #{number} [{vote['reason']}]: {vote['note']}"
+            for number, vote in ballots
+        ),
+    )
+
+
 def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus):
     from nbs_ruralscan.schema_tools import evidence_intake, review
     from nbs_ruralscan.schema_tools.migrate_effects import _cell, resync_vars_extracted
@@ -199,7 +219,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
         all(n in selected or str(n) in journal for n in related),
         f"Include all pending receipts for these findings: {sorted(related)}",
     )
-    votes = defaultdict(dict)
+    ballots = defaultdict(lambda: defaultdict(list))
     for n in sorted(related):
         item = receipts[n]
         entry, actor = item["entry"], item["actor"]
@@ -209,11 +229,7 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             if not row["decision"].strip() or eid not in targets:
                 continue
             vote = ballot_verdict(row)
-            require(
-                actor not in votes[eid] or votes[eid][actor] == vote,
-                f"Conflicting receipts for {eid} by {actor}",
-            )
-            votes[eid][actor] = vote
+            ballots[eid][actor].append((n, vote))
             if str(n) not in journal:
                 # Identical historical decisions can be credited to another reviewer. A changed
                 # source or scientific record, including a later review stamp, needs a fresh vote.
@@ -224,6 +240,11 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
                     == sources.get(old[eid]["source_id"]),
                     f"Finding/source changed since receipt #{n}: {eid}",
                 )
+    votes = {
+        eid: {actor: reviewer_ballot(eid, actor, entries)
+              for actor, entries in reviewers.items()}
+        for eid, reviewers in ballots.items()
+    }
     agreed, conflicts = consensus_decisions(votes)
     require(not conflicts, f"Opposing votes remain pending: {conflicts}")
     history = defaultdict(list)

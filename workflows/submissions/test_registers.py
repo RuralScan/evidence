@@ -247,6 +247,34 @@ class RegisterTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "changed"):
                 self.apply(1)
 
+    def test_repeated_approvals_preserve_reasons_notes_and_one_reviewer(self):
+        self.receipt(1, "reader", "vote", "T4",
+                     dict(evidence_id=self.t4, decision="approve", reason="other", note="Regional only"))
+        self.receipt(2, "reader", "vote", "T4",
+                     dict(evidence_id=self.t4, decision="approve", note="No shared cutoff"))
+        before = (self.engine / reg.LOG).read_bytes()
+        self.assertEqual(self.apply(1, 2), [1, 2])
+        added = reg.rows((self.engine / reg.LOG).read_bytes())[len(reg.rows(before)):]
+        self.assertEqual(len(added), 1)
+        self.assertEqual(added[0]["reviewer"], "reader")
+        self.assertIn("Receipt #1 [other]: Regional only", added[0]["note"])
+        self.assertIn("Receipt #2 [confirmed_pass]: No shared cutoff", added[0]["note"])
+        after = (self.engine / reg.LOG).read_bytes()
+        self.assertEqual(self.apply(1, 2), [])
+        self.assertEqual(after, (self.engine / reg.LOG).read_bytes())
+
+    def test_same_reviewer_opposition_and_different_holds_still_block(self):
+        for left, right in [("approve", "reject"), ("hold", "hold")]:
+            self.receipt(1, "reader", "vote", "T4",
+                         dict(evidence_id=self.t4, decision=left, note="First"))
+            self.receipt(2, "reader", "vote", "T4",
+                         dict(evidence_id=self.t4, decision=right, reason="other", note="Second"))
+            before = (self.engine / reg.LOG).read_bytes()
+            with self.assertRaisesRegex(ValueError, "Conflicting receipts"):
+                self.apply(1, 2)
+            self.assertEqual(before, (self.engine / reg.LOG).read_bytes())
+            self.assertFalse(self.journal)
+
     def test_historical_vote_survives_additive_classification_migration(self):
         from classification import migrate_csv, normalize
         path = self.engine / reg.EV

@@ -141,9 +141,10 @@ def submissions(actor=None):
             f"repos/{INBOX}/issues?state=all&sort=created&direction=asc&per_page=100&page={page}{suffix}"
         )
         for issue in items:
-            if issue.get("pull_request") or (issue.get("body") or "").splitlines()[
-                :1
-            ] not in ([HEADER], [attachments.HEADER]):
+            body = issue.get("body") or ""
+            if issue.get("pull_request") or not (
+                body.splitlines()[:1] == [HEADER] or attachments.has_header(body)
+            ):
                 continue
             result.append(issue)
         if len(items) < 100:
@@ -153,7 +154,7 @@ def submissions(actor=None):
 
 def decode(issue):
     body = issue["body"].replace("\r\n", "\n")
-    if body.startswith(attachments.HEADER + "\n"):
+    if attachments.has_header(body):
         # Verify the original issue author/body before reading an external file.
         original(issue)
         return attachments.decode(body, unique_object)

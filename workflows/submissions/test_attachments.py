@@ -78,6 +78,37 @@ class AttachmentTests(unittest.TestCase):
         with patch('intake.check_destination'), patch('intake.gh', return_value=[old,new,{'body':'unrelated'}]):
             self.assertEqual(intake.submissions(),[old,new])
 
+    def test_leading_upload_is_discovered_and_keeps_exact_original_body(self):
+        link = '[reviews.csv](' + URL + ')'
+        text = link + '\n\n' + body().replace(link, '')
+        item = issue(text)
+        with patch('intake.check_destination'), patch('intake.gh', return_value=[item]):
+            self.assertEqual(intake.submissions(), [item])
+        with patch('intake.original', return_value='reader_a') as original, patch('attachments.download', return_value=CSV.encode()):
+            self.assertEqual(intake.decode(item)['payload'], CSV)
+            original.assert_called_once_with(item)
+            self.assertEqual(item['body'], text)
+            self.assertEqual(intake.decode(issue(text.replace('\n', '\r\n')))['payload'], CSV)
+
+    def test_leading_upload_keeps_authentication_and_content_checks(self):
+        link = '[reviews.csv](' + URL + ')'
+        text = link + '\n\n' + body().replace(link, '')
+        with patch('intake.original', side_effect=ValueError('Edited')), patch('attachments.download') as get:
+            with self.assertRaisesRegex(ValueError, 'Edited'):
+                intake.decode(issue(text))
+            get.assert_not_called()
+        with patch('intake.original', return_value='reader_a'), patch('attachments.download', return_value=b'wrong'):
+            with self.assertRaisesRegex(ValueError, 'differs'):
+                intake.decode(issue(text))
+
+    def test_arbitrary_prefix_and_duplicate_upload_still_rejected(self):
+        for text in ['Unrelated prose\n' + body(), '> ' + body(),
+                     '[bad](http://127.0.0.1/reviews.csv)\n' + body(),
+                     '[reviews.csv](' + URL + ')\n\n' + body()]:
+            with patch('attachments.download') as get, self.assertRaises(ValueError):
+                attachments.decode(text, intake.unique_object)
+            get.assert_not_called()
+
     def test_redirect_cannot_reach_arbitrary_host_and_body_is_bounded(self):
         session=MagicMock(); response=session.get.return_value.__enter__.return_value
         response.is_redirect=True; response.headers={'Location':'http://127.0.0.1/internal'}
