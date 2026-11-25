@@ -447,7 +447,7 @@ def validate(folder, current_inputs=None, prior=None):
         r["context_id"]: r["context_type"]
         for r in definitions["schema/T7_geographic_context.csv"]
     }
-    used, seen = set(), set()
+    used, seen, cells = set(), set(), set()
     for r in rows:
         rid = r["mapping_id"]
         require(
@@ -528,6 +528,14 @@ def validate(folder, current_inputs=None, prior=None):
             ),
             "Unresolved spatial context",
         )
+        cell = (
+            r["suitability_family_id"],
+            r["variable"],
+            a["scope_type"],
+            a["scope_id"],
+        )
+        require(cell not in cells, "Duplicate proposed family/variable/context")
+        cells.add(cell)
         if prior is not None:
             collisions = [
                 o["mapping_id"]

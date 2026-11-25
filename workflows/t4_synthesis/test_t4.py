@@ -629,6 +629,13 @@ class T4Route(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Authored bytes"):
             core.validate(self.folder)
 
+    def test_duplicate_cell_and_invalid_unaccepted_stage_fail_before_review(self):
+        self.save([self.row, dict(self.row, mapping_id="different_id")])
+        with self.assertRaisesRegex(ValueError, "Duplicate proposed"):
+            core.validate(self.folder)
+        with self.assertRaisesRegex(ValueError, "Duplicate proposed"):
+            acceptance.verify(self.root)
+
     def test_exact_binding_overrides_global_and_missing_binding_can_remain_held(self):
         self.row["applicability"].update(scope_type="admin_country", scope_id="country")
         self.change_packet(

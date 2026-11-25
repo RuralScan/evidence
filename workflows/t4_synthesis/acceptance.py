@@ -113,6 +113,13 @@ def record(root, number):
 
 
 def verify(root, base=None):
+    proposals = root / PROPOSALS
+    for folder in sorted(proposals.iterdir()) if proposals.exists() else []:
+        proposal, _ = validate(folder)
+        require(
+            proposal["id"] == folder.name,
+            "Staged proposal directory differs from its ID",
+        )
     current = (root / JOURNAL).read_bytes() if (root / JOURNAL).exists() else b""
     previous = b""
     if base:
