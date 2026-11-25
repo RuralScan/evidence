@@ -62,3 +62,16 @@ jobs:
             args+=(--base "$PUSH_BEFORE")
           fi
           python workflows/submissions/check_registers.py --ciat-repo "$CIAT_TEST_REPO" "${args[@]}"
+      - name: Verify priority source history and independent adoption receipts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          BASE_SHA="$PR_BASE"
+          if [[ -z "$BASE_SHA" ]]; then BASE_SHA="$PUSH_BEFORE"; fi
+          if ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then BASE_SHA=$(git rev-parse HEAD^); fi
+          python workflows/priority_classification/priority_store.py check --base "$BASE_SHA"
+          git clone --single-branch --branch main --no-tags https://github.com/RuralScan/method.git "$RUNNER_TEMP/priority-method-main"
+          METHOD_BASE=$(git -C "$RUNNER_TEMP/priority-method-main" rev-parse HEAD)
+          python workflows/priority_classification/adopt.py check --base "$BASE_SHA" --method-repo "$RUNNER_TEMP/priority-method-main" --method-base "$METHOD_BASE" --evidence-base "$BASE_SHA"
