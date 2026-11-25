@@ -76,8 +76,10 @@ This version keeps context mappings separate and does not infer override precede
 `justification.evidence_applicability` maps every supporting evidence ID to its
 source-based applicability explanation.
 
-`replaces` maps prior mapping IDs to `core.digest(old_row)`, using exact rows from
-the current queue. A new ID cannot bypass replacement of an existing scientific
+`replaces` maps prior mapping IDs to `core.replacement_digest(old_row)`, using rows from
+the current queue. This omits only historical editorial `justification`; it retains
+all scientific fields and the complete rationale of an accepted AI mapping.
+A new ID cannot bypass replacement of an existing scientific
 cell. To withdraw a mapping, use `action: withdraw`, exact replacement hashes and
 header-only `rows.csv`. Reversal uses another proposal that explicitly restores
 earlier accepted values; never rewrite history.

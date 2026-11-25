@@ -502,6 +502,31 @@ class T4Route(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "scientific cell"):
             core.validate(self.folder, self.packet, [before])
 
+    def test_historical_wording_does_not_invalidate_scientific_replacement(self):
+        historical = dict(
+            mapping_id="mapping",
+            nbs_id="practice",
+            suitability_family_id="family",
+            variable="slope",
+            relationship_params={"old": 123},
+            evidence_ids=["ev"],
+            justification="Historical wording",
+        )
+        published = dict(historical, justification="Reviewed editorial correction")
+        self.assertEqual(
+            core.replacement_digest(historical), core.replacement_digest(published)
+        )
+        self.assertNotEqual(
+            core.replacement_digest(self.row),
+            core.replacement_digest(dict(self.row, justification={"changed": True})),
+        )
+        self.baseline["practice"][core.TABLE] = [historical]
+        self.p["replaces"] = {"mapping": core.replacement_digest(published)}
+        self.save()
+        core.validate(self.folder, self.packet, [published])
+        self.accept()
+        self.assertEqual(self.queue()["recipes"]["practice"][core.TABLE], [self.row])
+
     def test_new_input_definition_and_review_events_stale_outputs(self):
         self.accept()
         for relative in (

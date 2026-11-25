@@ -84,6 +84,14 @@ def proposal_digest(folder):
     )
 
 
+def replacement_digest(row):
+    """Exclude only the historical editorial field; accepted AI rationale is scientific."""
+    value = dict(row)
+    if "readiness" not in value:
+        value.pop("justification", None)
+    return digest(value)
+
+
 def read_rows(path):
     reader = csv.DictReader(io.StringIO(path.read_text(), newline=""))
     require(
@@ -425,7 +433,7 @@ def validate(folder, current_inputs=None, prior=None):
         require(
             all(
                 k in old
-                and digest(old[k]) == v
+                and replacement_digest(old[k]) == v
                 and old[k].get("suitability_family_id") == p["family"]
                 for k, v in replacements.items()
             ),
