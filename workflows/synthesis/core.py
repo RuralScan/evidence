@@ -92,7 +92,7 @@ def inputs(root, producer, practice, registers):
     )
     candidate_ids = {r["evidence_id"] for r in ev}
     reviews = [r for r in reviews if r.get("evidence_id") in candidate_ids]
-    return {
+    packet = {
         "practice": practice,
         "definitions": definitions,
         "review_log": reviews,
@@ -101,6 +101,162 @@ def inputs(root, producer, practice, registers):
         "configuration": files,
         "contract_sha256": digest(CONTRACT.read_bytes()),
     }
+    from submissions.family_hierarchy import coverage, load
+
+    hierarchy = coverage(root, ev, reviews)
+    if hierarchy is not None:
+        hierarchy["groups"] = load(root)["definition"]["evidence_aggregation"]["groups"]
+        hierarchy["nodes"] = {
+            k: v for k, v in hierarchy["nodes"].items() if v["nbs_id"] == practice
+        }
+        hierarchy["coverage"] = {
+            k: v for k, v in hierarchy["coverage"].items() if k in hierarchy["nodes"]
+        }
+        packet["family_hierarchy"] = hierarchy
+    return packet
+
+
+def group_definition(proposal, packet):
+    gid = proposal.get("evidence_group_id")
+    if gid is None:
+        return None
+    groups = packet.get("family_hierarchy", {}).get("groups", {})
+    require(
+        isinstance(gid, str)
+        and gid in groups
+        and groups[gid]["nbs_id"] == proposal["practice"],
+        "Unknown evidence group in pinned inputs",
+    )
+    return groups[gid]
+
+
+def prior_rows(queue, proposal):
+    gid = proposal.get("evidence_group_id")
+    if gid is None:
+        return queue["recipes"][proposal["practice"]][TABLES[proposal["table"]]]
+    matches = [
+        g
+        for g in queue["effect_synthesis"].get("groups", [])
+        if g["evidence_group_id"] == gid and g["practice"] == proposal["practice"]
+    ]
+    return matches[0]["recipes"][TABLES[proposal["table"]]] if matches else []
+
+
+def validate_aggregation(proposal, row, packet):
+    """Demand explicit applicability, including missing children; never infer a pooled score."""
+    group = group_definition(proposal, packet)
+    hierarchy = packet.get("family_hierarchy")
+    if hierarchy is None:
+        return  # Replaying an immutable historical proposal.
+    from submissions.family_hierarchy import ancestors
+
+    nodes = hierarchy["nodes"]
+    family = row.get("suitability_family_id")
+    require(
+        not group or not family,
+        "Group summary cannot masquerade as a suitability family",
+    )
+    target = (
+        "group:" + proposal["evidence_group_id"]
+        if group
+        else ("family:" + family if family else "practice:" + proposal["practice"])
+    )
+    members = (
+        set(group["families"])
+        if group
+        else (
+            {family}
+            if family
+            else {
+                n["id"]
+                for n in nodes.values()
+                if n["level"] == "family"
+                and n.get("spatial_product_type") != "qualitative_only"
+                and not n["id"].endswith("__cross_family")
+            }
+        )
+    )
+    refs = row["evidence_ids"]
+    known = {}
+    allowed = {}
+    for eid in refs:
+        node = hierarchy["findings"][eid]["node"]
+        lineage = {node} | ancestors(nodes, node)
+        require(
+            not any(
+                nodes[n].get("spatial_product_type") == "qualitative_only"
+                for n in lineage
+            ),
+            "Qualitative-only evidence cannot support landscape outputs",
+        )
+        known[eid] = {nodes[n]["id"] for n in lineage if nodes[n]["level"] == "family"}
+        level = nodes[node]["level"]
+        if level == "legacy_family":
+            require(
+                target in lineage,
+                "Historical scope needs a finding correction before child attribution",
+            )
+            allowed[eid] = set()
+        elif level == "group":
+            allowed[eid] = set(hierarchy["groups"][nodes[node]["id"]]["families"])
+            require(
+                bool(allowed[eid] & members),
+                "Evidence belongs to a different group scope",
+            )
+        else:
+            allowed[eid] = known[eid] or members
+        require(
+            not known[eid] or known[eid] <= members,
+            "Evidence belongs to a different family scope",
+        )
+    if family and all(
+        target
+        in (
+            {hierarchy["findings"][eid]["node"]}
+            | ancestors(nodes, hierarchy["findings"][eid]["node"])
+        )
+        for eid in refs
+    ):
+        return  # Exact-family evidence, no upward or cross-scope claim.
+    a = row["justification"].get("aggregation", {})
+    require(
+        isinstance(a, dict)
+        and all(nonempty(a.get(k)) for k in ("scope_rationale", "conflict_note")),
+        "Aggregation needs scope rationale and conflict note",
+    )
+    for key in ("covered_families", "unresolved_families"):
+        require(
+            isinstance(a.get(key), list)
+            and all(isinstance(v, str) for v in a[key])
+            and len(a[key]) == len(set(a[key])),
+            "Aggregation needs unique child coverage lists",
+        )
+    covered, unresolved = set(a["covered_families"]), set(a["unresolved_families"])
+    require(
+        not covered & unresolved and covered | unresolved == members,
+        "Aggregation must account for every child family",
+    )
+    claims = a.get("evidence_applicability", {})
+    require(
+        isinstance(claims, dict) and set(claims) == set(refs),
+        "Aggregation must explain each supporting finding",
+    )
+    supported = set()
+    for eid, claim in claims.items():
+        require(
+            isinstance(claim, dict)
+            and nonempty(claim.get("rationale"))
+            and isinstance(claim.get("families"), list)
+            and all(isinstance(v, str) for v in claim["families"]),
+            "Finding applicability needs families and source rationale",
+        )
+        targets = set(claim["families"])
+        require(
+            targets <= covered and targets <= allowed[eid],
+            "Finding cannot inherit support for sibling families",
+        )
+        supported.update(targets)
+    require(supported == covered, "Covered family has no justified supporting finding")
 
 
 def replacement_digest(row):
@@ -223,6 +379,7 @@ def validate(folder, current_inputs=None, prior=None):
     )
     packet = json.loads((folder / "inputs.json").read_bytes())
     require(packet.get("practice") == p["practice"], "Wrong input practice")
+    group_definition(p, packet)
     require(
         packet.get("contract_sha256") == digest(CONTRACT.read_bytes()),
         "Synthesis contract differs",
@@ -418,6 +575,7 @@ def validate(folder, current_inputs=None, prior=None):
                 and priorities[row["variable_id"]].get("mcda_role") == "priority",
                 "T6 must reference a T5 priority",
             )
+        validate_aggregation(p, row, packet)
         deficient = justification.get("data_deficient") is True
         if not refs:
             require(deficient, "No supporting evidence: record data deficiency")
@@ -493,7 +651,7 @@ def entries(root):
 def apply(root, producer, registers, baseline):
     """Replay accepted values exactly; stale decisions stay visible but cannot be packaged."""
     rows = json.loads(json.dumps(baseline))
-    status, packets = {}, {}
+    status, packets, groups = {}, {}, {}
     seen = set()
     for event in entries(root):
         pid = event["proposal_id"]
@@ -504,12 +662,25 @@ def apply(root, producer, registers, baseline):
             "Accepted proposal changed",
         )
         p, authored = validate(folder)
-        key = (p["practice"], p["table"])
+        gid = p.get("evidence_group_id")
+        if gid is not None:
+            group = groups.setdefault(
+                gid,
+                {
+                    "practice": p["practice"],
+                    "recipes": {name: [] for name in TABLES.values()},
+                    "status": {},
+                },
+            )
+            require(group["practice"] == p["practice"], "Group changed practice")
+            destination, scope_status = group["recipes"], group["status"]
+        else:
+            destination, scope_status = rows[p["practice"]], status
         if event["decision"] == "hold":
             require(pid in seen, "Cannot hold an unaccepted proposal")
-            for rid in status:
-                if status[rid]["proposal_id"] == pid:
-                    status[rid]["status"] = "held"
+            for rid in scope_status:
+                if scope_status[rid]["proposal_id"] == pid:
+                    scope_status[rid]["status"] = "held"
             continue
         require(
             event["decision"] == "accept" and pid not in seen,
@@ -517,29 +688,26 @@ def apply(root, producer, registers, baseline):
         )
         seen.add(pid)
         name = TABLES[p["table"]]
-        before = rows[p["practice"]][name]
+        before = destination[name]
         validate(folder, prior=before)
         if p["practice"] not in packets:
             packets[p["practice"]] = inputs(root, producer, p["practice"], registers)
         current = digest(packets[p["practice"]]) == p["inputs_sha256"]
         replaced = set(p["replaces"])
         for rid in replaced:
-            status.pop((p["practice"], p["table"], rid), None)
-        rows[p["practice"]][name] = [
+            scope_status.pop((p["practice"], p["table"], rid), None)
+        destination[name] = [
             r for r in before if r["record_id"] not in replaced
         ] + authored
         cell_keys = policy()["tables"][p["table"]]["cell_fields"]
-        cells = [
-            tuple(r.get(k) or None for k in cell_keys)
-            for r in rows[p["practice"]][name]
-        ]
+        cells = [tuple(r.get(k) or None for k in cell_keys) for r in destination[name]]
         require(
             len(cells) == len(set(cells)),
             "Multiple rows define the same scientific cell",
         )
         if p["action"] == "withdraw":
             for rid in replaced:
-                status[(p["practice"], p["table"], rid)] = {
+                scope_status[(p["practice"], p["table"], rid)] = {
                     "status": "accepted" if current else "stale",
                     "action": "withdraw",
                     "proposal_id": pid,
@@ -551,7 +719,7 @@ def apply(root, producer, registers, baseline):
                     "previous_sha256": p["replaces"][rid],
                 }
         for r in authored:
-            status[(p["practice"], p["table"], r["record_id"])] = {
+            scope_status[(p["practice"], p["table"], r["record_id"])] = {
                 "status": "accepted" if current else "stale",
                 "proposal_id": pid,
                 "proposal_sha256": event["proposal_sha256"],
@@ -587,4 +755,23 @@ def apply(root, producer, registers, baseline):
         "mode": "ai_led",
         "historical_rows_are_accepted": False,
         "rows": published,
+        **(
+            {
+                "groups": [
+                    {
+                        "evidence_group_id": gid,
+                        "practice": g["practice"],
+                        "recipes": g["recipes"],
+                        "runtime_eligible": False,
+                        "rows": [
+                            {"practice": k[0], "table": k[1], "record_id": k[2], **v}
+                            for k, v in sorted(g["status"].items())
+                        ],
+                    }
+                    for gid, g in sorted(groups.items())
+                ]
+            }
+            if groups
+            else {}
+        ),
     }

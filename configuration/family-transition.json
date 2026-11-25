@@ -1,0 +1,262 @@
+{
+  "format": "ruralscan.family-transition.v1",
+  "decision_id": "agroforestry_family_definitions",
+  "nbs_id": "agroforestry",
+  "baseline": {
+    "repository": "RuralScan/method",
+    "revision": "4fc444bdf0be2a66ea88cde78ef1e47e812a74e5",
+    "file": "data-model/configuration/FAM_family_registry.csv",
+    "sha256": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136"
+  },
+  "historical_definitions": [
+    {
+      "subpractice_id": "alley_cropping",
+      "nbs_id": "agroforestry",
+      "name": "Alley cropping",
+      "definition": "Planted rows of woody perennials with annual crops cultivated in the alleys between them.",
+      "suitability_family_id": "agroforestry__planted_silvoarable",
+      "dominant_limiting_factor": "Arable biophysical envelope + machinery/management access on cultivable land.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Planted silvoarable systems on cultivable land share a slope/soil/rainfall envelope and a management-access constraint; grouped by that shared limiting factor, not by tree species.",
+      "references": "[\"Nair 1993\", \"Zomer et al. 2014\"]"
+    },
+    {
+      "subpractice_id": "tree_intercropping",
+      "nbs_id": "agroforestry",
+      "name": "Tree intercropping",
+      "definition": "Planted trees dispersed within or among annual crops on cultivable land.",
+      "suitability_family_id": "agroforestry__planted_silvoarable",
+      "dominant_limiting_factor": "Arable biophysical envelope + management access on cultivable land.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Same planted-on-cropland envelope as alley cropping; same dominant limiting factor.",
+      "references": "[\"Nair 1993\"]"
+    },
+    {
+      "subpractice_id": "planted_boundary_cropland",
+      "nbs_id": "agroforestry",
+      "name": "Planted boundary / live fence on cropland",
+      "definition": "Deliberately planted tree/shrub lines on the boundaries of cultivated fields.",
+      "suitability_family_id": "agroforestry__planted_silvoarable",
+      "dominant_limiting_factor": "Arable biophysical envelope + management access; established by planting.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Planted establishment on cropland places it in the silvoarable envelope family (distinct from F4, where the limiting factor is linear placement geometry rather than the arable envelope).",
+      "references": "[\"Nair 1993\"]"
+    },
+    {
+      "subpractice_id": "fmnr",
+      "nbs_id": "agroforestry",
+      "name": "Farmer-managed natural regeneration (FMNR)",
+      "definition": "Re-establishing tree cover by protecting and managing natural regrowth from living stumps, roots and seed, rather than planting.",
+      "suitability_family_id": "agroforestry__regeneration_farmland",
+      "dominant_limiting_factor": "Regeneration potential — remnant rootstock, seedbank, seed-source proximity, and tenure security to protect regrowth.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Limited by regeneration potential, not the planting envelope; a different variable set (woody-cover baseline/change, seed-source distance, tenure), so it cannot be an override of F1.",
+      "references": "[\"Reij & Garrity 2016\"]"
+    },
+    {
+      "subpractice_id": "parkland_retention",
+      "nbs_id": "agroforestry",
+      "name": "Parkland tree retention",
+      "definition": "Retaining/regenerating scattered mature trees on cropland (e.g. Faidherbia parkland) by protecting natural regeneration.",
+      "suitability_family_id": "agroforestry__regeneration_farmland",
+      "dominant_limiting_factor": "Regeneration potential + tenure (retention/ANR), not deliberate planting.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Retained parkland is regeneration-driven (kin to ANR/FMNR); a planted parkland would instead sit in F1. Keyed by establishment driver, not appearance.",
+      "references": "[\"Reij & Garrity 2016\"]"
+    },
+    {
+      "subpractice_id": "anr_on_farm",
+      "nbs_id": "agroforestry",
+      "name": "Assisted natural regeneration on farmland",
+      "definition": "Active assistance (weeding, protection, thinning) to accelerate natural regeneration on farmland.",
+      "suitability_family_id": "agroforestry__regeneration_farmland",
+      "dominant_limiting_factor": "Regeneration potential — seedbank/rootstock, seed source, tenure.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Same regeneration-potential limiting factor as FMNR and parkland retention.",
+      "references": "[\"Reij & Garrity 2016\"]"
+    },
+    {
+      "subpractice_id": "planted_silvopasture",
+      "nbs_id": "agroforestry",
+      "name": "Planted silvopasture",
+      "definition": "Deliberate integration of planted trees with pasture and grazing livestock.",
+      "suitability_family_id": "agroforestry__silvopastoral",
+      "dominant_limiting_factor": "Biophysical envelope PLUS grazing context and forage/livestock variables.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Needs additional variables (forage, grazing pressure, livestock) beyond the silvoarable envelope; overrides only re-parameterise existing variables, so it is its own family.",
+      "references": "[\"Nair 1993\"]"
+    },
+    {
+      "subpractice_id": "agrosilvopasture",
+      "nbs_id": "agroforestry",
+      "name": "Agrosilvopasture",
+      "definition": "Combined trees + crops + livestock on the same land unit.",
+      "suitability_family_id": "agroforestry__silvopastoral",
+      "dominant_limiting_factor": "Envelope + grazing context + forage/livestock variables.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "Shares the grazing-context limiting factor with planted silvopasture.",
+      "references": "[\"Nair 1993\"]"
+    },
+    {
+      "subpractice_id": "windbreaks_shelterbelts",
+      "nbs_id": "agroforestry",
+      "name": "Windbreaks & shelterbelts",
+      "definition": "Tree/shrub lines positioned to reduce wind exposure across fields.",
+      "suitability_family_id": "agroforestry__linear_boundary",
+      "dominant_limiting_factor": "Linear-feature geometry — wind exposure and field-boundary placement.",
+      "spatial_product_type": "applicability_zone",
+      "grouping_rationale": "Placement (line within a candidate zone) is the limiting logic, not arable envelope; footprint reported as candidate length/density, never pixel area.",
+      "references": "[\"Brandle et al. 2004\"]"
+    },
+    {
+      "subpractice_id": "contour_vegetative_buffers",
+      "nbs_id": "agroforestry",
+      "name": "Contour & vegetative buffers",
+      "definition": "Tree/shrub lines along contours or slope-flow lines to reduce erosion and runoff.",
+      "suitability_family_id": "agroforestry__linear_boundary",
+      "dominant_limiting_factor": "Linear-feature geometry — slope/flow lines + boundary placement.",
+      "spatial_product_type": "applicability_zone",
+      "grouping_rationale": "Same linear-placement limiting factor as windbreaks; candidate length/density footprint.",
+      "references": "[\"Nair 1993\"]"
+    },
+    {
+      "subpractice_id": "shaded_perennial_crop",
+      "nbs_id": "agroforestry",
+      "name": "Shaded perennial-crop system",
+      "definition": "Shade trees grown over an existing perennial cash crop. The understorey crop (coffee, cocoa, tea, cardamom, pepper, ...) is a PARAMETER of the family, scoped per AOI - not a separate subpractice.",
+      "suitability_family_id": "agroforestry__shaded_perennial",
+      "dominant_limiting_factor": "The host crop's observed distribution / production (where the crop is actually grown), plus shade-as-adaptation at the climate-stressed edge.",
+      "spatial_product_type": "area_suitability",
+      "grouping_rationale": "One family, crop as a parameter (run per candidate crop, combine by max retaining the driving crop) - the way F1 is not split by tree species. Gated by the crop's observed distribution (MapSPAM / GAEZ / EO commodity maps / ag-stats), not a modelled niche; bioclimatic-envelope modelling is the fallback only where distribution data are absent. Crops are not blended into one envelope (coffee highlands and cocoa lowlands are nearly disjoint).",
+      "references": "[\"Schroth et al. 2016\", \"DaMatta 2004\"]"
+    },
+    {
+      "subpractice_id": "homegardens",
+      "nbs_id": "agroforestry",
+      "name": "Multistrata homegardens",
+      "definition": "Intensive multistrata tree-crop-livestock gardens adjacent to dwellings.",
+      "suitability_family_id": "agroforestry__homegardens_proximity",
+      "dominant_limiting_factor": "Settlement and water proximity at sub-pixel scale.",
+      "spatial_product_type": "qualitative_only",
+      "grouping_rationale": "Sub-pixel and proximity-driven; a raster suitability surface misleads, so handled qualitatively via the scorecard + M6 note rather than mapped.",
+      "references": "[\"Kumar & Nair 2004\"]"
+    },
+    {
+      "subpractice_id": "cross_cutting_envelope",
+      "nbs_id": "agroforestry",
+      "name": "Cross-cutting envelope (family-agnostic)",
+      "definition": "Tagging value for evidence applying across ALL agroforestry families (e.g. general biophysical envelope claims), not one subpractice. Not a real subpractice.",
+      "suitability_family_id": "agroforestry__cross_family",
+      "dominant_limiting_factor": "(cross-cutting — applies to all families)",
+      "spatial_product_type": "qualitative_only",
+      "grouping_rationale": "Meta-tag (v0.3.2, pending ratification) so general envelope evidence is not force-pinned to F1; see methodology/schema_changes.",
+      "references": "[]"
+    }
+  ],
+  "subpractice_reassignments": [
+    {
+      "subpractice_id": "planted_boundary_cropland",
+      "previous_family": "agroforestry__planted_silvoarable",
+      "new_family": "agroforestry__boundary_planting",
+      "previous_spatial_product": "area_suitability",
+      "new_spatial_product": "applicability_zone",
+      "existing_evidence_action": "source_review_required"
+    },
+    {
+      "subpractice_id": "windbreaks_shelterbelts",
+      "previous_family": "agroforestry__linear_boundary",
+      "new_family": "agroforestry__wind_shelter",
+      "previous_spatial_product": "applicability_zone",
+      "new_spatial_product": "applicability_zone",
+      "existing_evidence_action": "source_review_required"
+    },
+    {
+      "subpractice_id": "contour_vegetative_buffers",
+      "previous_family": "agroforestry__linear_boundary",
+      "new_family": "agroforestry__contour_buffers",
+      "previous_spatial_product": "applicability_zone",
+      "new_spatial_product": "applicability_zone",
+      "existing_evidence_action": "source_review_required"
+    }
+  ],
+  "legacy_families": {
+    "agroforestry__linear_boundary": {
+      "status": "historical_only",
+      "successors": [
+        "agroforestry__wind_shelter",
+        "agroforestry__contour_buffers"
+      ],
+      "automatic_alias": false
+    }
+  },
+  "legacy_value_aliases": [
+    {
+      "nbs_id": "agroforestry",
+      "value": "cross_family",
+      "canonical_id": "agroforestry__cross_family",
+      "kind": "spelling_only",
+      "rewritten_by_this_release": false
+    }
+  ],
+  "display_groups": {
+    "Linear plantings": [
+      "agroforestry__boundary_planting",
+      "agroforestry__wind_shelter",
+      "agroforestry__contour_buffers"
+    ]
+  },
+  "evidence_migration": {
+    "automatic_reassignment": false,
+    "requires_separate_adoption_pr": true,
+    "requires_source_scope_review": true,
+    "unresolved_action": "retain_original_attribution_pending_review",
+    "preserve_evidence_ids": true,
+    "preserve_source_ids_and_locators": true,
+    "preserve_review_and_receipt_history": true,
+    "reuse_approval_for_changed_scope": false,
+    "duplicate_multifunction_findings": false,
+    "copy_search_protocols_to_successors": false,
+    "current_evidence_pin_changed": false
+  },
+  "scientific_outputs": {
+    "definition_change_recomputes_outputs": false,
+    "affected_proposals_need_new_input_hashes_and_acceptance": true,
+    "historical_gate_reuse": "not_authorized_by_definition_change"
+  },
+  "evidence_aggregation": {
+    "decision_id": "agroforestry_evidence_aggregation",
+    "levels": [
+      "subpractice",
+      "suitability_family",
+      "optional_evidence_group",
+      "practice"
+    ],
+    "groups": {
+      "agroforestry__linear_plantings": {
+        "label": "Linear plantings",
+        "nbs_id": "agroforestry",
+        "families": [
+          "agroforestry__boundary_planting",
+          "agroforestry__wind_shelter",
+          "agroforestry__contour_buffers"
+        ],
+        "is_suitability_family": false,
+        "is_legacy_family_alias": false
+      }
+    },
+    "specific_to_broad": true,
+    "allow_direct_broader_evidence": true,
+    "show_broader_support_for_sparse_children": true,
+    "retain_original_scope_and_review_status": true,
+    "parent_count": "union_of_evidence_ids",
+    "independence": "reviewed_study_origin_not_row_count",
+    "scientific_summary": "scope_justified_ai_proposal_with_human_acceptance",
+    "parent_claims_support_for_every_child": false,
+    "automatic_downward_inheritance": false,
+    "pool_placement_rules": false,
+    "missing_child_support_is_zero": false,
+    "report_child_coverage_and_conflict": true,
+    "existing_synthesis_eligibility_applies": true,
+    "consumer_implementation": "pending_separate_evidence_adoption"
+  }
+}

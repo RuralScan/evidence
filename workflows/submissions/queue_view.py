@@ -130,6 +130,11 @@ def compile_candidate(producer, evidence_repo):
                     )
                 )
     queue["priority_requests"] = publish(queue, requests, evidence_repo)
+    from family_hierarchy import coverage
+
+    hierarchy = coverage(evidence_repo, registers["EV_evidence_register"], review_log)
+    if hierarchy is not None:
+        queue["evidence_hierarchy"] = hierarchy
     return queue, candidate
 
 

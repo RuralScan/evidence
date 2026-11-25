@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import handoff
 
@@ -126,6 +127,23 @@ class HandoffTests(unittest.TestCase):
             ),
             0,
         )
+        # Historical replay must validate the stored scope, even when the proposal changes it.
+        with patch(
+            "submissions.family_hierarchy.intake_family_bytes",
+            return_value=b"untouched",
+        ) as families:
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(
+                    handoff.check(
+                        ciat,
+                        staging,
+                        corpus,
+                        ["--allow-structural"],
+                        check_existing=True,
+                    ),
+                    7,
+                )
+            self.assertEqual(families.call_args.args[1][0]["quote"], self.unit["quote"])
         with self.assertRaisesRegex(ValueError, "scope option"):
             handoff.check(ciat, staging, corpus, ["--run-id=bad"])
 

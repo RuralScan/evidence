@@ -212,9 +212,15 @@ def check(
             target = data / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ciat / relative, target)
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from submissions.family_hierarchy import intake_family_bytes
+
         input_file = data / "units.json"
         env = {**os.environ, "PYTHONPATH": str(ciat / "src")}
         if validate_only:
+            (data / "schema/registers/FAM_family_registry.csv").write_bytes(
+                intake_family_bytes(ciat, units)
+            )
             input_file.write_bytes(payload)
             roles = ["nbs_effect", "asset_vulnerability"]
             if "--allow-structural" in flags:
@@ -244,6 +250,9 @@ def check(
             )
         else:
             input_file.write_bytes(payload)
+        (data / "schema/registers/FAM_family_registry.csv").write_bytes(
+            intake_family_bytes(ciat, archived if check_existing else units)
+        )
         args = [
             sys.executable,
             "-B",
