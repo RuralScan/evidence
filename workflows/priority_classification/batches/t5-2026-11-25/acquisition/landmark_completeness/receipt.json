@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "landmark_completeness",
+  "source_id": "landmark_completeness",
+  "kind": "website",
+  "candidate_sha256": "16b5f5d2a834fb392610f32e0c6773e9298af02c76a9289285d8f1aeab668ce8",
+  "plan_sha256": "31e52ae87b85bf536a8fcae84b70c43468237411088016a52d02a8291741bb30",
+  "checked_at": "2026-11-25T18:51:10.717520+00:00",
+  "metadata": {
+    "doi": "",
+    "submitted_doi": "",
+    "citation": "Data completeness",
+    "title": "Data completeness",
+    "status": "title_required",
+    "reason": "No DOI; verify the source title against the artifact."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "local_hash_replay",
+      "url": "https://www.landmarkmap.org/data-methods/data-completeness",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "verified": true,
+    "reason": "Opening title matches."
+  },
+  "artifact": {
+    "source_id": "landmark_completeness",
+    "kind": "website",
+    "url": "https://www.landmarkmap.org/data-methods/data-completeness",
+    "requested_url": "https://www.landmarkmap.org/data-methods/data-completeness",
+    "route": "local_hash_replay",
+    "fetched_at": null,
+    "http_status": null,
+    "content_type": null,
+    "commit_sha": null,
+    "bytes": 52312,
+    "sha1": "5cd44655a114d90968064525bcd585f05af668ec",
+    "sha256": "55dad9e0ea9a51452fffe21310b0bd48312b38ee86b210fb349618f5472777ee"
+  }
+}

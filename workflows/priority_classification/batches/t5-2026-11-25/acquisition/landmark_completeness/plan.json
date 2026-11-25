@@ -1,0 +1,9 @@
+{
+  "candidate_id": "landmark_completeness",
+  "kind": "website",
+  "artifact_url": "https://www.landmarkmap.org/data-methods/data-completeness",
+  "publisher_hosts": [
+    "www.landmarkmap.org"
+  ],
+  "expected_sha256": "55dad9e0ea9a51452fffe21310b0bd48312b38ee86b210fb349618f5472777ee"
+}

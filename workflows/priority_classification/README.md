@@ -86,3 +86,7 @@ Unit tests cover real local acquisition replay, original human review authentica
 The [preparation dossier](preparations/2026-11-25/README.md) contains six proposed source objects and five original packet findings, not live registry records. It reconciles their artifact hashes with six XCS candidates and preserves the eight distinct XCE candidate findings from evidence PR #101. The crosswalk establishes source-byte identity only. No candidate ID, finding interpretation or review vote is automatically promoted.
 
 Run `python workflows/priority_classification/preparation.py` to verify the preparation. An optional `--library-project /path/to/D591_Rural-Scan_NBS` verifies local library copies against the pinned hashes; it cannot establish remote SharePoint availability. The official store and adoption journal remain empty.
+
+## Consolidated T5 candidate route
+
+[CONSOLIDATION.md](CONSOLIDATION.md) supersedes the parallel XCS/XCE adapter proposal. Eight detailed findings retain complete content and reuse six prepared sources through `priority_store.py`; five earlier packet observations remain distinct. All are unreviewed preparations. The single official review ledger and existing adoption route are unchanged.

@@ -1,5 +1,7 @@
 # First source-registration preparation
 
+**Consolidation update:** candidate-route ownership is now resolved by [CONSOLIDATION.md](../../CONSOLIDATION.md). The eight finer-grained observations have a reviewed-in-code staging adapter; they remain unregistered and scientifically unreviewed. The acquisition/access status below is unchanged.
+
 **Proposed, not registered.** Six source objects and five original packet findings are prepared here. The official `priority-evidence/` store has no records from this batch. There are no human votes, accepted classifications, binding verifications or releases.
 
 ## Source access and identity

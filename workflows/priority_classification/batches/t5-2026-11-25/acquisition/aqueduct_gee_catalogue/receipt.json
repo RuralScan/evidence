@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "aqueduct_gee_catalogue",
+  "source_id": "aqueduct_gee_catalogue",
+  "kind": "website",
+  "candidate_sha256": "c1f9748d52b28a9394d0655d37c196962d575ac3ce7df5d3dac6621a8bed3ed1",
+  "plan_sha256": "8e697a40371206fd571cbbf53876ed343f77f93000945540dd5f1139c97f74cd",
+  "checked_at": "2026-11-25T18:51:10.724119+00:00",
+  "metadata": {
+    "doi": "",
+    "submitted_doi": "",
+    "citation": "WRI Aqueduct Baseline Annual Version 4.0",
+    "title": "WRI Aqueduct Baseline Annual Version 4.0",
+    "status": "title_required",
+    "reason": "No DOI; verify the source title against the artifact."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "local_hash_replay",
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "verified": true,
+    "reason": "Opening title matches."
+  },
+  "artifact": {
+    "source_id": "aqueduct_gee_catalogue",
+    "kind": "website",
+    "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+    "requested_url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+    "route": "local_hash_replay",
+    "fetched_at": null,
+    "http_status": null,
+    "content_type": null,
+    "commit_sha": null,
+    "bytes": 158570,
+    "sha1": "623bf69a1a60d51382711ed1bba538175ae24800",
+    "sha256": "226be8c474a4ca0eeb560d14ed65dff7db806d68f6f34b1420240df953f76797"
+  }
+}

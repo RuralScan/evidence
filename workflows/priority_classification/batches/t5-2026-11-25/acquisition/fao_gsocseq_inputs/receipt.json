@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "fao_gsocseq_inputs",
+  "source_id": "fao_gsocseq_inputs",
+  "kind": "website",
+  "candidate_sha256": "4aaecee2e16a2391f07030906f235e8cb6dcc39a54273c03e6037adad7577d90",
+  "plan_sha256": "f6bd65d2e3958e2a1e7c63d1853ebfe6ae83050d97c1261d5ef067be0f31a442",
+  "checked_at": "2026-11-25T18:51:10.735812+00:00",
+  "metadata": {
+    "doi": "",
+    "submitted_doi": "",
+    "citation": "FAO. Technical Manual Global Soil Organic Carbon Sequestration Potential Map GSOCseq. Chapter 6: Data sets and inputs.",
+    "title": "Data sets and inputs",
+    "status": "title_required",
+    "reason": "No DOI; verify the source title against the artifact."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "direct",
+      "url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "verified": true,
+    "reason": "Opening title matches."
+  },
+  "artifact": {
+    "source_id": "fao_gsocseq_inputs",
+    "kind": "website",
+    "url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+    "requested_url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+    "route": "direct",
+    "fetched_at": "2026-11-25T18:51:10.735812+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "commit_sha": null,
+    "bytes": 81566,
+    "sha1": "a11311463243038355d1aefe981cce552b17c8bc",
+    "sha256": "75fe431797cd7fdf908fcd7507bd73332b7ff07fdaae7912ee5b743d8aba0206"
+  }
+}

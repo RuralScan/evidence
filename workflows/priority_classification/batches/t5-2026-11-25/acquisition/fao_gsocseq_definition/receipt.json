@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "fao_gsocseq_definition",
+  "source_id": "fao_gsocseq_definition",
+  "kind": "website",
+  "candidate_sha256": "fcd9233114c87714e2ced42c9eef5e47ebf139a5020357f1e63a7061507fe232",
+  "plan_sha256": "616257f11dbc385d5e201e5d8ee1ef372b4ecd30a29604153b23b25ead6abaa1",
+  "checked_at": "2026-11-25T18:51:10.720360+00:00",
+  "metadata": {
+    "doi": "",
+    "submitted_doi": "",
+    "citation": "Soil Organic Carbon (SOC) sequestration",
+    "title": "Soil Organic Carbon (SOC) sequestration",
+    "status": "title_required",
+    "reason": "No DOI; verify the source title against the artifact."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "local_hash_replay",
+      "url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "verified": true,
+    "reason": "Opening title matches."
+  },
+  "artifact": {
+    "source_id": "fao_gsocseq_definition",
+    "kind": "website",
+    "url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+    "requested_url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+    "route": "local_hash_replay",
+    "fetched_at": null,
+    "http_status": null,
+    "content_type": null,
+    "commit_sha": null,
+    "bytes": 48921,
+    "sha1": "bc5b88ea28bfb971356988b47c231dd1de9886f0",
+    "sha256": "64f02aae75aee5e327c2d739944b868bfe9d96d03d7929d4985a0d21f57b6e39"
+  }
+}

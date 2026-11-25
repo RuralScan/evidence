@@ -1,0 +1,9 @@
+{
+  "candidate_id": "copernicus_spei_2026",
+  "kind": "pdf",
+  "artifact_url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+  "publisher_hosts": [
+    "drought.emergency.copernicus.eu"
+  ],
+  "expected_sha256": "a65d8e7fb2727e1b66ec97517760d7a3eb49ca6552831ca1108fb7e66fad3086"
+}

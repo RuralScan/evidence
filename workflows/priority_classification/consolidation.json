@@ -1,0 +1,140 @@
+{
+  "source_repository": "RuralScan/evidence",
+  "source_revision": "25ad0f2b1e6b0efaeb356da877b02743dbd1ac9e",
+  "superseded_pr": 101,
+  "files": [
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/candidate.json",
+      "sha256": "d45bb618a7fb92c83d6f1450c2de2847930f7c50cccb7c3de46741aa00de264a"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/plan.json",
+      "sha256": "f36116c8e3a40e2e0e0476e0b8fe7d3c8ba7e0c1737cc6398a8ca5dfe0471460"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/receipt.json",
+      "sha256": "2ae73b8ad29b0fddbf13a1b96776e2ea16e8e0f24e8066f62928fb0db6cd9616"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/candidate.json",
+      "sha256": "18896eb51a6055a4e9e7e449f5e9a4fa953a24e978e4c84360bb366f59f9c00a"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/plan.json",
+      "sha256": "e1f0d8bcce7e25b78f399d57042093954d9505fd57038e1782ec6461939bae81"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/receipt.json",
+      "sha256": "b07bd7fc41f04433ea8950232d2e01c1aee04b0d0820efe5e9536e9cacf8b54e"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/candidate.json",
+      "sha256": "8407dce164ae5e41ebbba04acec94686c0cef94cf9dee049f3c9074c99716ee3"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/plan.json",
+      "sha256": "7a07617ad95db355e22a0100c1415cb315f20665862f1920b5766019ed061eb0"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/receipt.json",
+      "sha256": "83de6e94118f31c7c8e08bee1519c5974026f1a2c8f7e4c606621a6981ffc897"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/candidate.json",
+      "sha256": "e0f77afeebcd8c61d08c931f94fbbfab38f5e68e1be1ea91858a3823e5fbf3d2"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/plan.json",
+      "sha256": "50623870d19381265599891c0cbd783fd9d2640ec1b0a7675eb78f8d60d7a3c7"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/receipt.json",
+      "sha256": "ec7f4ac2632a7afe98e7d0295e734fd41840ea0bf0477cf5f4ec9fbc87730782"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/candidate.json",
+      "sha256": "f507e718784a0c92e00e17e50831351e1366c956e3eeac008fd691a2a1a55fb4"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/plan.json",
+      "sha256": "9c0ef6cff29a2567c965b3538948d26fc32c6680ec2c9dbd9ce335326f064e88"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/receipt.json",
+      "sha256": "9e7be67f29849a3b1069c094e203f8874a89d382a07b6ca36a93e2d890aac4fa"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/candidate.json",
+      "sha256": "b2bde71798a9d7ad5d067272c9301f06fc5b4ae499f00d7e48acf7aecc7cfce1"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/plan.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/plan.json",
+      "sha256": "1ae6378deabbd7dd748be8b3e051350f4445494f5447a17c907721fd3941b2c8"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/receipt.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/receipt.json",
+      "sha256": "0f35e7e69c281b984e4bb91dbba4647a5cf24ddbb7750f0e7dbee562428eab78"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+      "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+    },
+    {
+      "source_path": "workflows/priority_classification/batches/t5-2026-11-25/search-log.json",
+      "preserved_path": "workflows/priority_classification/batches/t5-2026-11-25/search-log.json",
+      "sha256": "492e3d875f804ca51630a9d79ca8c1a1916fbc962e4514dc57558a2be2ac8fff"
+    },
+    {
+      "source_path": "workflows/priority_classification/candidate-schema.json",
+      "preserved_path": "workflows/priority_classification/candidate-schema.json",
+      "sha256": "1dfab8845808b1bc0073824d5376443e815ae22c0c0cb383a76de7739dad0f45"
+    },
+    {
+      "source_path": "workflows/priority_classification/protocol.md",
+      "preserved_path": "workflows/priority_classification/protocol.md",
+      "sha256": "2ead9bfc504fc0449b0dfd7edbc3629e31e14accbef68e8acd8573276f98fd29"
+    },
+    {
+      "source_path": "workflows/priority_classification/intake.py",
+      "preserved_path": "workflows/priority_classification/history/t5-proposal/intake.py.txt",
+      "sha256": "bcf549ab660ead63b6456e1c060e48277c2e1ccfdb6d7bbdb3c0bd75e8ffcceb"
+    },
+    {
+      "source_path": "workflows/priority_classification/intake.md",
+      "preserved_path": "workflows/priority_classification/history/t5-proposal/intake.md",
+      "sha256": "06a0af6368867a461f2221f6b34a53ebf5d24dea2d69a89bde5f2e0e556bb9d4"
+    },
+    {
+      "source_path": "registers/cross_cutting/manifest.json",
+      "preserved_path": "workflows/priority_classification/history/t5-proposal/manifest.json",
+      "sha256": "874dc61f9bcd8ff7d38a22a616dee7542c16861edf21f69a1155be320a83936b"
+    },
+    {
+      "source_path": "registers/cross_cutting/README.md",
+      "preserved_path": "workflows/priority_classification/history/t5-proposal/README.md",
+      "sha256": "edaa840efbc0eba4b8635d1f3b32d7bb3cf50b7b629d8210ed56a92b9b14767a"
+    }
+  ],
+  "active_store": "priority-evidence",
+  "active_review": "priority_store.py",
+  "canonical_registrations": 0
+}

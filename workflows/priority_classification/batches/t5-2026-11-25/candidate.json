@@ -1,0 +1,528 @@
+{
+  "format": "ruralscan.cross-cutting-candidate.v1",
+  "batch_id": "t5_2026_11_25",
+  "status": "unreviewed_candidate",
+  "scope": "T5_classification_documentation",
+  "recorded_on": "2026-11-25",
+  "instruction_ref": "workflows/priority_classification/protocol.md",
+  "sources": [
+    {
+      "candidate_source_id": "xcs_aqueduct_gee_catalogue",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "WRI Aqueduct Baseline Annual Version 4.0",
+      "citation": "WRI Aqueduct Baseline Annual Version 4.0",
+      "doi": null,
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/aqueduct_gee_catalogue/receipt.json",
+        "sha256": "2ae73b8ad29b0fddbf13a1b96776e2ea16e8e0f24e8066f62928fb0db6cd9616"
+      },
+      "artifact": {
+        "sha256": "226be8c474a4ca0eeb560d14ed65dff7db806d68f6f34b1420240df953f76797",
+        "media_type": "text/html",
+        "acquisition_url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-retrievable archived snapshot accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "Google Earth Engine data catalogue",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    },
+    {
+      "candidate_source_id": "xcs_copernicus_spei_2026",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "Standardized Precipitation-Evapotranspiration Index (SPEI)",
+      "citation": "Standardized Precipitation-Evapotranspiration Index (SPEI)",
+      "doi": null,
+      "url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/copernicus_spei_2026/receipt.json",
+        "sha256": "b07bd7fc41f04433ea8950232d2e01c1aee04b0d0820efe5e9536e9cacf8b54e"
+      },
+      "artifact": {
+        "sha256": "a65d8e7fb2727e1b66ec97517760d7a3eb49ca6552831ca1108fb7e66fad3086",
+        "media_type": "application/pdf",
+        "acquisition_url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-library PDF accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "European Commission Joint Research Centre",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    },
+    {
+      "candidate_source_id": "xcs_fao_gsocseq_definition",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "Soil Organic Carbon (SOC) sequestration",
+      "citation": "Soil Organic Carbon (SOC) sequestration",
+      "doi": null,
+      "url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_definition/receipt.json",
+        "sha256": "83de6e94118f31c7c8e08bee1519c5974026f1a2c8f7e4c606621a6981ffc897"
+      },
+      "artifact": {
+        "sha256": "64f02aae75aee5e327c2d739944b868bfe9d96d03d7929d4985a0d21f57b6e39",
+        "media_type": "text/html",
+        "acquisition_url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-retrievable archived snapshot accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "FAO technical manual",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    },
+    {
+      "candidate_source_id": "xcs_fao_gsocseq_inputs",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "Data sets and inputs",
+      "citation": "FAO. Technical Manual Global Soil Organic Carbon Sequestration Potential Map GSOCseq. Chapter 6: Data sets and inputs.",
+      "doi": null,
+      "url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/fao_gsocseq_inputs/receipt.json",
+        "sha256": "ec7f4ac2632a7afe98e7d0295e734fd41840ea0bf0477cf5f4ec9fbc87730782"
+      },
+      "artifact": {
+        "sha256": "75fe431797cd7fdf908fcd7507bd73332b7ff07fdaae7912ee5b743d8aba0206",
+        "media_type": "text/html",
+        "acquisition_url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-retrievable archived snapshot accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "FAO technical manual",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    },
+    {
+      "candidate_source_id": "xcs_landmark_completeness",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "Data completeness",
+      "citation": "Data completeness",
+      "doi": null,
+      "url": "https://www.landmarkmap.org/data-methods/data-completeness",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/landmark_completeness/receipt.json",
+        "sha256": "9e7be67f29849a3b1069c094e203f8874a89d382a07b6ca36a93e2d890aac4fa"
+      },
+      "artifact": {
+        "sha256": "55dad9e0ea9a51452fffe21310b0bd48312b38ee86b210fb349618f5472777ee",
+        "media_type": "text/html",
+        "acquisition_url": "https://www.landmarkmap.org/data-methods/data-completeness",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-retrievable archived snapshot accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "LandMark data provider",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    },
+    {
+      "candidate_source_id": "xcs_wri_aqueduct40_2023",
+      "version": "0.1.0",
+      "canonical_source_ref": null,
+      "title": "Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators",
+      "citation": "Kuzma et al. (2023). Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators. World Resources Institute.",
+      "doi": "10.46830/writn.23.00061",
+      "url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+      "identity_receipt": {
+        "path": "workflows/priority_classification/batches/t5-2026-11-25/acquisition/wri_aqueduct40_2023/receipt.json",
+        "sha256": "0f35e7e69c281b984e4bb91dbba4647a5cf24ddbb7750f0e7dbee562428eab78"
+      },
+      "artifact": {
+        "sha256": "bb55ea20f39c4272dea87b1089725900ffbf45673709c18cb0dab8d361a97ae5",
+        "media_type": "application/pdf",
+        "acquisition_url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+        "shared_uri": null
+      },
+      "registration_blockers": [
+        "Cross-cutting registration route not activated.",
+        "Team-library PDF accession required."
+      ],
+      "credibility": {
+        "strength": "Primary documentation; source definitions, not validated local outcome thresholds.",
+        "transparency": "Exact version, locator and acquisition receipt retained.",
+        "authority": "World Resources Institute",
+        "transferability": "Global documentation; no accepted pilot-country inference.",
+        "recency": "Exact artefact retrieved or replayed 2026-11-25; document edition retained.",
+        "seminality": "Product-definition source; no independent calibration claim.",
+        "independence": "Provider documentation is not independent performance validation."
+      }
+    }
+  ],
+  "findings": [
+    {
+      "candidate_finding_id": "xce_spei_dry_event_classes",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_copernicus_spei_2026",
+      "variables": [
+        "drought_hazard"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "SPEI event anomalies have three dry classes with upper-inclusive cutoffs.",
+        "values": {
+          "unit": "unitless",
+          "dry_classes": [
+            {
+              "provider_label": "moderately dry",
+              "lower": -1.5,
+              "lower_inclusive": false,
+              "upper": -1,
+              "upper_inclusive": true
+            },
+            {
+              "provider_label": "very dry",
+              "lower": -2,
+              "lower_inclusive": false,
+              "upper": -1.5,
+              "upper_inclusive": true
+            },
+            {
+              "provider_label": "extremely dry",
+              "lower": null,
+              "lower_inclusive": false,
+              "upper": -2,
+              "upper_inclusive": true
+            }
+          ]
+        }
+      },
+      "locator": {
+        "type": "pdf_page",
+        "value": "PDF/printed p.6, section 4, Table 2, negative-anomaly rows"
+      },
+      "excerpt": "Moderately dry",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "One accumulation-window anomaly against a fitted baseline",
+        "population": "SPEI observations"
+      },
+      "limitations": [
+        "Caption says SPI; table and surrounding section refer to SPEI.",
+        "Not a rule for long-term drought frequency or a particular CSIC dataset."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_spei_standardization",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_copernicus_spei_2026",
+      "variables": [
+        "drought_hazard"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "SPEI describes water-balance anomalies standardized against a baseline; accumulation window changes interpretation.",
+        "values": {
+          "accumulation_unit": "months",
+          "reference_example": "1991-2020"
+        }
+      },
+      "locator": {
+        "type": "pdf_page",
+        "value": "PDF/printed pp.2-3, description and accumulation-window discussion"
+      },
+      "excerpt": "the mean SPEI value for that location and period is zero",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "Source gives 1991-2020 as an example, not a selected binding",
+        "population": "Location-specific climatic water balance"
+      },
+      "limitations": [
+        "A baseline mean or trend is not an event-frequency class.",
+        "Do not transfer one product fit or accumulation period without review."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_quantity_support",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_wri_aqueduct40_2023",
+      "variables": [
+        "water_stress"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "BWS is demand divided by renewable supply; annual aggregation weights monthly stress by demand.",
+        "values": {
+          "unit": "fraction",
+          "support": "HydroBASINS level 6",
+          "input_period": "1979-2019",
+          "provider_stated_clipping": [
+            0,
+            1
+          ]
+        }
+      },
+      "locator": {
+        "type": "pdf_page",
+        "value": "PDF/printed p.11, Results, Source, Description and Step 2"
+      },
+      "excerpt": "Higher values indicate more competition among users.",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "1979-2019 source inputs; monthly and annual output",
+        "population": "Hydrological sub-basins"
+      },
+      "limitations": [
+        "Printed Step 1 formula conflicts with clipping prose; do not implement from that expression.",
+        "Documentation does not verify live raw values or special-status sentinels."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_provider_bands",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_wri_aqueduct40_2023",
+      "variables": [
+        "water_stress"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "Provider has five numeric risk bands and a separate arid/low-use status.",
+        "values": {
+          "unit": "fraction",
+          "boundaries": [
+            0.1,
+            0.2,
+            0.4,
+            0.8
+          ],
+          "provider_labels": [
+            "low",
+            "low-medium",
+            "medium-high",
+            "high",
+            "extremely high"
+          ],
+          "special_status": "arid and low water use",
+          "endpoint_policy": "not fully specified by printed ranges"
+        }
+      },
+      "locator": {
+        "type": "pdf_page",
+        "value": "PDF/printed p.11, Conversion to risk categories table"
+      },
+      "excerpt": "The risk thresholds are based on Aqueduct 2.1",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "Aqueduct 4.0, 2023 edition",
+        "population": "Baseline water stress ratios"
+      },
+      "limitations": [
+        "No source-defined none class.",
+        "Five provider bands are not four RuralScan classes; endpoint and arid choices remain held."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_catalogue_fields",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_aqueduct_gee_catalogue",
+      "variables": [
+        "water_stress"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "Hosted collection distinguishes raw stress, provider category, label and score.",
+        "values": {
+          "asset": "WRI/Aqueduct_Water_Risk/V4/baseline_annual",
+          "type": "FeatureCollection",
+          "fields": [
+            "bws_raw",
+            "bws_cat",
+            "bws_label",
+            "bws_score"
+          ],
+          "geometry": "basin/province/aquifer intersection"
+        }
+      },
+      "locator": {
+        "type": "section",
+        "value": "Earth Engine Snippet; Table Schema rows string_id, pfaf_id and bws_*"
+      },
+      "excerpt": "Baseline water stress raw value",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "Catalogue accessed 2026-11-25; catalogue date range is not a verified baseline statistic",
+        "population": "Collection documentation"
+      },
+      "limitations": [
+        "Do not treat intersected polygons as independent finer hydrological information.",
+        "No live collection or sentinel validation; catalogue availability 2010-2080 cannot override WRI baseline definition."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_landmark_missingness",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_landmark_completeness",
+      "variables": [
+        "iplc_lands"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "Missing mapped coverage cannot establish absence of Indigenous or community land.",
+        "values": {
+          "mapped_presence": "documented presence",
+          "unmapped": "unknown",
+          "coverage": "incomplete"
+        }
+      },
+      "locator": {
+        "type": "section",
+        "value": "Accounting for the map gap on LandMark, final paragraph"
+      },
+      "excerpt": "the absence of data does not indicate the absence of indigenous or community land",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "Web snapshot 2026-11-25; feature dates unresolved",
+        "population": "LandMark country/community maps"
+      },
+      "limitations": [
+        "Presence is not a graded deficit; safeguard interpretation needs human decision.",
+        "No target-country coverage assessment or accepted binary scoring policy."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_soc_change_comparators",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_fao_gsocseq_definition",
+      "variables": [
+        "carbon_sequestration_potential"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "Absolute change compares ending and initial stocks; relative change compares management and business-as-usual at the same horizon.",
+        "values": {
+          "stock_change_unit": "t C/ha",
+          "annual_rate_unit": "t C/ha/year",
+          "absolute": "SOC_scenario(t) - SOC(t0)",
+          "relative": "SOC_SSM(t) - SOC_BAU(t)",
+          "annual_rate": "stock_change / elapsed_years"
+        }
+      },
+      "locator": {
+        "type": "section",
+        "value": "Section 2.4 Estimating SOC sequestration potential, equations 2.1-2.2 and following annual-rate sentence"
+      },
+      "excerpt": "relative to business as usual practices",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "A stated common horizon; 20 years is an example in this section",
+        "population": "Soil management scenarios"
+      },
+      "limitations": [
+        "Stock, change and annual rate are different quantities.",
+        "Relative benefit can include avoided loss; it is not necessarily net atmospheric removal.",
+        "No universal problem-class thresholds follow from this definition."
+      ],
+      "review_state": "unreviewed"
+    },
+    {
+      "candidate_finding_id": "xce_soc_stock_input_support",
+      "version": "0.1.0",
+      "candidate_source_id": "xcs_fao_gsocseq_inputs",
+      "variables": [
+        "carbon_sequestration_potential"
+      ],
+      "knowledge_basis": "primary_documentation",
+      "reported": {
+        "statement": "GSOCmap supplies initial topsoil stocks; its observation vintage needs harmonization before scenario modelling.",
+        "values": {
+          "depth_cm": [
+            0,
+            30
+          ],
+          "stock_unit": "t C/ha",
+          "nominal_grid_arcseconds": 30,
+          "model_baseline_year": 2020,
+          "default_spinup_period": "2000-2020",
+          "recent_monitoring_exception": "2015-2020"
+        }
+      },
+      "locator": {
+        "type": "section",
+        "value": "Section 6.2.1 Initial total SOC stocks, opening three paragraphs"
+      },
+      "excerpt": "Initial total SOC stocks to 30cm depth",
+      "context": {
+        "geography": "global documentation; not local calibration",
+        "period": "Guidance distinguishes historical observations from model year 2020",
+        "population": "Initial SOC inputs to GSOCseq"
+      },
+      "limitations": [
+        "Nominal model year is not the date of every measurement.",
+        "Input-stock guidance does not validate a potential-output binding or country applicability."
+      ],
+      "review_state": "unreviewed"
+    }
+  ],
+  "packet_dependencies": {
+    "workflows/priority_classification/packets/aqueduct_gee_catalogue.json": "8c67e084db59a2c3e4557f18712edc5efcec9bbe1c3db46cc0bc420ad77cd426",
+    "workflows/priority_classification/packets/copernicus_spei_2026.json": "28bf8393ade51e7f29c2b6f57dff6f0ad00ba9cdb88888cb14b4de7482f03037",
+    "workflows/priority_classification/packets/fao_gsocseq_definition.json": "82d3df7a84bc5b89aad86e3e3a2363a372bcb24d2fd4e4f1e35017ec53337e2d",
+    "workflows/priority_classification/packets/landmark_completeness.json": "f213b8ec123cac5456dd76e3eb92f9bc974d7a85d93dec93b233a72a97460c44",
+    "workflows/priority_classification/packets/wri_aqueduct40_2023.json": "950855fd102cf0c91377c71790c4d45992aa309ef2b1fe5dc681f3d802b0eabb"
+  },
+  "review_events": [],
+  "instruction_sha256": "2ead9bfc504fc0449b0dfd7edbc3629e31e14accbef68e8acd8573276f98fd29",
+  "search_ref": "workflows/priority_classification/batches/t5-2026-11-25/search-log.json",
+  "search_sha256": "492e3d875f804ca51630a9d79ca8c1a1916fbc962e4514dc57558a2be2ac8fff",
+  "extraction_agent": {
+    "tool": "Codex",
+    "model": "not exposed in execution metadata",
+    "acquisition_revision": "ab6f45629db61115621cea8385404533eb602ecd"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_id": "aqueduct_gee_catalogue",
+  "kind": "website",
+  "artifact_url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+  "publisher_hosts": [
+    "developers.google.com"
+  ],
+  "expected_sha256": "226be8c474a4ca0eeb560d14ed65dff7db806d68f6f34b1420240df953f76797"
+}
