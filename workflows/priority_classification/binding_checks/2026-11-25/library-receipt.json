@@ -1,0 +1,234 @@
+{
+  "library_relative_path": "0_Methodology_&_Frameworks/priority_classification/bindings_2026_11_25",
+  "checked_date": "2026-11-25",
+  "local_mirror_hash_verified": true,
+  "remote_team_access_verified": false,
+  "canonical_acquisition_receipt": false,
+  "files": [
+    {
+      "name": "aqueduct_annual_asset.json",
+      "bytes": 242,
+      "sha256": "36c129bd35e7b5943ad734cf4de32cdf8d33371c6e96ba32cea6b238ba0aa245"
+    },
+    {
+      "name": "aqueduct_annual_schema.json",
+      "bytes": 8553,
+      "sha256": "fa700fac4954df4dea5cbc2a866a4b3ec9beb30fdb814af8d2fc77b6730d6cb0"
+    },
+    {
+      "name": "aqueduct_monthly_asset.json",
+      "bytes": 244,
+      "sha256": "00cba5b828ccafaa1d679ea26e7c987b19660c5c166bd433303f0082ae42c171"
+    },
+    {
+      "name": "aqueduct_monthly_schema.json",
+      "bytes": 1131,
+      "sha256": "807099212ac2c3bf9c10c5cad5a85cb3884f938213a379ba515f2a2714bf41cd"
+    },
+    {
+      "name": "aqueduct_observations.json",
+      "bytes": 19495,
+      "sha256": "c508c5b391504207ec1c648c2683251be3134cfc5d578ceb70cb157f1680768f"
+    },
+    {
+      "name": "fao_ASI_A_2024_rows.json",
+      "bytes": 2222,
+      "sha256": "dbb8921ac85b5e5a284e3321eaf24a63e0695a29b168f7afac485247a0eeff15"
+    },
+    {
+      "name": "fao_ASI_A_dimensions.json",
+      "bytes": 25435,
+      "sha256": "ef4b7501b2f567e5e1c2a230c691e8eb7cbca68064e5b93aeb0051184e5090ed"
+    },
+    {
+      "name": "fao_ASI_A_sample_-11_8.json",
+      "bytes": 819,
+      "sha256": "8333f1d2d01a0334f6482ad25c66a93c92c2b4794909cc27ca80edd7ed489861"
+    },
+    {
+      "name": "fao_ASI_A_sample_20_10.json",
+      "bytes": 821,
+      "sha256": "1a47ba8c564f5c8145059e58a355396d40da040ae170e0a9d2d58d1bb2e10ae5"
+    },
+    {
+      "name": "fao_ASI_A_sample_25_22.json",
+      "bytes": 820,
+      "sha256": "fdc303d2da40ff04b97ac5612c7435eceec52243eb63f1ab172d24eb4dc247de"
+    },
+    {
+      "name": "fao_ASI_A_sample_36_0.json",
+      "bytes": 801,
+      "sha256": "da09c1c73bc2bf7cd6f017185434d4f8eb5faeede0ed462845260c24ccc7c242"
+    },
+    {
+      "name": "fao_ASI_A_sample_84_28.json",
+      "bytes": 818,
+      "sha256": "53e08e6fbf357ce8d7cee63d173fd237a19635e177089aa2328d9ebb6f13b45f"
+    },
+    {
+      "name": "fao_DI_A_2024_rows.json",
+      "bytes": 2220,
+      "sha256": "b64e412c1ad07c15a862a3b021fd6450bfb89177feef31147a8b410b72952489"
+    },
+    {
+      "name": "fao_DI_A_dimensions.json",
+      "bytes": 25434,
+      "sha256": "a60c809f8195333f4c14f4f9a2ed5cfd5e8a2019083ec50b1c4469126ac981a1"
+    },
+    {
+      "name": "fao_DI_A_sample_-11_8.json",
+      "bytes": 821,
+      "sha256": "610decc34d248fd8ac2019d9fb573e976a0486840d422c5a3709226ea13656f0"
+    },
+    {
+      "name": "fao_DI_A_sample_20_10.json",
+      "bytes": 820,
+      "sha256": "15dbdf3c7c3310fa6d3492cf59092af19901b4e69cc978743a84f82d5ec41eee"
+    },
+    {
+      "name": "fao_DI_A_sample_25_22.json",
+      "bytes": 819,
+      "sha256": "d69bb6a6e9fb47dcff553944264f63d033ba7e91afe9299662bbb290e50b8c31"
+    },
+    {
+      "name": "fao_DI_A_sample_36_0.json",
+      "bytes": 804,
+      "sha256": "36e5450cb7c5de1365a5136aa01441d9f6271a133d60b546d97eb1cf7881da45"
+    },
+    {
+      "name": "fao_DI_A_sample_84_28.json",
+      "bytes": 821,
+      "sha256": "d0da7869c7317dc414c53c67d97f3b22b064f809ac6352510b90210529d65a4a"
+    },
+    {
+      "name": "fao_asi_first.json",
+      "bytes": 227,
+      "sha256": "93662c2ac8498679ab3b217280b7020afdb06188ada2641b442282cd566bf141"
+    },
+    {
+      "name": "fao_asi_item.json",
+      "bytes": 13856,
+      "sha256": "9727e8a718679ad7eb847db2a87fb80ecb6c3dde674c2171207efeda015566b0"
+    },
+    {
+      "name": "fao_asi_service.json",
+      "bytes": 6688,
+      "sha256": "f6d5cfec5bdb2f5076d0d32beee26b4a059833e17ffa60d19fde8b5468c26340"
+    },
+    {
+      "name": "fao_di_diagnostic.tif",
+      "bytes": 66352,
+      "sha256": "633cf5ccab212a2e8902ea84db51ebcacce8644f07d135e3043ec08ca28d3b48"
+    },
+    {
+      "name": "fao_di_export.json",
+      "bytes": 812,
+      "sha256": "2f7c7bc9b36c9354e2f4653a7da27d4b44d55e40fd1b285aa93ad6daab1aa3d6"
+    },
+    {
+      "name": "fao_di_first.json",
+      "bytes": 226,
+      "sha256": "e6716e6616dfea5cacdcaf701599280a09434f1777d1170ae54f5ea5c859b39f"
+    },
+    {
+      "name": "fao_di_item.json",
+      "bytes": 9101,
+      "sha256": "aca521b6afd261c14f658d1d899fc89ce32164a0718a36aa507d6182b9bf8556"
+    },
+    {
+      "name": "fao_di_legend.json",
+      "bytes": 4932,
+      "sha256": "4fb9732170d8bba1ac246487212bfb697c653f00c2d6a8cdbaf87279629e777b"
+    },
+    {
+      "name": "fao_di_service.json",
+      "bytes": 6746,
+      "sha256": "ba87b453efc75eecc9586e33cfc6385865e4d923cf5329a704876fc5695a5fd4"
+    },
+    {
+      "name": "fao_di_tiff_observation.json",
+      "bytes": 460,
+      "sha256": "4aec4b92baf9b614cffb8a0a0d76eeac47ed1f2b702e05c11fb8f3157930af14"
+    },
+    {
+      "name": "fao_hdf_first.json",
+      "bytes": 225,
+      "sha256": "532cb4bbca94ff023eedf53afd01d995406a016e7353240cfa5230442b34088a"
+    },
+    {
+      "name": "fao_hdf_item.json",
+      "bytes": 8667,
+      "sha256": "ad6b0bffef86aefae463f7cc50d52c7976a39fbe1cb8dbf4afdb4f69e3553268"
+    },
+    {
+      "name": "fao_hdf_rows.json",
+      "bytes": 503691,
+      "sha256": "ca831db664abd124653972d55d0a0fc2c8a5b909aff95bed4a83ee0ce08b857a"
+    },
+    {
+      "name": "fao_hdf_service.json",
+      "bytes": 7109,
+      "sha256": "6a575f5b09ed2f62d21f2151314e90d1113b57959b74aea746da22dde5454e19"
+    },
+    {
+      "name": "fao_mvhi_first.json",
+      "bytes": 228,
+      "sha256": "4a84208dceb2f45ff8f037869e678123fd0fd8bba2733223359e59022b71e330"
+    },
+    {
+      "name": "for_afc_tco2eha.tif",
+      "bytes": 27846080,
+      "sha256": "24511e2e55d38ec9249b1c1de1947b2ce22d99f70a9a893c463a7b0d3e8e9571"
+    },
+    {
+      "name": "forest_emissions_observations.json",
+      "bytes": 5010,
+      "sha256": "0ceeabefa4f13cbf78be62e50d8e22f48a397b83f94ac906ac5cd1bbe92cbbe3"
+    },
+    {
+      "name": "forest_loss_observations.json",
+      "bytes": 2842,
+      "sha256": "31a2b78ddbf2cbab4ee00b2284a7ab028b1af68a03548101ca5cb7a2c3b43eaf"
+    },
+    {
+      "name": "forest_zero_observation.json",
+      "bytes": 543,
+      "sha256": "61b6cc2a93c9330a6e4023f644ff02132c49b7178435970250173e01f7324a46"
+    },
+    {
+      "name": "landmark.txt",
+      "bytes": 60621,
+      "sha256": "f2430e1230aafc6ec968e387ce6323555f6ac9b3aa633e3c4fb3fca4b0523004"
+    },
+    {
+      "name": "naturebase_afc_headers.json",
+      "bytes": 645,
+      "sha256": "36f52e494f05e11046df25146159cc13a69340b6d7c52ff3b3e43fa553fcb674"
+    },
+    {
+      "name": "naturebase_afc_raster.json",
+      "bytes": 1224,
+      "sha256": "529f3bbdc9f0e7f235d8766072464d5f13cd4242b126d17506faa916dea89947"
+    },
+    {
+      "name": "naturebase_afc_zip.json",
+      "bytes": 17062,
+      "sha256": "16d5084d4de9a857dfb2d71a2963962c0ae4a843b86ce76ce6e776c055a298c7"
+    },
+    {
+      "name": "raster_followup.json",
+      "bytes": 8792,
+      "sha256": "a63076ac25ef092cd3a719cd701dc006f46a6fb182d177898313ec7d827faf51"
+    },
+    {
+      "name": "spei_observations.json",
+      "bytes": 2835,
+      "sha256": "7549c31d023b240a67a5b3437ffd68230f26e2897d4d19e784ee2c94b96ab922"
+    },
+    {
+      "name": "spei_times.json",
+      "bytes": 40099,
+      "sha256": "f489994e476dd1147d2fbf06ed0138d5d643934d1955beef40cdefff3f5c4298"
+    }
+  ]
+}

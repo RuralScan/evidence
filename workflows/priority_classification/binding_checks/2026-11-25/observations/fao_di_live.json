@@ -1,0 +1,353 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "fao_di_live",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "arcgis_image_service",
+      "url": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer?f=pjson"
+    }
+  ],
+  "input_sha256": {
+    "fao_di_service.json": "ba87b453efc75eecc9586e33cfc6385865e4d923cf5329a704876fc5695a5fd4",
+    "fao_di_item.json": "aca521b6afd261c14f658d1d899fc89ce32164a0718a36aa507d6182b9bf8556",
+    "fao_DI_A_dimensions.json": "a60c809f8195333f4c14f4f9a2ed5cfd5e8a2019083ec50b1c4469126ac981a1",
+    "fao_DI_A_2024_rows.json": "b64e412c1ad07c15a862a3b021fd6450bfb89177feef31147a8b410b72952489",
+    "fao_DI_A_sample_-11_8.json": "610decc34d248fd8ac2019d9fb573e976a0486840d422c5a3709226ea13656f0",
+    "fao_DI_A_sample_36_0.json": "36e5450cb7c5de1365a5136aa01441d9f6271a133d60b546d97eb1cf7881da45",
+    "fao_DI_A_sample_84_28.json": "d0da7869c7317dc414c53c67d97f3b22b064f809ac6352510b90210529d65a4a",
+    "fao_DI_A_sample_20_10.json": "15dbdf3c7c3310fa6d3492cf59092af19901b4e69cc978743a84f82d5ec41eee",
+    "fao_DI_A_sample_25_22.json": "d69bb6a6e9fb47dcff553944264f63d033ba7e91afe9299662bbb290e50b8c31",
+    "fao_di_export.json": "2f7c7bc9b36c9354e2f4653a7da27d4b44d55e40fd1b285aa93ad6daab1aa3d6",
+    "fao_di_tiff_observation.json": "4aec4b92baf9b614cffb8a0a0d76eeac47ed1f2b702e05c11fb8f3157930af14",
+    "fao_di_legend.json": "4fb9732170d8bba1ac246487212bfb697c653f00c2d6a8cdbaf87279629e777b"
+  },
+  "facts": {
+    "service": {
+      "name": "DI_A",
+      "bandCount": 1,
+      "pixelType": "F32",
+      "pixelSizeX": 993.9239809024863,
+      "pixelSizeY": 993.9240250989704,
+      "extent": {
+        "xmin": -20037507.0672,
+        "ymin": -7559555.962415673,
+        "xmax": 20037507.842788246,
+        "ymax": 12934163.511099998,
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID",
+          "domain": null
+        },
+        {
+          "name": "Shape",
+          "type": "esriFieldTypeGeometry",
+          "alias": "Shape",
+          "domain": null
+        },
+        {
+          "name": "Name",
+          "type": "esriFieldTypeString",
+          "alias": "Name",
+          "domain": null,
+          "length": 200
+        },
+        {
+          "name": "Category",
+          "type": "esriFieldTypeInteger",
+          "alias": "Category",
+          "domain": {
+            "type": "codedValue",
+            "name": "MosaicCatalogItemCategoryDomain",
+            "description": "Catalog item categories.",
+            "codedValues": [
+              {
+                "name": "Unknown",
+                "code": 0
+              },
+              {
+                "name": "Primary",
+                "code": 1
+              },
+              {
+                "name": "Overview",
+                "code": 2
+              },
+              {
+                "name": "Unprocessed Overview",
+                "code": 3
+              },
+              {
+                "name": "Partial Overview",
+                "code": 4
+              },
+              {
+                "name": "Inactive",
+                "code": 5
+              },
+              {
+                "name": "Uploaded",
+                "code": 253
+              },
+              {
+                "name": "Incomplete",
+                "code": 254
+              },
+              {
+                "name": "Custom",
+                "code": 255
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          }
+        },
+        {
+          "name": "Variable",
+          "type": "esriFieldTypeString",
+          "alias": "Variable",
+          "domain": null,
+          "length": 255
+        },
+        {
+          "name": "Year",
+          "type": "esriFieldTypeSmallInteger",
+          "alias": "Year",
+          "domain": null
+        },
+        {
+          "name": "Season",
+          "type": "esriFieldTypeString",
+          "alias": "Season",
+          "domain": {
+            "type": "codedValue",
+            "name": "Season",
+            "description": "",
+            "codedValues": [
+              {
+                "name": "Season 1",
+                "code": "Season 1"
+              },
+              {
+                "name": "Season 2",
+                "code": "Season 2"
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          },
+          "length": 255
+        },
+        {
+          "name": "Land_Type",
+          "type": "esriFieldTypeString",
+          "alias": "Land Type",
+          "domain": {
+            "type": "codedValue",
+            "name": "LandType",
+            "description": "",
+            "codedValues": [
+              {
+                "name": "Cropland",
+                "code": "Cropland"
+              },
+              {
+                "name": "Grassland",
+                "code": "Grassland"
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          },
+          "length": 255
+        }
+      ],
+      "rasterFunctionInfos": [
+        {
+          "name": "DI Renderer",
+          "description": "DI_A Renderer for ASIS",
+          "help": ""
+        },
+        {
+          "name": "None",
+          "description": "Make a Raster or Raster Dataset into a Function Raster Dataset.",
+          "help": ""
+        }
+      ],
+      "capabilities": "Catalog,Mensuration,Image,Metadata"
+    },
+    "provider_item": {
+      "id": "6198ef41d55646d3a37aec0b1e65357e",
+      "owner": "giews_hqfao",
+      "orgId": "sjP4Ugu5s0dZWLjd",
+      "modified": 1780661256000,
+      "url": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer",
+      "title": "Drought Intensity (Global - Annual - 1 km) - FAO ASIS"
+    },
+    "dimensions": {
+      "Year": [
+        1984,
+        1985,
+        1986,
+        1987,
+        1988,
+        1989,
+        1990,
+        1991,
+        1992,
+        1993,
+        1994,
+        1995,
+        1996,
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "Season": [
+        "Season 1",
+        "Season 2"
+      ],
+      "Land_Type": [
+        "Cropland",
+        "Grassland"
+      ]
+    },
+    "dimension_combination_count": 168,
+    "selected_records": [
+      {
+        "OBJECTID": 328,
+        "Name": "ASIS.DI-A.2024.GS1.LC-C",
+        "Year": 2024,
+        "Season": "Season 1",
+        "Land_Type": "Cropland"
+      }
+    ],
+    "raw_samples": [
+      {
+        "point": [
+          -11,
+          8
+        ],
+        "value": "0.66",
+        "request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/identify?f=pjson&geometry=%7B%22x%22%3A+-11%2C+%22y%22%3A+8%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&returnGeometry=false&returnCatalogItems=false&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D"
+      },
+      {
+        "point": [
+          36,
+          0
+        ],
+        "value": "0.605",
+        "request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/identify?f=pjson&geometry=%7B%22x%22%3A+36%2C+%22y%22%3A+0%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&returnGeometry=false&returnCatalogItems=false&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D"
+      },
+      {
+        "point": [
+          84,
+          28
+        ],
+        "value": "0.605",
+        "request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/identify?f=pjson&geometry=%7B%22x%22%3A+84%2C+%22y%22%3A+28%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&returnGeometry=false&returnCatalogItems=false&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D"
+      },
+      {
+        "point": [
+          20,
+          10
+        ],
+        "value": "254",
+        "request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/identify?f=pjson&geometry=%7B%22x%22%3A+20%2C+%22y%22%3A+10%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&returnGeometry=false&returnCatalogItems=false&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D"
+      },
+      {
+        "point": [
+          25,
+          22
+        ],
+        "value": "254",
+        "request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/identify?f=pjson&geometry=%7B%22x%22%3A+25%2C+%22y%22%3A+22%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&returnGeometry=false&returnCatalogItems=false&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D"
+      }
+    ],
+    "export_request": "https://asis-esri.fao.org/image/rest/services/DI_A/ImageServer/exportImage?f=json&bbox=35.9%2C-0.1%2C36.1%2C0.1&bboxSR=4326&imageSR=4326&size=24%2C24&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B328%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D",
+    "export_observation": {
+      "sha256": "633cf5ccab212a2e8902ea84db51ebcacce8644f07d135e3043ec08ca28d3b48",
+      "bytes": 66352,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.008333333333333451,
+        0.0,
+        35.9,
+        0.0,
+        -0.008333333333333451,
+        0.10000000000000142,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        24,
+        24
+      ],
+      "dtype": [
+        "float32"
+      ],
+      "nodata": null,
+      "min": 0.6050000190734863,
+      "max": 254.0,
+      "scales": [
+        1.0
+      ],
+      "offsets": [
+        0.0
+      ]
+    },
+    "legend_labels": [
+      " <25 (Extreme)",
+      " 25 - 35 (Severe)",
+      " 35 - 38 (Moderate)",
+      " 38 - 42 (Mild)",
+      " >=42 (None)",
+      " Off Season",
+      " No Data",
+      " No Seasons",
+      " No Cropland or Grassland"
+    ]
+  },
+  "limits": [
+    "Administrative drought summaries retain GAUL2 analytical support; 1 km grid is not independent 1 km impact information.",
+    "Select Year, Season and Land_Type explicitly; do not use the default mixed mosaic.",
+    "Disable the renderer for analytical pixels. Special codes are not percentages.",
+    "DI metadata says signed integer while its live service/export are float32; ASI is U8."
+  ],
+  "human_review": null
+}

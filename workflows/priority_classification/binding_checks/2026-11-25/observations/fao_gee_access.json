@@ -1,0 +1,42 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "fao_gee_access",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "earth_engine",
+      "asset": "projects/UNFAO/ASIS/DI-A"
+    },
+    {
+      "type": "earth_engine",
+      "asset": "projects/UNFAO/ASIS/ASI-A"
+    },
+    {
+      "type": "earth_engine",
+      "asset": "projects/UNFAO/ASIS/HDF"
+    },
+    {
+      "type": "earth_engine",
+      "asset": "projects/UNFAO/ASIS/MVHI-A"
+    }
+  ],
+  "input_sha256": {
+    "fao_di_first.json": "e6716e6616dfea5cacdcaf701599280a09434f1777d1170ae54f5ea5c859b39f",
+    "fao_asi_first.json": "93662c2ac8498679ab3b217280b7020afdb06188ada2641b442282cd566bf141",
+    "fao_hdf_first.json": "532cb4bbca94ff023eedf53afd01d995406a016e7353240cfa5230442b34088a",
+    "fao_mvhi_first.json": "4a84208dceb2f45ff8f037869e678123fd0fd8bba2733223359e59022b71e330"
+  },
+  "facts": {
+    "errors": {
+      "fao_di_first": "ImageCollection.load: ImageCollection asset 'projects/UNFAO/ASIS/DI-A' not found (does not exist or caller does not have access).",
+      "fao_asi_first": "ImageCollection.load: ImageCollection asset 'projects/UNFAO/ASIS/ASI-A' not found (does not exist or caller does not have access).",
+      "fao_hdf_first": "ImageCollection.load: ImageCollection asset 'projects/UNFAO/ASIS/HDF' not found (does not exist or caller does not have access).",
+      "fao_mvhi_first": "ImageCollection.load: ImageCollection asset 'projects/UNFAO/ASIS/MVHI-A' not found (does not exist or caller does not have access)."
+    }
+  },
+  "limits": [
+    "Not-found/no-access is ambiguous; not proof that assets do not exist. Account access request not sent."
+  ],
+  "human_review": null
+}

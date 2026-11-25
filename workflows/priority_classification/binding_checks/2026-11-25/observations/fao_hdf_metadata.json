@@ -1,0 +1,257 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "fao_hdf_metadata",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "arcgis_image_service",
+      "url": "https://asis-esri.fao.org/image/rest/services/HDF/ImageServer?f=pjson"
+    }
+  ],
+  "input_sha256": {
+    "fao_hdf_service.json": "6a575f5b09ed2f62d21f2151314e90d1113b57959b74aea746da22dde5454e19",
+    "fao_hdf_item.json": "ad6b0bffef86aefae463f7cc50d52c7976a39fbe1cb8dbf4afdb4f69e3553268",
+    "fao_hdf_rows.json": "ca831db664abd124653972d55d0a0fc2c8a5b909aff95bed4a83ee0ce08b857a"
+  },
+  "facts": {
+    "service": {
+      "name": "HDF",
+      "bandCount": 1,
+      "pixelType": "U8",
+      "pixelSizeX": 993.9239809024863,
+      "pixelSizeY": 993.9240250989704,
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID",
+          "domain": null
+        },
+        {
+          "name": "Shape",
+          "type": "esriFieldTypeGeometry",
+          "alias": "Shape",
+          "domain": null
+        },
+        {
+          "name": "Name",
+          "type": "esriFieldTypeString",
+          "alias": "Name",
+          "domain": null,
+          "length": 200
+        },
+        {
+          "name": "Category",
+          "type": "esriFieldTypeInteger",
+          "alias": "Category",
+          "domain": {
+            "type": "codedValue",
+            "name": "MosaicCatalogItemCategoryDomain",
+            "description": "Catalog item categories.",
+            "codedValues": [
+              {
+                "name": "Unknown",
+                "code": 0
+              },
+              {
+                "name": "Primary",
+                "code": 1
+              },
+              {
+                "name": "Overview",
+                "code": 2
+              },
+              {
+                "name": "Unprocessed Overview",
+                "code": 3
+              },
+              {
+                "name": "Partial Overview",
+                "code": 4
+              },
+              {
+                "name": "Inactive",
+                "code": 5
+              },
+              {
+                "name": "Uploaded",
+                "code": 253
+              },
+              {
+                "name": "Incomplete",
+                "code": 254
+              },
+              {
+                "name": "Custom",
+                "code": 255
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          }
+        },
+        {
+          "name": "Variable",
+          "type": "esriFieldTypeString",
+          "alias": "Variable",
+          "domain": null,
+          "length": 255
+        },
+        {
+          "name": "Season",
+          "type": "esriFieldTypeString",
+          "alias": "Season",
+          "domain": {
+            "type": "codedValue",
+            "name": "Season",
+            "description": "",
+            "codedValues": [
+              {
+                "name": "Season 1",
+                "code": "Season 1"
+              },
+              {
+                "name": "Season 2",
+                "code": "Season 2"
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          },
+          "length": 255
+        },
+        {
+          "name": "Land_Type",
+          "type": "esriFieldTypeString",
+          "alias": "Land Type",
+          "domain": {
+            "type": "codedValue",
+            "name": "LandType",
+            "description": "",
+            "codedValues": [
+              {
+                "name": "Cropland",
+                "code": "Cropland"
+              },
+              {
+                "name": "Grassland",
+                "code": "Grassland"
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          },
+          "length": 255
+        },
+        {
+          "name": "Drought_Affected_Area",
+          "type": "esriFieldTypeString",
+          "alias": "Drought Affected Area",
+          "domain": {
+            "type": "codedValue",
+            "name": "DroughtArea",
+            "description": "",
+            "codedValues": [
+              {
+                "name": "Land Affected > 30 Percent",
+                "code": "Land Affected > 30 Percent"
+              },
+              {
+                "name": "Land Affected > 50 Percent",
+                "code": "Land Affected > 50 Percent"
+              }
+            ],
+            "mergePolicy": "esriMPTDefaultValue",
+            "splitPolicy": "esriSPTDefaultValue"
+          },
+          "length": 255
+        }
+      ]
+    },
+    "records": [
+      {
+        "OBJECTID": 11,
+        "Name": "ASIS.HDF.LC-C.GS1.AL30",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 1",
+        "Land_Type": "Cropland",
+        "Drought_Affected_Area": "Land Affected > 30 Percent"
+      },
+      {
+        "OBJECTID": 12,
+        "Name": "ASIS.HDF.LC-C.GS1.AL50",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 1",
+        "Land_Type": "Cropland",
+        "Drought_Affected_Area": "Land Affected > 50 Percent"
+      },
+      {
+        "OBJECTID": 13,
+        "Name": "ASIS.HDF.LC-C.GS2.AL30",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 2",
+        "Land_Type": "Cropland",
+        "Drought_Affected_Area": "Land Affected > 30 Percent"
+      },
+      {
+        "OBJECTID": 14,
+        "Name": "ASIS.HDF.LC-C.GS2.AL50",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 2",
+        "Land_Type": "Cropland",
+        "Drought_Affected_Area": "Land Affected > 50 Percent"
+      },
+      {
+        "OBJECTID": 15,
+        "Name": "ASIS.HDF.LC-G.GS1.AL30",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 1",
+        "Land_Type": "Grassland",
+        "Drought_Affected_Area": "Land Affected > 30 Percent"
+      },
+      {
+        "OBJECTID": 16,
+        "Name": "ASIS.HDF.LC-G.GS1.AL50",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 1",
+        "Land_Type": "Grassland",
+        "Drought_Affected_Area": "Land Affected > 50 Percent"
+      },
+      {
+        "OBJECTID": 17,
+        "Name": "ASIS.HDF.LC-G.GS2.AL30",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 2",
+        "Land_Type": "Grassland",
+        "Drought_Affected_Area": "Land Affected > 30 Percent"
+      },
+      {
+        "OBJECTID": 18,
+        "Name": "ASIS.HDF.LC-G.GS2.AL50",
+        "Category": 1,
+        "Variable": "Historic Agricultural Drought Frequency",
+        "Season": "Season 2",
+        "Land_Type": "Grassland",
+        "Drought_Affected_Area": "Land Affected > 50 Percent"
+      }
+    ],
+    "item_modified": 1780653330000,
+    "period_conflict": {
+      "access_page": "1984-2025",
+      "item_time_extent": "1984-2024",
+      "item_formula_denominator": "2023-1984+1"
+    }
+  },
+  "limits": [
+    "Period/denominator unresolved: no verified frequency binding. No raw pixels sampled for HDF."
+  ],
+  "human_review": null
+}

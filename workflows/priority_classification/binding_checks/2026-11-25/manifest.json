@@ -1,0 +1,60 @@
+{
+  "format": "ruralscan.binding-inspection-manifest.v1",
+  "date": "2026-11-25",
+  "status": "technical_observations_not_binding_acceptance",
+  "records": [
+    {
+      "observation_id": "aqueduct_live",
+      "path": "observations/aqueduct_live.json",
+      "sha256": "48e5b3c8f9aff7f3c9f04f134b8af51bf1b4de0001137d46e39da78fa99d30eb"
+    },
+    {
+      "observation_id": "fao_di_live",
+      "path": "observations/fao_di_live.json",
+      "sha256": "86f20a0e0cd56c1f82a09e009c679cb60a1258a521f19d97d674d9ba3c6c0f68"
+    },
+    {
+      "observation_id": "fao_asi_live",
+      "path": "observations/fao_asi_live.json",
+      "sha256": "3b8a2ed5f3468ae833a6979c1387a0455f953e26f4c0eadb54e3175312b9a2d7"
+    },
+    {
+      "observation_id": "fao_hdf_metadata",
+      "path": "observations/fao_hdf_metadata.json",
+      "sha256": "b3a70b3d59162540d127dead2ee9fb37612a3faa42fa2e9dbe419b5a41f5fd5e"
+    },
+    {
+      "observation_id": "fao_gee_access",
+      "path": "observations/fao_gee_access.json",
+      "sha256": "3121ccc09fb17112d07440fc164b49f19bdf88e97a62d218a2ff9a1a650c8b78"
+    },
+    {
+      "observation_id": "spei_live",
+      "path": "observations/spei_live.json",
+      "sha256": "84ca4aed0b012fe4296ad5a9c7a143f6f22693d48425f4ee7674f54da80f0a7d"
+    },
+    {
+      "observation_id": "forest_loss_live",
+      "path": "observations/forest_loss_live.json",
+      "sha256": "3c65fcf9f62c23ce6de706f4d6b0a8c87b2a4794584efb95833a66c0633d617b"
+    },
+    {
+      "observation_id": "forest_emissions_live",
+      "path": "observations/forest_emissions_live.json",
+      "sha256": "f6a6fbe7f5633983b54215c8fd6758d85a1c92ed2ef32256ab554f101ec4ccbb"
+    },
+    {
+      "observation_id": "landmark_access",
+      "path": "observations/landmark_access.json",
+      "sha256": "a50bc1349f5d7c84558f63aab1a9c8a58fb6dbc8d31e732b43a9f0dcf7fc4a93"
+    },
+    {
+      "observation_id": "naturebase_afc_inspection",
+      "path": "observations/naturebase_afc_inspection.json",
+      "sha256": "2fd5ac1d2fa978c6b5a280a63aa237d90778299dbaeab0fb793adc66bb5220cf"
+    }
+  ],
+  "scientific_reviews": 0,
+  "canonical_registrations": 0,
+  "runtime_releases": 0
+}

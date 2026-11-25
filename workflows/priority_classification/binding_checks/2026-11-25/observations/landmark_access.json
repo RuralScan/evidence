@@ -1,0 +1,28 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "landmark_access",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "web",
+      "url": "https://www.landmarkmap.org/data-methods/access-data"
+    }
+  ],
+  "input_sha256": {
+    "landmark.txt": "f2430e1230aafc6ec968e387ce6323555f6ac9b3aa633e3c4fb3fca4b0523004"
+  },
+  "facts": {
+    "community_dataset_label": "Indigenous Peoples\u2019 and Local Community Lands and Territories",
+    "listed_update": "June 2026",
+    "license": "CC-BY-SA-4.0",
+    "acquisition": "Download form requires identifying details, intended use and terms agreement; not submitted.",
+    "fields_verified": false,
+    "observed_absence_claim": false
+  },
+  "limits": [
+    "No vector file sampled; no schema, boundary coverage, country completeness or attribute binding verified.",
+    "National percentage and indicative-rights layers are not substitutes for community boundary overlap."
+  ],
+  "human_review": null
+}

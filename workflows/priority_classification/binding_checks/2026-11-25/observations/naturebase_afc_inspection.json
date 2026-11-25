@@ -1,0 +1,146 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "naturebase_afc_inspection",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "http_zip",
+      "url": "https://naturebase-shared-docs.s3.amazonaws.com/Data-download/for_afc_total.zip"
+    }
+  ],
+  "input_sha256": {
+    "naturebase_afc_headers.json": "36f52e494f05e11046df25146159cc13a69340b6d7c52ff3b3e43fa553fcb674",
+    "naturebase_afc_zip.json": "16d5084d4de9a857dfb2d71a2963962c0ae4a843b86ce76ce6e776c055a298c7",
+    "naturebase_afc_raster.json": "529f3bbdc9f0e7f235d8766072464d5f13cd4242b126d17506faa916dea89947"
+  },
+  "facts": {
+    "url": "https://naturebase-shared-docs.s3.amazonaws.com/Data-download/for_afc_total.zip",
+    "archive_bytes": 194253729,
+    "entries": [
+      {
+        "name": "for_afc_tco2e_adm0.csv",
+        "bytes": 8824,
+        "compressed_bytes": 4597,
+        "crc32": 1344616984,
+        "compression": 8
+      },
+      {
+        "name": "for_afc_tco2e_adm1.csv",
+        "bytes": 249395,
+        "compressed_bytes": 86668,
+        "crc32": 2344561593,
+        "compression": 8
+      },
+      {
+        "name": "for_afc_tco2e_adm2.csv",
+        "bytes": 5590837,
+        "compressed_bytes": 1218148,
+        "crc32": 1780295924,
+        "compression": 8
+      },
+      {
+        "name": "for_afc_tco2eha.tif",
+        "bytes": 27846080,
+        "compressed_bytes": 24962718,
+        "crc32": 3896192478,
+        "compression": 8
+      },
+      {
+        "name": "ReadMe_for_afc_total.txt",
+        "bytes": 4630,
+        "compressed_bytes": 1969,
+        "crc32": 2610503988,
+        "compression": 8
+      }
+    ],
+    "readme_summary": {
+      "citation_version": "Avoided Forest Conversion v2, 2024-06-06",
+      "rate_period": "2017-2021 average; constant annual rate assumed over accounting horizon",
+      "raster_name_in_readme": "for_afc_total.tif",
+      "actual_member": "for_afc_tco2eha.tif",
+      "quantity": "modelled avoided forest-conversion emissions; not observed forest-carbon loss",
+      "area_caution": "1 km raster footprint hectares can overestimate pathway extent",
+      "publication_caveat": "README still calls dataset under review and says it will be updated in 2024"
+    },
+    "raster_observation": {
+      "url": "https://naturebase-shared-docs.s3.amazonaws.com/Data-download/for_afc_total.zip",
+      "member": "for_afc_tco2eha.tif",
+      "checked_at": "2026-11-25T20:49:19.001485+00:00",
+      "sha256": "24511e2e55d38ec9249b1c1de1947b2ce22d99f70a9a893c463a7b0d3e8e9571",
+      "bytes": 27846080,
+      "crs": "EPSG:4326",
+      "transform": [
+        0.00898315284119522,
+        0.0,
+        -175.01876680500638,
+        0.0,
+        -0.00898315284119522,
+        71.00284005680707,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        14140,
+        39410
+      ],
+      "dtype": [
+        "float32"
+      ],
+      "nodata": -3.4028234663852886e+38,
+      "bounds": [
+        -175.01876680500638,
+        -56.018941117693345,
+        179.00728666649727,
+        71.00284005680707
+      ],
+      "scales": [
+        1.0
+      ],
+      "offsets": [
+        0.0
+      ],
+      "tags": {
+        "DataType": "Generic",
+        "OVR_RESAMPLING_ALG": "NEAREST",
+        "AREA_OR_POINT": "Area"
+      },
+      "samples_not_pilot": [
+        {
+          "lon": -70,
+          "lat": -3,
+          "values": [
+            0.0
+          ]
+        },
+        {
+          "lon": -11,
+          "lat": 8,
+          "values": [
+            0.0
+          ]
+        },
+        {
+          "lon": 36,
+          "lat": 0,
+          "values": [
+            0.0
+          ]
+        },
+        {
+          "lon": 0,
+          "lat": 0,
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    }
+  },
+  "limits": [
+    "One pathway inspected; no claim that all twenty raster bindings are checked.",
+    "Readable archive is not scientific approval. License CC-BY-NC-SA-4.0 and stale/inconsistent README metadata must travel with the candidate."
+  ],
+  "human_review": null
+}
