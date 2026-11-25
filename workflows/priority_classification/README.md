@@ -1,4 +1,4 @@
-# Priority-classification source packets (proposed staging route)
+# Priority-classification source packets and gated store
 
 This workbench preserves source observations needed by T2/T5 classification proposals. It does not register findings, stamp discovery progress, submit votes or accept classifications. All five packets are unreviewed. Packet IDs are not SRC/EV IDs. The original PDFs/web snapshots were acquired and inspected for this batch; their hashes and precise locators identify the checked versions. Full originals are not bundled here. Reacquire from the public URL and compare bytes; a changed document needs a new packet, never silent substitution.
 
@@ -28,7 +28,7 @@ Reserved vocabulary does not establish an executable workflow. No existing route
 4. Source-review acceptance means a finding was transcribed/interpreted correctly. It does not approve the proposed method classes. Method uses its protected decision PR route for exact proposal hashes and contexts.
 5. Adoption of an eventual accepted priority release needs a separate lock (method commit, release path and SHA-256), verified source/finding references, dependency hashes and an append-only receipt. Retain the existing compiler pin unchanged. A selected previous immutable release provides rollback; do not erase receipts or re-rate historical findings.
 
-This intentionally does not claim a finished ingestion lane. It makes the missing contract explicit and prepares verifiable packets without bypassing existing scientific review. The method-side prototype can validate and review candidates now; publication remains fail-closed until source registration, binding, context and human acceptance are complete.
+These first-batch packets remain staging records. The next implementation below supplies a distinct store and adoption route, still pending storage acceptance and real source review. It makes the missing contract explicit and prepares verifiable packets without bypassing existing scientific review. The method-side prototype can validate and review candidates now; publication remains fail-closed until source registration, binding, context and human acceptance are complete.
 
 ## First batch
 
@@ -39,3 +39,43 @@ This intentionally does not claim a finished ingestion lane. It makes the missin
 - FAO GSOCseq: stock, stock change and additional management benefit are different quantities.
 
 No DOI has been added to SRC or the acquisition queue. Existing registers, votes, review receipts, ledger, configuration pin and runtime remain unchanged.
+
+
+## Source/finding store implementation
+
+`priority_store.py` prepares content-addressed objects under `priority-evidence/sources/` and `priority-evidence/findings/`. Their identities are `psrc_<full-sha256>` and `pfind_<full-sha256>`; they are not legacy SRC/EV IDs. Legacy identities are recorded only when acquisition resolves an existing canonical source. No synthetic NbS, table enum, ledger stamp or existing register change is needed.
+
+`stage` requires the original packet at a merged revision, a selected acquisition candidate/plan and a checked acquisition bundle. It reuses `workflows/acquisition` for file/metadata verification. PDFs additionally require a matching team-library copy and project-relative library locator. Web/code sources retain their original URL, snapshot hash and section/file locator. Stage writes only to a new private directory. A separate reviewed PR may introduce unreviewed objects after the storage contract is accepted. No real source objects or votes are included in this implementation change.
+
+```sh
+python workflows/priority_classification/priority_store.py stage \
+  --packet workflows/priority_classification/packets/example.json \
+  --packet-revision FULL_MERGED_SHA --base FULL_MAIN_SHA \
+  --candidates /private/candidates.csv --plan /private/plan.json \
+  --bundle /private/acquired --out /private/new-stage
+```
+
+For a PDF also provide `--library-root /local/synced/library` and `--library-path 2_Technical_&_Data/library/cross-cutting/file.pdf` (shell-quote the path). The operator supplies the genuine shared-library location; the tool checks byte identity, not SharePoint permissions.
+
+Human finding review uses an original GitHub issue in RuralScan/evidence. Body begins `RuralScan priority finding review v1`, followed by one JSON fence containing `finding_sha256`, `finding_revision`, `decision` (`keep`, `hold`, `reject`, `reopen`) and a nonempty `reason`. The existing submission desk verifies original unedited body and eligible human author. `review --receipt ISSUE_NUMBER --base FULL_MAIN_SHA` consumes that receipt; it does not create an issue or impersonate a reviewer. Save proposed append-only `priority-evidence/reviews.jsonl` changes through the protected evidence PR route.
+
+Latest decision per reviewer controls status. All keeps means kept; all rejects means rejected; any dissent or hold prevents release. Retry of the same receipt is a no-op. An edited receipt, older replacement, duplicate receipt identity, rewritten object or deleted history fails. Source finding review does not approve classification cutoffs.
+
+`priority_store.py check --base FULL_TRUSTED_BASE_SHA` replays source provenance, pinned observations and review history. New review rows are authenticated against GitHub. Existing reviewed history is trusted only from the protected base supplied by CI. Use trusted checkouts; provenance receipts are operator attestations backed by acquisition replay, not cryptographic proof of publisher origin.
+
+## Independent priority adoption
+
+`adopt.py` uses `configuration/priority/releases/<hash>.json` and append-only `configuration/priority/adoptions.jsonl`. It does not change `configuration/method-pin.json`, compiler mirrors, ratings or runtime. The journal is the active-pin authority: each event includes its previous release and full `{repository, revision, path, sha256}` pin. No mutable `latest` pointer exists.
+
+Adoption resolves an immutable `priority/releases/<hash>.json` on method main, executes the producer validator from that exact merged commit, replays exact acceptance, then checks current method/evidence bases for changed decisions, definitions or source holds. Source changes must merge before adoption, rather than introducing a hold and adoption in one PR. Missing approvals or unsupported producer versions fail closed. Review manifests are never adoptable.
+
+```sh
+python workflows/priority_classification/adopt.py adopt \
+  --method-repo /trusted/method --method-base FULL_METHOD_MAIN_SHA \
+  --evidence-base FULL_EVIDENCE_MAIN_SHA --pin /private/release-pin.json \
+  --operation-id unique-operation-name
+```
+
+Use `rollback` with a previously adopted pin and new operation ID to record rollback. It passes the same current acceptance/source checks; historical reproduction does not authorize reuse of a currently held rule. Retrying an identical operation does not append a duplicate; reusing its ID differently fails. Changes remain local until a separate reviewed evidence PR merges them. CI checks immutable cache/history, authenticated source receipts and all new adoption events.
+
+Unit tests cover real local acquisition replay, original human review authentication, conflicts/reopening, selected-versus-current source state, immutable adoption history, rollback and execution of the pinned producer rather than a mutable checkout. Method tests independently exercise complete synthetic package construction/replay. No project votes, scientific approvals or actual adoption receipts are generated by tests.
