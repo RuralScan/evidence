@@ -83,7 +83,9 @@ def check_snapshot(producer, ciat, base):
         for p in (ROOT / "registers").rglob("*")
         if p.is_file()
     }
-    require(expected == actual, "Unexpected register inventory")
+    from cross_cutting_inventory import verify_inventory
+
+    verify_inventory(ROOT, expected, actual)
     for name, meta in manifest["files"].items():
         if name not in {
             recipe_rows.LOG,
