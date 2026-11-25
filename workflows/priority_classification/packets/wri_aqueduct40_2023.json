@@ -1,0 +1,35 @@
+{
+  "format": "ruralscan.priority-source-packet.v1",
+  "packet_id": "wri_aqueduct40_2023",
+  "status": "unreviewed_staging",
+  "scope": "cross_cutting_priority_classification",
+  "variables": [
+    "water_stress"
+  ],
+  "source": {
+    "url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+    "title": "Aqueduct 4.0: Updated decision-relevant global water risk indicators (WRI, 2023)",
+    "retrieved_on": "2026-11-25",
+    "artifact_sha256": "bb55ea20f39c4272dea87b1089725900ffbf45673709c18cb0dab8d361a97ae5",
+    "media_type": "application/pdf",
+    "locator_type": "pdf_page",
+    "locator": "PDF/printed page 11, Baseline water stress; page 12, Limitations"
+  },
+  "reported": {
+    "unit": "fraction",
+    "source_band_boundaries": [
+      0.1,
+      0.2,
+      0.4,
+      0.8
+    ],
+    "source_class_count": 5,
+    "special_status": "arid and low water use",
+    "support": "HydroBASINS 6",
+    "input_period": "1979\u20132019"
+  },
+  "interpretation_limit": "Baseline water stress compares total demand with renewable supply. Annual values weight monthly stress by demand. Five risk bands and a separate arid status are reported. The range table does not settle every exact endpoint. Formula printing conflicts with the prose clipping description; use verified provider outputs, not that printed expression.",
+  "registration_blocker": "Four-class interpretation, none condition, special-status handling and actual output metadata remain unresolved.",
+  "canonical_source_id": null,
+  "canonical_evidence_ids": []
+}

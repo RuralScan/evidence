@@ -1,0 +1,28 @@
+{
+  "format": "ruralscan.priority-source-packet.v1",
+  "packet_id": "aqueduct_gee_catalogue",
+  "status": "unreviewed_staging",
+  "scope": "cross_cutting_priority_classification",
+  "variables": [
+    "water_stress"
+  ],
+  "source": {
+    "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+    "title": "Earth Engine catalogue: WRI Aqueduct Baseline Annual Version 4.0",
+    "retrieved_on": "2026-11-25",
+    "artifact_sha256": "226be8c474a4ca0eeb560d14ed65dff7db806d68f6f34b1420240df953f76797",
+    "media_type": "text/html",
+    "locator_type": "section",
+    "locator": "Earth Engine Snippet; Table Schema rows string_id, pfaf_id, bws_raw, bws_cat, bws_score"
+  },
+  "reported": {
+    "asset": "WRI/Aqueduct_Water_Risk/V4/baseline_annual",
+    "type": "FeatureCollection",
+    "raw_field": "bws_raw",
+    "status_field": "bws_cat"
+  },
+  "interpretation_limit": "The hosted annual collection exposes raw stress, provider categories and scores separately. Polygon geometry combines basins, provinces and aquifers; intersections do not imply finer stress information.",
+  "registration_blocker": "Live collection, snapshot identity, sentinel values and geometry joins not verified; catalogue documentation only.",
+  "canonical_source_id": null,
+  "canonical_evidence_ids": []
+}
