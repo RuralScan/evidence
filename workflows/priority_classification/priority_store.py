@@ -134,7 +134,8 @@ def write_object(root, kind, value):
 def fetch_review(number):
     # Reuse the existing desk's original-body and reviewer-identity checks.
     sys.path.insert(0, str(ROOT / "workflows/submissions"))
-    import intake
+    spec = importlib.util.spec_from_file_location("priority_authenticated_submissions", ROOT / "workflows/submissions/intake.py")
+    intake = importlib.util.module_from_spec(spec); spec.loader.exec_module(intake)
     issue = intake.gh(f"repos/{intake.INBOX}/issues/{number}")
     actor = intake.original(issue)
     require("pull_request" not in issue and issue.get("user", {}).get("type") == "User", "Review requires an original human issue")
