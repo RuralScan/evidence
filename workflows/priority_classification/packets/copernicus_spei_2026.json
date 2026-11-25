@@ -1,0 +1,43 @@
+{
+  "format": "ruralscan.priority-source-packet.v1",
+  "packet_id": "copernicus_spei_2026",
+  "status": "unreviewed_staging",
+  "scope": "cross_cutting_priority_classification",
+  "variables": [
+    "drought_hazard",
+    "drought_spei12_baseline"
+  ],
+  "source": {
+    "url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+    "title": "EDO and GDO indicator factsheet: Standardized Precipitation-Evapotranspiration Index (2026)",
+    "retrieved_on": "2026-11-25",
+    "artifact_sha256": "a65d8e7fb2727e1b66ec97517760d7a3eb49ca6552831ca1108fb7e66fad3086",
+    "media_type": "application/pdf",
+    "locator_type": "pdf_page",
+    "locator": "PDF/printed page 6, section 4, Table 2; pages 2\u20134 for accumulation and fitting"
+  },
+  "reported": {
+    "unit": "unitless",
+    "dry_classes": [
+      {
+        "label": "moderately dry",
+        "lower_exclusive": -1.5,
+        "upper_inclusive": -1.0
+      },
+      {
+        "label": "very dry",
+        "lower_exclusive": -2.0,
+        "upper_inclusive": -1.5
+      },
+      {
+        "label": "extremely dry",
+        "lower_exclusive": null,
+        "upper_inclusive": -2.0
+      }
+    ]
+  },
+  "interpretation_limit": "SPEI dry-event classes have upper-inclusive boundaries. The table caption says SPI, but its entries and surrounding section explicitly describe SPEI. This defines event severity, not thresholds for long-term drought frequency. Copernicus and CSIC datasets use different derivations; transfer requires review.",
+  "registration_blocker": "No canonical SRC receipt or team-library PDF accession yet; no fitted baseline or actual dataset adapter verified.",
+  "canonical_source_id": null,
+  "canonical_evidence_ids": []
+}

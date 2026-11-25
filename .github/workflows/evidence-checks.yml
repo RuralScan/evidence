@@ -34,6 +34,10 @@ jobs:
           python -m unittest discover -v -s workflows/acquisition
       - name: Check extraction, provenance and retry
         run: python -m unittest discover -v -s workflows/extraction
+      - name: Check staged priority-classification sources (no register writes)
+        run: |
+          python workflows/priority_classification/check.py
+          python -m unittest discover -v -s workflows/priority_classification
       - name: Check CSV and dashboard consensus
         run: python -m unittest discover -v -s workflows/review_preview
       - name: Check published decisions and provisional ratings
