@@ -114,8 +114,10 @@ Coverage and unresolved lists partition the target's families. Each supporting I
 needs its own applicability rationale. Direct broad evidence can support a group
 summary while every child remains unresolved: use empty applicability family lists
 and explain that limit. A source's known specific family cannot support a sibling.
-Historical unresolved scope needs a source-based argument, not automatic relabelling.
-This does not change the finding's stored scope or reuse its review for an EV correction.
+Unresolved historical evidence can contribute only at a compatible broader level,
+with empty child-applicability lists. Establishing a new child scope requires a
+source-reviewed finding correction first. A broad argument does not change the
+finding's stored scope or reuse its earlier approval for an EV correction.
 
 Existing source, review, origin and data-deficiency checks still apply. The human
 acceptance route below reviews the exact broader judgment, scope and conflicts.

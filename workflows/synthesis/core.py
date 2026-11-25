@@ -178,6 +178,7 @@ def validate_aggregation(proposal, row, packet):
     )
     refs = row["evidence_ids"]
     known = {}
+    allowed = {}
     for eid in refs:
         node = hierarchy["findings"][eid]["node"]
         lineage = {node} | ancestors(nodes, node)
@@ -189,6 +190,21 @@ def validate_aggregation(proposal, row, packet):
             "Qualitative-only evidence cannot support landscape outputs",
         )
         known[eid] = {nodes[n]["id"] for n in lineage if nodes[n]["level"] == "family"}
+        level = nodes[node]["level"]
+        if level == "legacy_family":
+            require(
+                target in lineage,
+                "Historical scope needs a finding correction before child attribution",
+            )
+            allowed[eid] = set()
+        elif level == "group":
+            allowed[eid] = set(hierarchy["groups"][nodes[node]["id"]]["families"])
+            require(
+                bool(allowed[eid] & members),
+                "Evidence belongs to a different group scope",
+            )
+        else:
+            allowed[eid] = known[eid] or members
         require(
             not known[eid] or known[eid] <= members,
             "Evidence belongs to a different family scope",
@@ -236,7 +252,7 @@ def validate_aggregation(proposal, row, packet):
         )
         targets = set(claim["families"])
         require(
-            targets <= covered and (not known[eid] or targets <= known[eid]),
+            targets <= covered and targets <= allowed[eid],
             "Finding cannot inherit support for sibling families",
         )
         supported.update(targets)

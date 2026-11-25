@@ -203,6 +203,52 @@ class Aggregation(unittest.TestCase):
             1,
         )
 
+    def test_legacy_approval_cannot_establish_new_child_scope(self):
+        self.registers["EV_evidence_register"][0]["suitability_family_id"] = (
+            fixtures.LEGACY
+        )
+        self.refresh()
+        with self.assertRaisesRegex(ValueError, "inherit support"):
+            core.validate(self.folder)
+        a = self.row["justification"]["aggregation"]
+        a["covered_families"] = []
+        a["unresolved_families"] = [fixtures.WIND, fixtures.BOUNDARY, fixtures.CONTOUR]
+        a["evidence_applicability"]["ev"]["families"] = []
+        self.save()
+        core.validate(self.folder)
+        self.p.pop("evidence_group_id")
+        self.row["suitability_family_id"] = fixtures.WIND
+        self.save()
+        with self.assertRaisesRegex(ValueError, "finding correction"):
+            core.validate(self.folder)
+
+    def test_group_evidence_cannot_become_support_for_an_unrelated_family(self):
+        self.registers["EV_evidence_register"][0].update(
+            suitability_family_id="agroforestry__cross_family",
+            context={
+                "evidence_scope": {
+                    "level": "group",
+                    "id": fixtures.GROUP,
+                    "rationale": "Only linear plantings in source.",
+                }
+            },
+        )
+        self.p.pop("evidence_group_id")
+        members = {
+            n["id"]
+            for n in self.packet["family_hierarchy"]["nodes"].values()
+            if n["level"] == "family"
+            and n.get("spatial_product_type") != "qualitative_only"
+            and not n["id"].endswith("__cross_family")
+        }
+        a = self.row["justification"]["aggregation"]
+        a["covered_families"] = ["agroforestry__silvopastoral"]
+        a["unresolved_families"] = sorted(members - {"agroforestry__silvopastoral"})
+        a["evidence_applicability"]["ev"]["families"] = a["covered_families"]
+        self.refresh()
+        with self.assertRaisesRegex(ValueError, "inherit support"):
+            core.validate(self.folder)
+
     def test_rejected_or_qualitative_only_evidence_does_not_gain_eligibility(self):
         self.registers["EV_evidence_register"][0]["review_state"] = "dropped"
         self.refresh()
