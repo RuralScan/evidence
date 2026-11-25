@@ -92,8 +92,6 @@ class Store(unittest.TestCase):
 
     def test_review_authentication_rejects_edits_bots_and_ineligible_authors(self):
         import sys
-        sys.path.insert(0, str(store.ROOT / "workflows/submissions"))
-        import intake
         body = store.HEADER + "\n```json\n" + json.dumps({k: self.event()[k] for k in
             ("finding_sha256", "finding_revision", "decision", "reason")}) + "\n```"
         issue = {"node_id": "fixture", "body": body, "user": {"login": "reviewer", "type": "User"},
@@ -102,7 +100,7 @@ class Store(unittest.TestCase):
         for changes, graph in [({}, info), ({}, {**info, "lastEditedAt": "2026-11-25T12:01:00Z"}),
                                ({"user": {"login": "reviewer", "type": "Bot"}}, info),
                                ({"author_association": "NONE"}, info)]:
-            with patch.object(intake, "gh", side_effect=[{**issue, **changes}, {"data": {"node": graph}}]):
+            with patch.dict(sys.modules, {"intake": object()}), patch("subprocess.check_output", side_effect=[json.dumps({**issue, **changes}).encode(), json.dumps({"data": {"node": graph}}).encode()]):
                 if not changes and graph == info:
                     self.assertEqual(store.fetch_review(1)["actor"], "reviewer")
                 else:

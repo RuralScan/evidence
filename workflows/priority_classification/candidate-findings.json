@@ -1,0 +1,417 @@
+{
+  "status": "proposed_not_registered",
+  "findings": [
+    {
+      "candidate_finding_id": "xce_spei_dry_event_classes",
+      "proposed_finding_id": "pfind_3bd7619bcb1efaa046c79063c49581df90af76e238144e296c435e2b24f76d57",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "923f257d39917903ce6aa6a29b67753b9b63329ea4f118d0f0f1eb18968f3a2c",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_spei_dry_event_classes",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_copernicus_spei_2026",
+          "variables": [
+            "drought_hazard"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "SPEI event anomalies have three dry classes with upper-inclusive cutoffs.",
+            "values": {
+              "unit": "unitless",
+              "dry_classes": [
+                {
+                  "provider_label": "moderately dry",
+                  "lower": -1.5,
+                  "lower_inclusive": false,
+                  "upper": -1,
+                  "upper_inclusive": true
+                },
+                {
+                  "provider_label": "very dry",
+                  "lower": -2,
+                  "lower_inclusive": false,
+                  "upper": -1.5,
+                  "upper_inclusive": true
+                },
+                {
+                  "provider_label": "extremely dry",
+                  "lower": null,
+                  "lower_inclusive": false,
+                  "upper": -2,
+                  "upper_inclusive": true
+                }
+              ]
+            }
+          },
+          "locator": {
+            "type": "pdf_page",
+            "value": "PDF/printed p.6, section 4, Table 2, negative-anomaly rows"
+          },
+          "excerpt": "Moderately dry",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "One accumulation-window anomaly against a fitted baseline",
+            "population": "SPEI observations"
+          },
+          "limitations": [
+            "Caption says SPI; table and surrounding section refer to SPEI.",
+            "Not a rule for long-term drought frequency or a particular CSIC dataset."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_spei_standardization",
+      "proposed_finding_id": "pfind_010429293505e4d9b9584d4258182ab27d9c602f3aa7be49ce1d1112cca209fb",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "923f257d39917903ce6aa6a29b67753b9b63329ea4f118d0f0f1eb18968f3a2c",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_spei_standardization",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_copernicus_spei_2026",
+          "variables": [
+            "drought_hazard"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "SPEI describes water-balance anomalies standardized against a baseline; accumulation window changes interpretation.",
+            "values": {
+              "accumulation_unit": "months",
+              "reference_example": "1991-2020"
+            }
+          },
+          "locator": {
+            "type": "pdf_page",
+            "value": "PDF/printed pp.2-3, description and accumulation-window discussion"
+          },
+          "excerpt": "the mean SPEI value for that location and period is zero",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "Source gives 1991-2020 as an example, not a selected binding",
+            "population": "Location-specific climatic water balance"
+          },
+          "limitations": [
+            "A baseline mean or trend is not an event-frequency class.",
+            "Do not transfer one product fit or accumulation period without review."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_quantity_support",
+      "proposed_finding_id": "pfind_bdcbf715177d3a933b2e1d175066292ef5f3ed305a51a0cfa6426cdd4f568391",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "2798ca451ec4f03c51d8f1278bffc90fe1d3e5654d1b025d9cf3c2f4a89e3122",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_aqueduct_quantity_support",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_wri_aqueduct40_2023",
+          "variables": [
+            "water_stress"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "BWS is demand divided by renewable supply; annual aggregation weights monthly stress by demand.",
+            "values": {
+              "unit": "fraction",
+              "support": "HydroBASINS level 6",
+              "input_period": "1979-2019",
+              "provider_stated_clipping": [
+                0,
+                1
+              ]
+            }
+          },
+          "locator": {
+            "type": "pdf_page",
+            "value": "PDF/printed p.11, Results, Source, Description and Step 2"
+          },
+          "excerpt": "Higher values indicate more competition among users.",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "1979-2019 source inputs; monthly and annual output",
+            "population": "Hydrological sub-basins"
+          },
+          "limitations": [
+            "Printed Step 1 formula conflicts with clipping prose; do not implement from that expression.",
+            "Documentation does not verify live raw values or special-status sentinels."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_provider_bands",
+      "proposed_finding_id": "pfind_451c91ed598ab459df7c30e2acdd47295d469fe4734707a157d3b45e54fbfc8e",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "2798ca451ec4f03c51d8f1278bffc90fe1d3e5654d1b025d9cf3c2f4a89e3122",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_aqueduct_provider_bands",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_wri_aqueduct40_2023",
+          "variables": [
+            "water_stress"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "Provider has five numeric risk bands and a separate arid/low-use status.",
+            "values": {
+              "unit": "fraction",
+              "boundaries": [
+                0.1,
+                0.2,
+                0.4,
+                0.8
+              ],
+              "provider_labels": [
+                "low",
+                "low-medium",
+                "medium-high",
+                "high",
+                "extremely high"
+              ],
+              "special_status": "arid and low water use",
+              "endpoint_policy": "not fully specified by printed ranges"
+            }
+          },
+          "locator": {
+            "type": "pdf_page",
+            "value": "PDF/printed p.11, Conversion to risk categories table"
+          },
+          "excerpt": "The risk thresholds are based on Aqueduct 2.1",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "Aqueduct 4.0, 2023 edition",
+            "population": "Baseline water stress ratios"
+          },
+          "limitations": [
+            "No source-defined none class.",
+            "Five provider bands are not four RuralScan classes; endpoint and arid choices remain held."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_aqueduct_catalogue_fields",
+      "proposed_finding_id": "pfind_e1f11ff8f266f7fdbf9fe39a23c196c6d2d18dfaa8546ca5f45e3914bcda8aab",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "10b696b6b25533d3fc9d9c10b04d64adf8bfce87fa368318293db3f9bc1d3ee8",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_aqueduct_catalogue_fields",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_aqueduct_gee_catalogue",
+          "variables": [
+            "water_stress"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "Hosted collection distinguishes raw stress, provider category, label and score.",
+            "values": {
+              "asset": "WRI/Aqueduct_Water_Risk/V4/baseline_annual",
+              "type": "FeatureCollection",
+              "fields": [
+                "bws_raw",
+                "bws_cat",
+                "bws_label",
+                "bws_score"
+              ],
+              "geometry": "basin/province/aquifer intersection"
+            }
+          },
+          "locator": {
+            "type": "section",
+            "value": "Earth Engine Snippet; Table Schema rows string_id, pfaf_id and bws_*"
+          },
+          "excerpt": "Baseline water stress raw value",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "Catalogue accessed 2026-11-25; catalogue date range is not a verified baseline statistic",
+            "population": "Collection documentation"
+          },
+          "limitations": [
+            "Do not treat intersected polygons as independent finer hydrological information.",
+            "No live collection or sentinel validation; catalogue availability 2010-2080 cannot override WRI baseline definition."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_landmark_missingness",
+      "proposed_finding_id": "pfind_eb86dc286f1d19003ad8f4816bc79685a6c31a50bb2fc279ef47780a43753609",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "59f0c1d79cedf666ccff135cea4ac8022ac75f0aaecd9165ba33d7e3253c7b30",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_landmark_missingness",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_landmark_completeness",
+          "variables": [
+            "iplc_lands"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "Missing mapped coverage cannot establish absence of Indigenous or community land.",
+            "values": {
+              "mapped_presence": "documented presence",
+              "unmapped": "unknown",
+              "coverage": "incomplete"
+            }
+          },
+          "locator": {
+            "type": "section",
+            "value": "Accounting for the map gap on LandMark, final paragraph"
+          },
+          "excerpt": "the absence of data does not indicate the absence of indigenous or community land",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "Web snapshot 2026-11-25; feature dates unresolved",
+            "population": "LandMark country/community maps"
+          },
+          "limitations": [
+            "Presence is not a graded deficit; safeguard interpretation needs human decision.",
+            "No target-country coverage assessment or accepted binary scoring policy."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_soc_change_comparators",
+      "proposed_finding_id": "pfind_6497c25eecade5d86de1c4e104d35e3b8128e0dd5944d75b7e11210166ee5622",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "e2ae93f1c7327cab7876ac1c72e17148a107474703e93090b9db75161cf3c084",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_soc_change_comparators",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_fao_gsocseq_definition",
+          "variables": [
+            "carbon_sequestration_potential"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "Absolute change compares ending and initial stocks; relative change compares management and business-as-usual at the same horizon.",
+            "values": {
+              "stock_change_unit": "t C/ha",
+              "annual_rate_unit": "t C/ha/year",
+              "absolute": "SOC_scenario(t) - SOC(t0)",
+              "relative": "SOC_SSM(t) - SOC_BAU(t)",
+              "annual_rate": "stock_change / elapsed_years"
+            }
+          },
+          "locator": {
+            "type": "section",
+            "value": "Section 2.4 Estimating SOC sequestration potential, equations 2.1-2.2 and following annual-rate sentence"
+          },
+          "excerpt": "relative to business as usual practices",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "A stated common horizon; 20 years is an example in this section",
+            "population": "Soil management scenarios"
+          },
+          "limitations": [
+            "Stock, change and annual rate are different quantities.",
+            "Relative benefit can include avoided loss; it is not necessarily net atmospheric removal.",
+            "No universal problem-class thresholds follow from this definition."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    },
+    {
+      "candidate_finding_id": "xce_soc_stock_input_support",
+      "proposed_finding_id": "pfind_d4d1dccf95eb062c8fb8b832a037437abc4bf3f785e4215c8b02b1888851e9f7",
+      "finding": {
+        "format": "ruralscan.priority-finding.v2",
+        "source_sha256": "774ccb1ced4b76405e3275e1976d9072c0220d9f838f2454a9bed9bf3f8b6a9b",
+        "packet": {
+          "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+          "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+          "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+        },
+        "candidate_finding": {
+          "candidate_finding_id": "xce_soc_stock_input_support",
+          "version": "0.1.0",
+          "candidate_source_id": "xcs_fao_gsocseq_inputs",
+          "variables": [
+            "carbon_sequestration_potential"
+          ],
+          "knowledge_basis": "primary_documentation",
+          "reported": {
+            "statement": "GSOCmap supplies initial topsoil stocks; its observation vintage needs harmonization before scenario modelling.",
+            "values": {
+              "depth_cm": [
+                0,
+                30
+              ],
+              "stock_unit": "t C/ha",
+              "nominal_grid_arcseconds": 30,
+              "model_baseline_year": 2020,
+              "default_spinup_period": "2000-2020",
+              "recent_monitoring_exception": "2015-2020"
+            }
+          },
+          "locator": {
+            "type": "section",
+            "value": "Section 6.2.1 Initial total SOC stocks, opening three paragraphs"
+          },
+          "excerpt": "Initial total SOC stocks to 30cm depth",
+          "context": {
+            "geography": "global documentation; not local calibration",
+            "period": "Guidance distinguishes historical observations from model year 2020",
+            "population": "Initial SOC inputs to GSOCseq"
+          },
+          "limitations": [
+            "Nominal model year is not the date of every measurement.",
+            "Input-stock guidance does not validate a potential-output binding or country applicability."
+          ],
+          "review_state": "unreviewed"
+        }
+      }
+    }
+  ]
+}

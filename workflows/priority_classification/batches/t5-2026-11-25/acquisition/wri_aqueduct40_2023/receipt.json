@@ -1,0 +1,90 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "wri_aqueduct40_2023",
+  "source_id": "wri_aqueduct40_2023",
+  "kind": "pdf",
+  "candidate_sha256": "6ab0c23e0b0bd52b5240e7026241f986740060bc0afd7fbb5cd825cfe8b4a37f",
+  "plan_sha256": "32da8f6c8bc6bab011085603579d46eb42e624afca45813fdd552b6f37b053a2",
+  "checked_at": "2026-11-25T18:51:10.683744+00:00",
+  "metadata": {
+    "doi": "10.46830/writn.23.00061",
+    "submitted_doi": "10.46830/writn.23.00061",
+    "citation": "Kuzma et al. (2023). Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators. World Resources Institute.",
+    "title": "Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators",
+    "crossref": {
+      "outcome": "ok",
+      "record": {
+        "DOI": "10.46830/writn.23.00061",
+        "title": [
+          "Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators"
+        ],
+        "container-title": [
+          "World Resources Institute"
+        ],
+        "author": [
+          {
+            "family": "Kuzma"
+          },
+          {
+            "family": "Bierkens"
+          },
+          {
+            "family": "Lakshman"
+          },
+          {
+            "family": "Luo"
+          },
+          {
+            "family": "Saccoccia"
+          },
+          {
+            "family": "Sutanudjaja"
+          },
+          {
+            "family": "Van Beek"
+          }
+        ],
+        "issued": {
+          "date-parts": [
+            [
+              2023
+            ]
+          ]
+        }
+      }
+    },
+    "crossref_title": "Aqueduct 4.0: Updated Decision-Relevant Global Water Risk Indicators",
+    "title_overlap": 1.0,
+    "status": "doi_verified",
+    "reason": "Crossref DOI and citation title match."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "local_hash_replay",
+      "url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "pages": 52,
+    "needs_ocr": false,
+    "verified": true,
+    "reason": "Opening PDF title matches."
+  },
+  "artifact": {
+    "source_id": "wri_aqueduct40_2023",
+    "kind": "pdf",
+    "url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+    "requested_url": "https://files.wri.org/d8/s3fs-public/2023-08/aqueduct-40-technical-note.pdf",
+    "route": "local_hash_replay",
+    "fetched_at": null,
+    "http_status": null,
+    "content_type": null,
+    "commit_sha": null,
+    "bytes": 4746842,
+    "sha1": "4abc075c62fced825c12cbe7d45fda4202ef8678",
+    "sha256": "bb55ea20f39c4272dea87b1089725900ffbf45673709c18cb0dab8d361a97ae5"
+  }
+}

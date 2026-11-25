@@ -119,6 +119,61 @@ def finding(packet, source, packet_ref):
             "interpretation_limit": packet["interpretation_limit"]}
 
 
+def candidate_finding(bundle, source, ref, candidate_id):
+    """Preserve one complete candidate observation in the existing review store."""
+    from candidate_ingest import validate
+    validate(bundle)
+    require(set(ref) == {"revision", "path", "sha256"} and REV.fullmatch(ref["revision"]) and HEX.fullmatch(ref["sha256"]), "Unpinned candidate bundle")
+    require(re.fullmatch(r"workflows/priority_classification/batches/[a-z0-9-]+/candidate\.json", ref["path"]), "Invalid candidate bundle path")
+    selected = [f for f in bundle["findings"] if f["candidate_finding_id"] == candidate_id]
+    require(len(selected) == 1, "Missing or duplicate candidate finding")
+    item = selected[0]
+    require(item.get("canonical_evidence_id") is None and item["review_state"] == "unreviewed", "Candidate cannot import a vote or registration")
+    origin = next(x for x in bundle["sources"] if x["candidate_source_id"] == item["candidate_source_id"])
+    require(origin["artifact"]["sha256"] == source["receipt"]["artifact"]["sha256"], "Candidate/source edition mismatch")
+    return {"format": "ruralscan.priority-finding.v2", "source_sha256": validate_source(source),
+            "packet": ref, "candidate_finding": item}
+
+
+
+def candidate_objects(bundle, sources, ref):
+    """Reuse exact source editions; preserve all independent findings without votes."""
+    by_artifact = {}
+    for source in sources.values():
+        validate_source(source)
+        artifact = source['receipt']['artifact']['sha256']
+        require(artifact not in by_artifact, 'Duplicate source edition')
+        by_artifact[artifact] = source
+    selected = {}
+    for origin in bundle['sources']:
+        artifact = origin['artifact']['sha256']
+        require(artifact in by_artifact, 'Candidate source edition is not prepared')
+        selected[origin['candidate_source_id']] = by_artifact[artifact]
+    return [candidate_finding(bundle, selected[item['candidate_source_id']], ref,
+                              item['candidate_finding_id']) for item in bundle['findings']]
+
+
+def stage_candidates(root, revision, relative, base, source_root, out):
+    merged(root, revision, base)
+    data = blob(root, revision, relative)
+    require((root / relative).read_bytes() == data, 'Candidate checkout differs from selected revision')
+    ref = {'revision': revision, 'path': relative, 'sha256': sha256(data).hexdigest()}
+    sources = objects(source_root, 'sources')
+    findings = candidate_objects(json.loads(data), sources, ref)
+    require(not out.exists(), 'Use a new private staging directory')
+    used = {item['source_sha256'] for item in findings}
+    for key in sorted(used): write_object(out, 'sources', sources[key])
+    for item in findings: write_object(out, 'findings', item)
+    return {'sources_prepared': len(used), 'findings_prepared': len(findings),
+            'registered_sources': 0, 'registered_findings': 0, 'review_votes': 0}
+
+
+def replay_finding(item, packet, source):
+    if item.get("format") == "ruralscan.priority-finding.v2":
+        return candidate_finding(packet, source, item["packet"], item["candidate_finding"]["candidate_finding_id"])
+    return finding(packet, source, item["packet"])
+
+
 def write_object(root, kind, value):
     require(kind in {"sources", "findings"}, "Unknown store collection")
     path = root / STORE / kind / (digest(value) + ".json")
@@ -134,7 +189,8 @@ def write_object(root, kind, value):
 def fetch_review(number):
     # Reuse the existing desk's original-body and reviewer-identity checks.
     sys.path.insert(0, str(ROOT / "workflows/submissions"))
-    import intake
+    spec = importlib.util.spec_from_file_location("priority_authenticated_submissions", ROOT / "workflows/submissions/intake.py")
+    intake = importlib.util.module_from_spec(spec); spec.loader.exec_module(intake)
     issue = intake.gh(f"repos/{intake.INBOX}/issues/{number}")
     actor = intake.original(issue)
     require("pull_request" not in issue and issue.get("user", {}).get("type") == "User", "Review requires an original human issue")
@@ -198,7 +254,7 @@ def verify(root, base=None, authenticate=True):
         ref = item["packet"]; data = blob(root, ref["revision"], ref["path"])
         require(sha256(data).hexdigest() == ref["sha256"], "Packet bytes changed")
         if base: merged(root, ref["revision"], base)
-        require(item == finding(json.loads(data), source, ref), "Finding differs from pinned source packet")
+        require(item == replay_finding(item, json.loads(data), source), "Finding differs from pinned source packet")
     old_events = []
     if base:
         for path in git(root, "ls-tree", "-r", "--name-only", base, "--", STORE).decode().splitlines():
@@ -253,7 +309,7 @@ def resolve(root, reference, base):
         require(digest(item) == key and item["source_sha256"] == source_hash, "Finding/source identity mismatch")
         ref = item["packet"]
         require(ref["path"] == reference["path"] and ref["sha256"] == reference["sha256"], "Finding refers to another packet")
-        require(item == finding(packet, source, ref), "Finding content differs from packet")
+        require(item == replay_finding(item, packet, source), "Finding content differs from packet")
         require(status(selected, key) == status(latest, key) == "kept", "Finding is unreviewed, held, rejected, reopened or conflicted")
         result.append({"finding_id": "pfind_" + key, "source_sha256": source_hash,
                        "review_receipts": [e["receipt"] for e in selected if e["finding_sha256"] == key]})
@@ -270,12 +326,21 @@ def main():
     stage.add_argument("--packet-revision", required=True)
     stage.add_argument("--base", required=True)
     stage.add_argument("--library-root", type=Path); stage.add_argument("--library-path")
+    candidates = commands.add_parser("stage-candidates")
+    candidates.add_argument('--revision', required=True)
+    candidates.add_argument('--path', required=True)
+    candidates.add_argument('--base', required=True)
+    candidates.add_argument('--source-root', type=Path, required=True)
+    candidates.add_argument('--out', type=Path, required=True)
     review = commands.add_parser("review"); review.add_argument("--receipt", type=int, required=True); review.add_argument("--base", required=True)
     args = parser.parse_args()
     if args.command == "check":
         print(json.dumps(verify(ROOT, args.base), sort_keys=True)); return
     if args.command == "review":
         print("Recorded" if record_review(ROOT, args.receipt, args.base) else "Already recorded"); return
+    if args.command == 'stage-candidates':
+        print(json.dumps(stage_candidates(ROOT, args.revision, args.path, args.base,
+                                          args.source_root, args.out), sort_keys=True)); return
     tool = acquisition(); plan = tool.read_plan(args.plan)
     candidate = tool.selected(args.candidates, plan["candidate_id"])
     source = prepare_source(args.bundle, plan, candidate, args.library_root, args.library_path,

@@ -1,0 +1,22 @@
+{
+  "format": "ruralscan.cross-cutting-register-proposal.v1",
+  "status": "proposed_not_activated",
+  "activation": "disabled",
+  "candidate_schema": {
+    "path": "workflows/priority_classification/candidate-schema.json",
+    "sha256": "1dfab8845808b1bc0073824d5376443e815ae22c0c0cb383a76de7739dad0f45"
+  },
+  "proposed_stores": {
+    "XCS": "registers/cross_cutting/sources.jsonl",
+    "XCE": "registers/cross_cutting/findings.jsonl",
+    "XSRCH": "registers/cross_cutting/searches.jsonl",
+    "review_events": "registers/cross_cutting/review_events.jsonl"
+  },
+  "canonical_record_count": 0,
+  "intake": "workflows/priority_classification/intake.py",
+  "registration": "not_implemented_pending_protected_review_adapter",
+  "source_identity_adapter": "workflows/acquisition/identity.py",
+  "legacy_registers": "unchanged",
+  "approval_boundary": "A schema PR, passing checks or kept finding cannot accept a classification.",
+  "schema_issue": "https://github.com/RuralScan/method/issues/103"
+}

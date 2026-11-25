@@ -1,0 +1,100 @@
+{
+  "format": "ruralscan.priority-registration-preparation.v1",
+  "status": "proposed_not_registered",
+  "registered_sources": 0,
+  "registered_findings": 0,
+  "candidate_bundle": {
+    "repository": "RuralScan/evidence",
+    "revision": "7a134a578209b9eb1c51319f8c6d18dc78f7ebda",
+    "path": "workflows/priority_classification/batches/t5-2026-11-25/candidate.json",
+    "sha256": "4378a7a01456c690f43a49e323c97436daa3a24ef06abc0dfda081c2d2e6e23d"
+  },
+  "sources": [
+    {
+      "candidate_source_id": "xcs_aqueduct_gee_catalogue",
+      "packet_id": "aqueduct_gee_catalogue",
+      "proposed_source_id": "psrc_10b696b6b25533d3fc9d9c10b04d64adf8bfce87fa368318293db3f9bc1d3ee8",
+      "proposed_finding_id": "pfind_8d50b63941822906f060891f6b2a06c92db813c1fbef43f709fcadb332009cbd",
+      "artifact_sha256": "226be8c474a4ca0eeb560d14ed65dff7db806d68f6f34b1420240df953f76797",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/aqueduct_gee_catalogue.html",
+      "bytes": 158570,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_aqueduct_catalogue_fields"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    },
+    {
+      "candidate_source_id": "xcs_copernicus_spei_2026",
+      "packet_id": "copernicus_spei_2026",
+      "proposed_source_id": "psrc_923f257d39917903ce6aa6a29b67753b9b63329ea4f118d0f0f1eb18968f3a2c",
+      "proposed_finding_id": "pfind_e7ff2463fac6d46baaf9b91f5d69f25be3546c670357b2d624b74f089decf55a",
+      "artifact_sha256": "a65d8e7fb2727e1b66ec97517760d7a3eb49ca6552831ca1108fb7e66fad3086",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/copernicus_spei_2026.pdf",
+      "bytes": 1690814,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_spei_dry_event_classes",
+        "xce_spei_standardization"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    },
+    {
+      "candidate_source_id": "xcs_fao_gsocseq_definition",
+      "packet_id": "fao_gsocseq_definition",
+      "proposed_source_id": "psrc_e2ae93f1c7327cab7876ac1c72e17148a107474703e93090b9db75161cf3c084",
+      "proposed_finding_id": "pfind_ba42e1baa3c027d2c93ee52f9ec658fdc8e2a4bd15096e9aee13f2c09fda6d15",
+      "artifact_sha256": "64f02aae75aee5e327c2d739944b868bfe9d96d03d7929d4985a0d21f57b6e39",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/fao_gsocseq_definition.html",
+      "bytes": 48921,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_soc_change_comparators"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    },
+    {
+      "candidate_source_id": "xcs_fao_gsocseq_inputs",
+      "packet_id": null,
+      "proposed_source_id": "psrc_774ccb1ced4b76405e3275e1976d9072c0220d9f838f2454a9bed9bf3f8b6a9b",
+      "proposed_finding_id": null,
+      "artifact_sha256": "75fe431797cd7fdf908fcd7507bd73332b7ff07fdaae7912ee5b743d8aba0206",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/fao_gsocseq_inputs.html",
+      "bytes": 81566,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_soc_stock_input_support"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    },
+    {
+      "candidate_source_id": "xcs_landmark_completeness",
+      "packet_id": "landmark_completeness",
+      "proposed_source_id": "psrc_59f0c1d79cedf666ccff135cea4ac8022ac75f0aaecd9165ba33d7e3253c7b30",
+      "proposed_finding_id": "pfind_55d0a50795093f6a057903f0d4f15509552e65e32a4d7c67877daaec0f14a3be",
+      "artifact_sha256": "55dad9e0ea9a51452fffe21310b0bd48312b38ee86b210fb349618f5472777ee",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/landmark_completeness.html",
+      "bytes": 52312,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_landmark_missingness"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    },
+    {
+      "candidate_source_id": "xcs_wri_aqueduct40_2023",
+      "packet_id": "wri_aqueduct40_2023",
+      "proposed_source_id": "psrc_2798ca451ec4f03c51d8f1278bffc90fe1d3e5654d1b025d9cf3c2f4a89e3122",
+      "proposed_finding_id": "pfind_1ae9de2e644e68a23f49f38cb5fc2042ad364d059395411313481ea28352cc7c",
+      "artifact_sha256": "bb55ea20f39c4272dea87b1089725900ffbf45673709c18cb0dab8d361a97ae5",
+      "library_path": "2_Technical_&_Data/library/0_Methodology_&_Frameworks/priority_classification/2026_11_25/wri_aqueduct40_2023.pdf",
+      "bytes": 4746842,
+      "accession_state": "local_synced_folder_copy_verified_remote_access_unconfirmed",
+      "candidate_finding_ids": [
+        "xce_aqueduct_quantity_support",
+        "xce_aqueduct_provider_bands"
+      ],
+      "relationship": "same_source_bytes_not_equivalent_findings"
+    }
+  ]
+}
