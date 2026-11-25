@@ -71,6 +71,63 @@ Both print the proposal SHA-256 (a canonical hash of the four file hashes). Comm
 Validation does not accept science. New evidence or definitions require preparation
 again, not editing the input snapshot to make an old proposal pass.
 
+## Broader effect summaries
+
+New input packets include [evidence coverage and original scope](../../handbook/evidence-hierarchy.md).
+Inspect broader and historical-scope evidence when a child has few direct findings.
+Deduplicate finding IDs and originating studies; an empty child is not a zero effect.
+Do not distribute a parent's result to its children or pool their T4 placement rules.
+
+For a group summary, add the pinned group ID when preparing the proposal:
+
+```sh
+python workflows/synthesis/run.py prepare --practice agroforestry --table T6 \
+  --group agroforestry__linear_plantings --id linear-effects-example \
+  --task 'Assess shared effects and unresolved differences across linear plantings' \
+  --out /tmp/linear-effects-proposal --ciat-repo /path/to/nbs_ruralscan
+```
+
+The proposal carries `evidence_group_id`. Keep each output row's
+`suitability_family_id` blank: this is a group summary, not a new family or an alias
+for the retired linear family. The existing ordered CSV columns and pinned method
+contract remain unchanged. Group metadata is part of the four-file proposal hash.
+
+Group and practice summaries, and family judgments using broader or unresolved
+historical evidence, require `justification.aggregation` on each row. For example:
+
+```json
+{
+  "covered_families": ["agroforestry__wind_shelter"],
+  "unresolved_families": ["agroforestry__boundary_planting", "agroforestry__contour_buffers"],
+  "scope_rationale": "Explain what can be concluded at this level and its limits.",
+  "conflict_note": "Describe conflicting findings, or explain why none were observed.",
+  "evidence_applicability": {
+    "<supporting evidence_id>": {
+      "families": ["agroforestry__wind_shelter"],
+      "rationale": "Explain the source-based applicability; do not infer sibling support."
+    }
+  }
+}
+```
+
+Coverage and unresolved lists partition the target's families. Each supporting ID
+needs its own applicability rationale. Direct broad evidence can support a group
+summary while every child remains unresolved: use empty applicability family lists
+and explain that limit. A source's known specific family cannot support a sibling.
+Historical unresolved scope needs a source-based argument, not automatic relabelling.
+This does not change the finding's stored scope or reuse its review for an EV correction.
+
+Existing source, review, origin and data-deficiency checks still apply. The human
+acceptance route below reviews the exact broader judgment, scope and conflicts.
+Replacement hashes are taken from that group's own prior rows, not practice rows.
+
+Accepted group outputs are published in `effect_synthesis.groups`, with the group ID,
+exact rows, acceptance receipt and accepted/stale/held status. They are excluded from
+`recipes` and from the runtime package. Use an authenticated `hold` on the scientific
+proposal to challenge a group result; the existing rating-review route addresses
+recipe rows and does not silently address group summaries. A later runtime consumer
+would need an explicit group-aware contract. Historical proposals remain immutable.
+
 ## Scientific acceptance
 
 An eligible human reviewer creates an **original** issue in RuralScan/evidence with

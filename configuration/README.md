@@ -62,3 +62,17 @@ python3 workflows/submissions/configuration.py checkout /path/to/new-engine --ci
 ```
 
 Historical editions remain available at their evidence Git commits. To restore an earlier method release, adopt its full SHA in a new evidence PR and verify the candidate against current evidence-owned records. To correct an evidence-owned entry, append a new source-backed change against its current hash.
+
+## Family transitions and broader evidence
+
+A release may also pin `configuration/family-transition.json`. This metadata is
+consumed by the [evidence hierarchy](../handbook/evidence-hierarchy.md), not as an
+analytical table. Adoption records the affected original finding IDs and scopes in
+`family-adoption.json`, then generates coverage without moving those findings or
+their reviews. CI verifies the adoption basis and preserves it across later PRs and
+rollbacks. The current transition supports the agroforestry family split; a later
+transition needs an explicit compatibility update rather than replacing this history.
+
+New synthesis inputs contain the hierarchy, source-scope warnings and current
+method pin. Changed definitions make earlier accepted summaries stale; code never
+relabels an old acceptance or derives new science from the definition change.

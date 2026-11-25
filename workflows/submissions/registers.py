@@ -312,7 +312,15 @@ def apply_batch(repo, ciat, base, producer, receipts, selected, journal, corpus)
             )
             if "knowledge_basis" in next(iter(current.values()), {}):
                 proposal(u, current.get(eid))
-            issues = evidence_intake.gate([u], roles, paths=paths)
+            from dataclasses import replace
+            from family_hierarchy import intake_family_bytes
+
+            with TemporaryDirectory() as family_temp:
+                family_path = Path(family_temp) / "FAM.csv"
+                family_path.write_bytes(intake_family_bytes(producer, [u]))
+                issues = evidence_intake.gate(
+                    [u], roles, paths=replace(paths, families=family_path)
+                )
             prev = current.get(eid)
             if prev and u.get("ruleset_version") == prev["ruleset_version"]:
                 # Historical observations retain their original stamp. Only waive the

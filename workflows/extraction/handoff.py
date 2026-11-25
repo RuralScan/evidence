@@ -212,6 +212,12 @@ def check(
             target = data / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ciat / relative, target)
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from submissions.family_hierarchy import intake_family_bytes
+
+        (data / "schema/registers/FAM_family_registry.csv").write_bytes(
+            intake_family_bytes(ciat, units)
+        )
         input_file = data / "units.json"
         env = {**os.environ, "PYTHONPATH": str(ciat / "src")}
         if validate_only:

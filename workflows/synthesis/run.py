@@ -27,6 +27,8 @@ from synthesis.core import (
     write_rows,
     entries,
     JOURNAL,
+    group_definition,
+    prior_rows,
 )
 
 
@@ -36,6 +38,10 @@ def main():
     prepare = sub.add_parser("prepare")
     prepare.add_argument("--practice", required=True)
     prepare.add_argument("--table", required=True, choices=TABLES)
+    prepare.add_argument(
+        "--group",
+        help="Optional pinned evidence group; summary is excluded from runtime recipes",
+    )
     prepare.add_argument("--id", required=True)
     prepare.add_argument("--task", required=True)
     prepare.add_argument("--out", required=True, type=Path)
@@ -69,6 +75,10 @@ def main():
             )
             require(not args.out.exists(), "Select a new proposal directory")
             packet = inputs(ROOT, producer, args.practice, queue["registers"])
+            if args.group:
+                group_definition(
+                    {"practice": args.practice, "evidence_group_id": args.group}, packet
+                )
             args.out.mkdir(parents=True)
             (args.out / "inputs.json").write_bytes(encoded(packet))
             skill = ROOT / ".agents/skills/source-command-t3t6-synthesise/SKILL.md"
@@ -100,6 +110,8 @@ def main():
                     for r in packet["evidence"]
                 ],
             }
+            if args.group:
+                proposal["evidence_group_id"] = args.group
             (args.out / "proposal.json").write_bytes(encoded(proposal))
             print(
                 "Prepared inputs and unscored worksheet. AI must author judgments and candidate dispositions."
@@ -107,7 +119,7 @@ def main():
         elif args.command in {"validate", "stage"}:
             raw = json.loads((args.proposal / "proposal.json").read_bytes())
             packet = inputs(ROOT, producer, raw["practice"], queue["registers"])
-            prior = queue["recipes"][raw["practice"]][TABLES[raw["table"]]]
+            prior = prior_rows(queue, raw)
             p, _ = validate(args.proposal, packet, prior)
             if args.command == "stage":
                 destination = ROOT / PROPOSALS / p["id"]
@@ -130,7 +142,7 @@ def main():
                 validate(
                     folder,
                     inputs(ROOT, producer, raw["practice"], queue["registers"]),
-                    queue["recipes"][raw["practice"]][TABLES[raw["table"]]],
+                    prior_rows(queue, raw),
                 )
             from registers import LIVE
             from recipe_rows import CANDIDATE

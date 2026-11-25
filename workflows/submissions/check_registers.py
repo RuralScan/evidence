@@ -67,6 +67,9 @@ def check_snapshot(producer, ciat, base):
     has_operations = (ROOT / RECORDS).exists()
     if not base:
         base = git("rev-parse", "HEAD^1", cwd=ROOT).decode().strip()
+    from family_hierarchy import verify_adoption
+
+    verify_adoption(ROOT, base)
     manifest = json.loads((ROOT / "registers/manifest.json").read_bytes())
     require(
         (ROOT / "registers/manifest.json").read_bytes()

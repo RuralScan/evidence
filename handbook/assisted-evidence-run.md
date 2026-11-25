@@ -4,6 +4,11 @@ Use this procedure to take one authorised practice, family and table question fr
 
 ## Choose the instructions
 
+Before narrowing a search or synthesis to a family, inspect the
+[evidence hierarchy and broader coverage](evidence-hierarchy.md). Preserve original
+scope and search history. Sparse child evidence is not proof that broader support
+is absent, and broader findings do not automatically apply to every child.
+
 Record the workbench revision and select the instructions for the stage before beginning. The terrace exercise uses discovery **v1.8.1** and the workbench PDF extractor **v1.9.9**. The historical terrace evidence record carries **v1.6.0**. At CIAT revision `4d53620f`, the operating guide identifies discovery **v1.8.1** and extraction **v1.10.1**. Read the [pinned entry points](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/AGENTS.md#L53-L62) for these versions. A live run must use the instructions and checks for its actual version. Keep the original version on every historical record. [Ruleset catalog](../rulesets/catalog.json) · [Terrace example and rerun commands](../examples/terrace-rainfall/README.md)
 
 ## 1. Frame and capture the search

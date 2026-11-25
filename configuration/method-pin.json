@@ -6,6 +6,7 @@
     "wb_income_groups": "286c52a26a23daa78009907ea32c9a359b5042b38e67492218bc4eceb751d662"
   },
   "files": {
+    "method/family-transition.json": "ee6ac0d7142ccb600ab8c294f2feeee323b8e6e9ebe40a3725ce4e7cfb4dab14",
     "schema/lookups/comparator_policy.csv": "15326207e7548869752ae24ce235bf8046a183af209d43e460fe2dec8c763275",
     "schema/lookups/configuration_vocabulary.csv": "757efa996eb2cab752ed5818b295514d48471e1301b952071cc0eacd9a9f8b1b",
     "schema/lookups/crop_scope_policy.csv": "62f6bf68b618116e63d4bee57d7b01c6710b4a2ba62b4405bf7daf1662f9a5b4",
@@ -23,11 +24,11 @@
     "schema/lookups/xw_route_policy.csv": "72add2e55951c90fcd4b727d1aa03b88485f7edb3963a9a93bcf7b1888c97bef",
     "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
     "schema/registers/BIND_dataset_binding.csv": "6aeb5481a121cca768efd69ebe277b95a85e2c7f1ef9941e9cc74536c9bcfa35",
-    "schema/registers/FAM_family_registry.csv": "3050387be3fd30d2913effcde7dc51fe60de833366be95fb111518959e214136",
+    "schema/registers/FAM_family_registry.csv": "c9117feae1fd9d39a099fbfcc172e32daa845596e8cad80cbde93a00851d07c8",
     "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
   },
-  "release_sha256": "50dda004920917ad0355d8b89a44316379920930f4d13054fca5f1dd8e8ca7a7",
+  "release_sha256": "0fa88747a67874dfa65302b7187c98b4cf77d98bcd8e8b8fdfb1fbd4b622a866",
   "repository": "https://github.com/RuralScan/method.git",
-  "revision": "e50a3a01b6b164bebed8dfd09229c4df83086c01"
+  "revision": "7d447297742d6d4aaf0cd66709ef7ccf68e8c0af"
 }

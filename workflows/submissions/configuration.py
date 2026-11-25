@@ -19,6 +19,7 @@ PIN = "configuration/method-pin.json"
 JOURNAL = "configuration/changes.json"
 METHOD = "https://github.com/RuralScan/method.git"
 RELEASE = "configuration/release.json"
+TRANSITION = "method/family-transition.json"
 TOOL = "schema/registers/TOOL_tool_registry.csv"
 OWN = {
     TOOL: ("tool_id",),
@@ -55,6 +56,8 @@ def encoded(obj):
 
 
 def cache_path(target):
+    if target == TRANSITION:
+        return Path("configuration/family-transition.json")
     if target in METHOD_REGISTERS or target == TOOL:
         return Path("registers") / target
     require(
@@ -109,6 +112,26 @@ def pinned_release(sha, local=None):
             require(digest(data) == meta["sha256"], f"Method hash mismatch: {target}")
             files[target] = data
         require(METHOD_REGISTERS <= files.keys(), "Incomplete register release")
+        transition = edition.get("family_transition")
+        if transition:
+            source = transition["file"]
+            require(
+                re.fullmatch(
+                    r"configuration/family-transitions/[a-z0-9-]+\.json", source
+                ),
+                "Unexpected family transition source",
+            )
+            data = blob(root, sha, source)
+            require(
+                digest(data) == transition["sha256"], "Family transition hash mismatch"
+            )
+            from family_hierarchy import validate_transition
+
+            validate_transition(
+                json.loads(data),
+                rows(files["schema/registers/FAM_family_registry.csv"]),
+            )
+            files[TRANSITION] = data
         archive = edition["archive"]
         require(
             archive["repository"] == "CIAT/nbs_ruralscan"
@@ -133,6 +156,11 @@ def pin(root, sha, local=None):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
     (root / PIN).write_bytes(encoded(lock))
+    if TRANSITION not in files:
+        (root / cache_path(TRANSITION)).unlink(missing_ok=True)
+    from family_hierarchy import record_adoption
+
+    record_adoption(root)
 
 
 def owned_history(root):
@@ -148,7 +176,14 @@ def verify_method(root, local=None):
             (root / cache_path(target)).read_bytes() == data,
             f"Edited method mirror: {target}",
         )
-    expected = {cache_path(k).name for k in files if k not in METHOD_REGISTERS}
+    from family_hierarchy import verify_adoption
+
+    verify_adoption(root)
+    expected = {
+        cache_path(k).name
+        for k in files
+        if k not in METHOD_REGISTERS and k != TRANSITION
+    }
     require(
         {p.name for p in (root / "configuration/method-lookups").iterdir()} == expected,
         "Unexpected method policy inventory",
@@ -161,11 +196,18 @@ def overlay(producer, root):
         return {}  # Historical evidence editions used their CIAT seed.
     lock = json.loads((root / PIN).read_bytes())
     inputs = {}
+    if TRANSITION not in lock["files"]:
+        (producer / TRANSITION).unlink(missing_ok=True)
     for target in (*lock["files"], *OWN):
         data = (root / cache_path(target)).read_bytes()
         checksum = digest(data)
         if target in lock["files"]:
             require(checksum == lock["files"][target], f"Stale method mirror: {target}")
+        if target == TRANSITION:
+            inputs[target] = checksum
+            (producer / target).parent.mkdir(parents=True, exist_ok=True)
+            (producer / target).write_bytes(data)
+            continue  # Compatibility metadata, not an analytical compiler table.
         (producer / target).write_bytes(data)
         inputs[target] = checksum
     for name, expected in lock["archival_lookups"].items():
