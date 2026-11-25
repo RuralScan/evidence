@@ -1,0 +1,201 @@
+evidence_id,reason
+EV_chomba_2020_004,"Paper found degradation did not limit regeneration; 82% and 0.2% N describe the study plots, not a limit."
+EV_chomba_2020_005,"Gives tree density (trees per hectare), which would need converting to canopy cover percent."
+EV_crs_fmnr_niger_2025_017,AHP priority weight and rank only; no number range or category.
+EV_eld_fmnr_2020_003,Quote says only that tree establishment is very difficult without irrigation; no aridity number or zone label is in the quote.
+EV_fao_anr_2019_002,Says seedlings respond to fertilizer regardless of soil fertility; no fertility number or category.
+EV_glce_fmnr_mali_2023_007,Age at which Acacia N-fixation matures (5-6 years); not a site suitability condition.
+EV_ijbcs_rna_mali_2020_002,"20% and 65% are regional degradation statistics motivating FMNR, not a suitability limit."
+EV_ijbcs_rna_mali_2020_007,"Adoption driver (fertilizer use) with direction only; 10% is a significance level, not a limit."
+EV_sendzimir_2011_001,"The 200-900 mm/y band is Niger's whole rainfall gradient (desert included), not the regreening area's rainfall; vegetation zones are not precipitation categories."
+EV_wocat_507_2019_003,Comparative statement (FMNR vs planting in arid/semi-arid climates); no number and no suitability judgement for a category.
+cgspace_singh_southasia_2020__soil_texture_hsg__01,"Describes what the data classes 5-7 are (non-soil, frost, water), not suitability for the practice."
+ev_T4_annualprecip_haris2021_1,Names rainfall as a limiting factor for Sengon but prints no number or class.
+ev_T4_landcover_seja2022_2,"The percentage is the share of a land unit allocated to agroforestry by AHP, not a suitability limit or category; quote does not support a threshold."
+ev_T4_landcover_seja2022_3,"The percentage is the share of a land unit allocated to agroforestry by AHP, not a suitability limit or category; quote does not support a threshold."
+ev_T4_landcover_seja2022_4,"The percentage is the share of a land unit allocated to agroforestry by AHP, not a suitability limit or category; quote does not support a threshold."
+ev_T4_landcover_seja2022_5,"The percentage is the share of a land unit allocated to agroforestry by AHP, not a suitability limit or category; quote does not support a threshold."
+ev_T4_model_use_ahmad2020_annual_precipitation,"Describes the method only; no number, category or class for this variable is printed."
+ev_T4_model_use_ahmad2020_aridity_index,"Describes the method only; no number, category or class for this variable is printed."
+ev_T4_model_use_ahmad2020_mean_annual_temperature,"Quote only says the variable was used in the model; no number, class or direction."
+ev_T4_model_use_ahmad2020_ndvi,"Quote only says the variable was used in the model; no number, class or direction."
+ev_T4_model_use_ahmad2020_slope,"Quote only says the variable was used in the model; no number, class or direction."
+ev_T4_rereview_ahmad_2020_annual_precipitation_2,"Describes the method only; no number, category or class for this variable is printed."
+ev_T4_rereview_ahmad_2020_aridity_index_3,"Describes the method only; no number, category or class for this variable is printed."
+ev_T4_rereview_ahmad_2020_mean_annual_temperature_1,Quote gives no number or class (Table 2 not quoted); increasing direction only.
+ev_T4_rereview_ahmad_2020_ndvi_4,Quote gives no number or class (Table 2 not quoted); increasing direction only.
+ev_T4_rereview_ahmad_2020_slope_5,Quote gives no number or class (Table 2 not quoted); decreasing direction only.
+ev_T4_rereview_nath_2021_soil_available_water_capacity_10,Classes are numeric codes whose meaning is not given in the claim text.
+ev_T4_rereview_nath_2021_soil_texture_6,Classes are numeric codes whose meaning is not given in the claim text.
+ev_T4_rereview_singh_2026_annual_precipitation_6,"Direction only (sigmoidal/increasing), no number or category."
+ev_T4_rereview_singh_2026_mean_annual_temperature_5,Fuzzy shape 'monotonically increasing linear' with no breakpoints; direction only.
+ev_T4_rereview_singh_2026_slope_4,Fuzzy shape 'sigmoidal decreasing' with no breakpoints; direction only.
+ev_T4_slope_haile2024_2,Steeper slopes raise erosion; direction only.
+ev_T4_slope_haris2021_3,"Land capability class VII (>45%) is for agricultural cultivation, not suitability for the practice; classes describe a different use."
+ev_T4_soc_haile2024_1,No unit is printed for soil organic carbon in the source table.
+ev_T4_soc_haile2024_continuation,No unit is printed for soil organic carbon in the source table.
+ev_T4_soildrainage_haris2021_1,Names drainage as the limiting factor of a capability subclass but gives no drainage class or number.
+ev_af_soil_ph_rao97_targeting_20261105,"Acid infertile soils are called both unsuitable and workable with lime and P, and no pH value is given; the relationship marks direction unclear."
+ev_annual_precipitation_batcheler24_1,Table row without column headers or relationship; cannot tell which number is precipitation.
+ev_aridity_index_zomer14_1,"Association only: higher tree cover in humid regions; >45% is tree cover, not an aridity limit, and the practice is not judged by zone."
+ev_carbon_sequestration_potential_saraheb3_p2_soil,Only a tool weight (4) for the criterion.
+ev_carbon_sequestration_potential_saraheb3_p3_soil,Only a tool weight (3) for the criterion.
+ev_carbon_sequestration_potential_saraheb3_p4_soil,Only a tool weight (5) for the criterion.
+ev_conflict_fragility_index_fsrp22_1,Country context statement about fragility; no number or suitability category.
+ev_distance_to_waterbody_dalacorte20_4,No number or category: cautions against a single nationwide riparian width.
+ev_distance_to_waterbody_demello18_2,"Widths (200 m, 100 m) are analysis buffers used by other studies to delineate riparian zones, not suitability limits."
+ev_distance_to_waterbody_tiwari16_1,"30 x 10 m is the groundwater-discharge hotspot geometry used in a cost calculation, not a suitability limit."
+ev_distance_to_waterbody_zhao13_1,"210 m is the study's maximum analysis window; the cited >200 m holds only 'in some cases', so no limit is stated."
+ev_fr_aridity_cao2011_t4_20261105,Direction only ('precipitation much lower than PET'); no ratio or class is given.
+ev_fr_asc_aspect_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_asc_elevation_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_asc_slope_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_asc_soil_ph_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_asc_soil_texture_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_distance_cloud2018_t4_20261105,Contrasts zones adjacent to vs far from mature forest; no distance or mappable category is given.
+ev_fr_distance_forest_shono07_20261105,Proximity requirement with no distance given.
+ev_fr_distance_to_forest_barros22_1,"5 km is the neighbourhood radius used to measure surrounding forest cover in the model, not a suitability limit."
+ev_fr_distance_to_forest_cookpatton20_1,Direction only; no number or category is given.
+ev_fr_distance_to_forest_shive18_1,"150 m is the neighbourhood size of a seed-availability model input, not a suitability limit."
+ev_fr_distance_to_forest_williams24_2,Direction only; no number or category is given.
+ev_fr_elevation_busch19_1,Direction only; no number or category is given.
+ev_fr_elevation_wocat4101_t4_20261105,"Upper treeline written as '2.300-2.600m' with dot thousands separators; recording 2300-2600 m would need reformatting the paper's number, which the check cannot match."
+ev_fr_fire_hazard_williams24_1,Direction only; no number or category is given.
+ev_fr_landscape_forest_cover_williams24_1,1 km is the radius used to measure local forest density; the claim gives direction only.
+ev_fr_pa_aspect_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_pa_elevation_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_pa_slope_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_pa_soil_ph_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_pa_soil_texture_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_population_density_chazdon16_1,"Population bands (<10 and 10-100 per km2) separate wide-scale from mosaic restoration modes, not suitable from unsuitable land for this practice."
+ev_fr_population_density_chazdon16_2,"Population bands (<10 and 10-100 per km2) separate wide-scale from mosaic restoration modes; planting is allowed in both, so no suitability limit is given."
+ev_fr_qp_aspect_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_qp_elevation_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_qp_slope_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_qp_soil_ph_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_qp_soil_texture_mahdavi17_20261029,Reports only the share of study area rated suitable for this layer; the suitable/unsuitable class values are not given.
+ev_fr_regeneration_cedagro22_20261029,Direction only; no number or category is given.
+ev_fr_regeneration_fao_module_20261029,Direction only; no number or category is given.
+ev_fr_regeneration_stanturf_function_2014_20261102,Direction only; no number or category is given.
+ev_fr_regeneration_wri_diagnostic_2015_20261102,Direction only; no number or category is given.
+ev_fr_seedsource_gma23_1,"Direction only, no number or category: nearby mangroves without on-site mangroves signal a barrier to fix."
+ev_fr_slope_busch19_1,Direction only; no number or category is given.
+ev_fr_slope_cookpatton20_1,Direction only; no number or category is given.
+ev_fr_soilph_cedagro22_20261029,"'Extremely acidic soils' need prior soil treatment, not exclusion; no pH value or mappable suitability class is given."
+ev_fr_tree_canopy_cover_busch19_1,30% tree cover is the forest/non-forest definition used to classify input data; the quote does not tie it to where reforestation is suitable.
+ev_land_cover_schultz95_1,Lists land covers next to drainage ways with no judgement on buffer suitability.
+ev_mat_singh26,Fuzzy shape 'monotonically increasing linear' with no breakpoints; direction only.
+ev_mg_proximity_ws18_20261030,"Direction only, no number or category: proximity to remaining mangroves aids regeneration."
+ev_mg_regeneration_sl21_20261029,"Direction only, no number or category: use natural colonisation where possible."
+ev_mg_regeneration_unep20_20261029,"The 6 to 12 months is a monitoring wait time, not a suitability limit; otherwise direction only."
+ev_mg_texture_ffem24_20261029,No suitability number or category: texture matters; 20-30 cm is the sampling depth.
+ev_mgt4_20261028_historic_habitat,Asks whether mangroves grew there before; no category label or number printed.
+ev_mr_hydroperiod_lewis05_20261028,No number or category: says to match reference-site hydrology.
+ev_mr_propagules_lewis05_20261028,"Direction only, no number or category: succession depends on propagule availability."
+ev_ndvi_zhao13_1,Only weights the variable (PCA weight -2.86); no threshold or category.
+ev_precip_singh26,"Direction only (sigmoidal/increasing), no number or category."
+ev_production_gap_saraheb3_tool,Inverse direction only (marginal cropland rated more suitable); no number or class.
+ev_regeneration_potential_gonzalez15_1,"Names constraints (depleted seed bank, limited dispersal) but no mappable number or category."
+ev_riparian_bentrup04_distance_to_waterbody_recovery20261104,"Stream-order buffer widths (80/100/120 m) define land-cover extraction zones, i.e. input data, not suitability."
+ev_riparian_bentrup04_stream_order_recovery20261104,"Stream-order buffer widths define land-cover extraction zones, i.e. input data, not suitability."
+ev_riparian_buffer_width_zhao13_1,Only weights the variable (PCA weight -1.95); no threshold or category.
+ev_riparian_distance_witing22_design_20261104,"Fixed 100 m corridor is the modelling unit, not a suitability limit."
+ev_riparian_vegetation_gap_cole20_1,"Direction only, no number or category: continuous buffers beat wide intermittent ones."
+ev_riparian_vegetation_gap_zhao13_1,Only weights the variable (PCA weight 0.61); no threshold or category.
+ev_slope_cole20_1,The <10% slope condition sets which buffer width (8-15 m) is adequate; it is not a slope suitability limit.
+ev_slope_cole20_2,"Direction only, no number or category: steep banks call for wider buffers."
+ev_slope_lee04_1,Gives how guideline buffer width grows with slope (16.8 m + 0.79 m per 1%); no slope suitability limit.
+ev_slope_lee04_2,No number or category: lists slope as a common guideline modifying factor.
+ev_slope_lee04_3,"Slope classes (<1%, <15%) set required buffer widths for sediment reduction, not slope suitability."
+ev_slope_schultz95_1,"Direction only, no number or category: willow is the best species on steep eroding banks."
+ev_slope_singh26,Fuzzy shape 'sigmoidal decreasing' with no breakpoints; direction only.
+ev_slope_tiwari16_1,"Direction only, no number or category: gentler slopes give wider wet riparian zones."
+ev_slope_tiwari16_2,"Direction only, no number or category: buffers narrow where elevation rises steeply above the water."
+ev_soil_drainage_tiwari16_2,"Direction only, no number or category: deciduous species tolerate wet soils better than conifers."
+ev_soil_drainage_tiwari16_3,"Direction only, no number or category: waterlogged soils lower forest productivity."
+ev_soil_erosion_risk_saraheb3_p2_water,Tool default priority weight only; no number range or category.
+ev_soil_erosion_risk_saraheb3_p4_water,Tool default priority weight only; no number range or category.
+ev_soil_erosion_risk_zhao13_1,Only weights the variable (PCA weight 1.06); no threshold or category.
+ev_soil_erosion_wind_saraheb3_p2_wind,Tool default priority weight only; no number range or category.
+ev_soil_erosion_wind_saraheb3_p3_wind,Tool default priority weight only; no number range or category.
+ev_soil_erosion_wind_saraheb3_p4_wind,Tool default priority weight only; no number range or category.
+ev_soil_ph_abigaba24_robusta,"Claim only gives a weight for the variable, no number range or category."
+ev_soildepth_inab_aa_def,Defines the class as land with depth or slope limits but gives no depth number or category.
+ev_stream_order_dalacorte20_1,Watercourse-width classes select which legal reserve width applies; they do not rate suitability.
+ev_stream_order_demello18_1,No suitability judgement for buffers: says low-order streams are fragile and dominant.
+ev_stream_order_lee04_1,"Classes give mean guideline buffer widths per waterbody type; all types get buffers, so no suitability rating."
+ev_stream_order_lee04_2,"Size classes (<5.0, 5.0-9.3, >9.3 m) describe stream channel widths, i.e. input data, not suitability."
+ev_t4_annual_precipitation_amichev20_coniferous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_annual_precipitation_amichev20_deciduous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_annual_precipitation_amichev20_shrub,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_arid_ahmad2020_1,"Direction only (low aridity index lowers suitability); 25% is a suitability-category share, not an aridity value."
+ev_t4_clay_content_amichev20_coniferous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_clay_content_amichev20_deciduous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_clay_content_amichev20_shrub,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_distance_to_waterbody_amichev20_coniferous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_distance_to_waterbody_amichev20_deciduous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_distance_to_waterbody_amichev20_shrub,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_elevation_amichev20_coniferous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_elevation_amichev20_deciduous,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_elevation_amichev20_shrub,"Only a loading direction and rank; the printed range is the study area's data range, not a suitability limit."
+ev_t4_landcov_yadav24_12,"81% is the regional cropland share, not a suitability threshold or class; direction only."
+ev_t4_mat_castle2025_1,Variable definition only; no number or class for suitability.
+ev_t4_mat_yadav24_7,Only ranks temperature as more important than rainfall; no number or class.
+ev_t4_mean_annual_temperature_amichev20_coniferous,"Loading sign and rank only; 0.4-4.9 is the data range, not a limit."
+ev_t4_mean_annual_temperature_amichev20_deciduous,"Loading sign and rank only; 0.4-4.9 is the data range, not a limit."
+ev_t4_mean_annual_temperature_amichev20_shrub,"Loading sign and rank only; 0.4-4.9 is the data range, not a limit."
+ev_t4_pa_mucida23_1,Quote says protection areas lie within eligible land but does not say they are excluded; does not support the relationship.
+ev_t4_precip_yadav24_2,"Three species groups with different best classes (1700-5000, 1000-1700, 450-1000 mm); the claim does not say which group applies to this family."
+ev_t4_precip_yadav24_5,Only an AHP weight (0.054) for the variable.
+ev_t4_slope_kizir_1,Model input only (accessibility rationale); no number or class.
+ev_t4_slope_kizir_2,Lists slope thresholds tested in a sensitivity run (1-20°); no single limit is chosen as suitable.
+ev_t4_slope_moisa25_2,AHP weight only (0.24); no suitability number or class.
+ev_t4_soc_kizir_1,"Variable is only named as a model input; no direction, number or category."
+ev_t4_soc_sper24_1,"Variable is only named as a model input; no direction, number or category."
+ev_t4_soc_yadav24_6,"Claim only gives a weight for the variable, no number range or category."
+ev_t4_soil_available_water_capacity_amichev20_coniferous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_available_water_capacity_amichev20_deciduous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_available_water_capacity_amichev20_shrub,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_bulk_density_amichev20_coniferous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_bulk_density_amichev20_deciduous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_bulk_density_amichev20_shrub,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_drain_castle2025_1,"Binary rule whose criteria are in a supplementary table, not printed in the claim."
+ev_t4_soil_ph_amichev20_coniferous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_ph_amichev20_deciduous,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soil_ph_amichev20_shrub,"Direction only from PCA loading sign; the printed range is the study data range, not a limit."
+ev_t4_soildra_nath21_01,Classes are numeric codes whose meaning is not given in the claim text.
+ev_t4_soildrain_yadav24_9,"Variable is only named as a model input; no direction, number or category."
+ev_t4_tcc_kizir_1,"The 10-60% values are thresholds tested in a model sensitivity run, not a suitability limit or observed range."
+ev_t4_temp_kizir_1,"Model input only (MaxEnt predictor); no number, class or direction."
+ev_tree_canopy_cover_sprenkle24_1,The 25% cutoff is an accounting rule to avoid double counting; the paper says agriculture occurs above it.
+ev_tree_canopy_cover_sprenkle24_2,"Mean expert target cover (27%, SD 16%) is an average, not a limit or an observed range."
+ev_wet_drainage_density_sumarga26_1,"Gives only mean canal densities of dammed vs all peatlands (2.5 vs 1.2 km/km2), not a range or limit."
+ev_wet_drainage_density_worley22_1,Direction only; no number or category is given.
+ev_wet_slope_morenomateos10_1,Direction only; no number or category is given.
+ev_wet_slope_worley22_1,Direction only; no number or category is given.
+ev_wet_topographic_wetness_index_uuemaa18_1,TWI is rescaled by within-catchment deciles to 0-1; no transferable TWI value or class is given.
+ev_wet_xiang_amt_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_apre_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_asp_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_clay_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_dem_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_ndvi_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wet_xiang_slope_modeluse_20261105,"Variable is only listed as an input to the potential-wetland model; no limit, class or direction is given."
+ev_wh5_adham_2018_stream_order,"Class table is garbled in the quote ('4 7', 'o 4'); class values and scores cannot be aligned with confidence."
+ev_wh5_bera_2023_topographic_wetness_index_continuation,"Only the two lowest-weighted TWI classes (6.48-9.03, 2.38-6.48); no best or unsuitable class in this claim, best class is in the parent claim."
+ev_wh_distance_to_waterbody_alabadi17_1,Only an AHP criterion weight (0.198); no distance class or limit.
+ev_wh_distwater_critchley91_waterspreading,"Says land must be close to a watercourse, but gives no distance."
+ev_wh_drainage_density_mahmoud21_1,Direction only (higher drainage density is better); no number or class.
+ev_wh_fanyajuu_slope_wolka18_followup_20261105,Direction only: steep slopes make Fanya juu embankments less stable; no number or category.
+ev_wh_runoff_potential_index_alabadi17_1,Only an AHP criterion weight (0.368) and a direction; no runoff class or limit.
+ev_wh_runoff_potential_index_dewinnaar07_1,Direction only (higher curve number is better); no number or class.
+ev_wh_runoff_potential_index_vema19_1,"Fuzzy membership parameters define the input CN classes, not suitability for the practice."
+ev_wh_slope_alabadi17_1,"Only a criterion weight (0.069) and a 'flat slope' label for check dams; percolation ponds prefer undulating/rolling terrain, so the two structures conflict and no slope edges are printed."
+ev_wh_slope_chen17_1,"Design-specific limits (level terrace <25 deg, zig terrace <30 deg, slope-separated 15-20 deg) with no single value for the terracing family."
+ev_wh_slope_kadam12_1,"Structure-specific slope criteria (farm pond 0-5, check dam <15, percolation tank <10, gully plug 15-20) with no single value for the family."
+ev_wh_slope_singh17_1,"Structure-specific upper bounds (farm pond <3, on-ground tank <3, stream tank <5, check dam <15) with no single value for the family."
+ev_wh_slope_slm11_ca,"The 16% limit applies only to mechanised conservation agriculture; hand planters suit steeper slopes, so no practice-wide limit."
+ev_wh_slope_vema19_1,"Fuzzy membership parameters classify the slope input; suitability comes from the joint rule base, not these classes."
+ev_wh_soil_depth_kahinda08_2,"Soil depth was left out of the model (shallow suits catchments, deep suits basins); no number or usable category."
+ev_wh_soil_permeability_vema19_1,Fuzzy membership parameters classify the permeability input; the only suitability statement is a direction (lower permeability is better).
+ev_wh_soil_texture_singh17_1,"Structure-specific textures conflict (fine for farm pond and check dam, coarse for percolation tanks); no single category set for the family."

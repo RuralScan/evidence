@@ -1,0 +1,267 @@
+evidence_id,category,status,reason
+EV_chomba_2020_003,Lixisols,observed,Study site soils where FMNR occurs are classified as Lixisols.
+EV_chomba_2020_007,resprouting tree stumps,included,Named sources of natural regeneration that FMNR builds on.
+EV_chomba_2020_007,root stock,included,Named sources of natural regeneration that FMNR builds on.
+EV_chomba_2020_007,seeds,included,Named sources of natural regeneration that FMNR builds on.
+EV_chomba_2020_009,grassland,observed,Share of FMNR study plots on grassland (7%); no judgement.
+EV_chomba_2020_009,forest or woodlands,observed,Share of FMNR study plots on forest or woodlands (13%); no judgement.
+EV_eld_fmnr_2020_001,living tree stumps with the ability to coppice,included,FMNR can be used wherever these are present.
+EV_eld_fmnr_2020_001,seeds in the soil that will germinate,included,FMNR can be used wherever these are present.
+EV_fao_anr_2019_003,degraded and denuded lands,included,ANR applies to degraded and denuded lands that are not burned or disturbed.
+EV_lohbeck_2020_003,low fertility soils,observed,Study contexts where the practice was found are described as having low fertility soils.
+EV_lohbeck_2020_005,re-sprouting rootstock,included,FMNR manages plants regenerating from these sources.
+EV_lohbeck_2020_005,seeds,included,FMNR manages plants regenerating from these sources.
+EV_wocat_1358_2017_004,fine/ heavy (clay),observed,Topsoil texture at the site where the technology is applied.
+EV_wocat_1358_2017_005,severely degraded land,observed,WOCAT record: technology purpose is to restore severely degraded land.
+EV_wocat_1358_2017_005,soil erosion by water,observed,WOCAT record: degradation types addressed at the documented site.
+EV_wocat_1358_2017_005,soil erosion by wind,observed,WOCAT record: degradation types addressed at the documented site.
+EV_wocat_1358_2017_005,fertility decline,observed,WOCAT record: degradation types addressed at the documented site.
+EV_wocat_507_2019_005,"medium (loamy, silty)",observed,Topsoil texture at the site where the technology is applied.
+EV_wocat_507_2019_005,coarse/ light (sandy),observed,Subsoil texture (> 20 cm below surface) at the site where the technology is applied.
+EV_wocat_507_2019_006,active roots systems,included,The technology relies on these remaining in deforested soils.
+EV_wocat_507_2019_006,viable seeds of native woody plants,included,The technology relies on these remaining in deforested soils.
+EV_wocat_507_2019_008,degraded wasteland,included,"FMNR is a proven technology 'to restore degraded wasteland'; relationship's cropland and forest/woodlands are not in the quote, so left out."
+EV_wocat_507_2019_008,depleted farmland,included,FMNR is a proven technology to 'improve depleted farmland'.
+EV_wri_regreening_2015_002,sandy soils,included,Sandy soils are said to make root development easy; regreening also occurs on many other soil types.
+EV_wri_regreening_2015_003,root systems of trees that were cut in the past,included,Named as a source of natural regeneration ('underground forest').
+cgspace_singh_southasia_2020__land_cover__01,agriculture/cropland,included,Study used the 'agriculture/cropland mask' from VEGA 2000 as the host area.
+cgspace_singh_southasia_2020__soil_texture_hsg__02,class 1 to class 4,included,The study used soil quality class 1 to class 4 for agroforestry suitability mapping.
+cgspace_singh_southasia_2020__soil_texture_hsg__02,class 5 to class 7,excluded,Soil quality class 5 to class 7 were categorized not suitable.
+ev_T4_landcover_baldwin2022_recovery,agricultural land,included,Practices 'could realistically be adopted on any existing agricultural or open land'.
+ev_T4_landcover_baldwin2022_recovery,open land,included,Practices 'could realistically be adopted on any existing agricultural or open land'.
+ev_T4_landcover_wotlolan2021_1,Forest,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Mangrove,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Pine Plantation,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Hardwood Plantation,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Shrubland,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Water,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Urban,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_landcover_wotlolan2021_1,Settlement,excluded,Listed in the 'Not suitable' land-use class.
+ev_T4_lc_unger2023_1,Arable land,included,Required 'Type of agricultural area' is 'Arable land'.
+ev_T4_rereview_chuma_2021_aspect_1,Dish,included,Very high class (index 0.8-1.0).
+ev_T4_rereview_chuma_2021_aspect_1,North,included,High class (index 0.6-0.8).
+ev_T4_rereview_chuma_2021_aspect_1,South,included,Moderate class (index 0.6-0.4).
+ev_T4_rereview_chuma_2021_aspect_1,East,included,Low class (index 0.4-0.2).
+ev_T4_rereview_chuma_2021_aspect_1,West,included,Marginal class (index 0.2-0.0); not called unsuitable.
+ev_T4_rereview_mushtaq_2023_land_cover_3,Agriculture,included,"Mulberry suitability rank 8 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Scrubland,included,"Mulberry suitability rank 7 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Wasteland,included,"Mulberry suitability rank 4 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Forest,included,"Mulberry suitability rank 2 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Water,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Built up area,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Snow/glacier,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_land_cover_3,Dense forest,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_T4_rereview_mushtaq_2023_soil_drainage_6,Well drained,included,Rank 7 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_drainage_6,Moderate drained,included,Rank 5 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_drainage_6,Excessively drained,included,Rank 2 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_drainage_6,Poorly drained,included,Rank 1 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_texture_5,Loamy,included,Rank 8 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_texture_5,Silt clayey loamy,included,Rank 5 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_texture_5,Fine loamy,included,Rank 3 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_mushtaq_2023_soil_texture_5,Coarse loamy,included,Rank 1 of the ranked mulberry sub-classes (higher is better); no class is ruled out.
+ev_T4_rereview_nath_2021_aspect_12,S,included,"Class 1 Very good lists 'S, E , W'."
+ev_T4_rereview_nath_2021_aspect_12,E,included,"Class 1 Very good lists 'S, E , W'."
+ev_T4_rereview_nath_2021_aspect_12,W,included,"Class 1 Very good lists 'S, E , W'."
+ev_T4_rereview_nath_2021_aspect_12,N,included,N is in class 3 Moderate; no aspect is Unsuitable.
+ev_T4_rereview_nath_2021_soil_texture_2,fine,included,Texture class rated very good for agroforestry; no class is rated unsuitable.
+ev_T4_rereview_nath_2021_soil_texture_2,medium,included,Texture class rated good for agroforestry; no class is rated unsuitable.
+ev_T4_rereview_nath_2021_soil_texture_2,coarse,included,Texture class rated moderate for agroforestry; no class is rated unsuitable.
+ev_T4_rereview_singh_2026_soil_drainage_2,Very well,included,Soil drainage class rated Very High for agroforestry; the Low class is blank.
+ev_T4_rereview_singh_2026_soil_drainage_2,Well,included,Soil drainage class rated High for agroforestry; the Low class is blank.
+ev_T4_rereview_singh_2026_soil_drainage_2,Mod well,included,Soil drainage class rated Moderate for agroforestry; the Low class is blank.
+ev_T4_rereview_singh_2026_soil_texture_1,Fine,included,Texture class rated Very High for agroforestry; the Low class is blank.
+ev_T4_rereview_singh_2026_soil_texture_1,Fine to course,included,Texture class rated High for agroforestry; the Low class is blank.
+ev_T4_rereview_singh_2026_soil_texture_1,Course,included,Texture class rated Moderate for agroforestry; the Low class is blank.
+ev_T4_soildrain_wotlolan2021_1,poorly drained,included,Tahitian chestnut is said to thrive in poorly drained soils.
+ev_af_ndvi_ranchi2017_20261105,Nil,included,Vegetation vigour class S3 (marginally suitable); the N column is blank.
+ev_af_ndvi_ranchi2017_20261105,Very dense,included,"Vegetation vigour class S1 (highly suitable), printed ""Very dense and dense"" across a line break."
+ev_af_ndvi_ranchi2017_20261105,dense,included,"Vegetation vigour class S1 (highly suitable), printed ""Very dense and dense"" across a line break."
+ev_af_ndvi_ranchi2017_20261105,Medium,included,"Vegetation vigour class S2 (moderately suitable), printed ""Medium and poor"" across a line break."
+ev_af_ndvi_ranchi2017_20261105,poor,included,"Vegetation vigour class S2 (moderately suitable), printed ""Medium and poor"" across a line break."
+ev_fr_aspect_shive18_1,north,included,North-facing aspects had a positive effect on odds of conifer regeneration.
+ev_fr_aspect_shive18_1,east-facing,included,East-facing aspects had a positive effect on odds of conifer regeneration.
+ev_fr_elevation_zomer08_1,timberline,excluded,Areas at or above timberline were excluded.
+ev_fr_inundation_gma23_2,prolonged inundation,excluded,Restoration typically fails at sites with prolonged inundation.
+ev_fr_land_cover_oliveira26_scope_20261028,agricultural,included,Optimisation was restricted to agricultural and non-vegetated areas.
+ev_fr_land_cover_oliveira26_scope_20261028,non-vegetated,included,Optimisation was restricted to agricultural and non-vegetated areas.
+ev_fr_land_cover_zomer08_1,water bodies,excluded,Areas covered by water bodies were excluded.
+ev_fr_land_cover_zomer08_1,urban areas,excluded,Urban areas were excluded.
+ev_fr_land_cover_zomer08_1,forested,excluded,Forested areas ineligible under UNFCCC rules were excluded.
+ev_fr_land_cover_zomer08_1,recently deforested,excluded,Recently deforested areas ineligible under UNFCCC rules were excluded.
+ev_fr_land_cover_zomer08_continuation_20261028,tundra,excluded,Areas classified as tundra were excluded.
+ev_fr_land_cover_zomer08_continuation_20261028,irrigated,excluded,Irrigated land was excluded to protect production and food security.
+ev_fr_land_cover_zomer08_continuation_20261028,agricultural production,excluded,Land 'under other intensive agricultural production' was excluded (line break splits 'intensive').
+ev_fr_land_cover_zomer08_continuation_20261028,currently forested areas,excluded,Currently forested areas ineligible under UNFCCC rules were excluded.
+ev_fr_land_cover_zomer08_continuation_20261028,recently deforested areas,excluded,Recently deforested areas ineligible under UNFCCC rules were excluded.
+ev_fr_landcover_denr_tb27_20261102,Open/degraded forest lands,included,Listed under 'Suitable Areas for ANR'.
+ev_fr_landcover_wocat_anr1971_20261102,degraded grassland,included,ANR establishes secondary forest from degraded grassland and shrub vegetation.
+ev_fr_landcover_wocat_anr1971_20261102,shrub vegetation,included,ANR establishes secondary forest from degraded grassland and shrub vegetation.
+ev_fr_native_habitat_itto20_20261031,native tropical grasslands,excluded,Planted forests should not replace existing native tropical grasslands.
+ev_fr_native_habitat_itto20_20261031,wetlands,excluded,Planted forests should not replace existing wetlands.
+ev_fr_native_habitat_itto20_20261031,savanna ecosystems,excluded,Planted forests should not replace existing savanna ecosystems.
+ev_fr_protected_area_status_zomer08_1,protected areas,excluded,"Protected areas are not included in the suitable-land map; a mapping assumption, not a stated legal exclusion."
+ev_land_cover_cole20_1,intensively managed farms,included,Wider buffers should be targeted to high-risk intensively managed farms.
+ev_land_cover_cole20_1,extensively managed upland grazing,excluded,Low-risk extensively managed upland grazing may be left unbuffered.
+ev_land_cover_demello18_1,low-productivity pastureland with few cattle,included,Called a great opportunity for forest restoration (wording from the relationship; quote hyphenates the same phrase).
+ev_land_cover_saraheb3_cdl,cultivated annual crops,included,Alley cropping mask keeps CDL annual crops or pasture.
+ev_land_cover_saraheb3_cdl,pasture,included,Alley cropping mask keeps CDL annual crops or pasture.
+ev_land_cover_saraheb3_cdl,tree crops,excluded,Mask leaves out CDL tree crops and ESA WorldCover tree cover (code 10).
+ev_land_cover_saraheb3_cdl,ESA tree cover,excluded,Mask leaves out CDL tree crops and ESA WorldCover tree cover (code 10).
+ev_mg_habitats_sl21_20261029,mudflat,excluded,Do not select mudflats for restoration or expansion.
+ev_mg_habitats_sl21_20261029,salt marsh,excluded,Do not select salt marsh for restoration or expansion.
+ev_mg_habitats_sl21_20261029,sand dune,excluded,Do not select sand dunes for restoration or expansion.
+ev_mg_habitats_sl21_20261029,lagoon and estuarine shores,excluded,"Should not be planted, as it reduces water body area and disturbs tidal flow."
+ev_mg_landcover_unep20_20261029,seagrass beds,excluded,Non-mangrove areas to be avoided.
+ev_mg_landcover_unep20_20261029,mudflats,excluded,Non-mangrove areas to be avoided.
+ev_mg_landcover_unep20_20261029,sandflats,excluded,Non-mangrove areas to be avoided.
+ev_mg_secondary_sl21_20261029,coastal shrub vegetation,excluded,Thriving secondary vegetation without brackish water entry: do not select.
+ev_mg_secondary_sl21_20261029,salt marsh,excluded,Thriving secondary vegetation without brackish water entry: do not select.
+ev_mg_secondary_sl21_20261029,salt marsh and shrub,excluded,Thriving secondary vegetation without brackish water entry: do not select.
+ev_mg_secondary_sl21_20261029,intermediate and wet zone coastal vegetation,excluded,Thriving secondary vegetation without brackish water entry: do not select.
+ev_mg_subtidal_ws18_20261030,permanent open water (subtidal),excluded,Excluded as no longer restorable.
+ev_mg_urban_ws18_20261030,permanent open water (subtidal),excluded,Excluded as no longer restorable.
+ev_mg_urban_ws18_20261030,urban areas,excluded,Urban areas were excluded from the restoration map (which focused on mangrove loss areas since 1996).
+ev_mgt4_20261028_tidal_elevation,below mean sea level,excluded,Sites always below mean sea level fall outside the mangrove habitat envelope.
+ev_mgt4_20261028_tidal_elevation,above the high tide limit,excluded,Sites above the high tide limit fall outside the mangrove habitat envelope.
+ev_mr_elevation_clough14_20261028,below mean sea level,excluded,Elevations below mean sea level may be unsuitable for planting.
+ev_operational_risk_built_up_areas_baldwin_2022_full,solar energy generation,excluded,'all parcels used for solar energy generation' were excluded.
+ev_operational_risk_built_up_areas_baldwin_2022_full,communication towers,excluded,'all parcels containing communication towers' were excluded.
+ev_rip_t4_elkadiri23_landcover,agricultural fields,observed,One modelled scenario places buffers along streams adjacent to agricultural fields; no exclusion of other land covers.
+ev_soil_drainage_schultz95_1,moderately well drained,included,Slower-growing hardwoods may be planted if soils are moderately well drained (species-specific).
+ev_soil_drainage_singh26,Very well,included,Soil drainage class rated Very High for agroforestry; the Low class is blank.
+ev_soil_drainage_singh26,Well,included,Soil drainage class rated High for agroforestry; the Low class is blank.
+ev_soil_drainage_singh26,Mod well,included,Soil drainage class rated Moderate for agroforestry; the Low class is blank.
+ev_soil_texture_singh26,Fine,included,Texture class rated Very High for agroforestry; the Low class is blank.
+ev_soil_texture_singh26,Fine to course,included,Texture class rated High for agroforestry; the Low class is blank.
+ev_soil_texture_singh26,Course,included,Texture class rated Moderate for agroforestry; the Low class is blank.
+ev_stream_order_cole20_1,first and second-order headwater streams,included,Targeting buffers to protect first and second-order headwater streams is particularly important.
+ev_structural_suitability_land_cover_baldwin_2022_full,Grassland/Herbaceous,included,NLCD classes named as open land suitable for most FloodWise practices.
+ev_structural_suitability_land_cover_baldwin_2022_full,Pasture/Hay,included,NLCD classes named as open land suitable for most FloodWise practices.
+ev_structural_suitability_land_cover_baldwin_2022_full,Cultivated Crops,included,NLCD classes named as open land suitable for most FloodWise practices.
+ev_structural_suitability_land_cover_pinto_2019_full,urban,excluded,Urban or industrial pixels are excluded as unsuitable.
+ev_structural_suitability_land_cover_pinto_2019_full,industrial,excluded,Urban or industrial pixels are excluded as unsuitable.
+ev_t4_land_cover_castle2025_1,cropland,included,Alley cropping is placed on areas in cropland or pasture/grassland use.
+ev_t4_land_cover_castle2025_1,pasture/grassland,included,Alley cropping is placed on areas in cropland or pasture/grassland use.
+ev_t4_land_cover_castle2025_1,tree crops,excluded,Lands currently planted with tree crops are excluded.
+ev_t4_land_cover_castle2025_2,pasture/grassland,included,Silvopasture is placed on areas in pasture/grassland use.
+ev_t4_land_cover_castle2025_windbreak,cropland,included,Windbreaks are placed on field buffers in cropland or pasture/grassland use.
+ev_t4_land_cover_castle2025_windbreak,pasture/grassland,included,Windbreaks are placed on field buffers in cropland or pasture/grassland use.
+ev_t4_landcover_ahmad17_1,open area,included,Only the open area class was evaluated for agroforestry suitability.
+ev_t4_lc_kizir_2,Non-irrigated arable land,included,CORINE 2018 code 211 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Vineyards,included,CORINE 2018 code 221 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Fruit trees and berry plantations,included,CORINE 2018 code 222 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Olive groves,included,CORINE 2018 code 223 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Pastures,included,CORINE 2018 code 231 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Complex cultivation patterns,included,CORINE 2018 code 242 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Agriculture with significant natural vegetation,included,CORINE 2018 code 243 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Agroforestry,included,CORINE 2018 code 244 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Broad-leaved forest,included,CORINE 2018 code 311 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Coniferous forest,included,CORINE 2018 code 312 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Mixed forest,included,CORINE 2018 code 313 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Natural grasslands,included,CORINE 2018 code 321 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Moors and heathland,included,CORINE 2018 code 322 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Sclerophyllous vegetation,included,CORINE 2018 code 323 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Transitional woodland-shrub,included,CORINE 2018 code 324 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lc_kizir_2,Sparsely vegetated areas,included,CORINE 2018 code 333 is one of the 16 eligible classes; classes outside the list are not eligible.
+ev_t4_lulc_mushtaq2023_1,Agriculture,included,"Mulberry suitability rank 8 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Scrubland,included,"Mulberry suitability rank 7 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Wasteland,included,"Mulberry suitability rank 4 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Forest,included,"Mulberry suitability rank 2 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Water,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Built up area,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Snow/glacier,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_lulc_mushtaq2023_1,Dense forest,included,"Mulberry suitability rank 1 of 8 (8 best, 1 lowest; rank 1 is not called unsuitable)."
+ev_t4_treecan_nath21_01,Non-forest,included,"Listed in class 1 (very good) of the forest cover map (NF, Scrub, OF)."
+ev_t4_treecan_nath21_01,Scrub,included,"Listed in class 1 (very good) of the forest cover map (NF, Scrub, OF)."
+ev_t4_treecan_nath21_01,Open forest,included,"Listed in class 1 (very good) of the forest cover map (NF, Scrub, OF)."
+ev_t4_treecan_nath21_01,Water,excluded,"Listed in class 5 (unsuitable) of the forest cover map (Water, MDF & VDF)."
+ev_t4_treecan_nath21_01,MDF,excluded,"Listed in class 5 (unsuitable) of the forest cover map (Water, MDF & VDF)."
+ev_t4_treecan_nath21_01,VDF,excluded,"Listed in class 5 (unsuitable) of the forest cover map (Water, MDF & VDF)."
+ev_wet_built_up_areas_medland20_1,not built-up,included,Not built-up ranked 10 (best) in the wetland suitability index.
+ev_wet_built_up_areas_medland20_1,built-up,excluded,"Built-up land ranked 0 in the weighted index (score zero, not a hard mask)."
+ev_wet_flood_hazard_qiu20_1,flooded in 1998,included,Area flooded in 1998 was given high rehabilitation priority.
+ev_wet_flood_hazard_qiu20_1,flooded only in 2013,included,Other area flooded in 2013 was given medium rehabilitation priority.
+ev_wet_goyette_compatible_cover_20261105,forest,included,"Wetland increase was limited to replacing forest, agriculture, open lands and bare soil."
+ev_wet_goyette_compatible_cover_20261105,agriculture,included,"Wetland increase was limited to replacing forest, agriculture, open lands and bare soil."
+ev_wet_goyette_compatible_cover_20261105,open lands,included,"Wetland increase was limited to replacing forest, agriculture, open lands and bare soil."
+ev_wet_goyette_compatible_cover_20261105,bare,included,"'Bare soil' is split across the quote and its continuation, so only 'bare' is recorded."
+ev_wet_soil_drainage_medland20_1,very poorly drained,included,Ranked 10 (best) in the wetland suitability index.
+ev_wet_soil_drainage_medland20_1,poorly and imperfectly drained,included,Ranked 7.5 in the wetland suitability index.
+ev_wet_soil_drainage_medland20_1,moderately well/well drained,included,Ranked 5 in the wetland suitability index.
+ev_wet_soil_drainage_medland20_1,rapidly/very rapidly drained,included,Ranked 2.5 (lowest non-zero) in the wetland suitability index.
+ev_wet_soil_drainage_medland20_1,not applicable/water,excluded,"Ranked 0 in the weighted index (score zero, not a hard mask)."
+ev_wet_xiang_convertible_cover_20261105,cropland,included,Restoration overlay targets cropland within potential wetlands.
+ev_wet_xiang_convertible_cover_20261105,grassland,included,Restoration overlay targets grassland within potential wetlands.
+ev_wet_xiang_convertible_cover_20261105,woodland,included,Restoration overlay targets woodland within potential wetlands.
+ev_wh5_adham_2018_clay_content,clay,included,Soil texture class rated Very high suitability; class values kept out because their unit is not printed.
+ev_wh5_adham_2018_clay_content,silty clay,included,Soil texture class rated High suitability; class values kept out because their unit is not printed.
+ev_wh5_adham_2018_clay_content,sandy clay,included,Soil texture class rated Medium suitability; class values kept out because their unit is not printed.
+ev_wh5_adham_2018_clay_content,sandy clayey loam,included,Soil texture class rated Low suitability; class values kept out because their unit is not printed.
+ev_wh5_adham_2018_clay_content,sandy loam,included,Soil texture class rated Low suitability; class values kept out because their unit is not printed.
+ev_wh5_adham_2018_land_cover,Farmland and grass,included,Rated Very high (9) suitability.
+ev_wh5_adham_2018_land_cover,Moderately cultivated,included,Rated High (7) suitability.
+ev_wh5_adham_2018_land_cover,Bare soil,included,Rated Medium (5) suitability.
+ev_wh5_adham_2018_land_cover,Mountain,included,Rated Low (1) suitability.
+ev_wh5_adham_2018_land_cover,Water body,excluded,Rated Restricted.
+ev_wh5_adham_2018_land_cover,urban area,excluded,Rated Restricted.
+ev_wh5_alene_2022_land_cover,Bare land,included,Rated S1 highly suitable.
+ev_wh5_alene_2022_land_cover,Agricultural and grazing-land,included,Rated S2 moderately suitable.
+ev_wh5_alene_2022_land_cover,Shrub land,included,Rated S3 marginally suitable.
+ev_wh5_alene_2022_land_cover,Forest,included,Rated S4 less suitable.
+ev_wh5_alene_2022_land_cover,wetlands,excluded,"Rated S5, not suitable."
+ev_wh5_alene_2022_land_cover,urban,excluded,"Rated S5, not suitable."
+ev_wh5_alene_2022_land_cover,water bodies,excluded,"Rated S5, not suitable."
+ev_wh5_alene_2022_land_cover_check_dam,Barren and shrub land,included,IMSD guideline land cover for check dams.
+ev_wh5_alene_2022_land_cover_farm_pond,Agricultural land,included,IMSD guideline land cover for farm ponds.
+ev_wh5_alene_2022_soil_texture,Clay,included,"Class S1, highly suitable."
+ev_wh5_alene_2022_soil_texture,Silty clay,included,"Class S2, moderately suitable."
+ev_wh5_alene_2022_soil_texture,Sandy clay,included,"Class S3, marginally suitable."
+ev_wh5_alene_2022_soil_texture,loam,included,"Class S3, marginally suitable."
+ev_wh5_alene_2022_soil_texture,silty clay loam,included,"Class S3, marginally suitable."
+ev_wh5_alene_2022_soil_texture,clay loam,included,"Class S3, marginally suitable."
+ev_wh5_alene_2022_soil_texture,Sandy clay loam,included,"Class S4, less suitable (still above S5 not suitable)."
+ev_wh5_alene_2022_soil_texture,sandy loam,included,"Class S4, less suitable (still above S5 not suitable)."
+ev_wh5_alene_2022_soil_texture,loamy sand,included,"Class S4, less suitable (still above S5 not suitable); all 'Others' are S5 not suitable, left out as it names no texture."
+ev_wh5_alene_2022_soil_texture_check_dam,Fine-textured soil,included,IMSD criterion for check dams: 'Fine-textured soil'.
+ev_wh5_alene_2022_soil_texture_farm_pond,Fine-textured soil,included,IMSD criterion for farm ponds: 'Fine-textured soil'.
+ev_wh5_bera_2023_geology,Quartzite,included,AHP subcategory weight 0.296; no class is excluded.
+ev_wh5_bera_2023_geology,Basalt,included,AHP subcategory weight 0.188; no class is excluded.
+ev_wh5_bera_2023_geology,Granite younger intrusive,included,AHP subcategory weight 0.188; no class is excluded.
+ev_wh5_bera_2023_geology,Chotanagpur Granite Gneiss Complex,included,AHP subcategory weight 0.123; no class is excluded.
+ev_wh5_bera_2023_geology,Mica schist and shale,included,AHP subcategory weight 0.076; no class is excluded.
+ev_wh5_bera_2023_geology,Phyllite and mica schist,included,AHP subcategory weight 0.051; no class is excluded.
+ev_wh5_bera_2023_geology,"Epidiorite, hornblende schist",included,AHP subcategory weight 0.048; no class is excluded.
+ev_wh5_bera_2023_geology,Recent alluvium,included,AHP subcategory weight 0.029; no class is excluded.
+ev_wh5_bera_2023_land_cover,Fallow land,included,AHP subcategory weight 0.407; no class is excluded.
+ev_wh5_bera_2023_land_cover,Agricultural land,included,AHP subcategory weight 0.307; no class is excluded.
+ev_wh5_bera_2023_land_cover,Forest,included,AHP subcategory weight 0.142; no class is excluded.
+ev_wh5_bera_2023_land_cover,Water bodies,included,AHP subcategory weight 0.088; no class is excluded.
+ev_wh5_bera_2023_land_cover,Settlement,included,AHP subcategory weight 0.057; no class is excluded.
+ev_wh5_bera_2023_land_cover_percolation,agricultural land,included,Percolation tank sites are selected mainly in agricultural and fallow land.
+ev_wh5_bera_2023_land_cover_percolation,fallow land,included,Percolation tank sites are selected mainly in agricultural and fallow land.
+ev_wh5_bera_2023_slope_percolation,moderately steep slopes,included,Percolation tank sites are selected where slopes are moderately steep; no number given.
+ev_wh5_bera_2023_soil_texture,Silty clay,included,"AHP subcategory weight 0.462, the highest."
+ev_wh5_bera_2023_soil_texture,Fine loamy,included,AHP subcategory weight 0.274.
+ev_wh5_bera_2023_soil_texture,Loamy,included,AHP subcategory weight 0.178.
+ev_wh5_bera_2023_soil_texture,Loamy skeletal,included,"AHP subcategory weight 0.086, the lowest but not zero."
+ev_wh5_jha_2014_land_cover_farm_pond,agriculture,included,Suitability criterion land use for farm ponds.
+ev_wh5_jha_2014_land_cover_ground_percolation,degraded,included,"Land cover criterion for on-ground percolation tanks is ""degraded forest"", split by a line break in the quote, so only ""degraded"" matches."
+ev_wh5_jha_2014_soil_texture_check_dam,fine,included,"Siting criterion for check dams 'Soil: fine textured soil'; PDF text splits it across line breaks with an 'fi' ligature, so only the word as extracted is kept."
+ev_wh5_jha_2014_soil_texture_farm_pond,Fine,included,"Siting criterion for farm ponds 'Soil: Fine textured soil'; line breaks split the phrase, so only the first word matches word for word."
+ev_wh5_jha_2014_soil_texture_ground_percolation,light,included,"Siting criterion for on-ground percolation tanks 'Soil: light textured soil'; line breaks split the phrase, so only the first word matches word for word."
+ev_wh5_jha_2014_soil_texture_stream_percolation,light,included,"Siting criterion for percolation tanks along streams 'Soil: light textured soil'; line breaks split the phrase, so only the first word matches word for word."
+ev_wh_aridity_slm11_ca,semi-arid zones,included,"CA is suitable for all climates, with benefits most pronounced in semi-arid zones."
+ev_wh_aridity_slm11_macro,semi-arid,included,RWH techniques are most relevant in semi-arid and subhumid zones.
+ev_wh_aridity_slm11_macro,subhumid,included,RWH techniques are most relevant in semi-arid and subhumid zones.
+ev_wh_aridity_slm11_macro,more arid regions,observed,In more arid regions RWH is used for tree crops or afforestation; no rating given.
+ev_wh_aridity_slm11_micro,semi-arid,included,RWH techniques are most relevant in semi-arid and subhumid zones.
+ev_wh_aridity_slm11_micro,subhumid,included,RWH techniques are most relevant in semi-arid and subhumid zones.
+ev_wh_aridity_slm11_micro,more arid regions,observed,In more arid regions RWH is used for tree crops or afforestation; no rating given.
+ev_wh_land_cover_singh17_1,Agriculture,included,Land use criterion for farm ponds.
+ev_wh_land_cover_singh17_1,Wasteland,included,Land cover criterion for on-ground percolation tanks.
+ev_wh_land_cover_singh17_1,degraded forest,included,Land cover criterion for on-ground percolation tanks.
+ev_wh_soil_permeability_chen17_1,permeable soils,included,Slope-separated terraces are 'Recommended for low rainfall areas with permeable soils'; applies to that terrace design only.
+ev_wh_soil_texture_kiboi17_1,coarse textured,observed,"Tied ridging was the best technique at Mbeere South, whose soils are coarse textured; clay waterlogging risk is cited as 'can induce', not a ruling-out, so clay is not recorded."
+ev_wh_soildepth_slm11_terraces,very shallow,excluded,'Not suitable for very shallow and sandy soils'; no depth value given.
+ev_wh_soildepth_slm11_terraces,shallow soils,excluded,'bench terraces must not be built on shallow soils (to avoid risk of landslides)'.
+ev_wh_tiedridge_slope_wolka18_followup_20261105,gentle slope,included,'Effective on lands with gentle slope'; no percent value given.
