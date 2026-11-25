@@ -90,3 +90,7 @@ Run `python workflows/priority_classification/preparation.py` to verify the prep
 ## Consolidated T5 candidate route
 
 [CONSOLIDATION.md](CONSOLIDATION.md) supersedes the parallel XCS/XCE adapter proposal. Eight detailed findings retain complete content and reuse six prepared sources through `priority_store.py`; five earlier packet observations remain distinct. All are unreviewed preparations. The single official review ledger and existing adoption route are unchanged.
+
+## Dataset binding inspections
+
+[25 November technical observations](binding_checks/2026-11-25/README.md) preserve live metadata, diagnostic values and access failures. These are not source reviews, canonical dataset intake or binding acceptance. Method owns the corresponding candidate bindings.

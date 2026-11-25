@@ -1,0 +1,2069 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "spei_live",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "earth_engine",
+      "asset": "CSIC/SPEI/2_11"
+    }
+  ],
+  "input_sha256": {
+    "spei_times.json": "f489994e476dd1147d2fbf06ed0138d5d643934d1955beef40cdefff3f5c4298",
+    "spei_observations.json": "7549c31d023b240a67a5b3437ffd68230f26e2897d4d19e784ee2c94b96ab922",
+    "raster_followup.json": "a63076ac25ef092cd3a719cd701dc006f46a6fb182d177898313ec7d827faf51"
+  },
+  "facts": {
+    "count": 1488,
+    "first": {
+      "id": "CSIC/SPEI/2_11/1901_01_01",
+      "bands": [
+        {
+          "id": "SPEI_01_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_02_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_03_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_04_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_05_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_06_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_07_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_08_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_09_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_10_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_11_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_12_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_13_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_14_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_15_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_16_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_17_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_18_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_19_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_20_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_21_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_22_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_23_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_24_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_25_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_26_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_27_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_28_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_29_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_30_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_31_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_32_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_33_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_34_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_35_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_36_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_37_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_38_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_39_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_40_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_41_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_42_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_43_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_44_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_45_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_46_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_47_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_48_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "system:time_start": -2177452800000,
+        "google:max_source_file_timestamp": 1776440425000,
+        "system:footprint": {
+          "type": "LinearRing",
+          "coordinates": [
+            [
+              -180,
+              -90
+            ],
+            [
+              180,
+              -90
+            ],
+            [
+              180,
+              90
+            ],
+            [
+              -180,
+              90
+            ],
+            [
+              -180,
+              -90
+            ]
+          ]
+        },
+        "system:time_end": -2174774400000,
+        "system:asset_size": 350446,
+        "system:index": "1901_01_01"
+      }
+    },
+    "last": {
+      "id": "CSIC/SPEI/2_11/2024_12_01",
+      "bands": [
+        {
+          "id": "SPEI_01_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_02_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_03_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_04_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_05_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_06_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_07_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_08_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_09_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_10_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_11_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_12_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_13_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_14_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_15_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_16_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_17_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_18_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_19_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_20_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_21_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_22_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_23_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_24_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_25_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_26_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_27_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_28_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_29_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_30_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_31_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_32_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_33_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_34_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_35_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_36_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_37_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_38_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_39_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_40_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_41_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_42_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_43_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_44_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_45_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_46_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_47_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        },
+        {
+          "id": "SPEI_48_month",
+          "data_type": {
+            "type": "PixelType",
+            "precision": "float"
+          },
+          "dimensions": [
+            720,
+            360
+          ],
+          "crs": "EPSG:4326",
+          "crs_transform": [
+            0.5,
+            0,
+            -180,
+            0,
+            -0.5,
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "system:time_start": 1733011200000,
+        "google:max_source_file_timestamp": 1776440425000,
+        "system:footprint": {
+          "type": "LinearRing",
+          "coordinates": [
+            [
+              -180,
+              -90
+            ],
+            [
+              180,
+              -90
+            ],
+            [
+              180,
+              90
+            ],
+            [
+              -180,
+              90
+            ],
+            [
+              -180,
+              -90
+            ]
+          ]
+        },
+        "system:time_end": 1735689600000,
+        "system:asset_size": 16771780,
+        "system:index": "2024_12_01"
+      }
+    },
+    "sample_image": "CSIC/SPEI/2_11/2024_12_01",
+    "samples": [
+      {
+        "lon": -11,
+        "lat": 8,
+        "values": {
+          "SPEI_03_month": -0.28758445382118225,
+          "SPEI_12_month": -1.0716632604599
+        }
+      },
+      {
+        "lon": 36,
+        "lat": 0,
+        "values": {
+          "SPEI_03_month": 0.2686005234718323,
+          "SPEI_12_month": -0.04998688027262688
+        }
+      },
+      {
+        "lon": 84,
+        "lat": 28,
+        "values": {
+          "SPEI_03_month": 0.4698103070259094,
+          "SPEI_12_month": -0.09079786390066147
+        }
+      },
+      {
+        "lon": -70,
+        "lat": -3,
+        "values": {
+          "SPEI_03_month": -0.7818790078163147,
+          "SPEI_12_month": -2.033991575241089
+        }
+      },
+      {
+        "lon": 0,
+        "lat": 0,
+        "values": {
+          "SPEI_03_month": null,
+          "SPEI_12_month": null
+        }
+      }
+    ],
+    "native_december_2024_range": {
+      "SPEI_03_month_max": 3.6737828254699707,
+      "SPEI_03_month_min": -5.391118049621582,
+      "SPEI_12_month_max": 4.002783298492432,
+      "SPEI_12_month_min": -3.6552019119262695
+    }
+  },
+  "limits": [
+    "The initial range request hit a pixel-count ceiling; the recorded follow-up uses the same native projection with a larger safety limit, not coarser sampling.",
+    "Catalogue display range +/-2.33 is not a valid-data limit.",
+    "Meteorological anomaly series is not a validated livelihood-impact or long-term priority classifier."
+  ],
+  "human_review": null
+}

@@ -1,0 +1,402 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "forest_loss_live",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "type": "earth_engine",
+      "asset": "UMD/hansen/global_forest_change_2025_v1_13"
+    }
+  ],
+  "input_sha256": {
+    "forest_loss_observations.json": "31a2b78ddbf2cbab4ee00b2284a7ab028b1af68a03548101ca5cb7a2c3b43eaf",
+    "raster_followup.json": "a63076ac25ef092cd3a719cd701dc006f46a6fb182d177898313ec7d827faf51",
+    "forest_zero_observation.json": "61b6cc2a93c9330a6e4023f644ff02132c49b7178435970250173e01f7324a46"
+  },
+  "facts": {
+    "asset": "UMD/hansen/global_forest_change_2025_v1_13",
+    "bands": [
+      {
+        "id": "treecover2000",
+        "data_type": {
+          "type": "PixelType",
+          "precision": "int",
+          "min": 0,
+          "max": 255
+        },
+        "dimensions": [
+          1440000,
+          560000
+        ],
+        "crs": "EPSG:4326",
+        "crs_transform": [
+          0.00025,
+          0,
+          -180,
+          0,
+          -0.00025,
+          80
+        ]
+      },
+      {
+        "id": "lossyear",
+        "data_type": {
+          "type": "PixelType",
+          "precision": "int",
+          "min": 0,
+          "max": 255
+        },
+        "dimensions": [
+          1440000,
+          560000
+        ],
+        "crs": "EPSG:4326",
+        "crs_transform": [
+          0.00025,
+          0,
+          -180,
+          0,
+          -0.00025,
+          80
+        ]
+      },
+      {
+        "id": "datamask",
+        "data_type": {
+          "type": "PixelType",
+          "precision": "int",
+          "min": 0,
+          "max": 255
+        },
+        "dimensions": [
+          1440000,
+          560000
+        ],
+        "crs": "EPSG:4326",
+        "crs_transform": [
+          0.00025,
+          0,
+          -180,
+          0,
+          -0.00025,
+          80
+        ]
+      }
+    ],
+    "metadata_time": {
+      "system:time_start": 946684800000,
+      "system:time_end": 1672444800000
+    },
+    "point_samples": [
+      {
+        "lon": -11,
+        "lat": 8,
+        "values": {
+          "datamask": 1,
+          "lossyear": null,
+          "treecover2000": 56
+        }
+      },
+      {
+        "lon": 36,
+        "lat": 0,
+        "values": {
+          "datamask": 1,
+          "lossyear": null,
+          "treecover2000": 6
+        }
+      },
+      {
+        "lon": 84,
+        "lat": 28,
+        "values": {
+          "datamask": 1,
+          "lossyear": null,
+          "treecover2000": 59
+        }
+      },
+      {
+        "lon": -70,
+        "lat": -3,
+        "values": {
+          "datamask": 1,
+          "lossyear": null,
+          "treecover2000": 100
+        }
+      },
+      {
+        "lon": 0,
+        "lat": 0,
+        "values": {
+          "datamask": 0,
+          "lossyear": null,
+          "treecover2000": 0
+        }
+      }
+    ],
+    "event_area_samples": {
+      "asset": "UMD/hansen/global_forest_change_2025_v1_13",
+      "diagnostic_bbox_not_pilot": [
+        -55,
+        -12,
+        -54.9,
+        -11.9
+      ],
+      "values": {
+        "type": "FeatureCollection",
+        "columns": {},
+        "properties": {
+          "band_order": [
+            "loss",
+            "lossyear",
+            "datamask"
+          ]
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "3",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 8
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "4",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 3
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "5",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 12
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "6",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 5
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "9",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 3
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "13",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 12
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "14",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 2
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "16",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 12
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "17",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 12
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "19",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 3
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "20",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 3
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "22",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 5
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "25",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 12
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "26",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 1
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "29",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 10
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "33",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 3
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "36",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 1
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "43",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 5
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "45",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 5
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": null,
+            "id": "46",
+            "properties": {
+              "datamask": 1,
+              "loss": 1,
+              "lossyear": 5
+            }
+          }
+        ]
+      }
+    },
+    "zero_event_samples": [
+      {
+        "point": [
+          -70,
+          -3
+        ],
+        "values": {
+          "datamask": 1,
+          "loss": 0,
+          "lossyear": null
+        }
+      },
+      {
+        "point": [
+          -11,
+          8
+        ],
+        "values": {
+          "datamask": 1,
+          "loss": 0,
+          "lossyear": null
+        }
+      },
+      {
+        "point": [
+          0,
+          0
+        ],
+        "values": {
+          "datamask": 0,
+          "loss": 0,
+          "lossyear": null
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Tree-cover loss is not carbon mass; modelled forest emissions exclude undetected degradation and are not an all-ecosystem loss map.",
+    "Missing pixels do not automatically imply zero. Forest-loss zero requires valid land and loss=0; lossyear alone is masked outside detected events.",
+    "The forest-emissions mirror is mutable; exact source revision/hash and matching 2024 loss edition remain to be pinned before use."
+  ],
+  "human_review": null
+}
