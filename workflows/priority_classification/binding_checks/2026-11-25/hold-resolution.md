@@ -1,0 +1,13 @@
+# Binding hold-resolution observations
+
+Five new observations supplement the original ten without changing their bytes.
+
+- **Aqueduct production semantics:** exact WRI notebook commit confirms raw ratios are not clipped to one. Monthly and annual scarcity/arid overrides explain the distributed encoding. This closes the raw-domain discrepancy, not classification acceptance.
+- **FAO annual recurrence:** 42 catalog-resolved years × eight diagnostic points = 336 observations. Native ASI raster is float32; an explicit F32 TIFF preserves the observed 0.5% that default service output rounded. Four locations have 42 valid seasons; four are outside the host system. Published >30%/>50% affected-area event definitions can be reconstructed with an explicit denominator, with incomplete series kept unknown. Rounded HDF values still do not identify its actual end year.
+- **Forest-emissions producer pin:** model v1.4.3/run 20260327 covers 2001–2025. Public native S3 source was sampled through HTTP Range and If-Match. Exact source commit, object fingerprint and diagnostic TIFF hash are recorded. Native zero is nodata. Direct GFW data-lake and historical-version object access returned 403; those access routes are not claimed verified. The latest producer route replaces the older unpinned 2024 mirror.
+- **LandMark current metadata:** public API fields/version inspected; raw queries returned 403. This preserves the access limitation before authorized acquisition.
+- **LandMark official download:** Pete approved the exact form/terms submission; official UI confirmed success. June 2026 ZIP is SHA-256 pinned and copied to the library mirror. Native polygon/point headers, complete attribute counts, source fields and README exclusions were inspected. Downloaded field is `landmark_i`, not API `landmark_id`; CRS is EPSG:3857. Only Indigenous/Community layers are present. Country completeness and full topology are not inferred from those checks.
+
+`resolution-library-receipt.json` records raw response snapshots, small raster samples and the complete authorized LandMark archive in the existing team-library mirror. Local read-back hashes match; remote SharePoint access remains unverified. The README's May version date and official June package label both remain in the record. The README's drawing text was read as well as its cells, so provider exclusions are retained.
+
+All observations remain technical records with `human_review: null`. Form/terms approval is permission to acquire, not a scientific keep decision. Canonical registrations, scientific reviews and runtime releases remain zero. Corresponding method candidates and remaining holds are reviewed separately in RuralScan/method.

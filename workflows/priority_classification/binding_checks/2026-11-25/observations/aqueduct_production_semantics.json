@@ -1,0 +1,29 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "aqueduct_production_semantics",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "url": "https://github.com/wri/Aqueduct40/blob/7a836ec90a3530ecebd844a3f20e09eacfae2017/production_scripts/step3_calculate-indicators.ipynb",
+      "locator": "zero-based code cells 6 and 15; ws_r assignments and scarcity handling"
+    }
+  ],
+  "input_sha256": {
+    "aqueduct_commit.json": "539bd514bd6a3fe64e261dbfcbe8c9a38346830a17d68ec4e37c90988d3d5300",
+    "aqueduct_code.json": "6a6103cb60e44ca091d6ae426be628eb00f1352b723815bc8eb6adc9cb24a9af",
+    "aqueduct_finalize.json": "608d9ebf698e6397d00469e770b5bcdda0f0fda3a5a457c11e1273972a7f6700"
+  },
+  "facts": {
+    "repository_commit": "7a836ec90a3530ecebd844a3f20e09eacfae2017",
+    "raw_ratio_clipped_to_one": false,
+    "monthly_raw": "withdrawals / available supply; zero/near-zero supply becomes 9999; arid flag sets raw=1 and category=-1",
+    "annual_raw": "demand-weighted monthly ratios; monthly 9999 replaced by 2 for weighting; six or more scarcity months force annual 9999; annual no-supply/arid overrides follow",
+    "interpretation": "Observed raw ratios >1 agree with producer code. Technical-note clipping wording does not define the distributed raw-value domain. Preserve native category/label and raw value."
+  },
+  "limits": [
+    "Resolves encoding discrepancy, not four-class calibration or local livelihood interpretation.",
+    "Do not recompute an ordinary mean or ratio of annual totals from monthly data and label it the published annual BWS."
+  ],
+  "human_review": null
+}

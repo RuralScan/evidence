@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent / 'binding_checks' / '2026-11-25'
 
 
 def check(root=ROOT, raw_root=None):
+    raw_roots = ([raw_root] if isinstance(raw_root, Path) else raw_root) or []
     manifest = json.loads((root / 'manifest.json').read_text())
     if (manifest['status'] != 'technical_observations_not_binding_acceptance'
             or any(manifest[k] != 0 for k in ('scientific_reviews', 'canonical_registrations', 'runtime_releases'))):
@@ -34,8 +35,10 @@ def check(root=ROOT, raw_root=None):
         for name, digest in value['input_sha256'].items():
             if Path(name).name != name or not re.fullmatch('[0-9a-f]{64}', digest):
                 raise ValueError('Invalid raw input reference')
-            if raw_root is not None and sha256((raw_root / name).read_bytes()).hexdigest() != digest:
-                raise ValueError('Raw input hash mismatch')
+            if raw_roots and not any((folder / name).is_file()
+                                     and sha256((folder / name).read_bytes()).hexdigest() == digest
+                                     for folder in raw_roots):
+                raise ValueError('Raw input missing or hash mismatch: ' + name)
     if paths != set((root / 'observations').glob('*.json')):
         raise ValueError('Unmanifested or missing observation')
     return len(ids)
@@ -44,6 +47,6 @@ def check(root=ROOT, raw_root=None):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--raw-root', type=Path)
+    parser.add_argument('--raw-root', type=Path, action='append', help='Repeat for separate dated library folders')
     args = parser.parse_args()
     print(f'{check(raw_root=args.raw_root)} technical observations checked; no approvals created')

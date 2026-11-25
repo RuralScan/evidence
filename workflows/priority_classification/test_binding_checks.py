@@ -15,7 +15,7 @@ class BindingInspectionTests(unittest.TestCase):
         shutil.copytree(binding_checks.ROOT, self.root)
 
     def test_real_packet(self):
-        self.assertEqual(binding_checks.check(self.root), 10)
+        self.assertEqual(binding_checks.check(self.root), 15)
 
     def test_changed_observation_rejected(self):
         p = self.root / 'observations/fao_di_live.json'

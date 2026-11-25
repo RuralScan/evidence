@@ -1,0 +1,74 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "landmark_current_metadata",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "url": "https://data-api.globalforestwatch.org/dataset/landmark_ip_lc_and_indicative_poly/v20260617"
+    },
+    {
+      "url": "https://www.landmarkmap.org/data-methods/access-data"
+    }
+  ],
+  "input_sha256": {
+    "landmark_ip_lc_and_indicative_poly_v20260617_version.json": "5a15567473e8c2ad1099c8eb835c00ef69343dc14c1b4bcba22ce96a96c406c0",
+    "landmark_ip_lc_and_indicative_poly_v20260617_fields.json": "83377bb4c9b6601f0d2befb998518954f8f16881f3407213c77eda0f03e2c037",
+    "landmark_ip_lc_and_indicative_points_v20260617_version.json": "73c934b61b0b273eb89643054f64e2aff0ac84433f09e4beee35e2c8e0a39634",
+    "landmark_groups_json.json": "a90c0f73c7937f24aa406517f62ced4d07ad1ee5b3ae9d5499971fb302e5b318",
+    "landmark_schema_sample_json.json": "fac960159e0f8a87fdea0fdfc00cf3b9ca4891852a0432ca2e73b806b3e59559"
+  },
+  "facts": {
+    "dataset": "landmark_ip_lc_and_indicative_poly",
+    "version": "v20260617",
+    "declared_mutable": false,
+    "field_names": [
+      "identity",
+      "name",
+      "form_rec",
+      "doc_status",
+      "stat_date",
+      "stat_note",
+      "country",
+      "category",
+      "ethncty_1",
+      "populatn",
+      "pop_source",
+      "pop_year",
+      "area_ofcl",
+      "area_gis",
+      "scale",
+      "method",
+      "data_ctrb",
+      "data_src",
+      "data_src_s",
+      "data_src_l",
+      "data_date",
+      "add_note",
+      "more_info",
+      "layer",
+      "download",
+      "iso_code",
+      "landmark_id",
+      "shape_length",
+      "shape_area",
+      "gfw_fid",
+      "geom",
+      "geom_wm",
+      "gfw_area__ha",
+      "gfw_geostore_id",
+      "gfw_geojson",
+      "gfw_bbox",
+      "created_on",
+      "updated_on"
+    ],
+    "combined_content": "Includes community/Indigenous and indicative layers. Actual layer/category values must be inspected before selecting community overlap.",
+    "query_status": "Both anonymous raw queries returned HTTP 403; no private credentials or alternative identity used.",
+    "download_form": "Exact proposed identity, purpose and terms submission presented to Pete; not submitted without his reply."
+  },
+  "limits": [
+    "Public field metadata does not verify geometry or category semantics.",
+    "No raw file acquisition or community-only filter verified. Country completeness remains unknown; no polygon does not establish absence."
+  ],
+  "human_review": null
+}

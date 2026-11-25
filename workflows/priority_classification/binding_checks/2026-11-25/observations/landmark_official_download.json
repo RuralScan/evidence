@@ -1,0 +1,169 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "landmark_official_download",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "url": "https://landmark.wridata.org/LandMark/CommunityLevelData/Indigenous_Comm_Lands/v202606/Indigenous_comm_lands_public_202606.zip",
+      "authorization": "User approved exact form, including terms; submitted through official browser UI."
+    }
+  ],
+  "input_sha256": {
+    "landmark_download.json": "5d2e4a6160977228639ea5ed15a7dc3d39e9cad609bc9e55ca21904f8c36c4bb",
+    "landmark_vector_inspection.json": "538bbcb60278ab11bbe256217ecb0d4e2bdbad72df1537648a05f5510a471e2c",
+    "landmark_counts.json": "cd29f7cd0532c738239a367118905acf5f1622a944b35380c9b7f81d2becd3e3",
+    "landmark_readme.json": "357081a63e6dc1f81e7b9c8bbdf2a71434edadc481f685facf40a407c5c537ae",
+    "landmark_readme_shapes.json": "3d5b6c9e798d9590e2a369a5cdc8d88deb9001f3fe89ce171b6151029ba0afc9"
+  },
+  "facts": {
+    "url": "https://landmark.wridata.org/LandMark/CommunityLevelData/Indigenous_Comm_Lands/v202606/Indigenous_comm_lands_public_202606.zip",
+    "archive_sha256": "15f5181fbcc5032a10eb26803027997cae8c4ba5416a2f1755b5a100f58b949c",
+    "archive_bytes": 574990718,
+    "user_approved_form_submitted": true,
+    "submission_result": "Form successfully submitted; official download link displayed",
+    "package_label": "June 2026",
+    "readme_version_date": "26 May 2026",
+    "license": "CC-BY-SA-4.0 plus contributing-source conditions",
+    "layer_names": [
+      "LandMark_IP_LC_point_public_v202606",
+      "LandMark_IP_LC_poly_public_v202606"
+    ],
+    "binding_fields": [
+      "landmark_i",
+      "layer",
+      "identity",
+      "form_rec",
+      "doc_status",
+      "country",
+      "iso_code",
+      "data_src",
+      "data_src_l",
+      "data_date",
+      "download"
+    ],
+    "native_crs": "EPSG:3857 / WGS 1984 Web Mercator Auxiliary Sphere",
+    "geometry_verified_by_shapefile_header": {
+      "LandMark_IP_LC_point_public_v202606": 1,
+      "LandMark_IP_LC_poly_public_v202606": 15
+    },
+    "layer_counts": [
+      {
+        "layer": "LandMark_IP_LC_point_public_v202606",
+        "records_read": 2646,
+        "deleted_records": 0,
+        "shape_type_code": 1,
+        "unique_ids": 2646,
+        "duplicate_ids": 0,
+        "empty_fields": {},
+        "layer_values": {
+          "Indigenous Lands": 2158,
+          "Community Lands": 488
+        },
+        "download_values": {
+          "Yes": 2646
+        },
+        "country_iso_counts": {
+          "BRA": 131,
+          "KHM": 90,
+          "AFG": 1,
+          "PRY": 183,
+          "PER": 2014,
+          "USA": 227
+        }
+      },
+      {
+        "layer": "LandMark_IP_LC_poly_public_v202606",
+        "records_read": 327379,
+        "deleted_records": 0,
+        "shape_type_code": 15,
+        "unique_ids": 327379,
+        "duplicate_ids": 0,
+        "empty_fields": {
+          "data_date": 5912
+        },
+        "layer_values": {
+          "Indigenous Lands": 65429,
+          "Community Lands": 261950
+        },
+        "download_values": {
+          "Yes": 327379
+        },
+        "country_iso_counts": {
+          "AUS": 1510,
+          "BRA": 2476,
+          "KHM": 536,
+          "CAN": 3258,
+          "BOL": 321,
+          "PAN": 5,
+          "NZL": 26592,
+          "CRI": 24,
+          "USA": 20104,
+          "GRL": 1,
+          "MYS": 61,
+          "ZAF": 11,
+          "BWA": 35,
+          "ECU": 754,
+          "GBR": 6982,
+          "IRL": 4635,
+          "CHL": 3052,
+          "ZMB": 101,
+          "ATG": 1,
+          "ZWE": 146,
+          "TWN": 2808,
+          "PRY": 678,
+          "NIC": 26,
+          "GUY": 118,
+          "CMR": 713,
+          "COD": 196,
+          "MEX": 30644,
+          "MOZ": 1882,
+          "GUF": 22,
+          "VEN": 73,
+          "GAB": 39,
+          "CAF": 1,
+          "ITA": 3403,
+          "IND": 5636,
+          "LBR": 52,
+          "NPL": 739,
+          "KEN": 65,
+          "UGA": 5,
+          "TZA": 30,
+          "GNQ": 98,
+          "MWI": 43,
+          "MMR": 67,
+          "AFG": 22,
+          "NAM": 158,
+          "PER": 2530,
+          "COG": 57,
+          "COL": 1577,
+          "FIN": 1,
+          "MNG": 296,
+          "ESP": 204795
+        }
+      }
+    ],
+    "country_completeness": "Not established by presence in download; source datasets can be withheld or partial.",
+    "readme_exclusions": [
+      "Philippines polygons",
+      "Peru polygons, partial",
+      "Indonesia points",
+      "India points",
+      "Suriname indicative polygons",
+      "Montenegro polygons",
+      "Tanzania livestock-route polygons",
+      "Ethiopia livestock-route polygons",
+      "Kenya livestock-route polygons",
+      "Mongolia pasture-user-group polygons"
+    ],
+    "method": "DBF records streamed without exporting personal/community names; complete categorical/source metadata audit. SHP headers verified native geometry types; full polygon topology not validated.",
+    "shapefile_id_mapping": "landmark_i (download) is the available stable-ID field; do not request API-style landmark_id from this file."
+  },
+  "limits": [
+    "Archive was acquired and copied to team-library mirror; remote SharePoint access unverified.",
+    "Feature counts are not counts of distinct communities or complete national coverage. Do not infer absence from missing mapping.",
+    "Points remain presence indicators; do not buffer into invented areas. Use geodesic/equal-area methods for polygon overlap area, not Web Mercator Shape_Area.",
+    "Retain per-source attribution, date, scale and use conditions. Context validation/scientific approval not supplied by form acceptance."
+  ],
+  "human_review": null
+}
