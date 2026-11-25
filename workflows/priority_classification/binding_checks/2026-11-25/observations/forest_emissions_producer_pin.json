@@ -1,0 +1,108 @@
+{
+  "format": "ruralscan.binding-observation.v1",
+  "observation_id": "forest_emissions_producer_pin",
+  "observed_date": "2026-11-25",
+  "kind": "technical_inspection_not_scientific_review",
+  "requests": [
+    {
+      "url": "https://gfw2-data.s3.amazonaws.com/climate/carbon_model/gross_emissions/all_drivers/all_gases/biomass_soil/standard/forest_extent/per_hectare/20260327/10S_060W_gross_emis_all_gases_all_drivers_Mg_CO2e_ha_biomass_soil_forest_extent_2001_25.tif",
+      "request_header": {
+        "If-Match": "\"75f290c5cfef391226f156b2cdf64fa1-87\""
+      }
+    },
+    {
+      "url": "https://github.com/wri/carbon-budget/blob/ab90fec791c08c93c030c68f691c2ea3fc677a14/constants_and_names.py",
+      "locator": "lines 47, 652\u2013658: loss years, emission run date, native tile filename/path"
+    },
+    {
+      "url": "https://data-api.globalforestwatch.org/dataset/gfw_forest_carbon_gross_emissions/v20260327"
+    }
+  ],
+  "input_sha256": {
+    "carbon_commit.json": "7dc32d462fa65a3c2656a2e36504929eed1fedd77e38e8a6f4b171e9127d2351",
+    "carbon_constants.json": "e3985e5a0deccd41d02098379bf969830ccbccaf783836acdde7469c7045c1e8",
+    "gfw_forest_carbon_gross_emissions_v20260327_version.json": "15ea7794b4e6f9ce3da874b96e7deb841c3cd8ec39af985b0ea1981b97106cc9",
+    "carbon_tile_detail.json": "37d2618f1b8f87a09dd7f125a05020e63fb034aef91cae3f5b4fc1ca017a0b32",
+    "carbon_tile_options.json": "795000ab70b9b599100933b48e77e65ed8e57102a3a1d08d7d1904f160fa7eb9",
+    "carbon_cog_options.json": "8987e81d660632696166ebcc7ff95b14e2f8e6d46884f4fdf522fb50f3479c54",
+    "carbon_2025_sample.json": "f6039e8bd566f517d0d8caa38cc731edb60eefdafaf33baa077ea3a5ce666dc4"
+  },
+  "facts": {
+    "producer_commit": "ab90fec791c08c93c030c68f691c2ea3fc677a14",
+    "model_version": "1.4.3",
+    "model_period": [
+      2001,
+      2025
+    ],
+    "run_date": "20260327",
+    "gfw_version": "v20260327",
+    "gfw_declares_mutable": false,
+    "quantity": "Mg CO2e/ha cumulative over 2001\u20132025",
+    "native_tile_sample": {
+      "base_url": "https://gfw2-data.s3.amazonaws.com/climate/carbon_model/gross_emissions/all_drivers/all_gases/biomass_soil/standard/forest_extent/per_hectare/20260327/10S_060W_gross_emis_all_gases_all_drivers_Mg_CO2e_ha_biomass_soil_forest_extent_2001_25.tif",
+      "url": "https://gfw2-data.s3.amazonaws.com/climate/carbon_model/gross_emissions/all_drivers/all_gases/biomass_soil/standard/forest_extent/per_hectare/20260327/10S_060W_gross_emis_all_gases_all_drivers_Mg_CO2e_ha_biomass_soil_forest_extent_2001_25.tif",
+      "checked_at": "2026-11-25T21:14:26.571042+00:00",
+      "headers": {
+        "Last-Modified": "Sat, 28 Mar 2026 06:06:45 GMT",
+        "ETag": "\"75f290c5cfef391226f156b2cdf64fa1-87\"",
+        "x-amz-version-id": "8.Ovnw_dUM8pmIiSNruHxmP.6FwtXwYr",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "727030726"
+      },
+      "asset_id": "producer_native_source_for_v20260327",
+      "dataset_version": "v20260327",
+      "diagnostic_not_pilot": true,
+      "historical_version_get": "403 Forbidden",
+      "consistency_guard": {
+        "If-Match": "\"75f290c5cfef391226f156b2cdf64fa1-87\""
+      },
+      "crs": "EPSG:4326",
+      "transform": [
+        0.00025,
+        0.0,
+        -60.0,
+        0.0,
+        -0.00025,
+        -10.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        40000,
+        40000
+      ],
+      "dtype": [
+        "float32"
+      ],
+      "nodata": 0.0,
+      "scale": [
+        1.0
+      ],
+      "offset": [
+        0.0
+      ],
+      "window": [
+        20000,
+        8000,
+        128,
+        128
+      ],
+      "valid_count": 2220,
+      "masked_count": 14164,
+      "minimum": 140.95765686035156,
+      "maximum": 888.7096557617188,
+      "sample_sha256": "b49aa65b464bda2a6db06decb4589ec1f07d5572ec3a5249fffa82f273cd6b4d",
+      "sample_bytes": 8972
+    },
+    "route_choice": "Public producer-native S3 tile. GFW data-lake direct object returned 403; public producer source succeeds. Do not claim data-lake download access.",
+    "mask_semantics": "Native producer tile declares nodata=0; preserve as unknown, not zero emissions. GFW derived tile metadata instead declares NaN; adapters must not mix encoding contracts."
+  },
+  "limits": [
+    "New versioned replacement for the 2001\u20132024 convenience mirror, not proof that mirror equals the new model.",
+    "Only one 128\u00d7128 native window inspected. Full global tile set not downloaded or hashed.",
+    "Historical S3 version URL returned 403; current-object reads use If-Match. Record each requested tile fingerprint and fail on change. ETag is an object validator, not SHA-256.",
+    "Forest extent and classification need context review; model does not cover all wetland/soil degradation."
+  ],
+  "human_review": null
+}

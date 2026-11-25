@@ -1,0 +1,368 @@
+{
+  "library_relative_path": "0_Methodology_&_Frameworks/priority_classification/binding_holds_2026_11_25",
+  "local_mirror_hash_verified": true,
+  "remote_team_access_verified": false,
+  "canonical_acquisition_receipt": false,
+  "files": [
+    {
+      "name": "aqueduct_code.json",
+      "sha256": "6a6103cb60e44ca091d6ae426be628eb00f1352b723815bc8eb6adc9cb24a9af",
+      "bytes": 316540
+    },
+    {
+      "name": "aqueduct_commit.json",
+      "sha256": "539bd514bd6a3fe64e261dbfcbe8c9a38346830a17d68ec4e37c90988d3d5300",
+      "bytes": 6770
+    },
+    {
+      "name": "aqueduct_finalize.json",
+      "sha256": "608d9ebf698e6397d00469e770b5bcdda0f0fda3a5a457c11e1273972a7f6700",
+      "bytes": 74974
+    },
+    {
+      "name": "asi_year_1984.json",
+      "sha256": "12000e2765e59d361efd284a448b53fcb1c57d893b34d470a32ac2768101b1a7",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1985.json",
+      "sha256": "8fd280ce046724d76c2795bc2677ae3bf775fce9e023b293d838468268ef8b87",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1986.json",
+      "sha256": "81c320df8971f6d029141e22b4ede8e6994a354212908e4da02a653ca7719930",
+      "bytes": 4559
+    },
+    {
+      "name": "asi_year_1987.json",
+      "sha256": "9bc74ad1fdae019b96f66eba1086d9fe61a6b1c8b333af943cf8ce684b150740",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1988.json",
+      "sha256": "c42bd25f05f0d5f14b6d0fb10a92a9e719d489c75352946e15d731aba03f4311",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1989.json",
+      "sha256": "35f16fb5fe4b304bcda1662b9d064c5439f30ed71f6c9364a02cb45546de406c",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1990.json",
+      "sha256": "1053256a9068b4332a44422be594571207e781a6c324810c37c877b181de1e04",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1991.json",
+      "sha256": "caf895b0bd3d0ce1f129d42ed650473e28b55665b24991236c46944ba5b61fc9",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1992.json",
+      "sha256": "26c5c38c57b896cc26194e82f4abdb10c48a8c492c727333cfc9988bf63ae8b6",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_1993.json",
+      "sha256": "5804d533d739239236bec204982616b25e5efcf6f6b68bc5223c624b0a486bc2",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1994.json",
+      "sha256": "3c41e52123f43998e6659c02bc5fffe319fd6fca636ce1a9828af91bb2a910a0",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1995.json",
+      "sha256": "c7bea5f1454448ea7eef231bf83f2c0ec91666ef240e89ba6700099869ebe2f9",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1996.json",
+      "sha256": "b762d460b5eab9d7acca89a0d9da7ca6de4d7c4663ec13b7370e8fa4f41822da",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1997.json",
+      "sha256": "4c99e486d4fc7ea7f8c313e89d4785baeaa380d606a310535e729b68fe418909",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1998.json",
+      "sha256": "6e8bfab0ee551679f9ef3ab0ab23f5b4b50b483302cc3694381dc6f87a0aba88",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_1999.json",
+      "sha256": "5962bf08ff8fd509b185d7da73071e8074633f368a116a0e017ff4d1b6699db2",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2000.json",
+      "sha256": "7b76d687b719402b0209e6473454ccc2898bfbede44cd4d8c23fb688afb427e7",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_2001.json",
+      "sha256": "790248b2f61996198daf78674abb7dbaa773db3b1167086eab93de889bcdab25",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_2002.json",
+      "sha256": "a3765582539e0cc4700b51ff2981b85883fc74e96687248579ac9199ce0b6c32",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2003.json",
+      "sha256": "b3c4a59b46c17783e18b622e1698eb834c564f84f4bf1711d395367e4df3391a",
+      "bytes": 4559
+    },
+    {
+      "name": "asi_year_2004.json",
+      "sha256": "92222c2999f7e0d068a93011c0ea182d69f105d8ff19da7cee13de61343893f0",
+      "bytes": 4559
+    },
+    {
+      "name": "asi_year_2005.json",
+      "sha256": "1fd18c1b8aa5b7084f56e77e27a3b5a683076cfd585d585dcd43c3f97c13e17e",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2006.json",
+      "sha256": "d1b29e1a6d0a01ef431f5822db672347276852ad3cc3f611f06a2f5461d35f7b",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2007.json",
+      "sha256": "61b90c19b42163bb3715d70a56ff58b3c63262974f1cea1a7d98be05159cfb79",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_2008.json",
+      "sha256": "ef8e929e34ff879d4a79c25e1dd1827e8b619e25fda5eead87caf73e5f29d702",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2009.json",
+      "sha256": "8a7da639004e937909b1c4617ef27023acd55777d7e46bfa83524ef86002546d",
+      "bytes": 4559
+    },
+    {
+      "name": "asi_year_2010.json",
+      "sha256": "03bfe434c9febc3405d98c0378fa9b2b2d76181eb587193775e36f9534f7464d",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2011.json",
+      "sha256": "4bf8c21a4711e04fbec6e403cec587d27af5c7841e1d682ce9224dc13ba79799",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2012.json",
+      "sha256": "f96c5280477a9187eb88ce091d05e3f3b115875c2643207a8a6cddfc6e5e7aa9",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2013.json",
+      "sha256": "2cf6bae0903cf4b43128ee3526ab77eea8b3424b91ae759c870562ff5a85a6bb",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2014.json",
+      "sha256": "a089086f51cd74cc1ba1dbc1660d50f6c5831635e8a8382a40e3ed34dfba9875",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2015.json",
+      "sha256": "5e914bc29e6c15af56c52947fed90ab86f0d44adf8867df5b3e2dda6b9c5e779",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2016.json",
+      "sha256": "ec70a05602126f853678b0173d50ae9a7d0a93adff2b05130ead12a216f063bf",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2017.json",
+      "sha256": "4b875c46f8d30fcb1999c2b22019498d7c5bfe7f50188ad3d71974ecb16dc8d2",
+      "bytes": 4558
+    },
+    {
+      "name": "asi_year_2018.json",
+      "sha256": "e2ba06d8e05af03cebdce663d4cdd984f8df3770377f848aa60e7e39aa50cb86",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2019.json",
+      "sha256": "a395b680ec78b0ac44379dca215e373110004f7500b8601587d4a312807fa6ce",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2020.json",
+      "sha256": "ed66abb56463e18ca4051471425664861119b2766aec3da8d4875e0b66137135",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2021.json",
+      "sha256": "95f4388ef80518b3a06da1c877c4ec2f4d4d6af861bbfdc1bc6a1c2a9c6a243f",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2022.json",
+      "sha256": "c16f0c49dd4715a8a3b4f500767601df3267a4c5dcbe50a051bc57c212469884",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2023.json",
+      "sha256": "40f6ff916beae2eebe4b293eac6f6e56966715c282c68d2ab21fcbcdc67f6697",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2024.json",
+      "sha256": "c749a9b519e76598b63c2d8bea29039439b7963a822e63d7c79fb92df0ae00a5",
+      "bytes": 4557
+    },
+    {
+      "name": "asi_year_2025.json",
+      "sha256": "64701452afac7ca3037d2fa4ee200425a79642f451c5e047adaaacde0589dd08",
+      "bytes": 4557
+    },
+    {
+      "name": "carbon_2025_diagnostic.tif",
+      "sha256": "b49aa65b464bda2a6db06decb4589ec1f07d5572ec3a5249fffa82f273cd6b4d",
+      "bytes": 8972
+    },
+    {
+      "name": "carbon_2025_sample.json",
+      "sha256": "f6039e8bd566f517d0d8caa38cc731edb60eefdafaf33baa077ea3a5ce666dc4",
+      "bytes": 2025
+    },
+    {
+      "name": "carbon_cog_options.json",
+      "sha256": "8987e81d660632696166ebcc7ff95b14e2f8e6d46884f4fdf522fb50f3479c54",
+      "bytes": 522
+    },
+    {
+      "name": "carbon_commit.json",
+      "sha256": "7dc32d462fa65a3c2656a2e36504929eed1fedd77e38e8a6f4b171e9127d2351",
+      "bytes": 68542
+    },
+    {
+      "name": "carbon_constants.json",
+      "sha256": "e3985e5a0deccd41d02098379bf969830ccbccaf783836acdde7469c7045c1e8",
+      "bytes": 54587
+    },
+    {
+      "name": "carbon_tile_detail.json",
+      "sha256": "37d2618f1b8f87a09dd7f125a05020e63fb034aef91cae3f5b4fc1ca017a0b32",
+      "bytes": 745
+    },
+    {
+      "name": "carbon_tile_options.json",
+      "sha256": "795000ab70b9b599100933b48e77e65ed8e57102a3a1d08d7d1904f160fa7eb9",
+      "bytes": 1050
+    },
+    {
+      "name": "fao_asi_catalog.json",
+      "sha256": "5638f8d31a935f93ba9473324f9abd3295f035553a87a40ca9ad93f4b0f1a38e",
+      "bytes": 37967
+    },
+    {
+      "name": "fao_asi_float.tif",
+      "sha256": "8d62e84bf7be403f46b90de4692133d329a77e690580ae3b824704af6773708c",
+      "bytes": 66352
+    },
+    {
+      "name": "fao_asi_float_export.json",
+      "sha256": "ef9000ee887f191d9830f897b80cc3b6b74b8a1207a090e370bcdc6eb59b7efe",
+      "bytes": 855
+    },
+    {
+      "name": "fao_asi_float_observation.json",
+      "sha256": "e3e1d79620bdde57924f879c1a746ec55347dc761de9061e415501717b58a485",
+      "bytes": 204
+    },
+    {
+      "name": "fao_asi_raster_properties.json",
+      "sha256": "de293f4a41a008c19b7349d2ad1455872a3a2fed118865dc7b4883fe9662e68c",
+      "bytes": 808
+    },
+    {
+      "name": "fao_hdf_catalog.json",
+      "sha256": "5b4afc2aba3d0462c8e378f1af60d015bcf3626b289ca2a250c80b27d1d58048",
+      "bytes": 503719
+    },
+    {
+      "name": "gfw_forest_carbon_gross_emissions_v20260327_version.json",
+      "sha256": "15ea7794b4e6f9ce3da874b96e7deb841c3cd8ec39af985b0ea1981b97106cc9",
+      "bytes": 4180
+    },
+    {
+      "name": "hdf_AL30.json",
+      "sha256": "a3cfe61fd200d67fdfc9ad7e121cb14b3ef3afc8bdda436e8a4b354e8ec1dcfa",
+      "bytes": 4795
+    },
+    {
+      "name": "hdf_AL50.json",
+      "sha256": "24d0a26ab6621755a8c03ac95adf880694bad53ca8b284d789cdd0b948f58f63",
+      "bytes": 4795
+    },
+    {
+      "name": "landmark_groups_json.json",
+      "sha256": "a90c0f73c7937f24aa406517f62ced4d07ad1ee5b3ae9d5499971fb302e5b318",
+      "bytes": 271
+    },
+    {
+      "name": "landmark_ip_lc_and_indicative_points_v20260617_version.json",
+      "sha256": "73c934b61b0b273eb89643054f64e2aff0ac84433f09e4beee35e2c8e0a39634",
+      "bytes": 1183
+    },
+    {
+      "name": "landmark_ip_lc_and_indicative_poly_v20260617_fields.json",
+      "sha256": "83377bb4c9b6601f0d2befb998518954f8f16881f3407213c77eda0f03e2c037",
+      "bytes": 8770
+    },
+    {
+      "name": "landmark_ip_lc_and_indicative_poly_v20260617_version.json",
+      "sha256": "5a15567473e8c2ad1099c8eb835c00ef69343dc14c1b4bcba22ce96a96c406c0",
+      "bytes": 2708
+    },
+    {
+      "name": "landmark_schema_sample_json.json",
+      "sha256": "fac960159e0f8a87fdea0fdfc00cf3b9ca4891852a0432ca2e73b806b3e59559",
+      "bytes": 280
+    },
+    {
+      "name": "landmark_download.json",
+      "sha256": "5d2e4a6160977228639ea5ed15a7dc3d39e9cad609bc9e55ca21904f8c36c4bb",
+      "bytes": 3371
+    },
+    {
+      "name": "landmark_vector_inspection.json",
+      "sha256": "538bbcb60278ab11bbe256217ecb0d4e2bdbad72df1537648a05f5510a471e2c",
+      "bytes": 10298
+    },
+    {
+      "name": "landmark_counts.json",
+      "sha256": "cd29f7cd0532c738239a367118905acf5f1622a944b35380c9b7f81d2becd3e3",
+      "bytes": 9084
+    },
+    {
+      "name": "landmark_readme.json",
+      "sha256": "357081a63e6dc1f81e7b9c8bbdf2a71434edadc481f685facf40a407c5c537ae",
+      "bytes": 28679
+    },
+    {
+      "name": "landmark_readme_shapes.json",
+      "sha256": "3d5b6c9e798d9590e2a369a5cdc8d88deb9001f3fe89ce171b6151029ba0afc9",
+      "bytes": 8924
+    },
+    {
+      "name": "Indigenous_comm_lands_public_202606.zip",
+      "sha256": "15f5181fbcc5032a10eb26803027997cae8c4ba5416a2f1755b5a100f58b949c",
+      "bytes": 574990718
+    }
+  ]
+}

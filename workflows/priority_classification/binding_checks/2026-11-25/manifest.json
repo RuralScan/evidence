@@ -52,6 +52,31 @@
       "observation_id": "naturebase_afc_inspection",
       "path": "observations/naturebase_afc_inspection.json",
       "sha256": "2fd5ac1d2fa978c6b5a280a63aa237d90778299dbaeab0fb793adc66bb5220cf"
+    },
+    {
+      "observation_id": "aqueduct_production_semantics",
+      "path": "observations/aqueduct_production_semantics.json",
+      "sha256": "4a917a0913d56fa0f7b95736f791caf058d1d4722aecf1abf6ce83c3262fb375"
+    },
+    {
+      "observation_id": "fao_annual_recurrence",
+      "path": "observations/fao_annual_recurrence.json",
+      "sha256": "da98194e5022a05e49b8c655f5f517643fd25d3691a3d54906c2fa64dc75e0a5"
+    },
+    {
+      "observation_id": "forest_emissions_producer_pin",
+      "path": "observations/forest_emissions_producer_pin.json",
+      "sha256": "301c2a540a5f1ea14ec6d10eddbc6fdc8340bb5b76b1ffe34067b3986930c7e1"
+    },
+    {
+      "observation_id": "landmark_current_metadata",
+      "path": "observations/landmark_current_metadata.json",
+      "sha256": "23dfcfd32097e74dc4228db030bbe9ebc41bc2cad69b2446ec7ae526402ab009"
+    },
+    {
+      "observation_id": "landmark_official_download",
+      "path": "observations/landmark_official_download.json",
+      "sha256": "77508090e024ee0f91af1e645810235ef8ad2a089b6f574f8d378f573404fa15"
     }
   ],
   "scientific_reviews": 0,

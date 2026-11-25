@@ -1,6 +1,6 @@
 # Dataset binding inspection — 25 November 2026
 
-Ten technical observations support the first drought, water, carbon and IPLC binding candidates in RuralScan/method. They record actual service responses and small diagnostic samples. They do not approve thresholds, establish pilot fitness, register datasets as scientific evidence, change human votes or release runtime inputs. The diagnostic locations are not selected pilots.
+Fifteen technical observations support the first drought, water, carbon and IPLC binding candidates in RuralScan/method. They record actual service responses and small diagnostic samples. They do not approve thresholds, establish pilot fitness, register datasets as scientific evidence, change human votes or release runtime inputs. The diagnostic locations are not selected pilots.
 
 | Observation | Result | Remaining limit |
 |---|---|---|
@@ -32,3 +32,8 @@ Exact FAO TIFF request is in `fao_di_live.json`; the Naturebase TIFF member name
 - [SPEI 2.11](https://developers.google.com/earth-engine/datasets/catalog/CSIC_SPEI_2_11), [Hansen 2025 v1.13](https://developers.google.com/earth-engine/datasets/catalog/UMD_hansen_global_forest_change_2025_v1_13).
 - [Forest-carbon primary paper](https://essd.copernicus.org/articles/17/1217/2025/), [definitive GFW rasters](https://data.globalforestwatch.org/datasets/forest-greenhouse-gas-emissions), [community asset hosting](https://gee-community-catalog.org/projects/cflux/).
 - [LandMark access](https://www.landmarkmap.org/data-methods/access-data), section “Indigenous Peoples’ and Local Community Lands and Territories”; [Naturebase catalogue](https://app.naturebase.org/data), Avoided Forest Conversion download and archive README. Naturebase license is CC BY-NC-SA 4.0.
+
+
+## Hold-resolution follow-up
+
+Five additional observations resolve the Aqueduct raw-domain discrepancy using the pinned producer notebook, verify float-preserving FAO annual ASI and an explicit 42-year recurrence reconstruction, identify/sample the versioned 2025 forest-emissions producer tile, inspect current LandMark metadata/access, and verify the subsequently authorized official LandMark ZIP. See [resolution notes](hold-resolution.md). Earlier ten observations remain byte-for-byte unchanged; later findings correct their limitations rather than rewrite their record.
