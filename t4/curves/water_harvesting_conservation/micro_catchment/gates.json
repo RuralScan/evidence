@@ -1,0 +1,53 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "micro_catchment",
+  "gates": [
+    {
+      "name": "aridity_index",
+      "variable": "aridity_index",
+      "type": "classes",
+      "yes": [
+        "semi-arid",
+        "subhumid"
+      ],
+      "no": []
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0,
+      "max": 750.0
+    },
+    {
+      "name": "catchment_area",
+      "variable": "catchment_area",
+      "type": "threshold",
+      "unit": "m",
+      "max": 100.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 4800.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -5.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 10.0
+    }
+  ]
+}

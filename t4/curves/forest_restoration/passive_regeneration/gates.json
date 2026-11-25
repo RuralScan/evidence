@@ -1,0 +1,73 @@
+{
+  "practice": "forest_restoration",
+  "family": "passive_regeneration",
+  "gates": [
+    {
+      "name": "aspect",
+      "variable": "aspect",
+      "type": "classes",
+      "yes": [
+        "east-facing",
+        "north"
+      ],
+      "no": []
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0
+    },
+    {
+      "name": "distance_to_forest",
+      "variable": "distance_to_forest",
+      "type": "threshold",
+      "unit": "km",
+      "max": 5.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5200.0
+    },
+    {
+      "name": "forest_fragment_size",
+      "variable": "forest_fragment_size",
+      "type": "threshold",
+      "unit": "ha",
+      "min": 100.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -10.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 10.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.0,
+      "max": 10.0
+    },
+    {
+      "name": "tree_canopy_cover",
+      "variable": "tree_canopy_cover",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 25.0
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "practice": "agroforestry",
+  "family": "planted_silvoarable",
+  "gates": [
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "arable land",
+        "cultivated annual crops",
+        "open area",
+        "pasture"
+      ],
+      "no": [
+        "esa tree cover",
+        "forest",
+        "hardwood plantation",
+        "mangrove",
+        "pine plantation",
+        "settlement",
+        "shrubland",
+        "tree crops",
+        "urban",
+        "water"
+      ]
+    },
+    {
+      "name": "soil_drainage",
+      "variable": "soil_drainage",
+      "type": "classes",
+      "yes": [
+        "mod well",
+        "very well",
+        "well"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_texture",
+      "variable": "soil_texture",
+      "type": "classes",
+      "yes": [
+        "course",
+        "fine",
+        "fine to course"
+      ],
+      "no": []
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5000.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 15.0
+    }
+  ]
+}

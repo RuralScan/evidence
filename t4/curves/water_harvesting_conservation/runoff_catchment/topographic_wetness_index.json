@@ -1,0 +1,27 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "runoff_catchment",
+  "variable": "topographic_wetness_index",
+  "unit": "dimensionless",
+  "shape": "linear",
+  "x": [
+    10.485,
+    13.855,
+    20.685
+  ],
+  "score": [
+    0.333,
+    0.667,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 1,
+  "papers": [
+    "wh_stocktake_bera_2023"
+  ]
+}

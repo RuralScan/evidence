@@ -1,0 +1,26 @@
+{
+  "practice": "forest_restoration",
+  "family": "assisted_regeneration",
+  "variable": "regeneration_potential",
+  "unit": "vigorous wildlings per hectare",
+  "shape": "linear",
+  "x": [
+    600.0,
+    700.0
+  ],
+  "score": [
+    1.0,
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 15,
+  "papers": [
+    "denr_fmb_tb27_2019",
+    "wocat_anr_approach_1971"
+  ]
+}

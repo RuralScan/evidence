@@ -1,0 +1,133 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "runoff_catchment",
+  "gates": [
+    {
+      "name": "aridity_index",
+      "variable": "aridity_index",
+      "type": "classes",
+      "yes": [
+        "semi-arid",
+        "subhumid"
+      ],
+      "no": []
+    },
+    {
+      "name": "clay_content",
+      "variable": "clay_content",
+      "type": "classes",
+      "yes": [
+        "clay",
+        "sandy clay",
+        "sandy clayey loam",
+        "sandy loam",
+        "silty clay"
+      ],
+      "no": []
+    },
+    {
+      "name": "geology",
+      "variable": "geology",
+      "type": "classes",
+      "yes": [
+        "basalt",
+        "chotanagpur granite gneiss complex",
+        "epidiorite, hornblende schist",
+        "granite younger intrusive",
+        "mica schist and shale",
+        "phyllite and mica schist",
+        "quartzite",
+        "recent alluvium"
+      ],
+      "no": []
+    },
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "agricultural and grazing-land",
+        "agricultural land",
+        "agriculture",
+        "bare land",
+        "bare soil",
+        "barren",
+        "barren and shrub land",
+        "crop land",
+        "degraded",
+        "degraded forest",
+        "fallow land",
+        "farmland and grass",
+        "forest",
+        "moderately cultivated",
+        "mountain",
+        "residential",
+        "river bed",
+        "savana",
+        "scrub land",
+        "settlement",
+        "shrub land",
+        "shrubland",
+        "wasteland",
+        "water bodies"
+      ],
+      "no": [
+        "urban",
+        "urban area",
+        "water body",
+        "wetlands"
+      ]
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "classes",
+      "yes": [
+        "moderately steep slopes"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_texture",
+      "variable": "soil_texture",
+      "type": "classes",
+      "yes": [
+        "clay",
+        "clay loam",
+        "fine",
+        "fine loamy",
+        "fine-textured soil",
+        "high sand content",
+        "light",
+        "loam",
+        "loamy",
+        "loamy sand",
+        "loamy skeletal",
+        "sandy clay",
+        "sandy clay loam",
+        "sandy loam",
+        "silty clay",
+        "silty clay loam"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_texture_hsg",
+      "variable": "soil_texture_hsg",
+      "type": "classes",
+      "yes": [
+        "b",
+        "c",
+        "d"
+      ],
+      "no": []
+    },
+    {
+      "name": "catchment_area",
+      "variable": "catchment_area",
+      "type": "threshold",
+      "unit": "ha",
+      "min": 1.0
+    }
+  ]
+}

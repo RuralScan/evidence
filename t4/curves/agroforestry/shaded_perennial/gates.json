@@ -1,0 +1,42 @@
+{
+  "practice": "agroforestry",
+  "family": "shaded_perennial",
+  "gates": [
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 500.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 3200.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "degrees",
+      "max": 45.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 20.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 9.0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "terracing",
+  "variable": "slope",
+  "unit": "degrees",
+  "shape": "linear",
+  "x": [
+    18.0,
+    30.0,
+    45.0
+  ],
+  "score": [
+    1.0,
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    45.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "gismcda_swc_siting_2014"
+  ]
+}

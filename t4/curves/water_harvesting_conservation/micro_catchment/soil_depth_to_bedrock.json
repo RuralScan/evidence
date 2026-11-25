@@ -1,0 +1,26 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "micro_catchment",
+  "variable": "soil_depth_to_bedrock",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    1.0,
+    2.0
+  ],
+  "score": [
+    0.0,
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    1.0,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 54,
+  "papers": [
+    "fao_critchley_wh_manual_1991",
+    "wocat_wh_guidelines_2013"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "soil_organic_carbon",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    0.5,
+    0.625,
+    0.75
+  ],
+  "score": [
+    0.333,
+    0.667,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": 0.647,
+  "pct_of_papers": 16,
+  "papers": [
+    "india_fao_agroforestry_suitability_mapping_2017"
+  ]
+}

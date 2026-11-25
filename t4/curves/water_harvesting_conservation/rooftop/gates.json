@@ -1,0 +1,14 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "rooftop",
+  "gates": [
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0,
+      "max": 1000.0
+    }
+  ]
+}

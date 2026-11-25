@@ -1,0 +1,99 @@
+{
+  "practice": "forest_restoration",
+  "family": "active_planting",
+  "gates": [
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "timberline"
+      ]
+    },
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "agricultural",
+        "low forest cover or non-forested land (reforestation target)",
+        "non-forested land (afforestation target)",
+        "non-vegetated"
+      ],
+      "no": [
+        "agricultural production",
+        "currently forested areas",
+        "forested",
+        "irrigated",
+        "native tropical grasslands",
+        "recently deforested",
+        "recently deforested areas",
+        "savanna ecosystems",
+        "tundra",
+        "urban areas",
+        "water bodies",
+        "wetlands"
+      ]
+    },
+    {
+      "name": "protected_area_status",
+      "variable": "protected_area_status",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "protected areas"
+      ]
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0
+    },
+    {
+      "name": "aridity_index",
+      "variable": "aridity_index",
+      "type": "threshold",
+      "unit": "dimensionless",
+      "min": 0.65
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 3500.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -10.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 75.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.0,
+      "max": 10.0
+    },
+    {
+      "name": "tree_canopy_cover",
+      "variable": "tree_canopy_cover",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 30.0
+    }
+  ]
+}

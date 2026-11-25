@@ -1,0 +1,23 @@
+{
+  "practice": "wetland_management",
+  "family": "restoration_rewetting",
+  "variable": "topographic_wetness_index",
+  "unit": "CTI (topographic wetness index scaled to an integer, see justification_quote)",
+  "shape": "linear",
+  "x": [
+    550.0
+  ],
+  "score": [
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 25,
+  "papers": [
+    "wet_potential_restoration_indicator_conus_2017"
+  ]
+}

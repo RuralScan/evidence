@@ -1,0 +1,35 @@
+{
+  "practice": "forest_restoration",
+  "family": "protection_cbfm",
+  "gates": [
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5200.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -10.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.0,
+      "max": 10.0
+    }
+  ]
+}

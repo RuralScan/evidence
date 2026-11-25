@@ -1,0 +1,89 @@
+{
+  "practice": "mangrove_restoration",
+  "family": "tidal_coastal",
+  "gates": [
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "above the high tide limit",
+        "below mean sea level"
+      ]
+    },
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "coastal shrub vegetation",
+        "intermediate and wet zone coastal vegetation",
+        "lagoon and estuarine shores",
+        "mudflat",
+        "mudflats",
+        "permanent open water (subtidal)",
+        "salt marsh",
+        "salt marsh and shrub",
+        "sand dune",
+        "sandflats",
+        "seagrass beds",
+        "urban areas"
+      ]
+    },
+    {
+      "name": "tidal_inundation_duration",
+      "variable": "tidal_inundation_duration",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "prolonged inundation"
+      ]
+    },
+    {
+      "name": "distance_to_forest",
+      "variable": "distance_to_forest",
+      "type": "threshold",
+      "unit": "km",
+      "max": 10.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "cm above mean sea level",
+      "min": -100.0,
+      "max": 200.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": 13.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 30.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5
+    },
+    {
+      "name": "tidal_inundation_duration",
+      "variable": "tidal_inundation_duration",
+      "type": "threshold",
+      "unit": "percent",
+      "min": 1.0,
+      "max": 50.0
+    }
+  ]
+}

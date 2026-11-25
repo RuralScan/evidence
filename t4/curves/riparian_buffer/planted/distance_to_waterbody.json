@@ -1,0 +1,32 @@
+{
+  "practice": "riparian_buffer",
+  "family": "planted",
+  "variable": "distance_to_waterbody",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    4.6,
+    15.0,
+    30.0,
+    200.0
+  ],
+  "score": [
+    0.0,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    4.6,
+    200.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "managing_buffer_strips_es_review_2020",
+    "multispecies_buffer_design_placement_1995",
+    "riparian_annagnps_elkadiri_2023",
+    "site_specific_vs_fixed_width_cost_2016"
+  ]
+}

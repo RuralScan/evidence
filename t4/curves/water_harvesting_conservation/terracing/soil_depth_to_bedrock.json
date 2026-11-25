@@ -1,0 +1,25 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "terracing",
+  "variable": "soil_depth_to_bedrock",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    0.2,
+    1.0
+  ],
+  "score": [
+    0.0,
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    0.2,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 54,
+  "papers": [
+    "gismcda_swc_siting_2014"
+  ]
+}

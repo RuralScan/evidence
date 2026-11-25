@@ -1,0 +1,26 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "in_situ",
+  "variable": "soil_depth_to_bedrock",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    0.2,
+    0.75
+  ],
+  "score": [
+    0.0,
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    0.2,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 54,
+  "papers": [
+    "fao_critchley_wh_manual_1991",
+    "kahinda2008_sa_rwh_suitability"
+  ]
+}

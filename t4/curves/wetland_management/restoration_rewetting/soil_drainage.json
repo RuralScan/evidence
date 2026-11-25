@@ -1,0 +1,25 @@
+{
+  "practice": "wetland_management",
+  "family": "restoration_rewetting",
+  "variable": "soil_drainage",
+  "unit": "percent of soil map unit poorly or very poorly drained (PVP)",
+  "shape": "linear",
+  "x": [
+    80.0,
+    100.0
+  ],
+  "score": [
+    1.0,
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": 0.521,
+  "pct_of_papers": 17,
+  "papers": [
+    "wet_potential_restoration_indicator_conus_2017"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "practice": "wetland_management",
+  "family": "creation",
+  "gates": [
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "abandoned land",
+        "fallow land",
+        "irrigated farmland",
+        "rain-fed farmland"
+      ],
+      "no": []
+    },
+    {
+      "name": "catchment_area",
+      "variable": "catchment_area",
+      "type": "threshold",
+      "unit": "ha",
+      "min": 50.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "degrees",
+      "max": 3.0
+    }
+  ]
+}

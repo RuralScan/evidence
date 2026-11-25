@@ -1,0 +1,27 @@
+{
+  "practice": "wetland_management",
+  "family": "peatland",
+  "variable": "water_table_depth",
+  "unit": "cm",
+  "shape": "linear",
+  "x": [
+    15.0,
+    55.0,
+    120.0
+  ],
+  "score": [
+    1.0,
+    0.667,
+    0.333
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 8,
+  "papers": [
+    "page_nl_paludiculture_crop_suitability_model"
+  ]
+}

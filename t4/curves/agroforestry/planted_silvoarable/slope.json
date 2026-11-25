@@ -1,0 +1,30 @@
+{
+  "practice": "agroforestry",
+  "family": "planted_silvoarable",
+  "variable": "slope",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    5.0,
+    10.0,
+    15.0,
+    35.0
+  ],
+  "score": [
+    1.0,
+    0.667,
+    0.333,
+    0.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    35.0
+  ],
+  "weight": null,
+  "pct_of_papers": 31,
+  "papers": [
+    "ahmad_2018",
+    "wotlolan_2021"
+  ]
+}

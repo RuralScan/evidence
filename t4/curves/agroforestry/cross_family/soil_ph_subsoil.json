@@ -1,0 +1,33 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "soil_ph_subsoil",
+  "unit": "pH",
+  "shape": "linear",
+  "x": [
+    3.5,
+    5.1,
+    6.35,
+    7.3,
+    7.5,
+    10.0
+  ],
+  "score": [
+    0.0,
+    0.667,
+    1.0,
+    0.667,
+    0.333,
+    0.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    3.5,
+    10.0
+  ],
+  "weight": null,
+  "pct_of_papers": 2,
+  "papers": [
+    "nath_2021"
+  ]
+}

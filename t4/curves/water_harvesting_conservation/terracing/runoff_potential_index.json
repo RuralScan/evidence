@@ -1,0 +1,23 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "terracing",
+  "variable": "runoff_potential_index",
+  "unit": "runoff coefficient",
+  "shape": "linear",
+  "x": [
+    0.9
+  ],
+  "score": [
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 15,
+  "papers": [
+    "gismcda_swc_siting_2014"
+  ]
+}

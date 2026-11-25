@@ -1,0 +1,28 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "runoff_catchment",
+  "variable": "clay_content",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    3.0,
+    10.55,
+    20.05
+  ],
+  "score": [
+    0.333,
+    0.667,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 6,
+  "papers": [
+    "kahinda2008_sa_rwh_suitability",
+    "wh_stocktake_terencio_2017"
+  ]
+}
