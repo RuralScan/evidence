@@ -39,3 +39,7 @@ This intentionally does not claim a finished ingestion lane. It makes the missin
 - FAO GSOCseq: stock, stock change and additional management benefit are different quantities.
 
 No DOI has been added to SRC or the acquisition queue. Existing registers, votes, review receipts, ledger, configuration pin and runtime remain unchanged.
+
+## T5 candidate intake extension
+
+[Validated intake and exact remaining gates](intake.md) · [Bounded review protocol](protocol.md) · [Cross-cutting register manifest proposal](../../registers/cross_cutting/README.md). This extension preserves the five original packets and adds no canonical records or source votes.

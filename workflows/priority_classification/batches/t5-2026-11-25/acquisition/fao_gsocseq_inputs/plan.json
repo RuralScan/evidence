@@ -1,0 +1,8 @@
+{
+  "candidate_id": "fao_gsocseq_inputs",
+  "kind": "website",
+  "artifact_url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+  "publisher_hosts": [
+    "fao-sid.github.io"
+  ]
+}

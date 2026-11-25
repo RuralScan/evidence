@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "status": "acquired",
+  "candidate_id": "copernicus_spei_2026",
+  "source_id": "copernicus_spei_2026",
+  "kind": "pdf",
+  "candidate_sha256": "6e02aee070fa525a9937134a97ebbf62c7c27c967ba62957c3425dd75a5bb29e",
+  "plan_sha256": "cc1ce7c9a55a256d50e7af9fd204e5a2e212e2c2893c435bc2e68ed2c549309f",
+  "checked_at": "2026-11-25T18:51:10.069924+00:00",
+  "metadata": {
+    "doi": "",
+    "submitted_doi": "",
+    "citation": "Standardized Precipitation-Evapotranspiration Index (SPEI)",
+    "title": "Standardized Precipitation-Evapotranspiration Index (SPEI)",
+    "status": "title_required",
+    "reason": "No DOI; verify the source title against the artifact."
+  },
+  "canonical_source": null,
+  "attempts": [
+    {
+      "route": "local_hash_replay",
+      "url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+      "result": "verified"
+    }
+  ],
+  "document": {
+    "pages": 8,
+    "needs_ocr": false,
+    "verified": true,
+    "reason": "Opening PDF title matches."
+  },
+  "artifact": {
+    "source_id": "copernicus_spei_2026",
+    "kind": "pdf",
+    "url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+    "requested_url": "https://drought.emergency.copernicus.eu/data/factsheets/factsheet_spei.pdf",
+    "route": "local_hash_replay",
+    "fetched_at": null,
+    "http_status": null,
+    "content_type": null,
+    "commit_sha": null,
+    "bytes": 1690814,
+    "sha1": "e3d3fb4d243c5aef26ddf408f15883573846ca53",
+    "sha256": "a65d8e7fb2727e1b66ec97517760d7a3eb49ca6552831ca1108fb7e66fad3086"
+  }
+}

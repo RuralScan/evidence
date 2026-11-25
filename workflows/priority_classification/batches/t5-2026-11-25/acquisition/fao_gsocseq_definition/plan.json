@@ -1,0 +1,9 @@
+{
+  "candidate_id": "fao_gsocseq_definition",
+  "kind": "website",
+  "artifact_url": "https://fao-sid.github.io/GSOCseq/soil-organic-carbon-soc-sequestration.html",
+  "publisher_hosts": [
+    "fao-sid.github.io"
+  ],
+  "expected_sha256": "64f02aae75aee5e327c2d739944b868bfe9d96d03d7929d4985a0d21f57b6e39"
+}

@@ -1,0 +1,238 @@
+{
+  "format": "ruralscan.cross-cutting-search.v1",
+  "scope": "Four-variable T5 documentation review",
+  "protocol": "workflows/priority_classification/protocol.md",
+  "seed_packets_reused": 5,
+  "new_sources_included": 1,
+  "total_sources": 6,
+  "source_cap": 7,
+  "searches": [
+    {
+      "search_id": "xsrch_t5_20261125_1",
+      "provider": "web search interface",
+      "searched_on": "2026-11-25",
+      "queries": [
+        "site.wri.org \"Aqueduct 4.0\" \"Kuzma\" 2023 technical note water stress",
+        "site.drought.emergency.copernicus.eu \"SPEI\" \"2026\" factsheet",
+        "site.landmarkmap.org \"Data completeness\" \"absence\"",
+        "site.fao.org \"GSOCseq\" \"30\" \"2021\""
+      ],
+      "count_scope": "Combined visible results returned by this call; not provider total or per-query counts.",
+      "returned": 18,
+      "screened": 18,
+      "dispositions": {
+        "identity_support": 1,
+        "defer": 9,
+        "include_new": 1,
+        "exclude": 7
+      },
+      "results": [
+        {
+          "url": "https://www.wri.org/research/aqueduct-40-updated-decision-relevant-global-water-risk-indicators",
+          "disposition": "identity_support",
+          "reason": "Publisher landing page corroborates technical-note identity."
+        },
+        {
+          "url": "https://landmarkmap.org/data-methods/methodology",
+          "disposition": "defer",
+          "reason": "Related methodology; existing completeness page directly answers missingness."
+        },
+        {
+          "url": "https://github.com/wri/Aqueduct40/blob/master/production_scripts/README.md",
+          "disposition": "defer",
+          "reason": "Useful future endpoint/production audit; code intake not needed for held four-class mapping."
+        },
+        {
+          "url": "https://fao-sid.github.io/GSOCseq/data-sets-and-inputs.html",
+          "disposition": "include_new",
+          "reason": "Primary stock-input depth, period and grid guidance."
+        },
+        {
+          "url": "https://drought.emergency.copernicus.eu/tumbo/edo/download/",
+          "disposition": "defer",
+          "reason": "Data download interface; no T5 long-term calibration."
+        },
+        {
+          "url": "https://climate.copernicus.eu/european-summer-2026-records-extremes-and-context",
+          "disposition": "exclude",
+          "reason": "Regional seasonal account, not global T5 calibration."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/373134087_Aqueduct_40_Updated_Decision-Relevant_Global_Water_Risk_Indicators",
+          "disposition": "exclude",
+          "reason": "Duplicate; publisher PDF already acquired. No RG access claim."
+        },
+        {
+          "url": "https://www.wri.org/aqueduct",
+          "disposition": "exclude",
+          "reason": "General product page; detailed technical note retained."
+        },
+        {
+          "url": "https://cds.climate.copernicus.eu/datasets/derived-drought-historical-monthly?tab=overview",
+          "disposition": "defer",
+          "reason": "Alternative ERA5 binding; existing T5 names CSIC and reducer remains undefined."
+        },
+        {
+          "url": "https://fixplanet.org/maps/water-stress/",
+          "disposition": "exclude",
+          "reason": "Secondary map."
+        },
+        {
+          "url": "https://www.nature.com/articles/s43247-026-03954-6",
+          "disposition": "defer",
+          "reason": "Potential PET sensitivity study; outside bounded documentation pass, identity/findings not verified."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0022169426015702",
+          "disposition": "defer",
+          "reason": "Drought-object study; outside chosen quantity pending reducer decision."
+        },
+        {
+          "url": "https://openresearch.amsterdam/image/2023/11/2/aqueduct_40_technical_note.pdf",
+          "disposition": "exclude",
+          "reason": "Mirror; authoritative PDF already acquired."
+        },
+        {
+          "url": "https://www.fao.org/fileadmin/user_upload/GSP/ninth_PA/GSPPA_IX_2021_9_FINAL.pdf",
+          "disposition": "defer",
+          "reason": "Programme report; technical manual selected for exact input semantics."
+        },
+        {
+          "url": "https://www.fao.org/fileadmin/user_upload/GSP/INSII/7th_insii/day2/INSII-2021_V.pdf",
+          "disposition": "defer",
+          "reason": "Map-version agenda paper; potential-output binding remains a future task."
+        },
+        {
+          "url": "https://gdacs.org/Public/download.aspx?id=359&type=DC",
+          "disposition": "exclude",
+          "reason": "Event bulletin, not calibrated long-term priority classification."
+        },
+        {
+          "url": "https://www.fao.org/fileadmin/user_upload/GSP/Pillar4/AFACI_Training/12.Preparations_for_the_second_session__Soil_Organic_Carbon_Sequestration_Modelling_.pdf",
+          "disposition": "defer",
+          "reason": "Training slides; technical manual selected."
+        },
+        {
+          "url": "https://cadenaser.com/comunitat-valenciana/2026/03/22/investigadores-de-la-upv-desarrollan-un-sistema-pionero-para-anticipar-sequias-con-hasta-seis-meses-de-antelacion-radio-valencia/",
+          "disposition": "exclude",
+          "reason": "News rather than primary dataset documentation."
+        }
+      ]
+    },
+    {
+      "search_id": "xsrch_t5_20261125_2",
+      "provider": "web search interface",
+      "searched_on": "2026-11-25",
+      "queries": [
+        "site.spei.csic.es \"SPEIbase\" \"v.2.6\" resolution",
+        "site.developers.google.com/earth-engine/datasets \"WRI Aqueduct Baseline Annual Version 4.0\""
+      ],
+      "count_scope": "Combined visible results returned by this call; not provider total or per-query counts.",
+      "returned": 18,
+      "screened": 18,
+      "dispositions": {
+        "reuse": 1,
+        "exclude": 17
+      },
+      "results": [
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual",
+          "disposition": "reuse",
+          "reason": "Existing packet retained."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual?hl=en",
+          "disposition": "exclude",
+          "reason": "Locale/URL duplicate of retained catalogue."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual?hl=de",
+          "disposition": "exclude",
+          "reason": "Locale/URL duplicate of retained catalogue."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual?hl=he",
+          "disposition": "exclude",
+          "reason": "Locale/URL duplicate of retained catalogue."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Water_Risk_V4_baseline_annual?hl=id",
+          "disposition": "exclude",
+          "reason": "Locale/URL duplicate of retained catalogue."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/tags/table",
+          "disposition": "exclude",
+          "reason": "Tag index rather than product documentation."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/tags/wri?hl=en",
+          "disposition": "exclude",
+          "reason": "Tag index rather than product documentation."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/tags/monitoring",
+          "disposition": "exclude",
+          "reason": "Tag index rather than product documentation."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/tags/surface-ground-water",
+          "disposition": "exclude",
+          "reason": "Tag index rather than product documentation."
+        },
+        {
+          "url": "https://developers.google.com/earth-engine/datasets/tags/aqueduct?hl=pt-br",
+          "disposition": "exclude",
+          "reason": "Tag index rather than product documentation."
+        },
+        {
+          "url": "https://sitelet.easiiodev.ai/sitelet?url=https%3A%2F%2Fdevelopers.google.com%2Fearth-engine%2Fdatasets%2Fcatalog%2FWRI_Aqueduct_Water_Risk_V4_baseline_annual%3Fhl%3Dfr",
+          "disposition": "exclude",
+          "reason": "Third-party rendering duplicate."
+        },
+        {
+          "url": "https://sitelet.easiiodev.ai/sitelet?url=https%3A%2F%2Fdevelopers.google.com%2Fearth-engine%2Fdatasets%2Fcatalog%2FWRI_Aqueduct_Water_Risk_V4_baseline_annual%3Fhl%3Dzh-tw",
+          "disposition": "exclude",
+          "reason": "Third-party rendering duplicate."
+        },
+        {
+          "url": "https://blog.wirutex.com/hubfs/WIRUTEX_2024_VSME_Report_Preliminary.pdf",
+          "disposition": "exclude",
+          "reason": "Corporate report citing product; not primary documentation."
+        },
+        {
+          "url": "https://blog.wirutex.com/hubfs/wirutex-report-sostenibilita-VSME-2024-IT.pdf",
+          "disposition": "exclude",
+          "reason": "Corporate report citing product; not primary documentation."
+        },
+        {
+          "url": "https://www.wirutex.com/wp-content/uploads/2025/12/wirutex-report-sostenibilita-VSME-2024-IT.pdf",
+          "disposition": "exclude",
+          "reason": "Corporate report citing product; not primary documentation."
+        },
+        {
+          "url": "https://www.nature.com/articles/s41559-024-02372-1.pdf",
+          "disposition": "exclude",
+          "reason": "Application paper does not replace authoritative SPEI product-version metadata."
+        },
+        {
+          "url": "https://www.aeeisp.com/zgstbckx/cn/article/pdf/preview/10.16843/j.sswc.2025058.pdf",
+          "disposition": "exclude",
+          "reason": "Application paper does not replace authoritative SPEI product-version metadata."
+        },
+        {
+          "url": "https://scholarworks.indianapolis.iu.edu/bitstreams/dbc41d19-5c66-4f22-8c37-72a6e532aedb/download",
+          "disposition": "exclude",
+          "reason": "Application paper does not replace authoritative SPEI product-version metadata."
+        }
+      ]
+    }
+  ],
+  "direct_access_hold": {
+    "url": "https://spei.csic.es/database.html",
+    "result": "Web fetch timed out; no verified version metadata obtained.",
+    "disposition": "held_access_unresolved_not_paywalled"
+  },
+  "stop_reason": "Five seeds reverified and one primary input-documentation source added. Remaining classification/binding choices require review, not a wider untargeted search.",
+  "limits": "No systematic all-T5 coverage, bibliographic-database census or pilot calibration claimed."
+}
