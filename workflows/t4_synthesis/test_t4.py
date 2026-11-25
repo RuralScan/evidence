@@ -670,6 +670,21 @@ class T4Route(unittest.TestCase):
             lambda packet: packet["evidence"][0].update(suitability_family_id=None)
         )
         core.validate(self.folder)
+        self.packet["definitions"]["schema/registers/FAM_family_registry.csv"].append(
+            dict(
+                nbs_id="practice",
+                suitability_family_id="other_family",
+                spatial_product_type="area_suitability",
+            )
+        )
+        self.change_packet(
+            lambda packet: packet["evidence"][0].update(
+                suitability_family_id="family|other_family"
+            )
+        )
+        core.validate(
+            self.folder
+        )  # Explicitly reviewed membership includes the target.
         self.row["justification"]["evidence_applicability"] = {}
         self.save()
         with self.assertRaisesRegex(ValueError, "each supporting"):

@@ -389,7 +389,9 @@ def validate(folder, current_inputs=None, prior=None):
             and r["suitability_family_id"].endswith("__cross_family")
         }
         require(
-            not declared or declared == [p["family"]] or set(declared) <= broad,
+            not declared
+            or (p["family"] in declared and set(declared) <= families(packet))
+            or set(declared) <= broad,
             "Sibling or unresolved historical family requires source-scope review",
         )
         require(
