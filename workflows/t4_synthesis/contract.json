@@ -1,0 +1,82 @@
+{
+  "format": "ruralscan.agent-t4-contract.v1",
+  "version": "1.0.0",
+  "decision": "https://github.com/RuralScan/method/issues/85#issuecomment-7049325204",
+  "definition_inputs": [
+    "schema/registers/FAM_family_registry.csv",
+    "schema/registers/VONT_variable_ontology.csv",
+    "schema/registers/BIND_dataset_binding.csv",
+    "schema/T1_data_registry.csv",
+    "schema/T7_geographic_context.csv",
+    "schema/lookups/crop_scope_policy.csv",
+    "schema/lookups/m2b_variable_policy.csv"
+  ],
+  "columns": [
+    "mapping_id",
+    "nbs_id",
+    "suitability_family_id",
+    "variable",
+    "dataset_id",
+    "suitability_dimension",
+    "relationship_type",
+    "relationship_params",
+    "evidence_ids",
+    "justification",
+    "applicability",
+    "readiness",
+    "weight_default"
+  ],
+  "json_fields": [
+    "relationship_params",
+    "evidence_ids",
+    "justification",
+    "applicability"
+  ],
+  "relationship_types": [
+    "piecewise",
+    "threshold",
+    "ranked_classes",
+    "qualitative"
+  ],
+  "dimensions": [
+    "biophysical_constraint",
+    "system_constraint",
+    "operational_constraint"
+  ],
+  "readiness": [
+    "calibrated",
+    "calibration_hold"
+  ],
+  "reasoning": [
+    "candidate_use",
+    "compatibility",
+    "dependence",
+    "representation",
+    "units_and_spatial_support",
+    "boundary_checks",
+    "binding_and_transfer",
+    "masks_and_weights",
+    "uncertainty",
+    "sensitivity"
+  ],
+  "candidate_dispositions": [
+    "include",
+    "exclude",
+    "context",
+    "hold"
+  ],
+  "output_semantics": {
+    "scope": "One current suitability family per proposal; separate proposals for distinct contexts.",
+    "partial_package": true,
+    "runtime_implemented": false,
+    "missing": "Explicit null, never implicit zero.",
+    "piecewise": "Strictly increasing [input, score] points. Linear interpolation between points; below/above explicitly null or authored score. Exact endpoints use their point score.",
+    "ranked_classes": "Explicit string class-to-score map. Unknown classes and missing values return null.",
+    "threshold": "Declared lt/le/gt/ge comparison, threshold, pass and fail scores. Missing values return null. Gate use requires an explicit exclusion rationale.",
+    "qualitative": "Text-only interpretation with a calibration hold; not packageable as a calibrated mapping.",
+    "weights": "Optional authored criterion weight, never inferred from source importance or support counts. A mapping package is not a complete T4_RUN policy.",
+    "acceptance": "Original authenticated human issue, exact proposal/input/skill/row bytes; append-only acceptance and hold history.",
+    "freshness": "Any changed candidate, source, review, definition or contract makes the proposal stale; a new proposal is required.",
+    "context_overrides": "Separate mappings with explicit context identities. This version does not infer precedence or combine overlapping contexts."
+  }
+}

@@ -372,6 +372,11 @@ def check_snapshot(producer, ciat, base):
 
     verify_synthesis_contract(ROOT)
     verify_scientific_decisions(ROOT, base)
+    from t4_synthesis.acceptance import verify as verify_t4_acceptance
+    from t4_synthesis.contract_pin import verify as verify_t4_contract
+
+    verify_t4_contract(ROOT)
+    verify_t4_acceptance(ROOT, base)
     from queue_view import compile_candidate
 
     queue, candidate = compile_candidate(producer, ROOT)
