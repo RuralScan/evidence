@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 
 from synthesis.core import digest, encoded, git, require, ID, SHA, nonempty, strings
+from . import profiles
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT = Path(__file__).with_name("contract.json")
@@ -32,6 +33,16 @@ def inputs(root, producer, practice, registers):
     ids = {r["source_id"] for r in evidence}
     definitions = {}
     hashes = {}
+    overrides = []
+    catalog = root / "suitability/overrides/overrides.csv"
+    if catalog.exists():
+        from .override_candidates import records
+        overrides = [r for r in records(catalog.parent)
+                     if any(s["nbs_id"] == practice for s in r["profile"]["scope"])]
+        hashes[catalog.relative_to(root).as_posix()] = digest(catalog.read_bytes())
+        ids.update(ref["source_id"] for r in overrides for ref in r["evidence_refs"])
+        # Unregistered draft refs stay in the candidate; never invent SRC or EV.
+
     for rel in policy()["definition_inputs"]:
         raw = (producer / rel).read_bytes()
         hashes[rel] = digest(raw)
@@ -44,6 +55,7 @@ def inputs(root, producer, practice, registers):
         reviews = [r for r in csv.DictReader(stream) if r["evidence_id"] in ev_ids]
     return dict(
         practice=practice,
+        override_candidates=overrides,
         evidence=sorted(evidence, key=lambda r: r["evidence_id"]),
         sources=sorted(
             [r for r in registers["SRC_source_register"] if r["source_id"] in ids],
@@ -142,6 +154,11 @@ def score(value):
 
 def evaluate(kind, params, value):
     """Evaluate an explicit authored boundary example, not a raster or derived curve."""
+    if kind in {"logistic", "log_logistic"}:
+        return profiles.smooth(kind, params["x20"], params["x80"], value)
+    if kind in profiles.KINDS:
+        profiles.exact(value, "values context", "Profile boundary needs values and context")
+        return profiles.evaluate_profile(params, value["values"], value["context"])
     if value is None or kind == "qualitative":
         return None
     if kind == "ranked_classes":
@@ -173,12 +190,17 @@ def representation(row):
         kind in policy()["relationship_types"] and isinstance(p, dict),
         "Unsupported representation",
     )
+    if kind in profiles.KINDS:
+        profiles.boundary_cases(row)
+        return
     common = {"unit", "missing"}
     extra = {
         "piecewise": {"points", "below", "above"},
         "threshold": {"operator", "threshold", "pass", "fail"},
         "ranked_classes": {"classes"},
         "qualitative": {"note"},
+        "logistic": {"x20", "x80"},
+        "log_logistic": {"x20", "x80"},
     }[kind]
     require(
         set(p) == common | extra and nonempty(p["unit"]) and p["missing"] is None,
@@ -190,7 +212,9 @@ def representation(row):
             "Qualitative mapping must remain held",
         )
         return
-    if kind == "piecewise":
+    if kind in {"logistic", "log_logistic"}:
+        profiles.smooth(kind, p["x20"], p["x80"], None)
+    elif kind == "piecewise":
         points = p["points"]
         require(
             isinstance(points, list)
@@ -255,7 +279,8 @@ def representation(row):
         )
     else:
         bounds = (
-            [x[0] for x in p["points"]] if kind == "piecewise" else [p["threshold"]]
+            [x[0] for x in p["points"]] if kind == "piecewise" else
+            [p["x20"], p["x80"]] if kind in {"logistic", "log_logistic"} else [p["threshold"]]
         )
         numeric = [v for v in values if number(v)]
         require(
@@ -595,6 +620,8 @@ def validate(folder, current_inputs=None, prior=None):
                 "No usable preferred pinned dataset binding for context; retain a calibration hold",
             )
         representation(r)
+        if r["relationship_type"] in profiles.KINDS:
+            profiles.validate_definitions(r["relationship_params"], definitions, p["practice"], p["family"], a)
         require(
             r["relationship_params"]["unit"]
             == variables[r["variable"]]["canonical_unit"],

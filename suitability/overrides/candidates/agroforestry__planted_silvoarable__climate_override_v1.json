@@ -1,0 +1,177 @@
+{
+  "format": "ruralscan.t4-profile-candidate.v1",
+  "id": "agroforestry__planted_silvoarable__climate_override_v1",
+  "status": "pending",
+  "activate": false,
+  "profile": {
+    "type": "composite_scoping",
+    "unit": "dimensionless",
+    "missing": null,
+    "scope": [
+      {
+        "nbs_id": "agroforestry",
+        "family_id": "agroforestry__planted_silvoarable",
+        "subpractice_ids": [
+          "alley_cropping",
+          "tree_intercropping"
+        ],
+        "pathways": [
+          "planted"
+        ]
+      }
+    ],
+    "inputs": {
+      "ai": {
+        "variable": "aridity_index",
+        "dataset_id": "global_ai_v3_annual_1970_2000",
+        "unit": "dimensionless",
+        "valid_range": [
+          0,
+          6.5535
+        ]
+      },
+      "monthly_tas": {
+        "variable": "monthly_mean_air_temperature",
+        "dataset_id": "chelsa_v2_1_tas_monthly_1981_2010",
+        "unit": "degC",
+        "valid_range": [
+          -100,
+          70
+        ]
+      },
+      "thermal_mean": {
+        "variable": "temperature_only_thermal_season_mean",
+        "dataset_id": "chelsa_v2_1_tas_monthly_1981_2010",
+        "unit": "degC",
+        "valid_range": [
+          -100,
+          70
+        ]
+      },
+      "thermal_days": {
+        "variable": "temperature_only_thermal_day_count",
+        "dataset_id": "chelsa_v2_1_tas_monthly_1981_2010",
+        "unit": "days",
+        "valid_range": [
+          0,
+          365
+        ]
+      }
+    },
+    "thermal_season": {
+      "kind": "periodic_monthly_temperature_season",
+      "input": "monthly_tas",
+      "mean_output": "thermal_mean",
+      "days_output": "thermal_days",
+      "month_lengths": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ],
+      "threshold": 0.9,
+      "operator": "ge",
+      "empty_season_score": 0
+    },
+    "score": {
+      "kind": "minimum",
+      "children": [
+        {
+          "kind": "log_logistic",
+          "input": "ai",
+          "x20": 0.2,
+          "x80": 0.46
+        },
+        {
+          "kind": "minimum",
+          "children": [
+            {
+              "kind": "logistic",
+              "input": "thermal_mean",
+              "x20": 3,
+              "x80": 10
+            },
+            {
+              "kind": "log_logistic",
+              "input": "thermal_days",
+              "x20": 30,
+              "x80": 130
+            }
+          ]
+        }
+      ]
+    },
+    "screens": [
+      {
+        "id": "cold_mean_below_3c",
+        "input": "thermal_mean",
+        "operator": "lt",
+        "threshold": 3,
+        "water_bypass": false
+      },
+      {
+        "id": "cold_duration_below_30d",
+        "input": "thermal_days",
+        "operator": "lt",
+        "threshold": 30,
+        "water_bypass": false
+      }
+    ],
+    "water_policy": "conditional_unscored",
+    "combined_score_cutoff": null,
+    "weight": null
+  },
+  "justification": {
+    "rationale": "Screen broad climatic hostility to persistent upright tree-based NbS at landscape-scoping scale. Higher membership means weaker climatic limitation, not establishment probability. Exact scope is restricted to the named subpractices and establishment pathways.",
+    "mechanism": "Planting and persistent growth require adequate water relative to atmospheric demand. Cold limits sustained upright-tree growth through insufficient warmth and thermal duration. The minimum prevents compensation between water and cold limitations.",
+    "source_relationship": "Berdugo ecosystem transitions are ecological context. Conversion from source aridity 1-P/PET to AI P/ET0 and transfer to planted trees require explicit scientific judgment. Paulsen and Körner Table 2 supplies broad coupled climate-belt endpoints, not the new temperature-only agroforestry response.",
+    "analyst_choices": "20/80 anchors, smooth interpolation, separate strict lower screens, temperature-only derivation and nested minimum are authored scoping conventions. Equality is retained. No combined score cutoff, automatic weighting or empirical success calibration. Complete zero thermal days gives severe-cold support 0; missing monthly input is unknown. AI bounds reflect uint16 raw storage ×0.0001 and temperature bounds are input QA, not suitability thresholds.",
+    "transfer_limits": "Persistent upright-tree outcomes only. Retention-only parklands, pastoral regeneration, shrubs/clipped hedges and shaded-crop constraints do not inherit this rule. Three Niger and three selected cold references are contradiction checks, not independent global validation. Snow omission, frost tolerance, mountain support and mixed historical periods remain limitations.",
+    "binding": "Proposed, not yet adopted definitions: Global-AI v3 annual 1970–2000, raw×0.0001, mask preserved, source member SHA256 40e827956b86c1d0d82987d9946edbbc3bb195ea7dd4ef393d00da2f4849c0e7; hosted projects/sat-io/open-datasets/global_ai/global_ai_yearly version1662154398217605. CHELSA v2.1 monthly mean2m air temperature 1981–2010, raw×0.1−273.15°C. Reference evaluator receives physical units only; raw decoding belongs to the pinned spatial adapter. No coupled GSL/GST, fixed elevation or unreviewed dataset substitution.",
+    "area_accounting": "Membership never multiplies hectares. Conditional mapped water refuges are unscored and add no automatic eligible area. Cold, host and legal exclusions prevail. Eligible, excluded, conditional and unknown area must remain distinct in the eventual runtime; this candidate computes no raster area.",
+    "replacement_policy": "Propose one climate parent to replace duplicated broad climate proxies only after exact current mapping IDs/hashes and replacement coverage are reviewed. Retain independent terrain, host/crop and legal/ecosystem constraints. Existing mappings are untouched; no exact withdrawal is currently authorised. Each accepted proposal remains one current family.",
+    "approval_remaining": "Scientific approval of family curves, cold transfer, screens and operator; adopt exact VONT/T1/BIND definitions and source/claim provenance; exact replacement fingerprints; original authenticated human acceptance for immutable proposal; separate runtime integration. All numerical relationships remain pending."
+  },
+  "evidence_refs": [
+    {
+      "source_id": "tree_climate_zomer2022",
+      "citation": "Zomer et al. (2022). Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data.",
+      "url": "https://doi.org/10.1038/s41597-022-01493-1",
+      "locator": "PDF p.6, aridity classes and equation 20; Global-AI v3 release https://doi.org/10.6084/m9.figshare.7504448.v6",
+      "claim_role": "AI definition, reference evapotranspiration and climate classes; not a calibrated tree-establishment response.",
+      "admission_status": "admitted_source_extraction_pending"
+    },
+    {
+      "source_id": "tree_climate_paulsen_korner2014",
+      "citation": "Paulsen et al. (2014). A climate-based model to predict potential treeline position around the globe. Alpine Botany.",
+      "url": "https://doi.org/10.1007/s00035-014-0124-0",
+      "locator": "Printed/PDF p.8, Table 2 climate belts.",
+      "claim_role": "Broad climate-belt anchors from coupled metrics; temperature-only transfer and 20/80 function are analyst choices.",
+      "admission_status": "admitted_source_extraction_pending"
+    },
+    {
+      "source_id": "tree_climate_brun2022",
+      "citation": "Brun et al. (2022). Global climate-related predictors at kilometer resolution for the past and future. Earth System Science Data.",
+      "url": "https://doi.org/10.5194/essd-14-5573-2022",
+      "locator": "PDF p.8 / printed p.5580, section 2.2.3.",
+      "claim_role": "Climate product derivation; released GSL/GST already include moisture eligibility and must not be substituted for independent thermal support.",
+      "admission_status": "admitted_source_extraction_pending"
+    },
+    {
+      "source_id": "tree_climate_berdugo2020",
+      "citation": "Berdugo et al. (2020). Global ecosystem thresholds driven by aridity. Science.",
+      "url": "https://doi.org/10.1126/science.aay5958",
+      "locator": "UPF accepted manuscript,29pages,SHA256 ab7d52888ea526e38775aa4b94e58e70f9978a20a9ef8b1e5aedd6bf598f2db9: p.3 abstract,p.4 aridity definition,p.6 productivity,p.8 cover. Artifact https://repositori.upf.edu/bitstreams/e112595d-d276-428c-bb62-83f73656a9c5/download",
+      "claim_role": "Ecosystem transitions informing planted-tree policy transfer; not measured establishment or tree-survival thresholds.",
+      "admission_status": "verified_manuscript_source_admission_PR117_pending"
+    }
+  ]
+}

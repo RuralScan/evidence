@@ -1,0 +1,28 @@
+{
+  "values": {
+    "ai": 0.1401,
+    "monthly_tas": [
+      21.05000000000001,
+      23.950000000000045,
+      28.350000000000023,
+      31.950000000000045,
+      32.55000000000001,
+      31.350000000000023,
+      28.55000000000001,
+      27.250000000000057,
+      28.55000000000001,
+      29.150000000000034,
+      25.650000000000034,
+      22.05000000000001
+    ]
+  },
+  "context": {
+    "nbs_id": "agroforestry",
+    "family_id": "agroforestry__regeneration_farmland",
+    "subpractice_id": "fmnr",
+    "pathway": "regeneration",
+    "host_state": "unknown",
+    "legal_state": "unknown",
+    "water_context": "unknown"
+  }
+}

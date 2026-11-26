@@ -1,0 +1,16 @@
+{
+  "values": {
+    "overall_score": 0.6,
+    "restorable_km2": 1
+  },
+  "context": {
+    "nbs_id": "mangrove_restoration",
+    "family_id": "mangrove_restoration__tidal_coastal",
+    "subpractice_id": "ecological_mangrove_restoration",
+    "host_state": "present",
+    "legal_state": "clear",
+    "unit_id": "11283186:v1:synthetic-example",
+    "spatial_relation": "partial",
+    "geometry_valid": true
+  }
+}

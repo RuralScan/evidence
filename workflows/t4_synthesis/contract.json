@@ -1,6 +1,6 @@
 {
   "format": "ruralscan.agent-t4-contract.v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "decision": "https://github.com/RuralScan/method/issues/85#issuecomment-7049325204",
   "definition_inputs": [
     "schema/registers/FAM_family_registry.csv",
@@ -36,7 +36,11 @@
     "piecewise",
     "threshold",
     "ranked_classes",
-    "qualitative"
+    "qualitative",
+    "logistic",
+    "log_logistic",
+    "composite_scoping",
+    "precomputed_unit_index"
   ],
   "dimensions": [
     "biophysical_constraint",
@@ -77,6 +81,220 @@
     "weights": "Optional authored criterion weight, never inferred from source importance or support counts. A mapping package is not a complete T4_RUN policy.",
     "acceptance": "Original authenticated human issue, exact proposal/input/skill/row bytes; append-only acceptance and hold history.",
     "freshness": "Any changed candidate, source, review, definition or contract makes the proposal stale; a new proposal is required.",
-    "context_overrides": "Separate mappings with explicit context identities. This version does not infer precedence or combine overlapping contexts."
+    "context_overrides": "Separate mappings with explicit context identities. This version does not infer precedence or combine overlapping contexts.",
+    "logistic": "Increasing 20/80 logistic at explicit x20/x80; finite real domain, stable exponential tails.",
+    "log_logistic": "Increasing 20/80 logistic in log input; positive anchors, zero maps to zero, negatives invalid.",
+    "composite_scoping": "Typed nested minimum; named component screens separate from score; temperature-only monthly interpolation; explicit subpractice/pathway scope; unknown and conditional water states; no inferred weight or score cutoff.",
+    "precomputed_unit_index": "Identity native [0,1] score conditional on positive source area; zero/zero model-ineligible, missing unknown, mismatch invalid. Whole source km2 times100; partial units bounds0..source hectares without prorating. No score-weighted hectares.",
+    "draft_candidates": "Pending candidate records permit representation review only. They never substitute for adopted definitions, eligible EV, original human scientific acceptance or runtime implementation."
+  },
+  "profile_contract": {
+    "candidate_format": "ruralscan.t4-profile-candidate.v1",
+    "candidate_keys": [
+      "format",
+      "id",
+      "status",
+      "activate",
+      "profile",
+      "justification",
+      "evidence_refs"
+    ],
+    "validator": "workflows/t4_synthesis/profiles.py",
+    "allowed_score_nodes": [
+      "logistic",
+      "log_logistic",
+      "minimum"
+    ],
+    "maximum_tree_depth": 8,
+    "minimum_children_range": [
+      2,
+      16
+    ],
+    "thermal_derivation": "periodic_monthly_temperature_season",
+    "thermal_calendar": "365-day no-leap, month-centre periodic linear interpolation; all days meeting explicit ge threshold",
+    "profile_types": [
+      "composite_scoping",
+      "precomputed_unit_index"
+    ],
+    "publication_gate": "Official mappings still require adopted VONT/T1/preferred BIND for every input and derived quantity, exact family/subpractice scope and eligible evidence. Draft candidate refs are not EV.",
+    "strict_fields": {
+      "profile_common": [
+        "type",
+        "unit",
+        "missing",
+        "scope",
+        "inputs"
+      ],
+      "composite_additional": [
+        "thermal_season",
+        "score",
+        "screens",
+        "water_policy",
+        "combined_score_cutoff",
+        "weight"
+      ],
+      "unit_index_additional": [
+        "score_input",
+        "area_input",
+        "area_to_hectares",
+        "area_policy"
+      ],
+      "input_definition": [
+        "variable",
+        "dataset_id",
+        "unit",
+        "valid_range"
+      ],
+      "scope": [
+        "nbs_id",
+        "family_id",
+        "subpractice_ids",
+        "pathways"
+      ],
+      "curve_node": [
+        "kind",
+        "input",
+        "x20",
+        "x80"
+      ],
+      "minimum_node": [
+        "kind",
+        "children"
+      ],
+      "screen": [
+        "id",
+        "input",
+        "operator",
+        "threshold",
+        "water_bypass"
+      ],
+      "thermal_season": [
+        "kind",
+        "input",
+        "mean_output",
+        "days_output",
+        "month_lengths",
+        "threshold",
+        "operator",
+        "empty_season_score"
+      ],
+      "justification": [
+        "rationale",
+        "mechanism",
+        "source_relationship",
+        "analyst_choices",
+        "transfer_limits",
+        "binding",
+        "area_accounting",
+        "replacement_policy",
+        "approval_remaining"
+      ],
+      "evidence_ref": [
+        "source_id",
+        "citation",
+        "url",
+        "locator",
+        "claim_role",
+        "admission_status"
+      ],
+      "boundary_case": [
+        "input",
+        "expected",
+        "reason"
+      ],
+      "evaluation_input": [
+        "values",
+        "context"
+      ]
+    },
+    "lifecycle": {
+      "status": "pending",
+      "activate": false,
+      "runtime_implemented": false,
+      "evidence_refs": "Nonempty provenance references with public HTTP(S) URLs; never substitutes for EV or admission receipts.",
+      "official_rows": "Full existing proposal, adopted-definition, reviewed-evidence and authenticated human acceptance gates remain. Numeric held profiles with unresolved definitions remain outside the official route."
+    },
+    "field_rules": {
+      "unknown_fields": "Reject all undeclared fields in profiles, nodes, input definitions, scope, screens, derivation, candidate, justification and source references.",
+      "scope": "Nonempty list supports multiple NbS in draft. Each exact nbs/family has nonempty unique subpractice/pathway lists. Only precomputed unit index may explicitly use null subpractice/pathway lists. Official proposals restrict to one current family and registered subpractices.",
+      "inputs": "Nonempty named quantity map including derived outputs. Nonempty variable,dataset_id,unit; finite increasing [minimum,maximum] valid_range. Physical-unit numeric inputs only; booleans/nonfinite/out-of-domain invalid, never clipped. Absent/null unknown.",
+      "scores": "Profile unit dimensionless and missing null. Increasing logistic or log-logistic 20/80 anchors; minimum propagates unknown. No arbitrary expressions, multiplication or compensating means.",
+      "screens": "Unique nonempty IDs; input must be a scored scalar quantity; operator lt/le/gt/ge, finite threshold, boolean water_bypass. Thermal screens cannot be water-bypassed. No inferred combined-score screen.",
+      "composite_policy": "water_policy conditional_unscored; combined_score_cutoff null; weight null; official weight_default null.",
+      "thermal": "Null or kind periodic_monthly_temperature_season; input,mean_output,days_output are distinct declared quantities with units degC,degC,days. Fixed month_lengths [31,28,31,30,31,30,31,31,30,31,30,31]; operator ge; finite authored threshold; empty_season_score numeric0. Values contain exactly12 monthly physical temperatures. Day-number centres start+(month_length+1)/2, periodic linear interpolation to days1..365. Count all qualifying days, no moisture/snow filter. Complete empty season: mean null,duration0,mean membership0; missing month: both metrics unknown. Derived values cannot be supplied.",
+      "precomputed": "Exactly two inputs, same dataset_id/release: dimensionless score range[0,1]; source area unitkm2 with nonnegative valid_range. area_to_hectares100; area_policy whole_units_partial_bounds_no_prorating. Identity score when sourcearea>0. Zero score iff zeroarea; mismatch invalid. No rescale,clipping,polygon prorating or score-weighted hectares."
+    },
+    "context": {
+      "shared_keys": [
+        "nbs_id",
+        "family_id",
+        "subpractice_id",
+        "pathway",
+        "host_state",
+        "legal_state"
+      ],
+      "host_state": [
+        "present",
+        "absent",
+        "unknown"
+      ],
+      "legal_state": [
+        "clear",
+        "excluded",
+        "unknown"
+      ],
+      "composite_keys": [
+        "water_context",
+        "water_evidence_ref"
+      ],
+      "water_context": [
+        "ordinary_rainfed",
+        "mapped_potential_refuge",
+        "unknown"
+      ],
+      "unit_keys": [
+        "unit_id",
+        "spatial_relation",
+        "geometry_valid"
+      ],
+      "spatial_relation": [
+        "whole",
+        "partial"
+      ],
+      "geometry_valid": [
+        true,
+        false,
+        null
+      ],
+      "caller_obligations": "Pinned-release unit identity; union overlapping AOIs first and exclude boundary-only touches. Geometry/topology/coverage QA separate. Duplicate units rejected; no inferred polygon allocation."
+    },
+    "result": {
+      "common_keys": [
+        "state",
+        "score",
+        "screen_reasons",
+        "area_ha",
+        "area_lower_ha",
+        "area_upper_ha",
+        "runtime_implemented"
+      ],
+      "additional_keys": {
+        "derived": "Composite derived mean/day values; empty object without thermal derivation.",
+        "data_state": "Preserves unknown/invalid/zero unit-data state when an existing exclusion prevails."
+      },
+      "outside_scope": "No score,area or climate exclusion for missing/mismatched subpractice/pathway.",
+      "priority": "Existing host/legal exclusion prevails even with missing component/unit data. Composite non-bypassable screens then conditional mapped water then bypassable dry screens then missing climate, unresolved host/legal, unresolved water context, eligible default rainfed.",
+      "water": "Mapped refuge requires evidence reference, always unscored and no automatic eligible area. Unknown water context retains climate score but is climate_pass_water_context_unresolved, not default rainfed eligibility.",
+      "unit_area": "Zero/zero is no_modelled_restorable_area (score null, source hectares0), not ecological impossibility. Missing is unknown; missing geometry unknown_geometry; invalid geometry invalid_geometry. Positive whole eligible units get sourcekm2\u00d7100; partial units pointestimate null, lower0,upper source hectares. Unresolved/excluded gates add no automatic eligible area.",
+      "score_meaning": "Membership or native relative ease, never probability or suitable-area fraction. Climate reference evaluator computes no hectares."
+    },
+    "structured_boundary_coverage": [
+      "outside scope",
+      "unknown input",
+      "at least one numeric score",
+      "known independent exclusion",
+      "unit profiles: whole,partial,zero-area",
+      "composites: all named screens,conditional water,and known empty thermal season if applicable"
+    ]
   }
 }
