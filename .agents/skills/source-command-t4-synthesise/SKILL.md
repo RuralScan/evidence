@@ -1,7 +1,7 @@
 ---
 name: source-command-t4-synthesise
 description: Author and validate a source-provenanced T4 mapping proposal for explicit human acceptance in RuralScan/evidence.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # T4 scientific synthesis
@@ -47,3 +47,29 @@ Scientific review must challenge omissions as well as invented values: source-ta
 coverage, native class meanings, false precision, abrupt exclusions, missing tails,
 proxy duplication, dependence and local-to-global transfer. Unsupported forms remain
 qualitative/calibration-held until the contract and scientific proposal are reviewed.
+
+
+## Exact profiles and pending overrides
+
+Inspect `inputs.json.override_candidates` when preparing a rule. These records come
+from the authoritative `suitability/overrides/overrides.csv`; typed candidate JSON
+is generated. Explain the disposition of applicable pending overrides in proposal
+reasoning and before/after comparison. A pending record is a review proposal, not
+permission to change accepted mappings or suppress existing criteria.
+
+Contract 1.1 supports exact logistic/log-logistic profiles, typed nested minima,
+explicit subpractice/pathway scope, named component screens, temperature-only
+season derivation and precomputed unit scores with separate source-area accounting.
+Use the declared parameters; never approximate smooth curves or silently substitute
+coupled climate variables. Source-linked policy choices must stay distinguishable
+from empirical source claims. Every raw/derived quantity still needs adopted
+VONT/T1/preferred BIND definitions for official publication; metadata citations are
+not Evidence Register units. A rule can cover multiple practices in the catalogue,
+but official proposals remain one current family each.
+
+Keep scores, exclusions, unknowns and conditional water pathways separate. Retain
+independent host/legal gates. A precomputed support polygon is not an opportunity
+footprint; never use score-weighted hectares or polygon fractions as source-area
+allocation. No new weight is inferred. Validate the exact boundary and state
+examples, then follow the unchanged scientific-acceptance route. Source admission,
+software merge and a passing preview are not scientific approval or runtime activation.

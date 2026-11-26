@@ -182,6 +182,31 @@ class T4Route(unittest.TestCase):
         )
         self.save()
 
+    def test_pending_override_inputs_and_registered_references_are_frozen(self):
+        from t4_synthesis.override_candidates import records, COLUMNS, JSON_FIELDS
+        candidate = copy.deepcopy(records(core.ROOT / "suitability/overrides")[0])
+        candidate["profile"]["scope"][0]["nbs_id"] = "practice"
+        sid = candidate["evidence_refs"][0]["source_id"]
+        self.registers["SRC_source_register"].append(dict(source_id=sid, citation="Synthetic registered method reference"))
+        folder = self.root / "suitability/overrides"
+        folder.mkdir(parents=True)
+        def write():
+            with (folder / "overrides.csv").open("w", newline="") as stream:
+                writer = csv.DictWriter(stream, COLUMNS)
+                writer.writeheader()
+                writer.writerow({k: json.dumps(v) if k in JSON_FIELDS else v for k,v in candidate.items()})
+        write()
+        before = core.inputs(self.root, self.producer, "practice", self.registers)
+        self.assertEqual(before["override_candidates"], [candidate])
+        self.assertIn(sid, {r["source_id"] for r in before["sources"]})
+        self.assertEqual(len(before["evidence"]), 1)
+        self.assertIn("suitability/overrides/overrides.csv", before["configuration"])
+        candidate["justification"]["rationale"] += " Revised pending method."
+        write()
+        after = core.inputs(self.root, self.producer, "practice", self.registers)
+        self.assertNotEqual(core.digest(before), core.digest(after))
+        self.assertEqual(core.inputs(self.root, self.producer, "unrelated", self.registers)["override_candidates"], [])
+
     def save(self, rows=None):
         core.write_rows(self.folder / "rows.csv", [self.row] if rows is None else rows)
         self.p["rows_sha256"] = core.digest((self.folder / "rows.csv").read_bytes())

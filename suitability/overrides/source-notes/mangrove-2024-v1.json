@@ -1,0 +1,272 @@
+{
+  "format": "ruralscan.pending-rule-metadata.v1",
+  "id": "mangrove-restoration-2024v1-native-unit-index",
+  "status": "pending",
+  "activate": false,
+  "scientific_approval": null,
+  "canonical_snapshot": "canonical_scope_snapshot.json",
+  "source_admission_status": "pending_dataset_code_intake",
+  "scope": {
+    "nbs_ids": [
+      "mangrove_restoration"
+    ],
+    "suitability_family_ids": [
+      "mangrove_restoration__tidal_coastal"
+    ],
+    "subpractice_ids": [
+      "mangrove_restoration",
+      "ecological_mangrove_restoration"
+    ],
+    "context_type": "global",
+    "context_id": "",
+    "excluded_sibling_scopes": [
+      "wetland_management__coastal",
+      "forest_restoration coastal families"
+    ],
+    "family_registry_product_type": "area_suitability",
+    "candidate_product_restriction": "Native unit score support only; eligible footprint must be independently represented. Do not alter registry product type."
+  },
+  "recommended_release": {
+    "record_id": 11283186,
+    "version": "v1",
+    "publication_date": "2024-05-24",
+    "doi": "10.5281/zenodo.11283186",
+    "license": "CC-BY-4.0",
+    "selection": "recommended_not_approved",
+    "latest_record_checked": 11283186
+  },
+  "source": {
+    "title": "The global biophysical potential for mangrove restoration dataset",
+    "url": "https://zenodo.org/records/11283186",
+    "citation": "Worthington et al. (2024), version v1, published 2024-05-24. DOI: 10.5281/zenodo.11283186.",
+    "reference_status": "Archive identity and members verified in prior audit; not an admitted SRC/EV finding. Source record described associated paper as In Review; later publication not established."
+  },
+  "binding": {
+    "dataset_id": "worthington_mangrove_restoration_2024_v1",
+    "variable": "mangrove_restoration_ease_index",
+    "scope_type": "global",
+    "scope_id": "",
+    "band": "OVERALL_SCORE",
+    "geometry_archive": "Mangrove_Typology_v3_Composite.zip",
+    "area_member": "Data Exports/Unit_Area_Data.csv",
+    "score_member": "Data Exports/Restoration_Index_Data.csv",
+    "join": [
+      "score.Type = area.Type (one-to-one)",
+      "area.ID = geometry.ID (one-to-one; validate Type too)"
+    ],
+    "grain_type": "vector",
+    "spatial_resolution_m": null,
+    "access_type": "direct_download",
+    "server_side_equivalent_verified": false,
+    "fallback_to_live_service": false
+  },
+  "relationship": {
+    "type": "precomputed_unit_index",
+    "score_expression": "OVERALL_SCORE",
+    "score_domain": [
+      0,
+      1
+    ],
+    "eligibility_expression": "Restorable_km2 > 0",
+    "missing": null,
+    "rescale_observed_range": false,
+    "divide_score_by_100": false,
+    "clip_invalid_values": false,
+    "weight": null,
+    "observed_positive_range": [
+      0.396,
+      0.924
+    ],
+    "interpretation": "Relative source-model biophysical restoration ease within historically lost mangrove units; not success probability, site feasibility or an eligible-pixel mask.",
+    "min_max_interpretation": "Alternative model sensitivity, not confidence interval."
+  },
+  "mechanism": "Corrected gross mangrove loss is multiplied by the eligible driver fractions (extreme weather, non-productive conversion and commodities). Among units with positive modelled restorable area, eight categorized components capture disturbance cause, tidal setting, sea-level-rise exposure, hydrological disturbance, patch structure, connectivity and loss timing. Normalized source weights combine these into the native score. Preserve this model output without re-fitting a second suitability curve.",
+  "justification": "Use the versioned model as a landscape scoping index, retaining source spatial support, eligibility assumptions and area totals. This is more traceable than transferring isolated generic climate thresholds to mangrove restoration. High score does not establish site-level tidal reconnection, land access or restoration success.",
+  "states": {
+    "positive_area_positive_score": "Return native score; expose area only when independent gates pass and coverage/overlay validity is known.",
+    "zero_area_zero_score": "no_modelled_restorable_area; area=0; score=null. Source-model exclusion, not biological impossibility.",
+    "missing_row_value_or_geometry": "unknown; score/area unresolved; never replace missing with zero.",
+    "invalid": "Reject negative/nonfinite area, out-of-range/nonfinite score, area/score zero mismatch, bad joins or invalid geometry; no clipping.",
+    "boundary_only_touch": "No area contribution; omit before unit evaluation.",
+    "outside_scope": "No rule output."
+  },
+  "area_accounting": {
+    "default": "whole source units plus unresolved partial-unit allocation bounds; no polygon prorating",
+    "whole_unit": "100 * Restorable_km2, counted once",
+    "partial_unit_without_matched_loss": "estimate=null; lower=0; upper=100*Restorable_km2",
+    "optional_loss_allocation": "R_unit * area(L_unit intersect union(AOIs)) / area(L_unit)",
+    "loss_definition": "GMW v3 composite across source epochs minus 2020 extent, assigned to source typology units; not 1996 minus 2020 alone",
+    "allocation_assumption": "Unit-level corrected loss and restorable-driver proportion apply uniformly across mapped loss within that unit. This is an estimate, not a mapped eligible footprint.",
+    "activation_condition_for_optional_allocation": "Verify release-matched loss geometry, unit assignment, CRS, validity, coverage and reconciliation with archived Loss.txt / country shares; no arbitrary layer substitution.",
+    "bounds_meaning": "allocation bounds conditional on source model total, not ecological confidence intervals",
+    "overlapping_AOIs": "union before allocation, unique unit IDs; component AOI totals not additive unless partitioned",
+    "country_statistics": "use source Country_Statistics only for source country geography; carries source loss-share allocation and boundary convention",
+    "archived_1km_tables": "totals verified; candidate future allocation route; geometry and derivation not verified, excluded from default binding",
+    "conversion": "source Restorable_km2 * 100",
+    "identity_key": [
+      "record_id",
+      "version",
+      "unit_ID"
+    ],
+    "topology_requirement": "Unique IDs do not establish nonoverlapping spatial units; validate inter-unit topology before spatial accumulation.",
+    "unknown_coverage": "Report separately; do not claim finite complete AOI bounds if any source coverage is unknown.",
+    "prohibited": [
+      "Polygon area as restoration area",
+      "Rasterized score-support area as footprint",
+      "Score-weighted hectares",
+      "Polygon-fraction prorating of source restorable area",
+      "Adding overlapping AOI totals"
+    ]
+  },
+  "map_support": {
+    "native": "Irregular source typological polygons; vector grain, no fixed resolution.",
+    "map_only": "Score visualization and source-unit comparison allowed as contextual support.",
+    "area_and_intersections": "Source hectares and allocation bounds reported separately. M3/M4 pixel intersections and spatial beneficiary claims require a validated eligible footprint; support polygons cannot supply one."
+  },
+  "independent_gates": {
+    "preserve": [
+      "Hard legal exclusions",
+      "Observed host/system constraints",
+      "Current land availability restrictions",
+      "Additional independent physical requirements supported by separate review"
+    ],
+    "not_equivalent": [
+      "Tidal amplitude is not hydroperiod",
+      "Hydrological disturbance index is not all restoration feasibility",
+      "Historical commodity conversion is not present land availability"
+    ],
+    "duplicate_components_forbidden": [
+      "loss_driver",
+      "tidal_amplitude",
+      "antecedent_sea_level_rise",
+      "future_sea_level_rise",
+      "hydrological_disturbance",
+      "patch_size_and_count",
+      "connectivity",
+      "loss_timing"
+    ]
+  },
+  "replacement": {
+    "mapping_ids": [],
+    "digests": {},
+    "basis_revision": "e47fc255700f96afa5a6b13d1dcaa08c92c0cb90",
+    "rationale": "No current mangrove T4 rows at checked revision; do not delete variable names by pattern. Future overlaps need exact row identity and semantic review.",
+    "future_overlap_policy": "Hold if overlap is uncertain; retain independent gates. No automatic deletion of salinity, elevation, temperature or hydroperiod."
+  },
+  "source_refs": [
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Model Scores.R",
+      "sha256": "49d814349131b01ed07f4d1686caf33d255cd0f37b075f0dd8a9a6c73122caba",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Model Scores.R:32-45",
+      "claim": "Variable weights normalized; category ratings divided by ten; alternative ratings represent lack of consensus.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Model Scores.R",
+      "sha256": "49d814349131b01ed07f4d1686caf33d255cd0f37b075f0dd8a9a6c73122caba",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Model Scores.R:47-100",
+      "claim": "Eight components; positive restorable area filter; weighted category sum gives OVERALL_SCORE.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Model Scores.R",
+      "sha256": "49d814349131b01ed07f4d1686caf33d255cd0f37b075f0dd8a9a6c73122caba",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Model Scores.R:109-159",
+      "claim": "Alternative models and minimum/maximum sensitivity scores.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Data Processing.R",
+      "sha256": "c7a4aff95209817d6a8ddb23d80dc9411584c7de55fc77c7bde1d0b3292d566d",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Data Processing.R:43-48",
+      "claim": "Eligible loss-driver fractions multiplied by corrected gross loss.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/GMW Area Correction.R",
+      "sha256": "92553d6e3b453122792b3466d39036e55905875682f8043d2ca944dd2008bf72",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/GMW Area Correction.R:111-116",
+      "claim": "Gross loss is composite across source epochs minus 2020 extent, corrected for mapping error.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Overall Statistics.R",
+      "sha256": "1d2e33ccaf0f898f81556b1d0dbc9f191f9cbf36f7736285802d352901ccabe0",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Overall Statistics.R:55-68",
+      "claim": "Join scores to units; the 348 zero-area units have no fitted score and are exported as zero.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_code",
+      "record_id": 11283186,
+      "member": "R Scripts & Data/Overall Statistics.R",
+      "sha256": "1d2e33ccaf0f898f81556b1d0dbc9f191f9cbf36f7736285802d352901ccabe0",
+      "locator_type": "file_line",
+      "locator": "R Scripts & Data/Overall Statistics.R:146-201",
+      "claim": "Country allocation uses loss shares and source boundary conventions.",
+      "formal_source_admission": "pending_dataset_code_intake"
+    },
+    {
+      "kind": "verified_archive_table",
+      "record_id": 11283186,
+      "member": "Data Exports/Unit_Area_Data.csv",
+      "sha256": "698022faec63398b0e1cf71618dccfeebaae0886cfdd33590cbdeaff1d5e384f",
+      "locator_type": "columns",
+      "locator": "Type, ID, Restorable_km2",
+      "formal_source_admission": "pending_dataset_intake"
+    },
+    {
+      "kind": "verified_archive_table",
+      "record_id": 11283186,
+      "member": "Data Exports/Restoration_Index_Data.csv",
+      "sha256": "8789bf6cf1ad642accff4788f9aa956c8fab5acdb6668a72a72a3412c7bfc200",
+      "locator_type": "columns",
+      "locator": "Type, OVERALL_SCORE, Min_Score, Max_Score",
+      "formal_source_admission": "pending_dataset_intake"
+    }
+  ],
+  "verification_summary": {
+    "units": 3983,
+    "positive_area_units": 3635,
+    "zero_area_and_score_units": 348,
+    "source_restorable_ha": 793912.8893732156,
+    "geometry_invalid_before_review_repair": 3391,
+    "geometry_repair_status": "reviewed candidate only; not approved intake",
+    "archive_hashes": {
+      "Mangrove_Typology_v3_Composite.zip": "6730889b731dbfeb7a86e18741324e32fccee761cdf42dd043362c22d4b7232d",
+      "Data Exports.zip": "8e2ad5c579eedc3d4fef84f36536fd09bd59b208cf91a26d179a8cba7c114596"
+    },
+    "code_archive_verification": "Selected members verified; whole large archive not checksum-verified."
+  },
+  "holds": [
+    "Ratify dataset/code acquisition adapter and formal source admission; no new SRC or EV created here.",
+    "Review and approve proposed VONT/T1/BIND definitions, absent from checked canonical evidence configuration.",
+    "Resolve future sea-level-rise scenario and horizon embedded in the source model.",
+    "Resolve associated publication/supplement provenance; 2018 report is not interchangeable with this 2024 release.",
+    "Approve geometry repair plus antimeridian, inter-unit topology and pilot overlay checks.",
+    "Validate any eligible loss footprint or optional within-unit allocation before pixel-area/intersection claims.",
+    "Explicit human scientific acceptance required; profile execution tests are not approval."
+  ],
+  "supersedes_audit_interpretation": [
+    "Earlier weight_default=1 is not carried forward: no whole-recipe weight inferred.",
+    "Earlier scalar linear_increasing description is replaced by native identity plus explicit unit eligibility and area semantics."
+  ]
+}
