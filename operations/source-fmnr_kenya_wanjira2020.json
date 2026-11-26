@@ -1,0 +1,74 @@
+{
+  "base": "94a5b1c5e2bea65c79161388e78aecb20714cd66",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "fmnr_kenya_wanjira2020",
+      "kind": "pdf",
+      "artifact_url": "https://fmnrhub.com.au/wp-content/uploads/2024/05/FMNR-KENYA-MANUAL.pdf",
+      "expected_sha256": "676ffc30bbe305411bfc7d2426b2b4a89851b1102228cda7411048dadbbd2d46",
+      "publisher_hosts": [
+        "fmnrhub.com.au"
+      ]
+    },
+    "candidate": {
+      "candidate_id": "fmnr_kenya_wanjira2020",
+      "nbs_id": "agroforestry",
+      "title": "Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners",
+      "citation": "Wanjira, E. O., Muriuki, J. and Ojuok, I. (2020). Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners. World Agroforestry.",
+      "url": "https://fmnrhub.com.au/wp-content/uploads/2024/05/FMNR-KENYA-MANUAL.pdf",
+      "process": "grey",
+      "tables": "T4",
+      "families": [],
+      "relevance_note": "Table 4 contextual Kenyan FMNR applicability including dry zones; no numeric response fit. Source admission only; no approval of analytical transfers or response parameters.",
+      "oa_status": "oa",
+      "proposed_benchmark_tier": "medium",
+      "tier_rationale": "Authoritative and traceable within original scope; no independently validated agroforestry/FMNR scoring function."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "fmnr_kenya_wanjira2020",
+      "candidate_sha256": "e69bc8bdb34eb9a408d5ef6e7bef7da03b1997af52b4955cb3c78623e7c9f445",
+      "source_id": "fmnr_kenya_wanjira2020",
+      "kind": "pdf",
+      "plan_sha256": "5d1f5b3f57f68346d23ee08b12f952c4015d6c816381cd4a5ee4aabb2ecc4190",
+      "checked_at": "2026-11-26T02:43:52.165679+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "",
+        "submitted_doi": "",
+        "citation": "Wanjira, E. O., Muriuki, J. and Ojuok, I. (2020). Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners. World Agroforestry.",
+        "title": "Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners",
+        "status": "title_required",
+        "reason": "No DOI; verify the source title against the artifact."
+      },
+      "artifact": {
+        "source_id": "fmnr_kenya_wanjira2020",
+        "kind": "pdf",
+        "url": "https://fmnrhub.com.au/wp-content/uploads/2024/05/FMNR-KENYA-MANUAL.pdf",
+        "requested_url": "https://fmnrhub.com.au/wp-content/uploads/2024/05/FMNR-KENYA-MANUAL.pdf",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 3382171,
+        "sha1": "b92a2a8b690f9eacc369a25758eed443c646a9e7",
+        "sha256": "676ffc30bbe305411bfc7d2426b2b4a89851b1102228cda7411048dadbbd2d46"
+      },
+      "document": {
+        "pages": 132,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "institutional_report",
+      "method_type": "guidance"
+    },
+    "library_path": "D591_Rural-Scan_NBS/2_Technical_&_Data/library/1_Agroforestry/tree_climate_review/fmnr_kenya_wanjira2020.pdf"
+  }
+}
