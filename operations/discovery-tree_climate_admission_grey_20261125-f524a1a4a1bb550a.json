@@ -1,0 +1,77 @@
+{
+  "base": "94a5b1c5e2bea65c79161388e78aecb20714cd66",
+  "operation": {
+    "kind": "discovery",
+    "plan": {
+      "nbs_id": "agroforestry",
+      "family": "",
+      "table": "T4",
+      "process": "grey",
+      "run_id": "tree_climate_admission_grey_20261125",
+      "date": "2026-11-25",
+      "purpose": "Reconcile the selected, previously read climate-method references for pending agroforestry/FMNR overrides into source intake. This is not an empirical T4 threshold extraction.",
+      "searched_by": "Codex: bounded audit citation reconciliation",
+      "screened_by": "Codex; source screening under v1.8.1; method-source admission only",
+      "limits": "Exact selected-reference follow-up from 2026-11-25 climate audit; no search engine universe or saturation claimed.",
+      "stop_reason": "Reached the end of the explicit admission subset.",
+      "omissions": "No new general discovery sweep, OpenAlex/Lens/AGRIS search or language expansion. Prior broad-search totals not reconstructed. No extracted findings or scientific approvals.",
+      "captures": [
+        "capture.json"
+      ],
+      "inclusion_criteria": "Identifiable publication directly supplies product definition, treeline mechanism/model limitation or FMNR climatic implementation guidance. Retain methodological sources with explicit transfer holds; registration does not pass claim-level T4 gate."
+    },
+    "captures": [
+      {
+        "channel": "Exact citation follow-up from archived tree-climate audits",
+        "process": "grey",
+        "date": "2026-11-25",
+        "limits": "Selected audit references only. Counts describe this closed list, not prior search-engine hits.",
+        "query": "Selected known references: fmnr_kenya_wanjira2020, tree_climate_csfd2011",
+        "records": [
+          {
+            "record_id": "fmnr_kenya_wanjira2020",
+            "title": "Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners",
+            "citation": "Wanjira, E. O., Muriuki, J. and Ojuok, I. (2020). Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners. World Agroforestry.",
+            "url": "https://fmnrhub.com.au/wp-content/uploads/2024/05/FMNR-KENYA-MANUAL.pdf",
+            "oa_status": "oa",
+            "doi": ""
+          },
+          {
+            "record_id": "tree_climate_csfd2011",
+            "title": "The African Great Green Wall project. What advice can scientists provide?",
+            "citation": "Bellefontaine et al. (2011). The African Great Green Wall project. What advice can scientists provide? French Scientific Committee on Desertification.",
+            "url": "https://hal.science/hal-04959210/document",
+            "oa_status": "oa",
+            "doi": ""
+          }
+        ]
+      }
+    ],
+    "original_sha256": "1ebff883b15f8e697a2e91e0a8f7c67ee330ddefd5e30c4d2756828815b91824",
+    "decisions": {
+      "input_sha256": "1ebff883b15f8e697a2e91e0a8f7c67ee330ddefd5e30c4d2756828815b91824",
+      "records": [
+        {
+          "record_id": "fmnr_kenya_wanjira2020",
+          "title": "Farmer Managed Natural Regeneration in Kenya: A Primer for Development Practitioners",
+          "disposition": "include",
+          "reason": "Table 4 contextual Kenyan FMNR applicability including dry zones; no numeric response fit. Source admission only; no approval of analytical transfers or response parameters.",
+          "credibility": "Identifiable primary publication or institutional synthesis; transparent source locators reviewed in audit. Scope limited to mechanism/product/context. Transfer to agroforestry scoring remains pending. Companion papers and datasets are not independent votes. No COI audit.",
+          "proposed_benchmark_tier": "medium",
+          "tier_rationale": "Authoritative and traceable within original scope; no independently validated agroforestry/FMNR scoring function."
+        },
+        {
+          "record_id": "tree_climate_csfd2011",
+          "title": "The African Great Green Wall project. What advice can scientists provide?",
+          "disposition": "include",
+          "reason": "Printed p23 distinguishes sparse rainfed trees and water-concentrating dry-end contexts; no global FMNR AI cutoff. Source admission only; no approval of analytical transfers or response parameters.",
+          "credibility": "Identifiable primary publication or institutional synthesis; transparent source locators reviewed in audit. Scope limited to mechanism/product/context. Transfer to agroforestry scoring remains pending. Companion papers and datasets are not independent votes. No COI audit.",
+          "proposed_benchmark_tier": "medium",
+          "tier_rationale": "Authoritative and traceable within original scope; no independently validated agroforestry/FMNR scoring function."
+        }
+      ]
+    },
+    "ruleset": "v1.8.1",
+    "stamp": false
+  }
+}

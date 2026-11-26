@@ -1,0 +1,104 @@
+{
+  "base": "94a5b1c5e2bea65c79161388e78aecb20714cd66",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "tree_climate_urquiaga2026",
+      "kind": "pdf",
+      "artifact_url": "https://www.zora.uzh.ch/handle/20.500.14742/250841",
+      "expected_sha256": "ff4b79346336831c3c9749e33656503b2e3ee0d06af3fb5cc98e64058131b6f9"
+    },
+    "candidate": {
+      "candidate_id": "tree_climate_urquiaga2026",
+      "nbs_id": "agroforestry",
+      "title": "Global patterns of treeline predictability and the gap between the forest and the treeline",
+      "citation": "Urquiaga-Flores et al. (2026). Global patterns of treeline predictability and the gap between the forest and the treeline. Ecography.",
+      "url": "https://www.zora.uzh.ch/handle/20.500.14742/250841",
+      "process": "updated_lit",
+      "tables": "T4",
+      "families": [],
+      "relevance_note": "Independent treeline challenges and limits of original model; not seedling establishment data. Source admission only; no approval of analytical transfers or response parameters.",
+      "doi": "10.1002/ecog.08873",
+      "oa_status": "oa",
+      "proposed_benchmark_tier": "medium",
+      "tier_rationale": "Authoritative and traceable within original scope; no independently validated agroforestry/FMNR scoring function."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "tree_climate_urquiaga2026",
+      "candidate_sha256": "4cb5563fefb74cef4f74c5b1f129545af5a0db10a50408fc0084e24f218ff019",
+      "source_id": "tree_climate_urquiaga2026",
+      "kind": "pdf",
+      "plan_sha256": "bb1e8fa606c383dae6a8b3dbcbbbfc495357fc2bdae1b97fb2e773e3b93d8103",
+      "checked_at": "2026-11-26T02:43:53.459832+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1002/ecog.08873",
+        "submitted_doi": "10.1002/ecog.08873",
+        "citation": "Urquiaga‐Flores et al. (2026). Global patterns of treeline predictability and the gap between the forest and the treeline. Ecography.",
+        "title": "Global patterns of treeline predictability and the gap between the forest and the treeline",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1002/ecog.08873",
+            "title": [
+              "Global patterns of treeline predictability and the gap between the forest and the treeline"
+            ],
+            "container-title": [
+              "Ecography"
+            ],
+            "author": [
+              {
+                "family": "Urquiaga‐Flores"
+              },
+              {
+                "family": "Kessler"
+              },
+              {
+                "family": "Bader"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2026
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Global patterns of treeline predictability and the gap between the forest and the treeline",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "tree_climate_urquiaga2026",
+        "kind": "pdf",
+        "url": "https://www.zora.uzh.ch/handle/20.500.14742/250841",
+        "requested_url": "https://www.zora.uzh.ch/handle/20.500.14742/250841",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 5198828,
+        "sha1": "b003c7eece9527a33409ba13b25a7d38f8b67f6c",
+        "sha256": "ff4b79346336831c3c9749e33656503b2e3ee0d06af3fb5cc98e64058131b6f9"
+      },
+      "document": {
+        "pages": 22,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational"
+    },
+    "library_path": "D591_Rural-Scan_NBS/2_Technical_&_Data/library/1_Agroforestry/tree_climate_review/tree_climate_urquiaga2026.pdf"
+  }
+}
