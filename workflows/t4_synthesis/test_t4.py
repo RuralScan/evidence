@@ -246,6 +246,33 @@ class T4Route(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "new output"):
             package.build(q, out)
 
+    def test_admitted_source_projection_preserves_finding_review_gate(self):
+        # The claim and review below are fixture-only. Actual admitted sources
+        # remain extraction-pending; no real finding or approval is created.
+        repo = Path(__file__).resolve().parents[2]
+        queue = json.loads((repo / "publication/review-queue.json").read_bytes())
+        sid = "tree_climate_paulsen_korner2014"
+        source = next(r for r in queue["registers"]["SRC_source_register"]
+                      if r["source_id"] == sid)
+        target = self.root / "operations" / f"source-{sid}.json"
+        target.parent.mkdir()
+        shutil.copyfile(repo / target.relative_to(self.root), target)
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
+        core.git(self.root, "add", ".")
+        core.git(self.root, "-c", "user.name=Fixture", "-c",
+                 "user.email=fixture@example.invalid", "commit", "-qm", "Fixture source")
+        self.registers["SRC_source_register"] = [source]
+        self.registers["EV_evidence_register"][0]["source_id"] = sid
+        self.packet = core.inputs(self.root, self.producer, "practice", self.registers)
+        self.change_packet(lambda packet: None)
+        core.validate(self.folder, self.packet, [])
+        original_digest = self.p["inputs_sha256"]
+        self.assertIn(sid, self.packet["source_identity"])
+        self.change_packet(lambda packet: packet["evidence"][0].update(reviewer_ok=False))
+        self.assertNotEqual(original_digest, self.p["inputs_sha256"])
+        with self.assertRaisesRegex(ValueError, "Unreviewed or held evidence"):
+            core.validate(self.folder)
+
     def test_no_acceptance_no_package_and_historical_bytes_preserved(self):
         core.validate(self.folder, self.packet, [])
         self.baseline["practice"][core.TABLE] = [self.row]

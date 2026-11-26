@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 
 from synthesis.core import digest, encoded, git, require, ID, SHA, nonempty, strings
+from . import source_identity
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT = Path(__file__).with_name("contract.json")
@@ -39,16 +40,18 @@ def inputs(root, producer, practice, registers):
     for p in sorted((root / "configuration").rglob("*")):
         if p.is_file() and p.suffix in {".json", ".csv"}:
             hashes[p.relative_to(root).as_posix()] = digest(p.read_bytes())
+    sources = sorted(
+        [r for r in registers["SRC_source_register"] if r["source_id"] in ids],
+        key=lambda r: r["source_id"],
+    )
     ev_ids = {r["evidence_id"] for r in evidence}
     with (producer / "pipeline/metrics/review_log.csv").open(newline="") as stream:
         reviews = [r for r in csv.DictReader(stream) if r["evidence_id"] in ev_ids]
     return dict(
         practice=practice,
         evidence=sorted(evidence, key=lambda r: r["evidence_id"]),
-        sources=sorted(
-            [r for r in registers["SRC_source_register"] if r["source_id"] in ids],
-            key=lambda r: r["source_id"],
-        ),
+        sources=sources,
+        source_identity=source_identity.project(root, sources),
         review_log=reviews,
         definitions=definitions,
         configuration=hashes,
@@ -363,8 +366,9 @@ def validate(folder, current_inputs=None, prior=None):
         )
         source = src.get(unit["source_id"], {})
         require(
-            source.get("doi_verified" if source.get("doi") else "title_verified")
-            is True,
+            source_identity.verified(
+                source, packet.get("source_identity", {}).get(unit["source_id"])
+            ),
             "Source identity unverified",
         )
         require(
