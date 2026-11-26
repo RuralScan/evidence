@@ -17,6 +17,7 @@ def compile_candidate(producer, evidence_repo):
     from nbs_ruralscan.schema_tools.generate import _csv_to_rows
     from t4_baseline import REVISION, PATH, SHA256, load as load_t4
     from synthesis.core import apply as accepted_effects
+    from t4_synthesis.core import apply as accepted_suitability
     from configuration import overlay
 
     configuration = overlay(producer, evidence_repo)
@@ -33,6 +34,7 @@ def compile_candidate(producer, evidence_repo):
         evidence_repo, producer, registers, baseline["recipes"]
     )
     _, t4_status = load_t4(evidence_repo)
+    rows, t4_status = accepted_suitability(evidence_repo, producer, registers, rows, t4_status)
     effect_status["baseline"] = {
         "repository": "RuralScan/evidence",
         "revision": REVISION,
@@ -57,6 +59,7 @@ def compile_candidate(producer, evidence_repo):
     protected = {
         (s["practice"], s["table"], s["record_id"]) for s in effect_status["rows"]
     }
+    protected.update((s["practice"], "T4", s["record_id"]) for s in t4_status.get("rows", []))
     for name, tables in rows.items():
         invalid = {
             r["record_id"]
