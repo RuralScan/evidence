@@ -305,6 +305,14 @@ def _opening_match(title, pages):
         # A title starts its text block. A line wrap inside a sentence quoting
         # another title must not turn that embedded title into a heading.
         starts = [lines]
+        # Accepted manuscripts can label their heading inline ("Title: ...").
+        # Remove only this exact leading field label, then retain the full-title
+        # equality and numbered-series checks. Never strip labels in running
+        # text, citations, or paragraphs beyond the opening-section boundary.
+        if lines and re.match(r"^Title:\s*\S", lines[0], flags=re.I):
+            starts.append(
+                [re.sub(r"^Title:\s*", "", lines[0], flags=re.I), *lines[1:]]
+            )
         # One short label line (e.g. "Conference Proper", "Research Paper")
         # may sit above the title inside the same block. Digits are excluded so
         # an author-year citation line never qualifies.

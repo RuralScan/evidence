@@ -1,0 +1,135 @@
+{
+  "base": "5a59f5ab01a00791a5de23a82e41cad1657e20f3",
+  "operation": {
+    "kind": "source",
+    "plan": {
+      "candidate_id": "tree_climate_berdugo2020",
+      "kind": "pdf",
+      "artifact_url": "https://repositori.upf.edu/bitstreams/e112595d-d276-428c-bb62-83f73656a9c5/download",
+      "expected_sha256": "ab7d52888ea526e38775aa4b94e58e70f9978a20a9ef8b1e5aedd6bf598f2db9"
+    },
+    "candidate": {
+      "candidate_id": "tree_climate_berdugo2020",
+      "nbs_id": "agroforestry",
+      "title": "Global ecosystem thresholds driven by aridity",
+      "citation": "Berdugo et al. (2020). Global ecosystem thresholds driven by aridity. Science.",
+      "url": "https://doi.org/10.1126/science.aay5958",
+      "process": "updated_lit",
+      "tables": "T4",
+      "families": [],
+      "relevance_note": "Original natural-dryland productivity/plant-cover transitions ground the proposed planted-tree climate indicator. Source and data origin relevant; agroforestry transfer and chosen memberships remain pending.",
+      "doi": "10.1126/science.aay5958",
+      "oa_status": "oa",
+      "proposed_benchmark_tier": "medium",
+      "tier_rationale": "Strong within dryland ecosystem scope; practice transfer unresolved."
+    },
+    "receipt": {
+      "format_version": 1,
+      "status": "acquired",
+      "candidate_id": "tree_climate_berdugo2020",
+      "candidate_sha256": "1f718056c37c8e9e8c05f147cba06db313a10b20848c3645476ce2d195d7c92f",
+      "source_id": "tree_climate_berdugo2020",
+      "kind": "pdf",
+      "plan_sha256": "92e73cd50915210de84e90e4b5400bb2a96d01fc4468754525dfa27f7b43f0c7",
+      "checked_at": "2026-11-26T03:02:02.803511+00:00",
+      "canonical_source": null,
+      "metadata": {
+        "doi": "10.1126/science.aay5958",
+        "submitted_doi": "10.1126/science.aay5958",
+        "citation": "Berdugo et al. (2020). Global ecosystem thresholds driven by aridity. Science.",
+        "title": "Global ecosystem thresholds driven by aridity",
+        "crossref": {
+          "outcome": "ok",
+          "record": {
+            "DOI": "10.1126/science.aay5958",
+            "title": [
+              "Global ecosystem thresholds driven by aridity"
+            ],
+            "container-title": [
+              "Science"
+            ],
+            "author": [
+              {
+                "family": "Berdugo"
+              },
+              {
+                "family": "Delgado-Baquerizo"
+              },
+              {
+                "family": "Soliveres"
+              },
+              {
+                "family": "Hernández-Clemente"
+              },
+              {
+                "family": "Zhao"
+              },
+              {
+                "family": "Gaitán"
+              },
+              {
+                "family": "Gross"
+              },
+              {
+                "family": "Saiz"
+              },
+              {
+                "family": "Maire"
+              },
+              {
+                "family": "Lehmann"
+              },
+              {
+                "family": "Rillig"
+              },
+              {
+                "family": "Solé"
+              },
+              {
+                "family": "Maestre"
+              }
+            ],
+            "issued": {
+              "date-parts": [
+                [
+                  2020
+                ]
+              ]
+            }
+          }
+        },
+        "crossref_title": "Global ecosystem thresholds driven by aridity",
+        "title_overlap": 1.0,
+        "status": "doi_verified",
+        "reason": "Crossref DOI and citation title match."
+      },
+      "artifact": {
+        "source_id": "tree_climate_berdugo2020",
+        "kind": "pdf",
+        "url": "https://repositori.upf.edu/bitstreams/e112595d-d276-428c-bb62-83f73656a9c5/download",
+        "requested_url": "https://repositori.upf.edu/bitstreams/e112595d-d276-428c-bb62-83f73656a9c5/download",
+        "route": "local_hash_replay",
+        "fetched_at": null,
+        "http_status": null,
+        "content_type": null,
+        "commit_sha": null,
+        "bytes": 2112505,
+        "sha1": "30fa216a75587c5c5429c95459171532791a504b",
+        "sha256": "ab7d52888ea526e38775aa4b94e58e70f9978a20a9ef8b1e5aedd6bf598f2db9"
+      },
+      "document": {
+        "pages": 29,
+        "needs_ocr": false,
+        "verified": true,
+        "reason": "Opening PDF title matches."
+      }
+    },
+    "assessment": {
+      "benchmark_tier": "medium",
+      "venue_type": "peer_reviewed_journal",
+      "method_type": "observational",
+      "region": "Global drylands"
+    },
+    "library_path": "D591_Rural-Scan_NBS/2_Technical_&_Data/library/1_Agroforestry/tree_climate_review/tree_climate_berdugo2020.pdf"
+  }
+}

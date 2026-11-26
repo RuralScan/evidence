@@ -1,0 +1,60 @@
+{
+  "base": "5a59f5ab01a00791a5de23a82e41cad1657e20f3",
+  "operation": {
+    "kind": "discovery",
+    "plan": {
+      "nbs_id": "agroforestry",
+      "family": "",
+      "table": "T4",
+      "process": "updated_lit",
+      "run_id": "tree_climate_berdugo_upf_admission_20261125",
+      "date": "2026-11-25",
+      "purpose": "Recover and formally admit the known Berdugo2020 source from the UPF institutional repository after bounded OA recovery. Preserve limits of ecosystem-to-agroforestry transfer; no scientific rule acceptance.",
+      "searched_by": "Codex: bounded audit citation reconciliation",
+      "screened_by": "Codex; source screening under v1.8.1; method-source admission only",
+      "limits": "One known target publication recovered via Unpaywall/OpenAlex/SemanticScholar UPF OA location. CONICET content returned401; other failed routes remain recorded. No general discovery sweep or search-engine total.",
+      "stop_reason": "One target publication inspected.",
+      "omissions": "No new general discovery sweep, OpenAlex/Lens/AGRIS search or language expansion. Prior broad-search totals not reconstructed. No extracted findings or scientific approvals.",
+      "captures": [
+        "capture.json"
+      ],
+      "inclusion_criteria": "Identifiable publication directly supplies product definition, treeline mechanism/model limitation or FMNR climatic implementation guidance. Retain methodological sources with explicit transfer holds; registration does not pass claim-level T4 gate."
+    },
+    "captures": [
+      {
+        "channel": "Targeted institutional repository recovery of known primary source",
+        "process": "updated_lit",
+        "date": "2026-11-25",
+        "limits": "One existing cited work; OA recovery metadata and successful UPF bytes recorded in admission/.cache/recovery.",
+        "query": "Berdugo2020 Global ecosystem thresholds driven by aridity; DOI OA locations from Unpaywall, OpenAlex and SemanticScholar; UPF bitstream e112595d-d276-428c-bb62-83f73656a9c5",
+        "records": [
+          {
+            "record_id": "tree_climate_berdugo2020",
+            "title": "Global ecosystem thresholds driven by aridity",
+            "citation": "Berdugo et al. (2020). Global ecosystem thresholds driven by aridity. Science.",
+            "url": "https://doi.org/10.1126/science.aay5958",
+            "oa_status": "oa",
+            "doi": "10.1126/science.aay5958"
+          }
+        ]
+      }
+    ],
+    "original_sha256": "26dddcda81b007b261be5d6c28a86dff79318883efaa0add05d748c79b3fec2b",
+    "decisions": {
+      "input_sha256": "26dddcda81b007b261be5d6c28a86dff79318883efaa0add05d748c79b3fec2b",
+      "records": [
+        {
+          "record_id": "tree_climate_berdugo2020",
+          "title": "Global ecosystem thresholds driven by aridity",
+          "disposition": "include",
+          "reason": "Original natural-dryland productivity/plant-cover transitions ground the proposed planted-tree climate indicator. Source and data origin relevant; agroforestry transfer and chosen memberships remain pending.",
+          "credibility": "Peer-reviewed global dryland analysis; documented methods and uncertainty; does not study agroforestry performance, excludes cultivated pixels. Authors and supplement share one lineage; no independent FMNR calibration.",
+          "proposed_benchmark_tier": "medium",
+          "tier_rationale": "Strong within dryland ecosystem scope; practice transfer unresolved."
+        }
+      ]
+    },
+    "ruleset": "v1.8.1",
+    "stamp": false
+  }
+}
