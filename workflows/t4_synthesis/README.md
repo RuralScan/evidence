@@ -27,7 +27,8 @@ Use a family ID present in the current FAM register. Preparation checks that ID;
 it does not infer family identity from a label. Exactly four files are written:
 
 - `inputs.json`: practice-wide suitability/operational candidates, full source
-  records, review log, current definition rows and hashes. Preserve exact bytes.
+  records, source-identity verification bases, review log, current definition rows
+  and hashes. Preserve exact bytes.
 - `skill.md`: exact instruction snapshot. Preserve exact bytes.
 - `rows.csv`: empty ordered contract header; the agent authors mapping rows.
 - `proposal.json`: unscored worksheet, task, model/prompt/settings, reasoning,
@@ -41,6 +42,27 @@ they cannot silently supply a calibrated practice rule. Broader practice evidenc
 needs a finding-specific applicability explanation. Sibling scope does not transfer.
 Crop admission follows the pinned policy. Recorded calibration/applicability holds
 require a reviewed finding correction before inclusion.
+
+### Source identity in the frozen packet
+
+Newly admitted sources are verified through their committed source-admission
+operation, not through invented verification columns on SRC. Preparation pins the
+operation revision, exact bytes/hash and current source-row hash in
+`inputs.json.source_identity`. The acquisition checker replays bibliographic
+identity and checks the verified document, artifact checksums and eligible route.
+The source ID, DOI, citation, artifact SHA-1, library path and URL must match SRC.
+Missing, changed or uncommitted operation records cannot fall back to a hand-set
+verification flag. This consumes the protected acquisition/replay provenance; it
+does not re-download the PDF or approve any source finding.
+
+Historical source rows with existing literal boolean verification retain their
+previous eligibility when no admission operation exists or appears in available
+Git history. A later committed deletion cannot restore legacy eligibility. No verification is
+inferred from a queue status, source presence or string `"true"`. Earlier immutable
+packets keep their original flag interpretation; fresh preparation always records
+an explicit identity basis. The new basis changes input hashes, so older proposals
+need fresh preparation to be current. Finding review, applicability, calibration
+and scientific acceptance gates are unchanged.
 
 ## 2. Author and validate
 
