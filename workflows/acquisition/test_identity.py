@@ -259,6 +259,31 @@ class DocumentTests(unittest.TestCase):
             "Report 21. Factors affecting seedling mortality",
         )
 
+    def test_inline_title_label_identifies_exact_manuscript_heading(self):
+        self.assertTrue(self.check(pdf("Title: " + TITLE + "\nAuthors"))["verified"])
+        self.assertTrue(
+            self.check(
+                pdf("Title: Terraced catchments and infiltration\nin upland watersheds\nAuthors")
+            )["verified"]
+        )
+
+    def test_inline_title_label_does_not_accept_citations_or_mismatches(self):
+        for opening in (
+            "Title: A different paper",
+            "Title: " + TITLE + " revisited",
+            "Smith (1978). Title: " + TITLE,
+            "Wrong source\nReferences\nTitle: " + TITLE,
+            "Wrong source\nAbstract\nTitle: " + TITLE,
+            "Wrong source\n1. Introduction\nTitle: " + TITLE,
+            "We cite the paper Title: " + TITLE,
+            "A different follow-on paper\nWe build on the earlier work\nTitle: " + TITLE,
+        ):
+            with self.subTest(opening=opening):
+                self.assertFalse(self.check(pdf(opening))["verified"])
+        self.assertFalse(
+            self.check(pdf("Title: " + TITLE + " Part I"), title=TITLE + " Part II")["verified"]
+        )
+
     def test_parts_bind_to_matching_pdf_only(self):
         title = TITLE + " Part II"
         self.assertTrue(self.check(pdf(title), title=title)["verified"])
