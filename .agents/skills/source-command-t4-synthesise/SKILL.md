@@ -2,7 +2,7 @@
 name: source-command-t4-synthesise
 description: Author and validate a source-provenanced T4 mapping proposal for explicit human acceptance in RuralScan/evidence.
 metadata:
-  version: "1.1.1"
+  version: "1.1.2"
 ---
 
 # T4 scientific synthesis
@@ -81,10 +81,10 @@ software merge and a passing preview are not scientific approval or runtime acti
 Before candidate admission or reuse of old approvals, read `handbook/nbs-inclusion.md`
 and run `workflows/inclusion/check.py` on the private assessment. Inspect the authorised
 catalogue's general and practice-specific criteria and the actual source. Keep practice
-fit separate from NbS fit and analytical-role fit. Water harvesting must be primary,
-not an incidental benefit of another practice. Carry exclusions, unresolved holds and
+fit separate from NbS fit and analytical-role fit. Strongly demonstrated water harvesting may be primary or secondary; weak
+secondary benefits cannot qualify. Unclear demonstration stays held. Carry exclusions, unresolved holds and
 conditional scope into candidate dispositions; do not silently reroute or rehabilitate
 previously rejected records. A conditional scoping decision does not approve numerical
-mappings or effects. Record addendum `nbs-inclusion-1.0.0` and its hash with the actual
+mappings or effects. Record addendum `nbs-inclusion-1.1.0` and its hash with the actual
 skill version. Preserve restricted materials privately and retain the existing exact
 human-acceptance workflow. This procedural gate does not itself change accepted rows.

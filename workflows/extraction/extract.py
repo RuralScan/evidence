@@ -239,7 +239,7 @@ def stage(pdf, receipt, candidate, spec, *, inclusion=None):
                     "Conditional inclusion needs publication-safe restrictions in context.note",
                 )
             unit = build_unit(item["draft"], scope, sid, quote, item["page"],
-                              **({"ruleset": "v1.10.2"} if inclusion else {}))
+                              **({"ruleset": "v1.10.3"} if inclusion else {}))
             eid = unit["evidence_id"]
             require(eid not in ids, "Duplicate evidence ID")
             ids.add(eid)

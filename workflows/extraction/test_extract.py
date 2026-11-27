@@ -57,6 +57,11 @@ class PassageTests(unittest.TestCase):
             "suitability_family_id": self.spec["scope"]["suitability_family_id"],
             "component_scope": "Synthetic rainwater harvesting package",
             "water_harvesting_purpose": "primary",
+            "water_harvesting_demonstration": {
+                "strength": "strong", "rationale": "Documented capture for vegetation",
+                "source_locator": "p1", "capture_storage": "Runoff retained in soil",
+                "water_use": "Supplies planted vegetation",
+            },
             "practice_fit": {"status": "pass", "rationale": "Primary harvesting", "source_locator": "p1"},
             "definition": {"available": True, "kind": "authorised_project_catalogue", "access": "restricted",
                            "edition": "synthetic", "sha256": hashlib.sha256(b"definition").hexdigest(),
@@ -75,7 +80,7 @@ class PassageTests(unittest.TestCase):
         assessment = self.inclusion()
         gate = self.gate(assessment)
         units, inventory = extract.stage(self.pdf, self.receipt, self.candidate, self.spec, inclusion=gate)
-        self.assertEqual(units[0]["ruleset_version"], "v1.10.2")
+        self.assertEqual(units[0]["ruleset_version"], "v1.10.3")
         self.assertEqual(inventory["inclusion"]["decision"], "include_for_scoping")
         old_units, old_inventory = self.stage()
         self.assertEqual(old_units[0]["ruleset_version"], "v1.9.9")
@@ -89,9 +94,18 @@ class PassageTests(unittest.TestCase):
             with self.subTest(key=key), self.assertRaisesRegex(ValueError, "differs"):
                 self.gate(changed)
 
-    def test_secondary_purpose_and_conflict_block_current_staging(self):
+    def test_strong_secondary_harvesting_can_stage(self):
         assessment = self.inclusion()
-        for changes in ({"water_harvesting_purpose": "secondary"},
+        assessment["water_harvesting_purpose"] = "secondary"
+        gate = self.gate(assessment)
+        units, inventory = extract.stage(self.pdf, self.receipt, self.candidate, self.spec, inclusion=gate)
+        self.assertEqual(units[0]["ruleset_version"], "v1.10.3")
+        self.assertEqual(inventory["inclusion"]["decision"], "include_for_scoping")
+
+    def test_weak_secondary_and_conflict_block_current_staging(self):
+        assessment = self.inclusion()
+        weak = {**assessment["water_harvesting_demonstration"], "strength": "weak"}
+        for changes in ({"water_harvesting_purpose": "secondary", "water_harvesting_demonstration": weak},
                         {"material_conflicts": ["Unresolved ecological harm"]}):
             changed = {**assessment, **changes}
             with self.subTest(changes=changes), self.assertRaisesRegex(ValueError, "Inclusion blocked"):

@@ -1,5 +1,5 @@
 {
-  "ruleset": "nbs-inclusion-1.0.0",
+  "ruleset": "nbs-inclusion-1.1.0",
   "source_id": "",
   "nbs_id": "water_harvesting_conservation",
   "suitability_family_id": "",
@@ -73,5 +73,12 @@
     }
   },
   "conditions": [],
-  "material_conflicts": []
+  "material_conflicts": [],
+  "water_harvesting_demonstration": {
+    "strength": "unclear",
+    "rationale": "",
+    "source_locator": "",
+    "capture_storage": "",
+    "water_use": ""
+  }
 }

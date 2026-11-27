@@ -65,14 +65,23 @@ def assess(record, policy):
 
     fit = record.get("practice_fit")
     judgment(fit, "practice_fit", {"pass", "fail", "unknown"})
-    if record["nbs_id"] == policy["primary_purpose_nbs_id"]:
-        primary = record.get("water_harvesting_purpose")
-        require(primary in {"primary", "secondary", "unclear"},
-                "Water-harvesting primary purpose must be explicit")
-        if primary == "secondary":
-            require(text(fit.get("source_locator")), "Secondary-purpose exclusion needs a source locator")
+    if record["nbs_id"] == policy["water_harvesting_nbs_id"]:
+        purpose = record.get("water_harvesting_purpose")
+        require(purpose in {"primary", "secondary", "unclear"},
+                "Record water-harvesting purpose separately from demonstration")
+        demonstration = record.get("water_harvesting_demonstration")
+        require(isinstance(demonstration, dict), "Missing water-harvesting demonstration")
+        strength = demonstration.get("strength")
+        require(strength in {"strong", "weak", "unclear"}, "Invalid harvesting demonstration strength")
+        require(text(demonstration.get("rationale")), "Missing harvesting demonstration rationale")
+        if strength in {"strong", "weak"}:
+            require(text(demonstration.get("source_locator")), "Harvesting demonstration needs a source locator")
+        if strength == "strong":
+            for key in ("capture_storage", "water_use"):
+                require(text(demonstration.get(key)), f"Strong harvesting demonstration needs {key}")
+        elif strength == "weak" and purpose == "secondary":
             return "exclude_wrong_practice"
-        if primary == "unclear":
+        else:
             return "hold"
     if fit["status"] == "fail":
         return "exclude_wrong_practice"
@@ -103,7 +112,7 @@ def assess(record, policy):
             require(text(item.get("definition_locator")), f"Missing definition locator: {name}")
         if name in policy["core_criteria"]:
             require(item["status"] != "not_applicable", f"Core criterion cannot be omitted: {name}")
-        if name == "landscape_hydrology" and record["nbs_id"] == policy["primary_purpose_nbs_id"]:
+        if name == "landscape_hydrology" and record["nbs_id"] == policy["water_harvesting_nbs_id"]:
             require(item["status"] != "not_applicable", "Water-harvesting hydrology cannot be omitted")
     if any(item["status"] == "fail" for item in criteria.values()):
         return "exclude_nbs"
