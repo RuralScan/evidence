@@ -7975,13 +7975,13 @@ Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",3,false,Average annual rainfall,,,"WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,,v1.6.0,expert_assertion,unknown
+semi-arid",3,false,Average annual rainfall,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject WOCAT1547 Ethiopian irrigation-storage check-dam pond profile from water-harvesting T4 scope. Human decision: ""to far removed from waterharvesting as I see it"". Source-specific exclusion; no blanket decision on other check-dam practices. Preserve records and provenance through reversible wrong_practice drop.] WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_aridity_wocat1547_1,wocat_1547_2012,water_harvesting_conservation,water_harvesting__runoff_catchment,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""semi-arid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Ethiopia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",3,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,,v1.6.0,expert_assertion,unknown
+semi-arid",3,false,Agro-climatic zone,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject WOCAT1547 Ethiopian irrigation-storage check-dam pond profile from water-harvesting T4 scope. Human decision: ""to far removed from waterharvesting as I see it"". Source-specific exclusion; no blanket decision on other check-dam practices. Preserve records and provenance through reversible wrong_practice drop.] WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_slope_wocat1547_1,wocat_1547_2012,water_harvesting_conservation,water_harvesting__runoff_catchment,slope,"{""type"": ""observed_presence"", ""observed_classes"": [""gentle (3-5%)"", ""moderate (6-10%)""], ""observed_min"": 3, ""observed_max"": 10, ""unit"": ""percent"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Ethiopia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -8001,7 +8001,7 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Slope,,,"WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Slope,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject WOCAT1547 Ethiopian irrigation-storage check-dam pond profile from water-harvesting T4 scope. Human decision: ""to far removed from waterharvesting as I see it"". Source-specific exclusion; no blanket decision on other check-dam practices. Preserve records and provenance through reversible wrong_practice drop.] WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_soildepth_wocat1547_1,wocat_1547_2012,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_depth_to_bedrock,"{""type"": ""observed_presence"", ""observed_classes"": [""deep (81-120 cm)"", ""very deep (> 120 cm)""], ""observed_min"": 81, ""unit"": ""cm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Ethiopia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -8021,7 +8021,7 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Soil depth,,,"WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Soil depth,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject WOCAT1547 Ethiopian irrigation-storage check-dam pond profile from water-harvesting T4 scope. Human decision: ""to far removed from waterharvesting as I see it"". Source-specific exclusion; no blanket decision on other check-dam practices. Preserve records and provenance through reversible wrong_practice drop.] WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_texture_wocat1547_1,wocat_1547_2012,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_texture,"{""type"": ""observed_presence"", ""observed_classes"": [""coarse/ light (sandy)"", ""medium (loamy, silty)""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Ethiopia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -8041,7 +8041,7 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Soil texture (topsoil),,,"WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Soil texture (topsoil),,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject WOCAT1547 Ethiopian irrigation-storage check-dam pond profile from water-harvesting T4 scope. Human decision: ""to far removed from waterharvesting as I see it"". Source-specific exclusion; no blanket decision on other check-dam practices. Preserve records and provenance through reversible wrong_practice drop.] WOCAT SLM Technologies Database, technology #1547 'Check dam ponds' (Ethiopia): 'Natural environment' section = conditions where this documented case is applied",page,,,,,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_aridity_wocat1553_1,wocat_1553_2012,water_harvesting_conservation,water_harvesting__terracing,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""sub-humid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Rwanda""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 1 001 – 1 500 mm
@@ -9039,15 +9039,15 @@ Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",3,false,Average annual rainfall,,,"WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Check dams from stem cuttings",3,,,,v1.6.0,expert_assertion,unknown
+semi-arid",3,false,Average annual rainfall,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is gully rehabilitation: rooted stem barriers trap sediment and reconnect eroded farmland. Soil-water benefit is secondary. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Check dams from stem cuttings",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_aridity_wocat1719_1,wocat_1719_2011,water_harvesting_conservation,water_harvesting__runoff_catchment,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""semi-arid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Nicaragua""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",3,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Check dams from stem cuttings",3,,,,v1.6.0,expert_assertion,unknown
+semi-arid",3,false,Agro-climatic zone,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is gully rehabilitation: rooted stem barriers trap sediment and reconnect eroded farmland. Soil-water benefit is secondary. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Check dams from stem cuttings",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_slope_wocat1719_1,wocat_1719_2011,water_harvesting_conservation,water_harvesting__runoff_catchment,slope,"{""type"": ""observed_presence"", ""observed_classes"": [""steep (31-60%)""], ""observed_min"": 31, ""observed_max"": 60, ""unit"": ""percent"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Nicaragua""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 steep (31-60%)
 Landforms
@@ -9066,8 +9066,8 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Slope,,,"WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Check dams from stem cuttings",3,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Slope,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is gully rehabilitation: rooted stem barriers trap sediment and reconnect eroded farmland. Soil-water benefit is secondary. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Check dams from stem cuttings",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_soildepth_wocat1719_1,wocat_1719_2011,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_depth_to_bedrock,"{""type"": ""observed_presence"", ""observed_classes"": [""very shallow (0-20 cm)"", ""shallow (21-50 cm)""], ""observed_min"": 0, ""observed_max"": 50, ""unit"": ""cm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Nicaragua""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 steep (31-60%)
 Landforms
@@ -9086,8 +9086,8 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Soil depth,,,"WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Check dams from stem cuttings",3,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Soil depth,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is gully rehabilitation: rooted stem barriers trap sediment and reconnect eroded farmland. Soil-water benefit is secondary. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Check dams from stem cuttings",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_texture_wocat1719_1,wocat_1719_2011,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_texture,"{""type"": ""observed_presence"", ""observed_classes"": [""medium (loamy, silty)"", ""fine/ heavy (clay)""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Nicaragua""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 steep (31-60%)
 Landforms
@@ -9106,8 +9106,8 @@ Soil texture (> 20 cm below
 surface)
 Topsoil organic matter
 content
-low (<1%)",3,false,Soil texture (topsoil),,,"WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Check dams from stem cuttings",3,,,,v1.6.0,expert_assertion,unknown
+low (<1%)",3,false,Soil texture (topsoil),,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is gully rehabilitation: rooted stem barriers trap sediment and reconnect eroded farmland. Soil-water benefit is secondary. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #1719 'Check dams from stem cuttings' (Nicaragua): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Check dams from stem cuttings",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_fr_precip_wocat2325_1,wocat_2325_2017,forest_restoration,forest_restoration__assisted_regeneration,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""251 – 500 mm"", ""501 – 750 mm""], ""observed_min"": 251, ""observed_max"": 750, ""unit"": ""mm"", ""direction"": ""Documented implementation conditions from the WOCAT Natural environment section; not suitability limits.""}","{""country"": ""NER"", ""income_group"": ""low"", ""practice_as_described"": ""Assisted natural regeneration on agro-pastoral, sylvo-pastoral and pastoral land in Niger, including natural shoots/seedlings, optional enrichment planting and forage regeneration."", ""intended_use"": ""One mixed agro-pastoral regeneration profile; preserve regional implementation observations without forest-specific suitability scores."", ""applicability_hold"": ""Existing forest-only family attribution is flagged. Cropland regeneration relates to agroforestry/FMNR; pastoral vegetation rehabilitation does not establish forest-restoration applicability. No reassignment authorised."", ""source_check"": {""practice_scope"": {""page"": 1, ""quote"": ""Assisted Natural Regeneration (ANR) in pastoral zones is a simple and low-cost\nagroforestry technique. It involves locating and preserving shoots from stumps\nof woody and herbaceous vegetation on communal land used for agro-\npastoralism, sylvo-pastoralism or pastoralism. The aim is to accelerate the\nprocess of natural regeneration resulting from natural seedlings or from\nsprouting stumps inherently present in the area.""}, ""regional_rainfall"": {""page"": 4, ""quote"": ""The mean annual precipitation in the pastoral zone does not\nexceed 300 mm. In the southern regions of Niger (the Sahelian\nzone), annual precipitation is between 500 and 600 mm. Recent\ndecades have been marked by a large variability in rainfall in\nspace and time across Niger.""}}, ""reported_values"": {""table_rainfall_classes_mm"": [""251–500"", ""501–750""], ""pastoral_zone_mean_annual_rainfall"": ""does not exceed 300 mm"", ""southern_zone_annual_rainfall"": ""500–600 mm""}, ""numeric_calibration"": ""Table and region-specific narrative rainfall describe different contexts. Preserve separately; no shared cutoff or forest-specific score. Rainfall and semi-arid classification overlap; no double counting. Check source lineage before treating Niger ANR profiles as independent support."", ""note"": ""User clarification supplements earlier recorded approval; preserve its history. Mixed rainfed-irrigated water supply is marked on p.2 without a quantified irrigation prescription. Pruning, enrichment planting, grazing-route management and forage seeding are management guidance, not T4 limiting/enabling criteria. Source climate and slope classes remain implementation observations.""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 251 – 500 mm
@@ -9299,8 +9299,8 @@ ev_wh_aridity_wocat3223_1,wocat_3223_2017,water_harvesting_conservation,water_ha
 Average annual rainfall
 1 001 – 1 500 mm
 Agro-climatic zone
-sub-humid",4,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #3223 'Progressive bench terraces formed by a vetiver hedge system and trees' (Haiti): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Progressive bench terraces formed by a vetiver hedge system and trees",4,,,,v1.6.0,expert_assertion,unknown
+sub-humid",4,false,Agro-climatic zone,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is erosion repair and slope stabilization through vetiver/tree terraces; retention and recharge are additional benefits. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #3223 'Progressive bench terraces formed by a vetiver hedge system and trees' (Haiti): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Progressive bench terraces formed by a vetiver hedge system and trees",4,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_aridity_wocat4281_1,wocat_4281_2018,water_harvesting_conservation,water_harvesting__terracing,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""sub-humid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Thailand""}",structural_suitability,scoping_candidate,expert_assertion,crop_specific,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 1 501 – 2 000 mm
@@ -10149,8 +10149,8 @@ ev_wh_aridity_wocat6478_1,wocat_6478_2022,water_harvesting_conservation,water_ha
 Average annual rainfall
 1 001 – 1 500 mm
 Agro-climatic zone
-sub-humid",3,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #6478 'Employing Fascines (Vegetative Check Dams) in Land Management' (Madagascar): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Employing Fascines (Vegetative Check Dams) in Land Management",3,,,,v1.6.0,expert_assertion,unknown
+sub-humid",3,false,Agro-climatic zone,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is control of gully erosion and sediment movement; infiltration is a listed additional benefit. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #6478 'Employing Fascines (Vegetative Check Dams) in Land Management' (Madagascar): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Employing Fascines (Vegetative Check Dams) in Land Management",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_slope_wocat6478_1,wocat_6478_2022,water_harvesting_conservation,water_harvesting__runoff_catchment,slope,"{""type"": ""observed_presence"", ""observed_classes"": [""moderate (6-10%)"", ""rolling (11-15%)""], ""observed_min"": 6, ""observed_max"": 15, ""unit"": ""percent"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Madagascar""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 moderate (6-10%)
 rolling (11-15%)
@@ -10191,8 +10191,8 @@ convex situations
 not relevant
 Wocat SLM Technologies
 Employing Fascines (Vegetative Check Dams) in Land Management
-3/6",3,false,Slope,,,"WOCAT SLM Technologies Database, technology #6478 'Employing Fascines (Vegetative Check Dams) in Land Management' (Madagascar): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Employing Fascines (Vegetative Check Dams) in Land Management",3,,,,v1.6.0,expert_assertion,unknown
+3/6",3,false,Slope,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Rule-derived supersession of prior private approval. Pete 2026-11-26: water harvesting must be primary purpose. Primary purpose is control of gully erosion and sediment movement; infiltration is a listed additional benefit. Preserve evidence/provenance; reversible exclusion from water harvesting only, no automatic rerouting.] WOCAT SLM Technologies Database, technology #6478 'Employing Fascines (Vegetative Check Dams) in Land Management' (Madagascar): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Employing Fascines (Vegetative Check Dams) in Land Management",3,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_precip_wocat6610_1,wocat_6610_2022,water_harvesting_conservation,water_harvesting__terracing,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""251 – 500 mm""], ""observed_min"": 251, ""observed_max"": 500, ""unit"": ""mm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Tunisia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 251 – 500 mm
@@ -10833,15 +10833,15 @@ Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",5,false,Average annual rainfall,,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+semi-arid",5,false,Average annual rainfall,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_aridity_wocat7778_1,wocat_7778_2026,water_harvesting_conservation,water_harvesting__runoff_catchment,aridity_index,"{""type"": ""observed_presence"", ""observed_classes"": [""semi-arid""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Somalia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 251 – 500 mm
 501 – 750 mm
 Agro-climatic zone
-semi-arid",5,false,Agro-climatic zone,,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+semi-arid",5,false,Agro-climatic zone,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_slope_wocat7778_1,wocat_7778_2026,water_harvesting_conservation,water_harvesting__runoff_catchment,slope,"{""type"": ""observed_presence"", ""observed_classes"": [""gentle (3-5%)"", ""moderate (6-10%)""], ""observed_min"": 3, ""observed_max"": 10, ""unit"": ""percent"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Somalia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -10866,8 +10866,8 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",5,false,Slope,,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+5 – 50 m",5,false,Slope,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_soildepth_wocat7778_1,wocat_7778_2026,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_depth_to_bedrock,"{""type"": ""observed_presence"", ""observed_classes"": [""shallow (21-50 cm)"", ""moderately deep (51-80 cm)""], ""observed_min"": 21, ""observed_max"": 80, ""unit"": ""cm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Somalia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -10892,8 +10892,8 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",5,false,Soil depth,,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+5 – 50 m",5,false,Soil depth,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_texture_wocat7778_1,wocat_7778_2026,water_harvesting_conservation,water_harvesting__runoff_catchment,soil_texture,"{""type"": ""observed_presence"", ""observed_classes"": [""medium (loamy, silty)"", ""fine/ heavy (clay)""], ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Somalia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -10918,8 +10918,8 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",5,false,Soil texture (topsoil),,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+5 – 50 m",5,false,Soil texture (topsoil),,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_watertable_wocat7778_1,wocat_7778_2026,water_harvesting_conservation,water_harvesting__runoff_catchment,water_table_depth,"{""type"": ""observed_presence"", ""observed_classes"": [""5 – 50 m""], ""observed_min"": 5, ""observed_max"": 50, ""unit"": ""m"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Somalia""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"Slope
 gentle (3-5%)
 moderate (6-10%)
@@ -10944,8 +10944,8 @@ Topsoil organic matter
 content
 low (<1%)
 Groundwater table
-5 – 50 m",5,false,Groundwater table,,,"WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
-Integrated Land Management for Gully Erosion Control through Gabion...",5,,,,v1.6.0,expert_assertion,unknown
+5 – 50 m",5,false,Groundwater table,,,"[dropped 2026-11-27 by peetmate; reason:wrong_practice; note:Reject from water-harvesting T4 scope under Pete's 2026-11-26 primary-purpose rule: if water harvesting is not primary, it is not water harvesting. WOCAT7778 primarily rehabilitates gullies and controls erosion; temporary retention/infiltration are secondary benefits. Preserve evidence and provenance through reversible wrong_practice disposition; no hard deletion or automatic rerouting.] WOCAT SLM Technologies Database, technology #7778 'Integrated Land Management for Gully Erosion Control through Gabions and Rock Check Dams in Guri Gaab Village' (Somalia): 'Natural environment' section = conditions where this documented case is applied",page,,,"Wocat SLM Technologies
+Integrated Land Management for Gully Erosion Control through Gabion...",5,,,dropped,v1.6.0,expert_assertion,unknown
 ev_wh_precip_wocat940_1,wocat_940_2010,water_harvesting_conservation,water_harvesting__in_situ,annual_precipitation,"{""type"": ""observed_presence"", ""observed_classes"": [""501 – 750 mm""], ""observed_min"": 501, ""observed_max"": 750, ""unit"": ""mm"", ""direction"": ""conditions where this documented case of the technology is applied (WOCAT Natural environment section); one case, not a limit""}","{""country"": ""Kenya""}",structural_suitability,scoping_candidate,expert_assertion,practice_technology,,high,"NATURAL ENVIRONMENT
 Average annual rainfall
 501 – 750 mm
