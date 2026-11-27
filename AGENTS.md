@@ -18,7 +18,8 @@ design and intent. Incidental infiltration, recharge or erosion reduction does n
 qualify. A credible NbS can still be the wrong practice. Do not reroute it silently.
 
 Use `workflows/inclusion/check.py` on the private assessment before current staging
-or reuse. The checker validates recorded judgments and source/definition hashes;
+or reuse. Current PDF staging requires `--inclusion-review`; reserve
+`--historical-replay` for frozen historical exercises, never new work. The checker validates recorded judgments and source/definition hashes;
 it cannot read scientific meaning or grant human approval. Follow its hold/exclude
 result. Conditional scoping inclusion carries its conditions into every proposal.
 Detailed feasibility, monitoring and site design remain downstream.

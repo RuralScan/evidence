@@ -21,7 +21,11 @@ Do not treat database labels, prior approval or a beneficial outcome as an inclu
 decision. Public definitions cannot stand in for an unread restricted catalogue.
 
 Complete `workflows/inclusion/template.json` and run `workflows/inclusion/check.py`
-against the source and definition files. Water harvesting must be a primary purpose:
+against the source and definition files. Current PDF staging must use
+`--inclusion-review` with the assessed definition; `--historical-replay` is only for
+frozen exercises. Conditional inclusion requires publication-safe restrictions in
+each draft's `context.note`; inspect that they faithfully carry the private conditions.
+Water harvesting must be a primary purpose:
 in-situ capture can qualify; incidental infiltration in a gully repair cannot.
 Keep practice mismatch, NbS failure, uncertainty and conditional inclusion separate.
 Do not extract included claims from held/excluded interventions. Restrict bundled

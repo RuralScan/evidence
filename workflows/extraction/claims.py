@@ -320,8 +320,10 @@ def check_t4(rel, context, quote, evidence_type):
         nonempty(context.get("calibration_hold"), "calibration_hold")
 
 
-def build_unit(draft, scope, source_id, quote, page):
+def build_unit(draft, scope, source_id, quote, page, *, ruleset=RULESET):
     """Return a CIAT staging dict; the caller supplies the actual page text slice."""
+    if ruleset not in {RULESET, "v1.10.2"}:
+        raise ValueError("Unsupported extraction ruleset")
     subset(
         draft,
         set(SCOPE_FIELDS)
@@ -407,6 +409,6 @@ def build_unit(draft, scope, source_id, quote, page):
         "page": page,
         "quote": quote,
         "locator_type": "page",
-        "ruleset_version": RULESET,
+        "ruleset_version": ruleset,
         "reviewer_ok": False,
     }

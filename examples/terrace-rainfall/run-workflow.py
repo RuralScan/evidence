@@ -165,6 +165,7 @@ def main():
             *locked,
             extraction / "extract.py",
             "stage",
+            "--historical-replay",
             *source,
             "--bundle",
             bundle,

@@ -7,6 +7,7 @@
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
 from pathlib import Path
@@ -127,7 +128,25 @@ def inspect(pdf, args):
     )
 
 
-def stage(pdf, receipt, candidate, spec):
+def inclusion_gate(spec, assessment_data, source_data, definition_data):
+    """Bind the current admission check to the exact extraction source and scope."""
+    path = Path(__file__).resolve().parents[1] / "inclusion/check.py"
+    module_spec = importlib.util.spec_from_file_location("nbs_inclusion_check", path)
+    checker = importlib.util.module_from_spec(module_spec)
+    module_spec.loader.exec_module(checker)
+    assessment = checker.load(assessment_data)
+    result = checker.check_bytes(assessment_data, source_data, definition_data)
+    require(assessment["source_id"] == spec["source_id"], "Inclusion source differs from worksheet")
+    require(assessment["source_sha256"] == spec["artifact_sha256"], "Inclusion edition differs from worksheet")
+    for key in ("nbs_id", "suitability_family_id"):
+        require(assessment[key] == spec["scope"][key], f"Inclusion {key} differs from worksheet")
+    require(result["decision"] in {"include_for_scoping", "conditional_include"},
+            f"Inclusion blocked: {result['decision']}")
+    return {**result, "component_scope": assessment["component_scope"],
+            "conditions": assessment["conditions"]}
+
+
+def stage(pdf, receipt, candidate, spec, *, inclusion=None):
     sid = receipt["source_id"]
     require(
         spec["source_id"] == sid
@@ -213,7 +232,14 @@ def stage(pdf, receipt, candidate, spec):
                 "Extraction requires a passed purpose gate and the specified page",
             )
             quote = locate(item["anchor"])
-            unit = build_unit(item["draft"], scope, sid, quote, item["page"])
+            if inclusion and inclusion["decision"] == "conditional_include":
+                require(
+                    isinstance(item["draft"].get("context", {}).get("note"), str)
+                    and item["draft"]["context"]["note"].strip(),
+                    "Conditional inclusion needs publication-safe restrictions in context.note",
+                )
+            unit = build_unit(item["draft"], scope, sid, quote, item["page"],
+                              **({"ruleset": "v1.10.2"} if inclusion else {}))
             eid = unit["evidence_id"]
             require(eid not in ids, "Duplicate evidence ID")
             ids.add(eid)
@@ -236,6 +262,8 @@ def stage(pdf, receipt, candidate, spec):
         "worksheet_sha256": acquisition.input_hash(spec),
         "unit_count": len(units),
     }
+    if inclusion:
+        record["inclusion"] = inclusion
     return units, record
 
 
@@ -265,6 +293,10 @@ def main():
     loc.add_argument("--page", type=int)
     write.add_argument("--worksheet", required=True, type=Path)
     write.add_argument("--out", required=True, type=Path)
+    mode = write.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--inclusion-review", type=Path, help="Current private inclusion assessment")
+    mode.add_argument("--historical-replay", action="store_true", help="Explicit frozen v1.9.9 replay; not current admission")
+    write.add_argument("--definition", type=Path, help="Authorised definition bytes for current assessment")
     args = p.parse_args()
     pdf, receipt, candidate = checked_source(args)
     with pdf:
@@ -278,7 +310,16 @@ def main():
         candidate = dict(
             candidate, nbs_id=screened_practice(candidate, args.candidates)
         )
-        units, record = stage(pdf, receipt, candidate, spec)
+        inclusion = None
+        if args.inclusion_review:
+            source = args.bundle / "cache" / (receipt["source_id"] + ".pdf")
+            inclusion = inclusion_gate(
+                spec, args.inclusion_review.read_bytes(), source.read_bytes(),
+                args.definition.read_bytes() if args.definition else None,
+            )
+        else:
+            require(args.definition is None, "Definition supplied without current inclusion assessment")
+        units, record = stage(pdf, receipt, candidate, spec, inclusion=inclusion)
         save(args.out, units, record)
         print(
             f"{len(units)} proposed evidence unit(s) staged for {receipt['source_id']} in {args.out}"

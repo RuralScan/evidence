@@ -129,8 +129,10 @@ explicitly and use the protected register writer. At synthesis, carry exclusions
 holds and conditions into candidate dispositions and scope. Do not change analytical
 rows automatically or treat a software merge as scientific acceptance.
 
-This is a required operator/AI procedure with a standalone validator. Legacy intake
-and synthesis APIs do not yet enforce presence of this sidecar. Report that boundary;
+This is a required operator/AI procedure with a standalone validator. Current PDF
+staging enforces the assessment with `--inclusion-review`; explicit historical replay
+retains its old behavior. Legacy submission and synthesis APIs do not yet enforce
+presence of this sidecar. Report that boundary;
 do not claim a repository-wide admission lock. The validator checks consistency of
 the recorded judgments, not their scientific truth. Independent source review and
 existing human acceptance remain necessary.
