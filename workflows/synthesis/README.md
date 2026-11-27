@@ -1,5 +1,7 @@
 # AI-led T3/T6 synthesis
 
+Before current candidate admission, apply [practice and NbS inclusion](../../handbook/nbs-inclusion.md). Preserve holds, exclusions and conditions when reusing reviewed evidence; prior approval alone does not pass the current scope check. This does not alter accepted historical packages.
+
 AI authors scientific judgments. Code validates, packages and reads accepted outputs.
 Authority: [method decision](https://github.com/RuralScan/method/issues/85#issuecomment-7052114229).
 The [skill](../../.agents/skills/source-command-t3t6-synthesise/SKILL.md) provides the

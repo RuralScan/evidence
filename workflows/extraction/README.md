@@ -4,6 +4,26 @@ This workflow turns a passage in a verified PDF into a proposed Evidence Registe
 
 For current submissions, provide independent `knowledge_basis` and `extraction_format` fields. [Classification rules and historical compatibility](classification.md). The worked example below reproduces its original instructions; it does not automatically supply those current classifications.
 
+## Current inclusion gate
+
+Before any new extraction or corrected practice attribution, complete
+[the inclusion protocol](../../handbook/nbs-inclusion.md) and run its private assessment
+check against the source and authorised definition bytes. Keep the assessment and
+receipt with the extraction inventory. A practice mismatch stops this lane; an NbS
+hold stays out of included claims. Conditional inclusion carries its restrictions.
+This supplements, rather than replaces, the T4 source-purpose and claim-level checks.
+Record `nbs-inclusion-1.0.0` alongside the extraction instructions actually used.
+Current PDF staging enforces this gate. Pass `--inclusion-review /private/run/inclusion.json`
+and `--definition /private/authorised/catalogue.docx` to `extract.py stage` alongside
+the ordinary source/worksheet arguments. The assessment must match source bytes,
+source ID, practice and family. A hold or exclusion stops staging. Conditional
+inclusion also requires publication-safe restrictions in each draft's `context.note`;
+the reviewer checks that the wording carries the conditions accurately. Private
+assessment text is retained in the inventory, never automatically copied into units.
+
+The old example below uses explicit `--historical-replay`, preserving its original
+stamp and behavior. That mode cannot establish current admission.
+
 ## Worked example · rainfall and bench terraces
 
 Start from the repository root. Run [the acquisition example](../acquisition/README.md#worked-example--wocat-terrace-manual) in the same shell first. It sets `work`, `candidates` and `plan`, and produces `$work/manual`. You need Python 3.12 and uv. With the locked PDF reader installed, extraction runs offline.
@@ -22,7 +42,7 @@ Search the manual, read the relevant page, then stage the proposal.
 ```sh
 extract_pdf inspect --find 'forward sloping bench terraces'
 extract_pdf inspect --page 129
-extract_pdf stage --worksheet workflows/extraction/example/terrace-rainfall.json \
+extract_pdf stage --historical-replay --worksheet workflows/extraction/example/terrace-rainfall.json \
   --out "$work/extraction"
 cat "$work/extraction/inventory.json"
 ```
@@ -61,7 +81,7 @@ The archived unit should pass with **zero new units**. The comparison names diff
 4. **Describe one claim per unit.** Give the PDF page and two unambiguous boundary phrases on that page. Preserve original scope, units, raw variable name and attribution. Separate evidence for variable use, direction, reported values and relative importance. A numeric value must be grounded in its own passage. Record the cited primary source for secondary claims, and the taxon for crop- or species-specific claims. If an AI assists, give it the same scoped worksheet and page text, ask for reasons and anchors, then check them against the original page. Archive the prompt/model version privately alongside the worksheet.
 5. **Stage and inspect.** Run `stage` and read both outputs. Confirm what the numbers measure, which practice they apply to and whether the passage supports the proposed interpretation. Local checks catch transcription and formatting problems. CIAT’s central gate also checks identities, vocabularies, context, bands and direction. Use the handoff command above with the applicable role flag for the intended lane; effects use the default. For a new finding, submit the validated proposal. For a correction, retain the evidence ID and original ruleset stamp and identify the fields that changed.
 
-This workbench stages v1.9.9 proposals. CIAT’s later v1.10.0 instructions have their own archived copy. [Compare instruction versions](../../rulesets/README.md)
+Explicit historical replay retains v1.9.9. Current PDF staging requires `--inclusion-review` and stages v1.10.2; the inventory preserves the inclusion receipt and conditions. Existing records still require the audited correction route, which preserves their original extraction stamp. [Compare instruction versions](../../rulesets/README.md)
 
 The executable handles page-anchored PDF passages. Web sections, code lines, specialised questionnaire transcripts and table cells needing multiple distinct anchors use their established source-specific procedures. An unreadable page, ambiguous anchor or unsupported relationship belongs on hold. Scientific acceptance and synthesis remain separate from extraction. [Versioned extraction instructions](https://github.com/CIAT/nbs_ruralscan/blob/157a26c2729c05cccf2b1d9374a63e28c97acac6/.agents/skills/_versions/v1.9.9/SKILL.md) · [T4 contract](https://github.com/CIAT/nbs_ruralscan/blob/157a26c2729c05cccf2b1d9374a63e28c97acac6/.agents/skills/_versions/v1.9.9/contracts/T4_review_contract.md) · [Effect contract](https://github.com/CIAT/nbs_ruralscan/blob/157a26c2729c05cccf2b1d9374a63e28c97acac6/.agents/skills/_versions/v1.9.9/contracts/T3_T6_extraction_contract.md)
 

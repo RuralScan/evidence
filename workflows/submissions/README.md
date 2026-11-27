@@ -81,6 +81,16 @@ Inspect `receipts.json` for validated or held extractions. The operator can insp
 
 Add `--test-inbox` to the desk command to use marked synthetic finding IDs with public GitHub receipts. Run the collector with `--test` to process these receipts separately. For a local-only check, use `--sandbox /private/work/fixture.sqlite`. Sandbox receipts persist on that computer and can be found under **My reviewed** after restart.
 
+## Check inclusion before replaying reviews
+
+Apply [the current inclusion protocol](../../handbook/nbs-inclusion.md) before reusing
+old approvals or submitting a new scope decision. Preserve prior receipts and name
+any superseded decisions explicitly. A wrong-practice rejection is reversible; an
+unknown definition or unresolved ecological question is a hold, not a rejection.
+Keep restricted definition passages and assessment bundles private. Public notes
+can cite the intervention's public source and the project scope rule. This protocol
+does not create new register columns or bypass receipt confirmation and protected PRs.
+
 ## Apply approved submissions
 
 The live queue reads the live RuralScan register revision. A finding vote (dashboard or CSV) is attributable to its signed-in GitHub author. A maintainer who has reviewed an extraction marks its original issue **approved-extraction**. Review the cited source and the exact proposed changes before applying that label. The correction path preserves the original extraction stamp and reopens a changed finding for review.

@@ -24,6 +24,17 @@ python3 -IB rulesets/check.py --ciat-repo /path/to/nbs_ruralscan
 
 Use Git supporting `--no-lazy-fetch` and a clone with the four specified commits and their archive blobs. The command reads committed objects offline and leaves the checkout untouched. Expect five entries and 32 verified file occurrences across their archives. Missing objects, a different file inventory, changed checksums or a mismatched declared version stop the check. The catalog hash identifies the exact catalog used for the receipt.
 
+## Current inclusion addendum
+
+[`nbs-inclusion-1.0.0`](nbs-inclusion.json) and its
+[operator protocol](../handbook/nbs-inclusion.md) apply to current discovery,
+extraction, review and synthesis reuse across all six practices. Record the addendum
+and actual base instructions together, including hashes. Current discovery/extraction
+adapters live in this repository's `.agents/skills/`; archived CIAT versions remain
+unchanged. This addendum does not restamp historical evidence or make old teaching
+replays pass current inclusion checks. Definition editions and restricted assessments
+remain in authorised private storage.
+
 ## Current classification addendum
 
 The [knowledge-basis and format contract](evidence-classification.json) and [intake guidance](../workflows/extraction/classification.md) extend current submissions. Their pin records the immutable method revision. They do not restamp or rewrite archived extraction instructions.

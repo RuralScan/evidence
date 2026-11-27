@@ -1,5 +1,7 @@
 # AI-authored T4 proposals and accepted mapping packages
 
+Before current candidate admission, apply [practice and NbS inclusion](../../handbook/nbs-inclusion.md). Preserve holds, exclusions and conditions when reusing reviewed evidence; prior approval alone does not pass the current scope check. This does not alter accepted historical packages.
+
 AI authors suitability judgments. Code checks the declared representation and
 replays exact human-accepted bytes. This route does not run the retired T4 compiler,
 write CIAT registers, change finding reviews, or implement a runtime evaluator.

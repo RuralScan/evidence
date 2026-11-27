@@ -2,6 +2,16 @@
 
 Use this workflow to answer a bounded question such as “Which sources discuss annual rainfall for bench terraces?” The result is a set of candidate sources, screening reasons and search counts. Keep the resulting bundle with its run ID. Use the [discovery registration command](../submissions/registration.md#record-a-discovery-run) to propose the search record, acquisition queue and optional progress stamp together.
 
+## Current inclusion screening
+
+Read [the inclusion protocol](../../handbook/nbs-inclusion.md) before framing current
+inclusion criteria. Screen practice purpose separately from NbS ecological fit and
+source credibility. Catalogue/database tags do not establish membership. A title or
+abstract may justify provisional acquisition; complete the private catalogue and
+source assessment after acquisition, before extracting claims. Reused sources need
+this check for each proposed practice/family/component. Preserve exclusions, holds,
+reasons and actual search counts; do not invent an official register field.
+
 ## Replay the terrace screening example
 
 From the root of this repository, run the following with Python 3.10 or newer. The example runs offline using the standard library.

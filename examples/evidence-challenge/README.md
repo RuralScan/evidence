@@ -39,7 +39,7 @@ After the worked run, copy its rejected worksheet and try it with the same extra
 ```sh
 cp "$work/worked/claim/invalid-worksheet.json" "$work/my-worksheet.json"
 extract() {
-  uv run --offline --python 3.12 --locked --script workflows/extraction/extract.py stage \
+  uv run --offline --python 3.12 --locked --script workflows/extraction/extract.py stage --historical-replay \
     --candidates "$terrace/screening/candidates.json" \
     --plan workflows/acquisition/example/terrace-manual.json \
     --bundle "$terrace/manual" --worksheet "$work/my-worksheet.json" --out "$1"

@@ -65,6 +65,7 @@ def run(run_dir, work, offline):
             "--script",
             str(EXTRACT / "extract.py"),
             "stage",
+            "--historical-replay",
             "--candidates",
             str(run_dir / "screening/candidates.json"),
             "--plan",
