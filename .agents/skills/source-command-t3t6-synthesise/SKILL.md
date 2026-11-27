@@ -3,7 +3,7 @@ name: source-command-t3t6-synthesise
 description: Author AI-led T3 hazard and T6 scorecard scientific synthesis proposals from reviewed evidence, validate them, and package exact scientifically accepted outputs.
 ---
 
-# AI-led effect synthesis — v2.0.0
+# AI-led effect synthesis — v2.0.1
 
 AI performs scientific synthesis. Code validates, packages and reads accepted values.
 Do not run the retired `synthesise-t3t6.py`, `t3t6_build`, `cell_synthesis` or T4
@@ -68,3 +68,17 @@ Package only current accepted outputs. Pin the manifest hash independently in th
 consumer and use runtime's `AcceptedEffects` reader. Explicitly report missing accepted
 cells; never fill them from historical rows. Preserve withdrawal provenance. Report
 which proposals are accepted, stale or held and what remains historical.
+
+
+## Current practice and NbS inclusion
+
+Before candidate admission or reuse of old approvals, read `handbook/nbs-inclusion.md`
+and run `workflows/inclusion/check.py` on the private assessment. Inspect the authorised
+catalogue's general and practice-specific criteria and the actual source. Keep practice
+fit separate from NbS fit and analytical-role fit. Water harvesting must be primary,
+not an incidental benefit of another practice. Carry exclusions, unresolved holds and
+conditional scope into candidate dispositions; do not silently reroute or rehabilitate
+previously rejected records. A conditional scoping decision does not approve numerical
+mappings or effects. Record addendum `nbs-inclusion-1.0.0` and its hash with the actual
+skill version. Preserve restricted materials privately and retain the existing exact
+human-acceptance workflow. This procedural gate does not itself change accepted rows.

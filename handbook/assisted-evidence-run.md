@@ -11,6 +11,18 @@ is absent, and broader findings do not automatically apply to every child.
 
 Record the workbench revision and select the instructions for the stage before beginning. The terrace exercise uses discovery **v1.8.1** and the workbench PDF extractor **v1.9.9**. The historical terrace evidence record carries **v1.6.0**. At CIAT revision `4d53620f`, the operating guide identifies discovery **v1.8.1** and extraction **v1.10.1**. Read the [pinned entry points](https://github.com/CIAT/nbs_ruralscan/blob/4d53620f7a9f0f17a42a007fa0a653e5ed55c519/AGENTS.md#L53-L62) for these versions. A live run must use the instructions and checks for its actual version. Keep the original version on every historical record. [Ruleset catalog](../rulesets/catalog.json) · [Terrace example and rerun commands](../examples/terrace-rainfall/README.md)
 
+## Inclusion in current runs
+
+Before screening, extraction or reuse, apply [the inclusion protocol](nbs-inclusion.md).
+Give the AI the authorised definition passages and the intervention's source privately.
+Ask it to assess practice/family fit, ecological function, benefits, safeguards and
+uncertainty separately. Water harvesting must be a primary purpose; secondary water
+benefits cannot rescue an erosion-control profile. Keep the catalogue edition/hash,
+locators and clause assessment in the private run bundle. Missing definition access
+or unresolved core scope remains a hold. Run `workflows/inclusion/check.py`; a passing
+consistency check is not human scientific approval. Follow the protocol's dispositions
+before continuing. Frozen teaching replays retain their original instructions.
+
 ## 1. Frame and capture the search
 
 Prepare a private working directory and a plan with a run ID, practice ID, family ID, table, discovery process, purpose, inclusion criteria, actual limits and stopping rule. Use one plan per scope and process. Check existing stock, source IDs, acquisition queue, search records and the progress ledger. Account for stock, updated literature, grey literature and tools. Record omitted channels and languages. [Search plan example](../workflows/discovery/example/plan.json)

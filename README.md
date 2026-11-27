@@ -12,6 +12,8 @@ Browse the six practices to see which hazards, suitability variables, scorecard 
 
 Use the operator handbook for an AI-assisted or manual run. It provides task briefs for searching, screening and extracting evidence, and shows how to record which instructions were used. [Run an assisted evidence search and extraction](handbook/assisted-evidence-run.md)
 
+Check whether an intervention belongs to the requested practice and meets NbS criteria before current extraction or reuse. [Inclusion protocol](handbook/nbs-inclusion.md) · [Agent instructions](AGENTS.md)
+
 ## Evidence meaning and source limitations
 
 Read the [registry and source guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/evidence-registry.md) and [T4 synthesis and weighting guide](https://github.com/RuralScan/method/blob/main/methodology-reference/content/suitability-synthesis.md). Current intake distinguishes knowledge basis from extraction format; [classification migration and compatibility](workflows/extraction/classification.md) explain how historical records remain reproducible.

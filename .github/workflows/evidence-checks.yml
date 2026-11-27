@@ -28,6 +28,8 @@ jobs:
         run: |
           git clone --bare --single-branch --branch main --no-tags https://github.com/CIAT/nbs_ruralscan.git "$RUNNER_TEMP/ciat-history.git"
           echo "CIAT_TEST_REPO=$RUNNER_TEMP/ciat-history.git" >> "$GITHUB_ENV"
+      - name: Check practice and NbS inclusion judgments
+        run: python -m unittest discover -v -s workflows/inclusion
       - name: Check discovery and acquisition inputs
         run: |
           python -m unittest discover -v -s workflows/discovery

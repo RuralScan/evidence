@@ -1,0 +1,77 @@
+{
+  "ruleset": "nbs-inclusion-1.0.0",
+  "source_id": "",
+  "nbs_id": "water_harvesting_conservation",
+  "suitability_family_id": "",
+  "component_scope": "",
+  "source_sha256": "",
+  "practice_fit": {
+    "status": "unknown",
+    "rationale": "",
+    "source_locator": ""
+  },
+  "water_harvesting_purpose": "unclear",
+  "definition": {
+    "available": false,
+    "access_note": "",
+    "kind": "authorised_project_catalogue",
+    "access": "restricted",
+    "edition": "",
+    "sha256": "",
+    "general_locator": "",
+    "practice_locator": "",
+    "chapter_mapping_rationale": ""
+  },
+  "criteria": {
+    "ecosystem_action": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "natural_process": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "human_benefit": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "biodiversity_pathway": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "baseline_habitat": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "landscape_hydrology": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "equity_governance": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    },
+    "durability_management": {
+      "status": "unknown",
+      "rationale": "",
+      "source_locator": "",
+      "definition_locator": ""
+    }
+  },
+  "conditions": [],
+  "material_conflicts": []
+}

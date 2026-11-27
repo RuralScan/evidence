@@ -1,0 +1,39 @@
+{
+  "id": "nbs-inclusion-1.0.0",
+  "protocol": "handbook/nbs-inclusion.md",
+  "scope": "Current discovery, extraction, review and synthesis reuse; all six project NbS",
+  "core_criteria": [
+    "ecosystem_action",
+    "natural_process",
+    "human_benefit",
+    "biodiversity_pathway"
+  ],
+  "context_criteria": [
+    "baseline_habitat",
+    "landscape_hydrology",
+    "equity_governance",
+    "durability_management"
+  ],
+  "criterion_statuses": [
+    "pass",
+    "fail",
+    "unknown",
+    "not_applicable"
+  ],
+  "historical_policy": "Preserve archived instructions and EV stamps; reassess before current reuse without rewriting history.",
+  "definition_policy": "Inspect the authorised catalogue and matching chapter privately. Public references do not establish private-catalogue inspection.",
+  "public_references": [
+    "https://www.worldbank.org/en/news/feature/2022/05/19/what-you-need-to-know-about-nature-based-solutions-to-climate-change",
+    "https://www.unep.org/en/what-we-do/nature-and-land-action/nature-based-solutions/overview-nature-based-solutions",
+    "https://inbs.iucn.org/understand/8-criteria/"
+  ],
+  "nbs_ids": [
+    "agroforestry",
+    "forest_restoration",
+    "mangrove_restoration",
+    "riparian_buffer",
+    "water_harvesting_conservation",
+    "wetland_management"
+  ],
+  "primary_purpose_nbs_id": "water_harvesting_conservation"
+}
