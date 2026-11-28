@@ -67,9 +67,9 @@
     "schema/lookups/xw_route_policy.csv": "72add2e55951c90fcd4b727d1aa03b88485f7edb3963a9a93bcf7b1888c97bef",
     "schema/registers/BANDS_magnitude_bands.csv": "3be4a86b555e6f94a5662b5ab16d9173149cb72dcf8b72326a7a4f3bfe13c3bb",
     "schema/registers/BIND_dataset_binding.csv": "6aeb5481a121cca768efd69ebe277b95a85e2c7f1ef9941e9cc74536c9bcfa35",
-    "schema/registers/EV_evidence_register.csv": "cbbe3a4c22fb124fe0e05c9b5e0a5307b9793e1a7670464f823c6e6febeb0f96",
+    "schema/registers/EV_evidence_register.csv": "d035b13bff70dc31900c923127b3a2a8ad9d4a826b45abb053e6c290b6b67cb9",
     "schema/registers/FAM_family_registry.csv": "c9117feae1fd9d39a099fbfcc172e32daa845596e8cad80cbde93a00851d07c8",
-    "schema/registers/SRC_source_register.csv": "7b5b836643fd3f4119c0026e6e66e2cfbb44741f07ab12e57f97d5f02640226b",
+    "schema/registers/SRC_source_register.csv": "75ca3a208d938f8b0f22f0f683cf57319cc5c35ee714556626e0d502d4248d45",
     "schema/registers/TOOL_tool_registry.csv": "e6f623e5b734060fb0f75249219878bff849f36f0daf35a9d8c68c10627fb6f6",
     "schema/registers/VONT_variable_ontology.csv": "c9ea583a49df91220ad2737acfcee9bf0943af04ed158f40d9bbee10dc349b42",
     "schema/registers/XW_target_crosswalk.csv": "7ef316003b4a7b2c244fc3ae2d1895975cb0e812f876b80d1b380cd3135d6b4c"
