@@ -1,0 +1,27 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "soil_cation_exchange_capacity",
+  "unit": "cm/kg",
+  "shape": "linear",
+  "x": [
+    7.5,
+    10.0,
+    13.0
+  ],
+  "score": [
+    0.333,
+    0.667,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 2,
+  "papers": [
+    "nath_2021"
+  ]
+}

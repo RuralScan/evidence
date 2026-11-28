@@ -1,0 +1,61 @@
+{
+  "practice": "forest_restoration",
+  "family": "assisted_regeneration",
+  "gates": [
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "degraded grassland",
+        "native pasture",
+        "open/degraded forest lands",
+        "shrub vegetation"
+      ],
+      "no": []
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5200.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -10.0
+    },
+    {
+      "name": "regeneration_potential",
+      "variable": "regeneration_potential",
+      "type": "threshold",
+      "unit": "m",
+      "max": 100.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 100.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.0,
+      "max": 10.0
+    }
+  ]
+}

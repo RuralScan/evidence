@@ -1,0 +1,53 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "in_situ",
+  "gates": [
+    {
+      "name": "aridity_index",
+      "variable": "aridity_index",
+      "type": "classes",
+      "yes": [
+        "semi-arid zones"
+      ],
+      "no": []
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "classes",
+      "yes": [
+        "gentle slope"
+      ],
+      "no": []
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 4800.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -5.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 30.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 10.0
+    }
+  ]
+}

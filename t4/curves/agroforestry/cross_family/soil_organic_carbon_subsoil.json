@@ -1,0 +1,29 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "soil_organic_carbon_subsoil",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    0.2,
+    0.3,
+    0.5,
+    0.815
+  ],
+  "score": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 2,
+  "papers": [
+    "nath_2021"
+  ]
+}

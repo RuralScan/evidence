@@ -1,0 +1,209 @@
+nbs_id,family,variable,unit,region,verdict,reason,suggestion
+agroforestry,agroforestry__cross_family,annual_precipitation,mm,,suspect,"abs_min 100 mm (general) is below where trees and crops can grow together without irrigation; other agroforestry families use 200 mm. opt_low 1170 comes from regional sources (ranchi2017, haile_2024, mushtaq >1200) and scores dryland parklands at 500-800 mm as poor.","Raise general abs_min to about 200 mm; check whether regional optima (ev_af_annual_precipitation_ranchi2017_20261105, ev_T4_precip_haile2024_2) should set a cross-family optimum."
+agroforestry,agroforestry__cross_family,aridity_index,unitless,,wrong,"Values 5000-35000 are an aridity index scaled by 10000 (nath_2021 prints the CGIAR raster values), but the unit says unitless; other rows use the 0-1 scale. As a 0-1 map value every pixel falls below abs_min.","Check ev_t4_aridity_nath21_03: divide by 10000 (abs_min 0.5, opt_low 3.5). Also note abs_min 0.5 would exclude all semi-arid agroforestry."
+agroforestry,agroforestry__cross_family,elevation,m,,suspect,"opt_high 500 m means only lowlands are optimal. That comes from three regional studies (chuma_2021, haile_2024, ranchi2017); highland agroforestry (East African and Andean coffee, banana, Grevillea systems at 1500-2500 m) would score low.","Review whether regional elevation classes (ev_T4_elevation_chuma2021_recovery, ev_T4_rereview_haile_2024_elevation_1, ev_af_elevation_ranchi2017_20261105) belong in a cross-family optimum."
+agroforestry,agroforestry__cross_family,evapotranspiration_ref,mm/day,,wrong,"Values 1000-1663 are annual mm, not mm/day (a daily reference ET of 1000 mm is impossible). The extractor noted this but kept the unit. The direction (more ET is better, under 1000 unsuitable) is also odd.",Check ev_T4_rereview_nath_2021_evapotranspiration_ref_1: relabel unit as mm/year.
+agroforestry,agroforestry__cross_family,ndvi,unitless,,ok,Dense vegetation optimum 0.5-0.9 fits NDVI; sources agree.,
+agroforestry,agroforestry__cross_family,slope,percent,,suspect,"abs_max 35 percent (about 19 degrees) comes from one regional source (ranchi2017 N class). It rules out steep-slope agroforestry such as coffee and homegardens, and other agroforestry families allow up to 45 degrees.",Check ev_af_slope_ranchi2017_20261105; consider widening abs_max to match family general limits.
+agroforestry,agroforestry__cross_family,soil_bulk_density,Kg/dm3,,ok,Bulk density optimum below 1.4 and root-restricting limit 1.9 are standard.,
+agroforestry,agroforestry__cross_family,soil_cation_exchange_capacity,cm/kg,,wrong,"Unit 'cm/kg' should be cmol/kg. The optimum 3-23 was taken from a misaligned table: 3-23 is the data range, and the very good class is >10. CEC 3 is very infertile and cannot be optimal.","Check ev_T4_rereview_nath_2021_soil_cation_exchange_capacity_3: set opt_low 10, fix unit to cmol/kg."
+agroforestry,agroforestry__cross_family,soil_organic_carbon,percent,,ok,SOC optimum above 0.75 percent is a sensible floor.,
+agroforestry,agroforestry__cross_family,soil_organic_carbon_subsoil,percent,,ok,Subsoil SOC optimum above 0.6 percent is plausible.,
+agroforestry,agroforestry__cross_family,soil_ph,pH,,ok,pH optimum 6.5-7.3 and limits 3.5-10 are standard.,
+agroforestry,agroforestry__cross_family,soil_ph_subsoil,pH,,ok,Subsoil pH optimum 5.5-7.2 is standard.,
+agroforestry,agroforestry__planted_silvoarable,annual_precipitation,mm,,wrong,"Hard minimum 1000 mm comes from nath_2021 (India) and Rao's soft note on hedgerows. It wrongly rules out temperate silvoarable systems working at 600-900 mm (UK, France, Canada). opt_low 2000 mm is a wet-tropics optimum.","Check ev_t4_annualp_nath21_02 and ev_af_annual_precipitation_rao97_targeting_20261105: treat as regional/soft, lower abs_min to about 400-500 mm."
+agroforestry,agroforestry__planted_silvoarable,mean_annual_temperature,degC,,suspect,opt_low 20 C is tropical (nath_2021 class plus Fiji tree crop ranges from wotlolan2021); temperate silvoarable at MAT 8-12 C would score low.,Check whether ev_T4_mat_wotlolan2021_* species ranges should feed a family optimum.
+agroforestry,agroforestry__planted_silvoarable,slope,degrees,,ok,"0-5 degrees optimum, 20 degrees limit; matches the percent row (20 degrees = 36 percent).",
+agroforestry,agroforestry__planted_silvoarable,slope,percent,,ok,Optimum under 5 percent and limit 35 percent agree with the degrees row.,
+agroforestry,agroforestry__planted_silvoarable,soil_depth_to_bedrock,cm,,ok,General 15 cm soil depth floor is a reasonable outer limit.,
+agroforestry,agroforestry__planted_silvoarable,soil_organic_carbon,percent,,suspect,opt_low 2 percent topsoil SOC is high; most tropical cropland is under 1 percent. It comes from nath_2021's very good class and clashes with the cross_family row (0.75).,Check ev_t4_soilorg_nath21_01 weight against ev_T4_soc_ahmad2018_1.
+agroforestry,agroforestry__planted_silvoarable,soil_ph,pH,,ok,pH optimum 5.5-7.2 is standard.,
+agroforestry,agroforestry__regeneration_farmland,annual_precipitation,mm,,suspect,"General abs_min 100 mm is too dry for farmer-managed regeneration; known cases (Niger, Sahel) are at 300-600 mm. Other agroforestry families use 200 mm.",Raise general abs_min to about 200-250 mm.
+agroforestry,agroforestry__regeneration_farmland,mean_annual_temperature,degC,,ok,Generous cold limit; seen 28 C is within range.,
+agroforestry,agroforestry__regeneration_farmland,slope,percent,,ok,Generous slope limit for regeneration.,
+agroforestry,agroforestry__shaded_perennial,mean_annual_temperature,degC,,ok,10-32 C limits with optimum 20-30 C fit shaded tree crops.,
+agroforestry,cross_family,built_up_areas,ft,,wrong,"Distance in feet (100 ft = 30.5 m) while other built_up_areas rows use m; a metric map would read it as 100 m. The source (Baldwin 2022) is a US parcel-level project exclusion, not a suitability limit.",Check ev_operational_risk_built_up_areas_baldwin_2022_full: convert to 30.5 m.
+forest_restoration,forest_restoration__active_planting,annual_precipitation,mm,,ok,200 mm floor fits; seen cases at 251-750 mm.,
+forest_restoration,forest_restoration__active_planting,aridity_index,dimensionless,,wrong,"abs_min 0.65 is a carbon-credit (CDM-AR) eligibility screen from zomer08, not a biological limit. It excludes all drylands, yet the same family has precip abs_min 200 mm and WOCAT cases working at <250-500 mm.",Check ev_fr_aridity_index_zomer08_1: drop as a hard limit or mark as policy screen.
+forest_restoration,forest_restoration__active_planting,elevation,m,,suspect,3500 m is a CDM-AR project screen (zomer08). The general limit for other forest families is 5200 m; tropical tree lines reach 4000 m or more.,Check ev_fr_elevation_zomer08_1; align with family general limit.
+forest_restoration,forest_restoration__active_planting,slope,percent,,ok,75 percent slope limit for planting is reasonable.,
+forest_restoration,forest_restoration__active_planting,soil_depth_to_bedrock,cm,,suspect,"General abs_min soil depth was dropped because a WOCAT class 'very shallow (0-20 cm)' gave seen_min 0. That 0 is a class edge, not a case on bare rock, so the row now has no lower soil depth limit.",Treat WOCAT class floors as non-observations or keep the general abs_min; check the very-shallow WOCAT ids in t4/thresholds.csv.
+forest_restoration,forest_restoration__active_planting,tree_canopy_cover,percent,,ok,"Restoration targets non-forest land, so a 30 percent canopy ceiling is logical.",
+forest_restoration,forest_restoration__active_planting,water_table_depth,m,,ok,Observed only.,
+forest_restoration,forest_restoration__assisted_regeneration,annual_precipitation,mm,,ok,200 mm floor fits seen cases.,
+forest_restoration,forest_restoration__assisted_regeneration,regeneration_potential,m,,wrong,"This is a distance to seed trees (50-100 m, FAO) filed under regeneration_potential with unit m. A regeneration-potential map cannot be read in metres.",Check ev_forest_regeneration_potential_fao175_ch4_20261104: move to distance_to_forest.
+forest_restoration,forest_restoration__assisted_regeneration,regeneration_potential,vigorous wildlings per hectare,,suspect,"Wildlings per hectare is a field count, not a mappable layer. opt_high 700 penalises denser regeneration, which the source says suits enrichment planting, not failure.",Check ev_fr_regen_wocat_anr1971_20261102 and ev_fr_regen_denr_tb27_20261102; decide whether this variable can be mapped.
+forest_restoration,forest_restoration__assisted_regeneration,slope,percent,,ok,Generous slope limit.,
+forest_restoration,forest_restoration__assisted_regeneration,soil_depth_to_bedrock,cm,,suspect,"General abs_min soil depth was dropped because a WOCAT class 'very shallow (0-20 cm)' gave seen_min 0. That 0 is a class edge, not a case on bare rock, so the row now has no lower soil depth limit.",Treat WOCAT class floors as non-observations or keep the general abs_min; check the very-shallow WOCAT ids in t4/thresholds.csv.
+forest_restoration,forest_restoration__assisted_regeneration,water_table_depth,m,,ok,Observed only.,
+forest_restoration,forest_restoration__passive_regeneration,annual_precipitation,mm,,ok,200 mm floor fits seen cases.,
+forest_restoration,forest_restoration__passive_regeneration,distance_to_forest,km,,ok,5 km seed-source screen is standard.,
+forest_restoration,forest_restoration__passive_regeneration,distance_to_forest,m,,ok,Optimum within 100 m of forest; consistent with the km row.,
+forest_restoration,forest_restoration__passive_regeneration,forest_fragment_size,ha,,suspect,100 ha minimum fragment is one regional model's choice (barros22). As a hard limit it ignores smaller patches that still supply seed.,Check ev_fr_forest_fragment_size_barros22_1; consider using it as a soft optimum.
+forest_restoration,forest_restoration__passive_regeneration,slope,percent,,ok,"Observed only, no limits.",
+forest_restoration,forest_restoration__passive_regeneration,soil_depth_to_bedrock,cm,,ok,10 cm floor fits seen 21-120 cm.,
+forest_restoration,forest_restoration__passive_regeneration,tree_canopy_cover,percent,,ok,Under 25 percent canopy defines restoration land.,
+forest_restoration,forest_restoration__passive_regeneration,water_table_depth,m,,ok,Observed only.,
+forest_restoration,forest_restoration__plantation,annual_precipitation,mm,,ok,200 mm floor fits seen cases.,
+forest_restoration,forest_restoration__plantation,slope,percent,,ok,Generous slope limit.,
+forest_restoration,forest_restoration__plantation,soil_depth_to_bedrock,cm,,ok,10 cm floor fits seen 81-120 cm.,
+forest_restoration,forest_restoration__protection_cbfm,annual_precipitation,mm,,ok,200 mm floor fits seen cases.,
+forest_restoration,forest_restoration__protection_cbfm,slope,percent,,ok,Observed only.,
+forest_restoration,forest_restoration__protection_cbfm,soil_depth_to_bedrock,cm,,suspect,"General abs_min soil depth was dropped because a WOCAT class 'very shallow (0-20 cm)' gave seen_min 0. That 0 is a class edge, not a case on bare rock, so the row now has no lower soil depth limit.",Treat WOCAT class floors as non-observations or keep the general abs_min; check the very-shallow WOCAT ids in t4/thresholds.csv.
+forest_restoration,forest_restoration__protection_cbfm,water_table_depth,m,,ok,Observed only.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,distance_to_forest,km,,ok,10 km from existing mangroves is a standard propagule screen.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,elevation,cm above mean sea level,,suspect,"A fixed band of -100 to 200 cm above mean sea level ignores tidal range: in macrotidal areas mangroves grow above 2 m, in microtidal areas never near it. General abs_min -100 is also below clough14's 'below mean sea level may be unsuitable'.",Check ev_mr_elevation_clough14_20261028; consider elevation relative to tidal range.
+mangrove_restoration,mangrove_restoration__tidal_coastal,slope,percent,,ok,30 percent upper slope limit fits intertidal flats.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,soil_depth_to_bedrock,cm,,suspect,"Seen 0-20 cm comes from WOCAT 4300 (Bangladesh delta mangrove), an unlikely entry for deep deltaic sediment. It dropped the general 10 cm floor, so the row has no lower limit.",Check ev_fr_soildepth_wocat4300_1; keep general abs_min.
+mangrove_restoration,mangrove_restoration__tidal_coastal,tidal_inundation_duration,percent,,ok,Occasional to under 50 percent inundation is right for most species.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,water_table_depth,m,,wrong,"No upper water-table limit for an intertidal practice. The general 2 m limit was dropped because WOCAT 4300 (Bangladesh mangrove) records groundwater at 5-50 m, which is a form-entry error for tidal land.",Check ev_fr_watertable_wocat4300_1: exclude it and restore general abs_max 2.
+riparian_buffer,riparian_buffer__natural_restored,distance_to_waterbody,m,,wrong,"The sources give buffer widths (30 m statutory, 50 m best) but the row uses them as distance from water. abs_min 30 makes the land right next to the stream, the core of a riparian buffer, unsuitable.","Check ev_distance_to_waterbody_dalacorte20_1/2/3 and ev_distance_to_waterbody_demello18_1: recode width as abs_max/opt_high of distance, abs_min 0."
+riparian_buffer,riparian_buffer__planted,distance_to_waterbody,m,,wrong,"Same width-as-distance mix-up: abs_min 4.6 m is the minimum width of zone 1 (schultz95), which is the strip next to the stream, so the row rules out the most important land.","Recode ev_distance_to_waterbody_schultz95_1, tiwari16_2/3/4, cole20_1, elkadiri23 so widths become upper distances with abs_min 0."
+riparian_buffer,riparian_buffer__planted,soil_drainage,m,,wrong,"A depth-to-water index threshold in metres (tiwari16, Canadian DTW classes) is filed as soil_drainage. A soil drainage map is a class or percent, so this cannot be applied.",Check ev_soil_drainage_tiwari16_1: move to water_table_depth or a DTW variable.
+water_harvesting_conservation,water_harvesting__in_situ,annual_precipitation,mm,,suspect,"abs_max 1000 mm comes from kahinda08's 'no incentive' (economics, not biophysics). Level bunds are preferred up to 1400 mm (wolka18) and WOCAT cases run at 751-1000 mm.",Check ev_wh_annual_precipitation_kahinda08_2/3; widen abs_max or treat as soft.
+water_harvesting_conservation,water_harvesting__in_situ,aridity_index,dimensionless,,ok,Arid to dry sub-humid band with semi-arid optimum fits in-field harvesting.,
+water_harvesting_conservation,water_harvesting__in_situ,clay_content,percent,,ok,Sandy clay loams optimal is standard.,
+water_harvesting_conservation,water_harvesting__in_situ,slope,degrees,,suspect,abs_max 30 degrees (58 percent) for bunds disagrees with the percent row (30 percent) and Critchley's 5 percent. Krois14 prints the slope unit as empty '()'; it may be percent.,Check ev_wh_slope_krois14_bunds unit in the paper.
+water_harvesting_conservation,water_harvesting__in_situ,slope,percent,,ok,Up to 30 percent for bunds (wolka18); seen 0-30.,
+water_harvesting_conservation,water_harvesting__in_situ,soil_depth_to_bedrock,cm,,suspect,"General abs_min soil depth was dropped because a WOCAT class 'very shallow (0-20 cm)' gave seen_min 0. That 0 is a class edge, not a case on bare rock, so the row now has no lower soil depth limit.",Treat WOCAT class floors as non-observations or keep the general abs_min; check the very-shallow WOCAT ids in t4/thresholds.csv.
+water_harvesting_conservation,water_harvesting__in_situ,soil_depth_to_bedrock,m,,ok,0.2 m floor and 0.75 m optimum (kahinda08) are sensible.,
+water_harvesting_conservation,water_harvesting__in_situ,water_table_depth,m,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__micro_catchment,annual_precipitation,mm,,wrong,"abs_min 200 mm, yet Critchley says negarim work 'as low as 150 mm' and WOCAT has cases under 250 mm. The 150 mm claim was extracted as observed, so it did not widen the hard limit.",Check ev_wh_precip_critchley91_negarim: reclassify as stated abs_min 150.
+water_harvesting_conservation,water_harvesting__micro_catchment,catchment_area,m,,wrong,"Unit m on catchment_area: boers86 defines micro-catchments by a runoff length under 100 m, not an area. Cannot be applied to an area map.",Check ev_wh_catchment_area_boers86_1: move to a flow-length variable or convert to area.
+water_harvesting_conservation,water_harvesting__micro_catchment,slope,percent,,wrong,"abs_min 2 percent (meskat only) rules out flat land, yet semi-circular bunds are best below 2 percent and seen cases run at 0-5 percent. opt_high equals abs_min, so the optimum is a single point at the hard edge.",Check ev_wh_slope_wocatgl13_meskat: drop its lower bound as a hard limit.
+water_harvesting_conservation,water_harvesting__micro_catchment,soil_depth_to_bedrock,cm,,suspect,"General 10 cm floor dropped by a WOCAT 0-20 cm class edge. This row (cm, no lower limit) also contradicts the m row for the same family (abs_min 1.0 m).",Merge cm and m rows; keep a floor.
+water_harvesting_conservation,water_harvesting__micro_catchment,soil_depth_to_bedrock,m,,wrong,"Hard minimum 1.0 m soil depth, while WOCAT micro-catchment cases work on 21-80 cm soils (cm row). The unit split hides the conflict. Critchley's 1.5 m is for tree negarim only.",Check ev_wh_soildepth_wocatgl13_strips and ev_wh_soildepth_critchley91_negarim; lower abs_min or merge with cm row.
+water_harvesting_conservation,water_harvesting__micro_catchment,water_table_depth,m,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__rooftop,annual_precipitation,mm,,wrong,"Hard max 1000 mm rules out humid areas where rooftop harvesting is common (South and Southeast Asia, Pacific islands). The source only says 'useful' at 200-1000 mm, and WOCAT 1497 is a rooftop case at 751-1500 mm.","Check ev_wh_precip_wocatgl13_rooftop: treat as optimum, not hard limits."
+water_harvesting_conservation,water_harvesting__rooftop,slope,percent,,ok,Observed only; slope barely matters for rooftop.,
+water_harvesting_conservation,water_harvesting__rooftop,soil_depth_to_bedrock,cm,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__rooftop,water_table_depth,m,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,annual_precipitation,mm,,suspect,"abs_max 1000 mm is kahinda08's economic 'no incentive' line, and bera_2023 puts its optimum at 1884 mm, outside the hard limit. Sources measure different things.",Check ev_wh_annual_precipitation_kahinda08_1 and ev_wh5_bera_2023_annual_precipitation.
+water_harvesting_conservation,water_harvesting__runoff_catchment,aridity_index,dimensionless,,suspect,"opt_high equals abs_max (0.65), so the score drops from best to zero at one value. Kahinda08's own table rates humid areas 2 for ex-field harvesting, not unsuitable.",Check ev_wh_aridity_index_kahinda08_1/3; widen abs_max.
+water_harvesting_conservation,water_harvesting__runoff_catchment,catchment_area,ha,,ok,1 ha minimum catchment fits farm ponds and check dams.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,clay_content,percent,,ok,Clay-rich soils best for runoff; plausible.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,drainage_density,km/km2,,wrong,"opt_low 1.34 > opt_high 0.5. Sources disagree on direction: bera_2023 rates high drainage density best, singh17/jha_2014/karimi19 rate low density best. The weighted middle of opposite curves is meaningless.",Check ev_wh5_bera_2023_drainage_density against ev_wh_drainage_density_singh17_1; split by structure or drop one direction.
+water_harvesting_conservation,water_harvesting__runoff_catchment,drainage_density,not stated,,wrong,"Unit 'not stated' cannot be matched to a map. Values look like km/km2, but then abs_min 1.5 excludes the low densities that the km/km2 row rates best.",Check ev_wh5_alene_2022_drainage_density: set unit and reconcile direction with row above.
+water_harvesting_conservation,water_harvesting__runoff_catchment,runoff_potential_index,dimensionless,,wrong,"Mixes runoff coefficient (0-1, singh17, jha_2014) with SCS curve number (0-100, terencio_2017) under one unitless label, so opt 0.4-20 spans two scales. Curve number 0-20 as best is also backwards for runoff harvesting.",Check ev_wh5_terencio_2017_runoff_potential_index: move curve number to its own unit.
+water_harvesting_conservation,water_harvesting__runoff_catchment,runoff_potential_index,mm,,wrong,"opt_low 200 > opt_high 80. Mixes karimi19 runoff classes, adham_2018 70-80 mm and bera_2023 687 mm surface runoff, all study-specific depths.","Check ev_wh_runoff_potential_index_karimi19_1, ev_wh5_adham_2018_runoff_potential_index, ev_wh5_bera_2023_runoff_potential_index."
+water_harvesting_conservation,water_harvesting__runoff_catchment,runoff_potential_index,not stated,,wrong,Unit 'not stated'; values (500-900) look like runoff depth in mm but cannot be merged with the mm row as written.,Check ev_wh5_alene_2022_runoff_potential_index: set unit.
+water_harvesting_conservation,water_harvesting__runoff_catchment,slope,degrees,,suspect,opt 5-15 degrees comes from bera_2023's check-dam siting (channel slope) mixed with its 0-3 degrees best class. It disagrees with the percent row (opt 0-4 percent).,Check ev_wh5_bera_2023_slope_check_dam; keep structure-specific slopes separate.
+water_harvesting_conservation,water_harvesting__runoff_catchment,slope,percent,,wrong,abs_min 0.25 > opt_low 0. The hard floor comes from one technique (critchley91 trapezoidal bunds) while most sources rate 0-1 percent best. A family-wide floor from one structure is wrong.,Check ev_wh_slope_critchley91_trapezoidal: do not use its lower bound as family abs_min.
+water_harvesting_conservation,water_harvesting__runoff_catchment,soil_depth_to_bedrock,cm,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,stream_order,ordinal,,ok,Stream orders 1-4 with optimum 2 fit check dams and ponds.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,topographic_wetness_index,dimensionless,,suspect,"opt_low 15.77 is the top class of one study's TWI range (bera_2023). TWI depends on DEM resolution, and most land would score low.",Check ev_wh5_bera_2023_topographic_wetness_index; treat as study-relative.
+water_harvesting_conservation,water_harvesting__runoff_catchment,water_table_depth,m,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__spate,annual_precipitation,mm,,ok,100-750 mm fits spate and floodwater spreading.,
+water_harvesting_conservation,water_harvesting__spate,slope,percent,,ok,"Spate fields want near-flat land. Seen 16-60 percent comes from WOCAT 1013 describing the mountain catchment, not the fields.",
+water_harvesting_conservation,water_harvesting__spate,soil_depth_to_bedrock,cm,,suspect,General 20 cm floor dropped by a WOCAT 0-20 cm class edge; spate needs deep alluvial soils.,Keep general abs_min 20.
+water_harvesting_conservation,water_harvesting__spate,water_table_depth,m,,ok,Observed only.,
+water_harvesting_conservation,water_harvesting__terracing,annual_precipitation,mm,,wrong,"Hard max 750 mm rules out humid highland and rice terraces (Rwanda, Ethiopian highlands, Southeast Asia). It comes from dryland stone bunds (critchley91) and bench terraces with water harvesting (wocatgl13); WOCAT cases run at 1001-1500 mm.",Check ev_wh_precip_critchley91_stonebunds: stone bunds are not terraces; drop or widen abs_max.
+water_harvesting_conservation,water_harvesting__terracing,annual_precipitation,mm per October–April rainy season,,wrong,"Unit is Oct-Apr seasonal rain (krois14, Peru), which no annual map provides. 'Not suitable above 1200 mm' also contradicts humid terracing.",Check ev_wh_annual_precipitation_krois14_1: keep as regional or convert.
+water_harvesting_conservation,water_harvesting__terracing,clay_content,percent,,ok,15-35 percent clay optimum is standard.,
+water_harvesting_conservation,water_harvesting__terracing,runoff_potential_index,runoff coefficient,,suspect,Runoff coefficient above 0.9 as the optimum (krois14) is near-impervious land; almost no pixel reaches it. Unit 'runoff coefficient' is also a separate unit for runoff_potential_index.,Check ev_wh_runoff_potential_index_krois14_1; merge with runoff coefficient rows.
+water_harvesting_conservation,water_harvesting__terracing,slope,degrees,,suspect,"Optimum 18-30 degrees is plausible for bench terraces, but hard max 45 degrees (general, 100 percent) disagrees with the percent row's 60 percent (31 degrees).",Reconcile degree and percent slope rows for terracing.
+water_harvesting_conservation,water_harvesting__terracing,slope,percent,,wrong,opt_low 4 > opt_high 2. Critchley's stone bunds (best under 2 percent) are mixed with FAO terraces (4-50 percent).,Check ev_wh_slope_critchley91_stonebunds: move stone bunds out of terracing.
+water_harvesting_conservation,water_harvesting__terracing,soil_depth_to_bedrock,cm,,ok,15 cm floor; seen 0 is a WOCAT class edge.,
+water_harvesting_conservation,water_harvesting__terracing,soil_depth_to_bedrock,m,,ok,0.2 m floor and 1 m optimum are sensible.,
+water_harvesting_conservation,water_harvesting__terracing,water_table_depth,m,,ok,Observed only.,
+wetland_management,wetland_management__creation,catchment_area,ha,,suspect,50 ha minimum catchment is uuemaa18's choice for nitrogen removal. As a hard limit it rules out small wetlands built for other purposes.,Check ev_wet_catchment_area_uuemaa18_1; treat as soft.
+wetland_management,wetland_management__creation,distance_to_waterbody,m,,wrong,"opt_high 500 > abs_max 125. The 125 m is uuemaa18's mapping extent in New Zealand, not a limit, while morenomateos10 rates within 500 m as very suitable.",Check ev_wet_distance_to_waterbody_uuemaa18_1: drop as abs_max.
+wetland_management,wetland_management__creation,slope,degrees,,ok,Low slopes under 3 degrees suit wetland creation.,
+wetland_management,wetland_management__peatland,groundwater_seepage,mm/d,,ok,Upward seepage best for paludiculture.,
+wetland_management,wetland_management__peatland,soil_available_water_capacity,percent,,suspect,"abs_min 10 is the bottom of brouwer26's 'marginal' class, not an exclusion.",Check ev_wet_soil_available_water_capacity_brouwer26_1.
+wetland_management,wetland_management__peatland,water_table_depth,cm,,ok,Water table 0-30 cm best for peat.,
+wetland_management,wetland_management__restoration_rewetting,built_up_areas,m,,ok,500 m buffer from built-up land is a standard exclusion.,
+wetland_management,wetland_management__restoration_rewetting,distance_to_waterbody,m,,ok,Within 250-500 m of water fits rewetting.,
+wetland_management,wetland_management__restoration_rewetting,regeneration_potential,years since the wetland was converted to cropland,,suspect,regeneration_potential with unit 'years since converted' is another meaning for a variable that also holds metres and wildlings per ha. No map layer carries this unit.,Rename to a conversion-age variable.
+wetland_management,wetland_management__restoration_rewetting,restorable_patch_area,ha,,ok,1 ha optimum patch size is plausible.,
+wetland_management,wetland_management__restoration_rewetting,slope,degrees,,ok,5 degrees slope limit fits rewetting.,
+wetland_management,wetland_management__restoration_rewetting,soil_drainage,percent of soil map unit poorly or very poorly drained (PVP),,ok,80-100 percent poorly drained soils best.,
+wetland_management,wetland_management__restoration_rewetting,topographic_wetness_index,"CTI (topographic wetness index scaled to an integer, see justification_quote)",,suspect,CTI scaled to integers (horvath17; 550 = TWI 5.5) with a free-text unit; the other TWI row uses raw dimensionless values.,Convert to raw TWI (divide by 100) and use unit dimensionless.
+agroforestry,agroforestry__homegardens_proximity,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__homegardens_proximity,elevation,m,,suspect,General abs_max 5000 m is above the tree line almost everywhere; the paper-based cross_family row stops at 4500 m (nath_2021 unsuitable above 4500) and shaded_perennial uses 3200.,Lower general abs_max to about 4500 m to match agroforestry__cross_family elevation.
+agroforestry,agroforestry__homegardens_proximity,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__homegardens_proximity,slope,degrees,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__homegardens_proximity,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__homegardens_proximity,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__linear_boundary,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__linear_boundary,elevation,m,,suspect,General abs_max 5000 m is above the tree line almost everywhere; the paper-based cross_family row stops at 4500 m (nath_2021 unsuitable above 4500) and shaded_perennial uses 3200.,Lower general abs_max to about 4500 m to match agroforestry__cross_family elevation.
+agroforestry,agroforestry__linear_boundary,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__linear_boundary,slope,degrees,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__linear_boundary,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__linear_boundary,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__planted_silvoarable,elevation,m,,suspect,General abs_max 5000 m is above the tree line almost everywhere; the paper-based cross_family row stops at 4500 m (nath_2021 unsuitable above 4500) and shaded_perennial uses 3200.,Lower general abs_max to about 4500 m to match agroforestry__cross_family elevation.
+agroforestry,agroforestry__regeneration_farmland,elevation,m,,suspect,General abs_max 5000 m is above the tree line almost everywhere; the paper-based cross_family row stops at 4500 m (nath_2021 unsuitable above 4500) and shaded_perennial uses 3200.,Lower general abs_max to about 4500 m to match agroforestry__cross_family elevation.
+agroforestry,agroforestry__regeneration_farmland,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__regeneration_farmland,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__shaded_perennial,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__shaded_perennial,elevation,m,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__shaded_perennial,slope,degrees,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__shaded_perennial,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__shaded_perennial,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__silvopastoral,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__silvopastoral,elevation,m,,suspect,General abs_max 5000 m is above the tree line almost everywhere; the paper-based cross_family row stops at 4500 m (nath_2021 unsuitable above 4500) and shaded_perennial uses 3200.,Lower general abs_max to about 4500 m to match agroforestry__cross_family elevation.
+agroforestry,agroforestry__silvopastoral,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__silvopastoral,slope,degrees,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__silvopastoral,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+agroforestry,agroforestry__silvopastoral,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__active_planting,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__active_planting,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__assisted_regeneration,elevation,m,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__assisted_regeneration,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__assisted_regeneration,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__passive_regeneration,elevation,m,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__passive_regeneration,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__passive_regeneration,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__plantation,elevation,m,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__plantation,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__plantation,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__protection_cbfm,elevation,m,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__protection_cbfm,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+forest_restoration,forest_restoration__protection_cbfm,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+mangrove_restoration,mangrove_restoration__tidal_coastal,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,elevation,m,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,slope,degrees,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__natural_restored,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,elevation,m,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,slope,degrees,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,soil_depth_to_bedrock,cm,,ok,General outer limit is plausible for this practice.,
+riparian_buffer,riparian_buffer__planted,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__in_situ,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__in_situ,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__in_situ,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__micro_catchment,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__micro_catchment,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__micro_catchment,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__rooftop,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__rooftop,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__rooftop,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__runoff_catchment,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__spate,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__spate,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__spate,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__terracing,elevation,m,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__terracing,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+water_harvesting_conservation,water_harvesting__terracing,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__coastal,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__coastal,elevation,m,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__coastal,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__coastal,slope,degrees,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__coastal,tidal_inundation_duration,percent,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__constructed,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__creation,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__creation,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__creation,soil_ph,pH,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__peatland,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__peatland,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__peatland,slope,degrees,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__restoration_rewetting,annual_precipitation,mm,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__restoration_rewetting,mean_annual_temperature,degC,,ok,General outer limit is plausible for this practice.,
+wetland_management,wetland_management__restoration_rewetting,soil_ph,pH,,ok,General outer limit is plausible for this practice.,

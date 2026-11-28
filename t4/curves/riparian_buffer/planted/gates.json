@@ -1,0 +1,42 @@
+{
+  "practice": "riparian_buffer",
+  "family": "planted",
+  "gates": [
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5000.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -15.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 10.0
+    },
+    {
+      "name": "soil_drainage",
+      "variable": "soil_drainage",
+      "type": "threshold",
+      "unit": "m",
+      "max": 1.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 10.0
+    }
+  ]
+}

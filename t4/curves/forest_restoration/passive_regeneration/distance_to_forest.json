@@ -1,0 +1,23 @@
+{
+  "practice": "forest_restoration",
+  "family": "passive_regeneration",
+  "variable": "distance_to_forest",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    100.0
+  ],
+  "score": [
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 17,
+  "papers": [
+    "crouzeilles_2016_btp_nr_tool"
+  ]
+}

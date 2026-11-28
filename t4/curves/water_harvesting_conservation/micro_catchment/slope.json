@@ -1,0 +1,30 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "micro_catchment",
+  "variable": "slope",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    2.0,
+    50.0
+  ],
+  "score": [
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    2.0,
+    50.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "fao_critchley_wh_manual_1991",
+    "wocat_1528_2012",
+    "wocat_1613_2014",
+    "wocat_2895_2017",
+    "wocat_5860_2021",
+    "wocat_wh_guidelines_2013"
+  ]
+}

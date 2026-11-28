@@ -1,0 +1,23 @@
+{
+  "practice": "wetland_management",
+  "family": "restoration_rewetting",
+  "variable": "regeneration_potential",
+  "unit": "years since the wetland was converted to cropland",
+  "shape": "linear",
+  "x": [
+    10.0
+  ],
+  "score": [
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 8,
+  "papers": [
+    "wet_rehabilitation_areas_multisource_china_2020"
+  ]
+}

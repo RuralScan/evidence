@@ -1,0 +1,112 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "gates": [
+    {
+      "name": "aspect",
+      "variable": "aspect",
+      "type": "classes",
+      "yes": [
+        "dish",
+        "e",
+        "east",
+        "n",
+        "north",
+        "s",
+        "south",
+        "w",
+        "west"
+      ],
+      "no": []
+    },
+    {
+      "name": "built_up_areas",
+      "variable": "built_up_areas",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "communication towers",
+        "solar energy generation"
+      ]
+    },
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "agricultural land",
+        "agriculture/cropland",
+        "cropland",
+        "non-forest",
+        "open forest",
+        "open land",
+        "pasture/grassland",
+        "scrub",
+        "cultivated crops",
+        "grassland/herbaceous",
+        "pasture/hay"
+      ],
+      "no": [
+        "mdf",
+        "tree crops",
+        "vdf",
+        "water"
+      ]
+    },
+    {
+      "name": "ndvi",
+      "variable": "ndvi",
+      "type": "classes",
+      "yes": [
+        "dense",
+        "medium",
+        "nil",
+        "poor",
+        "very dense"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_drainage",
+      "variable": "soil_drainage",
+      "type": "classes",
+      "yes": [
+        "mod well",
+        "very well",
+        "well"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_quality_class",
+      "variable": "soil_quality_class",
+      "type": "classes",
+      "yes": [
+        "class 1 to class 4"
+      ],
+      "no": [
+        "class 5 to class 7"
+      ]
+    },
+    {
+      "name": "soil_texture",
+      "variable": "soil_texture",
+      "type": "classes",
+      "yes": [
+        "coarse",
+        "course",
+        "fine",
+        "fine to course",
+        "medium"
+      ],
+      "no": []
+    },
+    {
+      "name": "built_up_areas",
+      "variable": "built_up_areas",
+      "type": "threshold",
+      "unit": "ft",
+      "min": 100.0
+    }
+  ]
+}

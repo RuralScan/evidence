@@ -1,0 +1,31 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "evapotranspiration_ref",
+  "unit": "mm/day",
+  "shape": "linear",
+  "x": [
+    1000.0,
+    1050.0,
+    1175.0,
+    1350.0,
+    1556.5
+  ],
+  "score": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    1000.0,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 2,
+  "papers": [
+    "nath_2021"
+  ]
+}

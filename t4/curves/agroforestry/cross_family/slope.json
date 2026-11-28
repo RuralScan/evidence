@@ -1,0 +1,71 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "slope",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    2.5,
+    4.0,
+    5.0,
+    5.5,
+    8.0,
+    9.0,
+    10.0,
+    12.5,
+    20.0,
+    25.0,
+    35.0
+  ],
+  "score": [
+    1.0,
+    0.985,
+    0.928,
+    0.888,
+    0.737,
+    0.634,
+    0.602,
+    0.535,
+    0.334,
+    0.309,
+    0.0
+  ],
+  "low": [
+    1.0,
+    0.933,
+    0.833,
+    0.75,
+    0.5,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.0
+  ],
+  "high": [
+    1.0,
+    1.0,
+    1.0,
+    0.978,
+    0.867,
+    0.822,
+    0.778,
+    0.667,
+    0.444,
+    0.333,
+    0.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    35.0
+  ],
+  "weight": null,
+  "pct_of_papers": 31,
+  "papers": [
+    "chuma_2021",
+    "haile_2024",
+    "india_fao_agroforestry_suitability_mapping_2017"
+  ]
+}

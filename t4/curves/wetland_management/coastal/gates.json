@@ -1,0 +1,22 @@
+{
+  "practice": "wetland_management",
+  "family": "coastal",
+  "gates": [
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "min": -2.0,
+      "max": 10.0
+    },
+    {
+      "name": "tidal_inundation_duration",
+      "variable": "tidal_inundation_duration",
+      "type": "threshold",
+      "unit": "percent",
+      "min": 1.0,
+      "max": 70.0
+    }
+  ]
+}

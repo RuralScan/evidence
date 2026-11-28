@@ -1,0 +1,29 @@
+{
+  "practice": "agroforestry",
+  "family": "shaded_perennial",
+  "variable": "mean_annual_temperature",
+  "unit": "degC",
+  "shape": "linear",
+  "x": [
+    10.0,
+    20.0,
+    30.0,
+    32.0
+  ],
+  "score": [
+    0.0,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    10.0,
+    32.0
+  ],
+  "weight": null,
+  "pct_of_papers": 20,
+  "papers": [
+    "mushtaq_2023"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "runoff_catchment",
+  "variable": "runoff_potential_index",
+  "unit": "dimensionless",
+  "shape": "linear",
+  "x": [
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.35,
+    0.4,
+    10.0,
+    30.0,
+    50.0,
+    70.0,
+    90.0
+  ],
+  "score": [
+    0.483,
+    0.55,
+    0.583,
+    0.7,
+    0.85,
+    1.0,
+    1.0,
+    0.933,
+    0.867,
+    0.8,
+    0.733
+  ],
+  "low": [
+    0.2,
+    0.25,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    1.0,
+    0.8,
+    0.6,
+    0.4,
+    0.2
+  ],
+  "high": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": 0.395,
+  "pct_of_papers": 15,
+  "papers": [
+    "mahmoud_2016_mcda_gis_wh_recharge",
+    "wh_stocktake_jha_2014",
+    "wh_stocktake_terencio_2017"
+  ]
+}

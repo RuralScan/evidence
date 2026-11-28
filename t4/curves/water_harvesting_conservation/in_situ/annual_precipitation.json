@@ -1,0 +1,36 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "in_situ",
+  "variable": "annual_precipitation",
+  "unit": "mm",
+  "shape": "linear",
+  "x": [
+    100.0,
+    200.0,
+    400.0,
+    1000.0
+  ],
+  "score": [
+    0.0,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    100.0,
+    1000.0
+  ],
+  "weight": null,
+  "pct_of_papers": 62,
+  "papers": [
+    "fao_critchley_wh_manual_1991",
+    "kahinda2008_sa_rwh_suitability",
+    "wocat_1100_2011",
+    "wocat_1219_2014",
+    "wocat_1652_2014",
+    "wocat_959_2010",
+    "wocat_968_2011",
+    "wolka2018_swc_ssa_meta"
+  ]
+}

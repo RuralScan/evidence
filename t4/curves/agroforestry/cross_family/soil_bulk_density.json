@@ -1,0 +1,31 @@
+{
+  "practice": "agroforestry",
+  "family": "cross_family",
+  "variable": "soil_bulk_density",
+  "unit": "Kg/dm3",
+  "shape": "linear",
+  "x": [
+    1.4,
+    1.42,
+    1.46,
+    1.48,
+    1.9
+  ],
+  "score": [
+    1.0,
+    0.75,
+    0.5,
+    0.25,
+    0.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    1.9
+  ],
+  "weight": null,
+  "pct_of_papers": 7,
+  "papers": [
+    "nath_2021"
+  ]
+}

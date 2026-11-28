@@ -1,0 +1,94 @@
+{
+  "practice": "agroforestry",
+  "family": "regeneration_farmland",
+  "gates": [
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "degraded wasteland",
+        "depleted farmland"
+      ],
+      "no": []
+    },
+    {
+      "name": "land_degradation",
+      "variable": "land_degradation",
+      "type": "classes",
+      "yes": [
+        "degraded and denuded lands"
+      ],
+      "no": []
+    },
+    {
+      "name": "rootstock_presence",
+      "variable": "rootstock_presence",
+      "type": "classes",
+      "yes": [
+        "active roots systems",
+        "living tree stumps with the ability to coppice",
+        "re-sprouting rootstock",
+        "resprouting tree stumps",
+        "root stock",
+        "root systems of trees that were cut in the past",
+        "seeds",
+        "seeds in the soil that will germinate",
+        "viable seeds of native woody plants"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_texture",
+      "variable": "soil_texture",
+      "type": "classes",
+      "yes": [
+        "sandy soils"
+      ],
+      "no": []
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 100.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 5000.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -5.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "percent",
+      "max": 100.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 10.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 10.0
+    }
+  ]
+}

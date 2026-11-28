@@ -1,0 +1,103 @@
+{
+  "practice": "wetland_management",
+  "family": "restoration_rewetting",
+  "gates": [
+    {
+      "name": "built_up_areas",
+      "variable": "built_up_areas",
+      "type": "classes",
+      "yes": [
+        "not built-up"
+      ],
+      "no": [
+        "built-up"
+      ]
+    },
+    {
+      "name": "flood_hazard",
+      "variable": "flood_hazard",
+      "type": "classes",
+      "yes": [
+        "flooded in 1998",
+        "flooded only in 2013"
+      ],
+      "no": []
+    },
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "agriculture",
+        "bare",
+        "cropland",
+        "cultivated crops (nlcd 82)",
+        "forest",
+        "grassland",
+        "open lands",
+        "pasture/hay (nlcd 81)",
+        "woodland"
+      ],
+      "no": [
+        "barren land",
+        "developed land (open space, low, medium and high intensity)",
+        "developed lands",
+        "existing built-up land",
+        "existing wetland",
+        "large water bodies",
+        "open water",
+        "shrubland"
+      ]
+    },
+    {
+      "name": "permanent_water",
+      "variable": "permanent_water",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "major waterbodies (major lakes and streams)"
+      ]
+    },
+    {
+      "name": "soil_drainage",
+      "variable": "soil_drainage",
+      "type": "classes",
+      "yes": [
+        "moderately well/well drained",
+        "poorly and imperfectly drained",
+        "poorly drained",
+        "rapidly/very rapidly drained",
+        "very poorly drained"
+      ],
+      "no": [
+        "not applicable/water"
+      ]
+    },
+    {
+      "name": "topographic_wetness_index",
+      "variable": "topographic_wetness_index",
+      "type": "classes",
+      "yes": [
+        "high",
+        "medium"
+      ],
+      "no": [
+        "low"
+      ]
+    },
+    {
+      "name": "built_up_areas",
+      "variable": "built_up_areas",
+      "type": "threshold",
+      "unit": "m",
+      "min": 500.0
+    },
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "degrees",
+      "max": 5.0
+    }
+  ]
+}

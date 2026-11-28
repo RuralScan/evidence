@@ -1,0 +1,32 @@
+{
+  "practice": "agroforestry",
+  "family": "planted_silvoarable",
+  "variable": "annual_precipitation",
+  "unit": "mm",
+  "shape": "linear",
+  "x": [
+    1000.0,
+    1150.0,
+    1400.0,
+    1750.0,
+    2000.0
+  ],
+  "score": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    1000.0,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 44,
+  "papers": [
+    "nair1997_biophys_interactions",
+    "nath_2021"
+  ]
+}

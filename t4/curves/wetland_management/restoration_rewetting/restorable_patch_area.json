@@ -1,0 +1,23 @@
+{
+  "practice": "wetland_management",
+  "family": "restoration_rewetting",
+  "variable": "restorable_patch_area",
+  "unit": "ha",
+  "shape": "linear",
+  "x": [
+    1.0
+  ],
+  "score": [
+    1.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    null
+  ],
+  "weight": null,
+  "pct_of_papers": 8,
+  "papers": [
+    "gis_riparian_siting_russell_1997"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "in_situ",
+  "variable": "slope",
+  "unit": "degrees",
+  "shape": "linear",
+  "x": [
+    3.5,
+    7.5,
+    14.0,
+    24.0,
+    30.0
+  ],
+  "score": [
+    1.0,
+    1.0,
+    0.667,
+    0.333,
+    0.0
+  ],
+  "built_from": "class tables",
+  "valid_range": [
+    null,
+    30.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "gismcda_swc_siting_2014"
+  ]
+}

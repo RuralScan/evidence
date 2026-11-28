@@ -1,0 +1,88 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "terracing",
+  "gates": [
+    {
+      "name": "land_cover",
+      "variable": "land_cover",
+      "type": "classes",
+      "yes": [
+        "agriculture",
+        "forest",
+        "grassland",
+        "meadows",
+        "scarce vegetation",
+        "shrub land"
+      ],
+      "no": [
+        "infrastructure",
+        "water bodies"
+      ]
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "shallow soils",
+        "very shallow"
+      ]
+    },
+    {
+      "name": "soil_permeability",
+      "variable": "soil_permeability",
+      "type": "classes",
+      "yes": [
+        "permeable soils"
+      ],
+      "no": []
+    },
+    {
+      "name": "soil_texture",
+      "variable": "soil_texture",
+      "type": "classes",
+      "yes": [],
+      "no": [
+        "sandy"
+      ]
+    },
+    {
+      "name": "annual_precipitation",
+      "variable": "annual_precipitation",
+      "type": "threshold",
+      "unit": "mm",
+      "min": 200.0,
+      "max": 750.0
+    },
+    {
+      "name": "elevation",
+      "variable": "elevation",
+      "type": "threshold",
+      "unit": "m",
+      "max": 4800.0
+    },
+    {
+      "name": "mean_annual_temperature",
+      "variable": "mean_annual_temperature",
+      "type": "threshold",
+      "unit": "degC",
+      "min": -5.0
+    },
+    {
+      "name": "soil_depth_to_bedrock",
+      "variable": "soil_depth_to_bedrock",
+      "type": "threshold",
+      "unit": "cm",
+      "min": 15.0
+    },
+    {
+      "name": "soil_ph",
+      "variable": "soil_ph",
+      "type": "threshold",
+      "unit": "pH",
+      "min": 3.5,
+      "max": 10.0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "practice": "riparian_buffer",
+  "family": "natural_restored",
+  "variable": "distance_to_waterbody",
+  "unit": "m",
+  "shape": "linear",
+  "x": [
+    30.0,
+    50.0,
+    1000.0
+  ],
+  "score": [
+    0.0,
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    30.0,
+    1000.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "brazil_landuse_loworder_streams_2018",
+    "neotropical_riparian_biodiversity_thresholds_2020"
+  ]
+}

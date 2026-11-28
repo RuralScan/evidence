@@ -1,0 +1,31 @@
+{
+  "practice": "water_harvesting_conservation",
+  "family": "spate",
+  "variable": "slope",
+  "unit": "percent",
+  "shape": "linear",
+  "x": [
+    2.0,
+    3.0
+  ],
+  "score": [
+    1.0,
+    0.0
+  ],
+  "built_from": "limits",
+  "valid_range": [
+    null,
+    3.0
+  ],
+  "weight": null,
+  "pct_of_papers": 82,
+  "papers": [
+    "fao_critchley_wh_manual_1991",
+    "wocat_1013_2011",
+    "wocat_1292_2015",
+    "wocat_1333_2010",
+    "wocat_5770_2020",
+    "wocat_6715_2023",
+    "wocat_wh_guidelines_2013"
+  ]
+}

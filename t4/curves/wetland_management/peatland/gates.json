@@ -1,0 +1,13 @@
+{
+  "practice": "wetland_management",
+  "family": "peatland",
+  "gates": [
+    {
+      "name": "slope",
+      "variable": "slope",
+      "type": "threshold",
+      "unit": "degrees",
+      "max": 25.0
+    }
+  ]
+}
