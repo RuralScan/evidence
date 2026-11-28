@@ -1,5 +1,5 @@
 {
-  "id": "nbs-inclusion-1.0.0",
+  "id": "nbs-inclusion-1.1.0",
   "protocol": "handbook/nbs-inclusion.md",
   "scope": "Current discovery, extraction, review and synthesis reuse; all six project NbS",
   "core_criteria": [
@@ -35,5 +35,6 @@
     "water_harvesting_conservation",
     "wetland_management"
   ],
-  "primary_purpose_nbs_id": "water_harvesting_conservation"
+  "water_harvesting_nbs_id": "water_harvesting_conservation",
+  "water_harvesting_policy": "Strong source-supported harvesting can qualify as primary or secondary; weak secondary benefits exclude, unclear demonstration holds. Primary purpose alone is insufficient."
 }

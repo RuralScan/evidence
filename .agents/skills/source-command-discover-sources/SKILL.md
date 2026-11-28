@@ -2,7 +2,7 @@
 name: source-command-discover-sources
 description: Discover and screen sources for an authorised RuralScan practice and analytical lane, including practice-purpose and NbS inclusion checks.
 metadata:
-  version: "1.9.0"
+  version: "1.9.1"
 ---
 
 # Current discovery and screening
@@ -17,14 +17,14 @@ the archived discovery v1.8.1 instructions; it does not edit their history.
    chapter, including exclusions and safeguards. Keep edition/hash, locators and
    detailed assessment private. Never send a restricted document or its excerpts
    to a public tool, repository or issue. Missing access is an explicit hold.
-3. Set practice-purpose and NbS criteria before search. Water harvesting must be a
-   primary purpose; secondary infiltration or erosion benefits cannot establish it.
-   Other practices use their own definitions; no universal primary-purpose override.
+3. Set practice-fit and NbS criteria before search. Strongly demonstrated water
+   harvesting may qualify as primary or secondary. Weak secondary benefits cannot;
+   unclear demonstration stays held. Other practices use their own definitions.
 4. Capture executed searches and returned records. Do not count planned queries as
    completed searches. Screen actual records with the existing credibility rubric.
    A promising abstract may justify acquisition, not final NbS inclusion.
 5. After acquisition, assess the actual intervention/components using the inclusion
-   template. Run `workflows/inclusion/check.py`. Hold unresolved purpose, ecological
+   template. Run `workflows/inclusion/check.py`. Hold unresolved harvesting demonstration, ecological
    pathways or conflicts; preserve negative cases and justified referrals. Keep
    conditional restrictions attached to included candidates.
 6. Stage candidates/protocols and report omissions and actual counts. Only supported
@@ -32,6 +32,6 @@ the archived discovery v1.8.1 instructions; it does not edit their history.
    or assign approvals without scope. New practice attribution needs its own source
    assessment even when the publication was previously included elsewhere.
 
-Record adapter version 1.9.0, inclusion addendum `nbs-inclusion-1.0.0`, the base
+Record adapter version 1.9.1, inclusion addendum `nbs-inclusion-1.1.0`, the base
 instructions actually used, model identity/settings and exact prompt hashes in the
 private run record. Preserve frozen historical replays and extraction stamps.

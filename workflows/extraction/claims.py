@@ -322,7 +322,7 @@ def check_t4(rel, context, quote, evidence_type):
 
 def build_unit(draft, scope, source_id, quote, page, *, ruleset=RULESET):
     """Return a CIAT staging dict; the caller supplies the actual page text slice."""
-    if ruleset not in {RULESET, "v1.10.2"}:
+    if ruleset not in {RULESET, "v1.10.2", "v1.10.3"}:
         raise ValueError("Unsupported extraction ruleset")
     subset(
         draft,

@@ -16,8 +16,9 @@ Record the workbench revision and select the instructions for the stage before b
 Before screening, extraction or reuse, apply [the inclusion protocol](nbs-inclusion.md).
 Give the AI the authorised definition passages and the intervention's source privately.
 Ask it to assess practice/family fit, ecological function, benefits, safeguards and
-uncertainty separately. Water harvesting must be a primary purpose; secondary water
-benefits cannot rescue an erosion-control profile. Keep the catalogue edition/hash,
+uncertainty separately. Strongly demonstrated water harvesting can qualify even as
+a secondary function; weak secondary benefits cannot. Document capture/storage and
+intended water use; hold unclear demonstration. Keep the catalogue edition/hash,
 locators and clause assessment in the private run bundle. Missing definition access
 or unresolved core scope remains a hold. Run `workflows/inclusion/check.py`; a passing
 consistency check is not human scientific approval. Follow the protocol's dispositions

@@ -4,7 +4,10 @@ Current runs check practice fit and nature-based-solution fit before extracting 
 reusing claims. A database category, beneficial outcome or familiar technology name
 does not settle either decision. These are scoping decisions, not site certification.
 
-This protocol is `nbs-inclusion-1.0.0`. It supplements the pinned discovery,
+This protocol is `nbs-inclusion-1.1.0`. The demonstration rule supersedes the earlier
+primary-purpose-only gate at Pete's direction. Reassess exclusions or holds based
+solely on secondary purpose; do not automatically restore records, erase historical
+votes, or release independent NbS/source/claim holds. It supplements the pinned discovery,
 extraction and synthesis instructions without rewriting their historical versions.
 
 ## Read the definition and the intervention
@@ -33,11 +36,16 @@ silently become component-specific thresholds.
 
 1. **Does the intervention belong to the requested practice and family?** Cite its
    purpose and design. For this project's water-harvesting scope, collecting and
-   managing rainfall/runoff for use must be a primary purpose. In-situ soil storage
-   can qualify; a tank is not required. Secondary infiltration or water retention
-   in an erosion-control structure does not establish water-harvesting membership.
-   If primary purpose is ambiguous or a mixed package cannot be separated, hold.
-   Do not impose this water-harvesting-specific rule on all other NbS categories.
+   managing rainfall/runoff for use must be strongly demonstrated. A secondary
+   harvesting function can qualify; weak or incidental secondary benefits cannot.
+   Inspect the actual component's capture/retention or soil-water storage mechanism
+   and the intended water use or beneficiary pathway. Source descriptions, design
+   and credible observations can establish this without a measured effect size;
+   a technology label or generic claim of increased infiltration cannot. In-situ
+   storage can qualify; a tank is not required. Record purpose and demonstration
+   strength separately. Unclear demonstration or inseparable component evidence
+   means hold. A primary label with weak demonstration also stays held. Do not impose
+   this water-harvesting-specific rule on all other NbS categories.
 2. **Does that intervention work as an NbS in this context?** Explain what ecosystem
    is protected, restored or sustainably managed; which natural processes deliver
    the service; who benefits; and the credible biodiversity/ecosystem benefit.
@@ -60,7 +68,12 @@ workflow; they are not an IUCN certification or a reproduction of the private ca
 
 ## Record the reasoning
 
-Use `workflows/inclusion/template.json` as the private record structure. Each
+Use `workflows/inclusion/template.json` as the private record structure. For water harvesting, also complete `water_harvesting_demonstration`: strength
+(`strong`, `weak`, `unclear`), rationale, source locator, capture/storage mechanism
+and water-use pathway. Strong demonstration proceeds to the remaining gates even
+when purpose is secondary or its ranking is unclear. Weak secondary demonstration
+excludes; other weak/unclear cases hold. The checker tests completeness, not whether
+the prose actually supports the judgment. Each
 criterion needs `status`, `rationale` and `source_locator`; use `unknown` for missing
 information, not a fabricated positive or negative. `definition_locator` identifies
 the relevant authorised definition passage when available.

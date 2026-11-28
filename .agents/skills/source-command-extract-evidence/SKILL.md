@@ -2,7 +2,7 @@
 name: source-command-extract-evidence
 description: Extract or review source-provenanced RuralScan evidence after separate practice, NbS and analytical-role checks.
 metadata:
-  version: "1.10.2"
+  version: "1.10.3"
 ---
 
 # Current evidence extraction and review
@@ -25,8 +25,10 @@ against the source and definition files. Current PDF staging must use
 `--inclusion-review` with the assessed definition; `--historical-replay` is only for
 frozen exercises. Conditional inclusion requires publication-safe restrictions in
 each draft's `context.note`; inspect that they faithfully carry the private conditions.
-Water harvesting must be a primary purpose:
-in-situ capture can qualify; incidental infiltration in a gully repair cannot.
+Water harvesting requires strong source-supported demonstration of capture/storage
+and intended water use, whether primary or secondary. In-situ capture can qualify;
+a generic secondary infiltration benefit cannot. Record demonstration separately
+from purpose; do not let a primary label substitute for support.
 Keep practice mismatch, NbS failure, uncertainty and conditional inclusion separate.
 Do not extract included claims from held/excluded interventions. Restrict bundled
 claims to supported components; never infer component-level suitability from a
@@ -53,7 +55,7 @@ supersession under the new rule before replay. Wrong-practice drops are reversib
 NbS uncertainty remains a hold. Do not silently reassign another practice or apply
 new rules to analytical rows without scientific review.
 
-Record adapter version 1.10.2, inclusion addendum `nbs-inclusion-1.0.0`, base contract
+Record adapter version 1.10.3, inclusion addendum `nbs-inclusion-1.1.0`, base contract
 versions, exact prompt/model settings and file hashes privately. Stamp only new work
 with instructions actually used; corrections retain the original EV extraction stamp.
 Restricted definitions and detailed assessments never enter public receipts. Run the

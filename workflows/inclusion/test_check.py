@@ -19,6 +19,11 @@ class InclusionTests(unittest.TestCase):
             "source_sha256": check.digest(b"source"),
             "practice_fit": {"status": "pass", "rationale": "Primary rainwater capture", "source_locator": "p1"},
             "water_harvesting_purpose": "primary",
+            "water_harvesting_demonstration": {
+                "strength": "strong", "rationale": "Documented collection and soil storage",
+                "source_locator": "p1", "capture_storage": "Runoff diverted into planting basins",
+                "water_use": "Stored soil water supplies planted vegetation",
+            },
             "definition": {"available": True, "kind": "authorised_project_catalogue", "access": "restricted",
                            "edition": "synthetic test edition", "sha256": check.digest(b"definition"),
                            "general_locator": "definition", "practice_locator": "practice",
@@ -32,16 +37,52 @@ class InclusionTests(unittest.TestCase):
     def result(self):
         return check.assess(self.record, self.policy)
 
-    def test_secondary_water_benefit_fails_despite_nbs_passes(self):
+    def test_weak_secondary_water_benefit_fails_despite_nbs_passes(self):
         self.record["water_harvesting_purpose"] = "secondary"
+        self.record["water_harvesting_demonstration"]["strength"] = "weak"
         self.assertEqual(self.result(), "exclude_wrong_practice")
+
+    def test_strong_secondary_harvesting_can_pass(self):
+        self.record["water_harvesting_purpose"] = "secondary"
+        self.assertEqual(self.result(), "include_for_scoping")
+
+    def test_primary_label_without_strong_demonstration_holds(self):
+        self.record["water_harvesting_demonstration"]["strength"] = "weak"
+        self.assertEqual(self.result(), "hold")
+
+    def test_unclear_demonstration_holds_regardless_of_purpose(self):
+        self.record["water_harvesting_demonstration"]["strength"] = "unclear"
+        for purpose in ("primary", "secondary", "unclear"):
+            self.record["water_harvesting_purpose"] = purpose
+            with self.subTest(purpose=purpose):
+                self.assertEqual(self.result(), "hold")
+
+    def test_strong_secondary_still_needs_nbs_fit(self):
+        self.record["water_harvesting_purpose"] = "secondary"
+        self.record["criteria"]["biodiversity_pathway"]["status"] = "unknown"
+        self.assertEqual(self.result(), "hold")
+        self.record["criteria"]["baseline_habitat"]["status"] = "fail"
+        self.assertEqual(self.result(), "exclude_nbs")
+
+    def test_strong_demonstration_requires_mechanism_use_and_locator(self):
+        for key in ("capture_storage", "water_use", "source_locator", "rationale"):
+            prior = self.record["water_harvesting_demonstration"][key]
+            self.record["water_harvesting_demonstration"][key] = ""
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.result()
+            self.record["water_harvesting_demonstration"][key] = prior
+
+    def test_old_assessment_cannot_silently_use_new_policy(self):
+        self.record["ruleset"] = "nbs-inclusion-1.0.0"
+        with self.assertRaisesRegex(ValueError, "Wrong inclusion ruleset"):
+            self.result()
 
     def test_in_situ_primary_capture_can_pass(self):
         self.assertEqual(self.result(), "include_for_scoping")
 
-    def test_unclear_primary_purpose_holds(self):
+    def test_unclear_purpose_ranking_can_pass_with_strong_demonstration(self):
         self.record["water_harvesting_purpose"] = "unclear"
-        self.assertEqual(self.result(), "hold")
+        self.assertEqual(self.result(), "include_for_scoping")
 
     def test_definition_unavailable_is_not_public_definition_substitution(self):
         self.record["definition"] = {"available": False, "access_note": "No authorised copy"}
@@ -69,6 +110,7 @@ class InclusionTests(unittest.TestCase):
         self.record["nbs_id"] = "forest_restoration"
         self.record["suitability_family_id"] = "forest_restoration__regeneration"
         self.record.pop("water_harvesting_purpose")
+        self.record.pop("water_harvesting_demonstration")
         self.assertEqual(self.result(), "include_for_scoping")
 
     def test_unanchored_positive_is_invalid(self):

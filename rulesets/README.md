@@ -26,7 +26,7 @@ Use Git supporting `--no-lazy-fetch` and a clone with the four specified commits
 
 ## Current inclusion addendum
 
-[`nbs-inclusion-1.0.0`](nbs-inclusion.json) and its
+[`nbs-inclusion-1.1.0`](nbs-inclusion.json) and its
 [operator protocol](../handbook/nbs-inclusion.md) apply to current discovery,
 extraction, review and synthesis reuse across all six practices. Record the addendum
 and actual base instructions together, including hashes. Current discovery/extraction
@@ -38,3 +38,13 @@ remain in authorised private storage.
 ## Current classification addendum
 
 The [knowledge-basis and format contract](evidence-classification.json) and [intake guidance](../workflows/extraction/classification.md) extend current submissions. Their pin records the immutable method revision. They do not restamp or rewrite archived extraction instructions.
+
+### Inclusion rule revision
+
+Version 1.1.0 supersedes the primary-purpose-only water-harvesting gate: strong
+demonstration may qualify even when secondary; weak secondary benefits do not.
+Reassess affected exclusions and holds without rewriting history or restoring
+records automatically. The earlier protocol and adapters remain in
+[their committed revision](https://github.com/RuralScan/evidence/tree/1478162331becded9a323d4cf9fc297586e8b422).
+Current discovery adapter is 1.9.1 and extraction adapter/stamp is 1.10.3;
+historical units and explicit teaching replays retain their original stamps.

@@ -13,9 +13,11 @@ restricted text and assessment privately. Public definitions are context, not pr
 that the restricted catalogue was inspected. Missing access means a visible hold.
 
 Keep three decisions separate: practice/family fit, NbS fit, and analytical-role fit.
-For water harvesting, harvesting must be a primary purpose supported by source
-design and intent. Incidental infiltration, recharge or erosion reduction does not
-qualify. A credible NbS can still be the wrong practice. Do not reroute it silently.
+For water harvesting, strongly demonstrated harvesting can qualify even as a
+secondary function. Assess actual capture/retention or soil-water storage and its
+intended use from the source. Weak secondary benefits do not qualify; unclear
+demonstration stays held. A primary label alone is insufficient. Keep NbS fit
+separate and do not reroute evidence silently.
 
 Use `workflows/inclusion/check.py` on the private assessment before current staging
 or reuse. Current PDF staging requires `--inclusion-review`; reserve
@@ -26,7 +28,7 @@ Detailed feasibility, monitoring and site design remain downstream.
 
 Current adapters: `.agents/skills/source-command-discover-sources/SKILL.md`,
 `.agents/skills/source-command-extract-evidence/SKILL.md`, and the two synthesis
-skills. Record their versions plus `nbs-inclusion-1.0.0` and exact instruction hashes.
+skills. Record their versions plus `nbs-inclusion-1.1.0` and exact instruction hashes.
 Never restamp historical units or modify archived rulesets to imply re-review.
 
 ## Writes and confidentiality
